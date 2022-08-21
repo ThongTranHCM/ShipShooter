@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1661a6d8f50d09f4795fe9b02ca78da1, type: 3}
+  m_Name: Dive_Hard
+  m_EditorClassIdentifier: 
+  health: 1.25
+  attack: 1
+  prefab: {fileID: 2693650720471980231, guid: 38ae061097f6fed49af2c7baad74efbd, type: 3}
+  gunObject: {fileID: 0}
+  gunData: {fileID: 0}
+  Move: 0
+  Rotate: 0
+  PatternDataList:
+  - {fileID: 11400000, guid: 037cca87cca32ea4d89d76da00271596, type: 2}

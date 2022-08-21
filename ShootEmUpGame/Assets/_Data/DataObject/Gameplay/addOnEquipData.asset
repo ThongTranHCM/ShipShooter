@@ -1,0 +1,160 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0fed54a1fd8bd8489b3a81a9ee2cb08, type: 3}
+  m_Name: addOnEquipData
+  m_EditorClassIdentifier: 
+  addOnDatas:
+  - _addOnType: 13
+    _addOnSpr: {fileID: 21300000, guid: 9c3d15adfbc21d64683a6553e1330d99, type: 3}
+    _baseValue: 1
+    _increaseValue: 0.01
+    _spawnGun: {fileID: 3008074749998891964, guid: 505605b0979c7e341948bc0da8ba9397,
+      type: 3}
+    _spawnGunData: {fileID: 11400000, guid: c93ee95c679f02048bdd897df79efc07, type: 2}
+    _onHitController: {fileID: 0}
+    _powerUpController: {fileID: 0}
+    _isUnlocked: 1
+  - _addOnType: 12
+    _addOnSpr: {fileID: 21300000, guid: 8b93523f32be16548bf56b5a6db4fefe, type: 3}
+    _baseValue: 1
+    _increaseValue: 0.01
+    _spawnGun: {fileID: 1080035373182460900, guid: 98464b15dec529b4298a4facbe0d3167,
+      type: 3}
+    _spawnGunData: {fileID: 11400000, guid: 800604fda1b76d84a8f89a2b03d127ec, type: 2}
+    _onHitController: {fileID: 0}
+    _powerUpController: {fileID: 0}
+    _isUnlocked: 1
+  - _addOnType: 11
+    _addOnSpr: {fileID: 21300000, guid: 8f85d8ce213015144a117d359c69fcbd, type: 3}
+    _baseValue: 1
+    _increaseValue: 0.01
+    _spawnGun: {fileID: 1304022121234124281, guid: d1479ba53edf2274f9acb2df5680b1e1,
+      type: 3}
+    _spawnGunData: {fileID: 11400000, guid: aefa6a17433a56c48b8e68b763f2ffa1, type: 2}
+    _onHitController: {fileID: 0}
+    _powerUpController: {fileID: 0}
+    _isUnlocked: 1
+  - _addOnType: 10
+    _addOnSpr: {fileID: 21300000, guid: 632776cb97988674c8daa001a86108a1, type: 3}
+    _baseValue: 1
+    _increaseValue: 0.01
+    _spawnGun: {fileID: 590637298946094918, guid: 7d6c0748f01cf7a4ba768e7c6739d272,
+      type: 3}
+    _spawnGunData: {fileID: 11400000, guid: 831569ef01b94e4459cd7b70031f3ec3, type: 2}
+    _onHitController: {fileID: 0}
+    _powerUpController: {fileID: 0}
+    _isUnlocked: 1
+  - _addOnType: 100
+    _addOnSpr: {fileID: 21300000, guid: 6c0ecd4d6b9ba4d47af35d8490747074, type: 3}
+    _baseValue: 1
+    _increaseValue: 0.01
+    _spawnGun: {fileID: 5791880357596083961, guid: d5bfa3923a2b8fc408249192e2d5447e,
+      type: 3}
+    _spawnGunData: {fileID: 11400000, guid: a17b1e91ba5c01640aa4b3a6a2f02b47, type: 2}
+    _onHitController: {fileID: 0}
+    _powerUpController: {fileID: 3285655281043920139, guid: fa08206d847863049b04b9e7fb3d75b0,
+      type: 3}
+    _isUnlocked: 1
+  - _addOnType: 102
+    _addOnSpr: {fileID: 21300000, guid: a8424471eea7eef47838e0346fa5409c, type: 3}
+    _baseValue: 1
+    _increaseValue: 0.01
+    _spawnGun: {fileID: 4119045906119738281, guid: c3f7845408977574b8a86526ca94867b,
+      type: 3}
+    _spawnGunData: {fileID: 11400000, guid: 2652738da64d0d3499f484a3dce59e28, type: 2}
+    _onHitController: {fileID: 0}
+    _powerUpController: {fileID: 94120046315102710, guid: 7beeca05c64c4b64dace7439c7a9600b,
+      type: 3}
+    _isUnlocked: 1
+  - _addOnType: 104
+    _addOnSpr: {fileID: 21300000, guid: 75c6c57e72a33de42bcf6efefad9c957, type: 3}
+    _baseValue: 1
+    _increaseValue: 0.01
+    _spawnGun: {fileID: 8273222519469458348, guid: ba75abf797287944ab834b8e6f6e9179,
+      type: 3}
+    _spawnGunData: {fileID: 11400000, guid: e3980bbe15f82454fbe3160b697e075d, type: 2}
+    _onHitController: {fileID: 0}
+    _powerUpController: {fileID: 6016344250378684694, guid: 70d32eeb4b7bcbe4f9a04f5c18206a7e,
+      type: 3}
+    _isUnlocked: 1
+  - _addOnType: 105
+    _addOnSpr: {fileID: 21300000, guid: c9c5499f2f571d14381f63343c1fdba7, type: 3}
+    _baseValue: 1
+    _increaseValue: 0.01
+    _spawnGun: {fileID: 4260338879569971468, guid: 0c925e58ce9e369479c0a961ba7cd637,
+      type: 3}
+    _spawnGunData: {fileID: 11400000, guid: a5e4d1c8505db914ab2a8d3ab20f3b76, type: 2}
+    _onHitController: {fileID: 0}
+    _powerUpController: {fileID: 3285655281043920139, guid: 257e200cd98e82b48843836e2bb32dca,
+      type: 3}
+    _isUnlocked: 1
+  - _addOnType: 204
+    _addOnSpr: {fileID: 21300000, guid: e06eebf644bc5c84cb5d23b9d62ee3cd, type: 3}
+    _baseValue: 1
+    _increaseValue: 0.01
+    _spawnGun: {fileID: 0}
+    _spawnGunData: {fileID: 0}
+    _onHitController: {fileID: 6660906632019742425, guid: a9d9b65eb5f550c40bcd4b85e59fd2de,
+      type: 3}
+    _powerUpController: {fileID: 0}
+    _isUnlocked: 1
+  - _addOnType: 200
+    _addOnSpr: {fileID: 21300000, guid: e06eebf644bc5c84cb5d23b9d62ee3cd, type: 3}
+    _baseValue: 1
+    _increaseValue: 0.01
+    _spawnGun: {fileID: 0}
+    _spawnGunData: {fileID: 0}
+    _onHitController: {fileID: 7056810780477191594, guid: 18447a885140d2e4dad2e4e602be6bd8,
+      type: 3}
+    _powerUpController: {fileID: 0}
+    _isUnlocked: 1
+  - _addOnType: 201
+    _addOnSpr: {fileID: 21300000, guid: 8eae9b570f1669645b57010213c6d893, type: 3}
+    _baseValue: 1
+    _increaseValue: 0.01
+    _spawnGun: {fileID: 5791880357596083961, guid: 98957a1e57bb6074a82a3d9b6b64ee63,
+      type: 3}
+    _spawnGunData: {fileID: 11400000, guid: 36725f5244c91e047a2739cb5debc7dc, type: 2}
+    _onHitController: {fileID: 3089273577292058820, guid: d6a7cddfa7e94c5408ebe51e2c29a8ec,
+      type: 3}
+    _powerUpController: {fileID: 0}
+    _isUnlocked: 1
+  - _addOnType: 202
+    _addOnSpr: {fileID: 21300000, guid: 8d3f1901246a92d4e9ba3f2a8b1c1c2c, type: 3}
+    _baseValue: 1
+    _increaseValue: 0.01
+    _spawnGun: {fileID: 0}
+    _spawnGunData: {fileID: 0}
+    _onHitController: {fileID: 5154799027649203832, guid: 0eb2be74e442107489501165c247ca19,
+      type: 3}
+    _powerUpController: {fileID: 0}
+    _isUnlocked: 1
+  - _addOnType: 203
+    _addOnSpr: {fileID: 21300000, guid: f83e9462d8dbe654b9dc1ea2294dba0d, type: 3}
+    _baseValue: 1
+    _increaseValue: 0.01
+    _spawnGun: {fileID: 3381584117447534982, guid: bc4e0ebee479dbd468d276dcd921bba0,
+      type: 3}
+    _spawnGunData: {fileID: 11400000, guid: d2f6157df0a8f63459d16518f7952e43, type: 2}
+    _onHitController: {fileID: 4133204025116025349, guid: 4bbd13b5b2bc9414681dc2ad2628518b,
+      type: 3}
+    _powerUpController: {fileID: 0}
+    _isUnlocked: 1
+  - _addOnType: 300
+    _addOnSpr: {fileID: 21300000, guid: e06eebf644bc5c84cb5d23b9d62ee3cd, type: 3}
+    _baseValue: 1
+    _increaseValue: 0.01
+    _spawnGun: {fileID: 0}
+    _spawnGunData: {fileID: 0}
+    _onHitController: {fileID: 0}
+    _powerUpController: {fileID: 0}
+    _isUnlocked: 0

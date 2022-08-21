@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c24fab53e33b17044a48ef7759e9a200, type: 3}
+  m_Name: SFX Track
+  m_EditorClassIdentifier: 
+  _TrackList:
+  - audioClip: {fileID: 8300000, guid: d10ff300895803c4292e91d491def5e8, type: 3}
+    id: valid_button
+    loop: 0
+    loopStart: 0
+    loopEnd: 0
+    volume: 0.25
+  - audioClip: {fileID: 8300000, guid: 16458abe8d5a64f7a8082f0de46d643f, type: 3}
+    id: invalid_button
+    loop: 0
+    loopStart: 0
+    loopEnd: 0
+    volume: 1
+  - audioClip: {fileID: 8300000, guid: 89b1de25a40ab44c38f4e5e0b7da8984, type: 3}
+    id: back_button
+    loop: 0
+    loopStart: 0
+    loopEnd: 0
+    volume: 1
+  - audioClip: {fileID: 8300000, guid: 1d9451f46b004438faaa8665ea8b280f, type: 3}
+    id: player_death
+    loop: 0
+    loopStart: 0
+    loopEnd: 0
+    volume: 1
+  - audioClip: {fileID: 8300000, guid: bca37a64604704def8659e7c2769936d, type: 3}
+    id: enemy_death
+    loop: 0
+    loopStart: 0
+    loopEnd: 0
+    volume: 0.5
+  - audioClip: {fileID: 8300000, guid: 67ff0f1f4f6f24ad5ac07ccfd34636fd, type: 3}
+    id: hit
+    loop: 0
+    loopStart: 0
+    loopEnd: 0
+    volume: 0.05
+  - audioClip: {fileID: 8300000, guid: 45b961abdff3b4af9892e460f6f6873c, type: 3}
+    id: positive_button
+    loop: 0
+    loopStart: 0
+    loopEnd: 0
+    volume: 1
+  - audioClip: {fileID: 8300000, guid: 8bf2c15f5768e41e7993d69804788709, type: 3}
+    id: coin
+    loop: 0
+    loopStart: 0
+    loopEnd: 0
+    volume: 0.25
+  - audioClip: {fileID: 8300000, guid: 5e08380e0a5f54e9fbb9f5658b186493, type: 3}
+    id: collect_powerup
+    loop: 0
+    loopStart: 0
+    loopEnd: 0
+    volume: 0.5
+  _TrackSourcePrefab: {fileID: 2813302250018182396, guid: 1360d1777bc969340a3a13d44fa0ad25,
+    type: 3}

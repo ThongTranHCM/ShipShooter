@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1661a6d8f50d09f4795fe9b02ca78da1, type: 3}
+  m_Name: Sniper_Easy
+  m_EditorClassIdentifier: 
+  health: 8
+  attack: 0
+  prefab: {fileID: 2875766626414885556, guid: 97529addc2b9b8641951fb4dfc78ab64, type: 3}
+  gunObject: {fileID: 590637298946094918, guid: 764d127cdc45f55459b927b17033c4a2,
+    type: 3}
+  gunData: {fileID: 11400000, guid: e8767613c1e807f46be499098d3b3d3c, type: 2}
+  Move: 0
+  Rotate: 0
+  PatternDataList:
+  - {fileID: 11400000, guid: ca66613a9db22784e98dee2275a962ae, type: 2}

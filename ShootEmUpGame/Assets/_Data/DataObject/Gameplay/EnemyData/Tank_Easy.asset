@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1661a6d8f50d09f4795fe9b02ca78da1, type: 3}
+  m_Name: Tank_Easy
+  m_EditorClassIdentifier: 
+  health: 8
+  attack: 1
+  prefab: {fileID: 4836962514766085484, guid: 8b87c0456e2973a4399f29d0a01eb215, type: 3}
+  gunObject: {fileID: 0}
+  gunData: {fileID: 0}
+  Move: 0
+  Rotate: 0
+  PatternDataList:
+  - {fileID: 11400000, guid: 2b268215a94a1d444929383e9aa8f501, type: 2}
+  - {fileID: 11400000, guid: 05180096912c93447befa3f480ec3af2, type: 2}

@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Enemy
+  - Bullets
+  - UI
+  - BulletOfPlayer
+  - BulletOfEnemy
+  - Pet
+  - Item
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Player
+  - Pet
+  - Enemy
+  - BulletOfPlayer
+  - BulletOfPet
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - Layer 1
+  - Layer 2
+  - Layer 3
+  - 
+  - UI
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Layer 1
+    uniqueID: 2425651459
+    locked: 0
+  - name: Layer 2
+    uniqueID: 4250941897
+    locked: 0
+  - name: Layer 3
+    uniqueID: 4189426099
+    locked: 0
+  - name: UI
+    uniqueID: 3413654501
+    locked: 0
+  - name: Player
+    uniqueID: 3865272715
+    locked: 0
+  - name: BulletOfPlayer
+    uniqueID: 982614115
+    locked: 0
+  - name: BulletOfEnemy
+    uniqueID: 222409923
+    locked: 0
+  - name: Enemy
+    uniqueID: 77867315
+    locked: 0
+  - name: Pet
+    uniqueID: 3934971147
+    locked: 0
+  - name: Shield
+    uniqueID: 4125602757
+    locked: 0

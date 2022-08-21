@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1661a6d8f50d09f4795fe9b02ca78da1, type: 3}
+  m_Name: Shoot_Normal
+  m_EditorClassIdentifier: 
+  health: 5
+  attack: 1
+  prefab: {fileID: 1825139017015049939, guid: 546d86f303752c6439af7118b1f55650, type: 3}
+  gunObject: {fileID: 590637298946094918, guid: 5aecd95a8c4d690438498986b30c7c30,
+    type: 3}
+  gunData: {fileID: 11400000, guid: 86de40b1928fe62419484d7233bb0223, type: 2}
+  Move: 0
+  Rotate: 0
+  PatternDataList:
+  - {fileID: 11400000, guid: 76b947ea2a171a9459c912e0b3813fcb, type: 2}

@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c24fab53e33b17044a48ef7759e9a200, type: 3}
+  m_Name: BGM Track List
+  m_EditorClassIdentifier: 
+  _TrackList:
+  - audioClip: {fileID: 8300000, guid: 6bfa489099a239e4ab5efabfdff11597, type: 3}
+    id: bgm_1
+    loop: 1
+    loopStart: 8.509
+    loopEnd: 59.709
+    volume: 1
+  - audioClip: {fileID: 8300000, guid: 51d6a4322207f2d4daf87b7047f51f33, type: 3}
+    id: bgm_2
+    loop: 1
+    loopStart: 59.597
+    loopEnd: 110.797
+    volume: 1
+  - audioClip: {fileID: 8300000, guid: 0ecf11df2445e0344bb0e0898fcef379, type: 3}
+    id: bgm_3
+    loop: 1
+    loopStart: 67.193
+    loopEnd: 132.875
+    volume: 1
+  _TrackSourcePrefab: {fileID: 2813302250018182396, guid: 1360d1777bc969340a3a13d44fa0ad25,
+    type: 3}
