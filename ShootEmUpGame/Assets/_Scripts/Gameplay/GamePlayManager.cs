@@ -117,8 +117,9 @@ public class GamePlayManager : MonoBehaviour
 
     private IEnumerator GameFlow(){
         yield return StartCoroutine(_levelDesign.InstallWaves());
+        yield return new WaitForSeconds(3);
         UIManager.PlayVictory();
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(4.5f);
         Debug.LogError("Fake Win");
         DataManager.Instance.LastLevelWin++;
         DataManager.Instance.playerData.Coin += GamePlayManager.Instance.Collection.gold;

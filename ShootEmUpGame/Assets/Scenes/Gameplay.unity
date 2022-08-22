@@ -28948,9 +28948,9 @@ MonoBehaviour:
   - {fileID: 988693898}
   _numFrame: 01000000030000000a000000
   _gameLoseScreen: {fileID: 474445300}
-  _gameWinScreen: {fileID: 1602081624}
   _timeOutScreen: {fileID: 474445300}
   _pauseScreen: {fileID: 424090043}
+  _gameWinScreen: {fileID: 1602081624}
   _victoryCanvas: {fileID: 1602081624}
 --- !u!1 &1576075450
 GameObject:
@@ -29239,7 +29239,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1602081625
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29249,7 +29249,7 @@ RectTransform:
   m_GameObject: {fileID: 1602081624}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 1}
   m_Children:
   - {fileID: 208771079}
   - {fileID: 351211682}

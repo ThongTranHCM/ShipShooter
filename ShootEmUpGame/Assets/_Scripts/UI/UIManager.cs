@@ -28,11 +28,11 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject _gameLoseScreen;
     [SerializeField]
-    private GameObject _gameWinScreen;
-    [SerializeField]
     private GameObject _timeOutScreen;
     [SerializeField]
     private GameObject _pauseScreen;
+    [SerializeField]
+    private GameObject _gameWinScreen;
 
     [Header("Canvas")]
     [SerializeField]
@@ -112,17 +112,12 @@ public class UIManager : MonoBehaviour
 
     public void PlayVictory()
     {
-        _victoryCanvas.SetActive(true);
         LTSeq seq = LeanTween.sequence();
-        seq.append(() => {
-            LeanTween.scaleX(_gameWinScreen, 1, 0.5f).setEase(LeanTweenType.easeOutBack);
-            LeanTween.scaleY(_gameWinScreen, 1, 0.5f).setEase(LeanTweenType.easeOutBack);
-        });
+        seq.append(LeanTween.scaleX(_victoryCanvas, 1, 0.5f).setEase(LeanTweenType.easeOutBack));
+        seq.insert(LeanTween.scaleY(_victoryCanvas, 1, 0.5f).setEase(LeanTweenType.easeOutBack));
         seq.append(3f);
-        seq.append(() => {
-            LeanTween.scaleX(_gameWinScreen, 0, 0.5f).setEase(LeanTweenType.easeInQuint);
-            LeanTween.scaleY(_gameWinScreen, 0, 0.5f).setEase(LeanTweenType.easeInQuint);
-        });
+        seq.append(LeanTween.scaleX(_victoryCanvas, 0, 0.5f).setEase(LeanTweenType.easeInQuint));
+        seq.insert(LeanTween.scaleY(_victoryCanvas, 0, 0.5f).setEase(LeanTweenType.easeInQuint));
     }
     #endregion
 }
