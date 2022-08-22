@@ -51,12 +51,11 @@ public class AddOnUserData
     public void InitData()
     {
         listAddOnEquiped = new List<string>();
-        listAddOnEquiped.Add("GunSplit");
+        listAddOnEquiped.Add("None");
         listAddOnEquiped.Add("None");
         listAddOnEquiped.Add("None");
         listAddOnEquiped.Add("None");
         listAddOnInfo = new List<AddOnInfo>();
-        GetAddOnInfo(AddOnEquipData.AddOnType.GunEnergyOrb).CurrentLevel = 1;
     }
 
     public List<string> GetListAddOnEquiped()

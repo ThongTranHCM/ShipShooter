@@ -70,6 +70,7 @@ public class DataManager
 
     private static void LoadData()
     {
+        Debug.LogError("LoadData");
         if (_instance != null)
         {
             Debug.Log("Already loaded");

@@ -7,19 +7,54 @@ using UnityEditor;
 
 public class DataManagerLoader : MonoBehaviour
 {
-    public DataManager dataManager;
-    public PlayerData playerData;
-    private IEnumerator Start()
+    public void DoResetData()
     {
-        yield return Yielder.Get(2);
-        RefreshData();
-    }
-    public void RefreshData()
-    {
-        dataManager = DataManager.Instance;
-        playerData = DataManager.Instance.playerData;
+        DataManager.ResetToDefault();
+        DataManager.Save();
     }
 
+    public void DoResetAddOn()
+    {
+        List<AddOnUserData.AddOnInfo> addOnInfos = DataManager.Instance.addOnUserData.GetListAddOnInfo();
+        for (int i = 0; i < addOnInfos.Count; i++)
+        {
+            addOnInfos[i].CurrentFragment = 0;
+            addOnInfos[i].CurrentLevel = 0;
+        }
+    }
+
+    public void DoIncreaseAddOnLevelsBy10()
+    {
+        List<AddOnUserData.AddOnInfo> addOnInfos = DataManager.Instance.addOnUserData.GetListAddOnInfo();
+        for (int i = 0; i < addOnInfos.Count; i++)
+        {
+            addOnInfos[i].CurrentFragment = Mathf.Min(addOnInfos[i].CurrentFragment + 10, 100);
+            addOnInfos[i].CurrentLevel = Mathf.Min(addOnInfos[i].CurrentLevel + 10, 100);
+        }
+    }
+    public void DoIncrease3AddOnsRandomBy5Level()
+    {
+        List<AddOnUserData.AddOnInfo> addOnInfos = DataManager.Instance.addOnUserData.GetListAddOnInfo();
+        int a = 0;
+        for (int i = 0; i < 3; i++)
+        {
+            a = Random.Range(0, addOnInfos.Count);
+            addOnInfos[a].CurrentLevel = Mathf.Min(addOnInfos[a].CurrentLevel + 5, 100);
+        }
+    }
+    public void DoIncrease3AddOnsRandomBy5Fragment()
+    {
+        List<AddOnUserData.AddOnInfo> addOnInfos = DataManager.Instance.addOnUserData.GetListAddOnInfo();
+        int a = 0;
+        for (int i = 0; i < 3; i++)
+        {
+            a = Random.Range(0, addOnInfos.Count);
+            addOnInfos[a].CurrentFragment = Mathf.Min(addOnInfos[a].CurrentFragment + 5, 100);
+        }
+    }
+
+
+#if UNITY_EDITOR
     [MenuItem("Data/Clear")]
     private static void ResetData()
     {
@@ -79,4 +114,5 @@ public class DataManagerLoader : MonoBehaviour
             addOnInfos[a].CurrentFragment = Mathf.Min(addOnInfos[a].CurrentFragment + 5, 100);
         }
     }
+#endif
 }
