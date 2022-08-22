@@ -28951,6 +28951,7 @@ MonoBehaviour:
   _gameWinScreen: {fileID: 1602081624}
   _timeOutScreen: {fileID: 474445300}
   _pauseScreen: {fileID: 424090043}
+  _victoryCanvas: {fileID: 1602081624}
 --- !u!1 &1576075450
 GameObject:
   m_ObjectHideFlags: 0
@@ -29407,6 +29408,7 @@ MonoBehaviour:
   fullColor: {r: 1, g: 0.7568628, b: 0.3529412, a: 1}
   fill: {fileID: 1763817546}
   border: {fileID: 532025083}
+  txtProgress: {fileID: 0}
 --- !u!1 &1763817546
 GameObject:
   m_ObjectHideFlags: 0

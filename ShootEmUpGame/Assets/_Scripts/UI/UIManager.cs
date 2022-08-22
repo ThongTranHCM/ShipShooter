@@ -34,7 +34,6 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject _pauseScreen;
 
-
     public void InstallLives(int iLifeCount)
     {
         _shipHealthBar.Install(iLifeCount);
@@ -91,17 +90,35 @@ public class UIManager : MonoBehaviour
     {
         _gameWinScreen.SetActive(!isHide);
     }
+
     public void ShowLoseScreen(bool isHide = false)
     {
         _gameLoseScreen.SetActive(!isHide);
     }
+
     public void ShowTimeOutScreen(bool isHide = false)
     {
         _timeOutScreen.SetActive(!isHide);
     }
+
     public void ShowPauseScreen(bool isHide = false)
     {
         _pauseScreen.SetActive(!isHide);
+    }
+
+    public void PlayVictory()
+    {
+        _victoryCanvas.SetActive(true);
+        LTSeq seq = LeanTween.sequence();
+        seq.append(() => {
+            LeanTween.scaleX(_gameWinScreen, 1, 0.5f).setEase(LeanTweenType.easeOutBack);
+            LeanTween.scaleY(_gameWinScreen, 1, 0.5f).setEase(LeanTweenType.easeOutBack);
+        });
+        seq.append(3f);
+        seq.append(() => {
+            LeanTween.scaleX(_gameWinScreen, 0, 0.5f).setEase(LeanTweenType.easeInQuint);
+            LeanTween.scaleY(_gameWinScreen, 0, 0.5f).setEase(LeanTweenType.easeInQuint);
+        });
     }
     #endregion
 }

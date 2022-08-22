@@ -117,6 +117,7 @@ public class GamePlayManager : MonoBehaviour
 
     private IEnumerator GameFlow(){
         yield return StartCoroutine(_levelDesign.InstallWaves());
+        UIManager.PlayVictory();
         yield return new WaitForSeconds(5);
         Debug.LogError("Fake Win");
         DataManager.Instance.LastLevelWin++;
