@@ -34,6 +34,10 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject _pauseScreen;
 
+    [Header("Canvas")]
+    [SerializeField]
+    private GameObject _victoryCanvas;
+
     public void InstallLives(int iLifeCount)
     {
         _shipHealthBar.Install(iLifeCount);
