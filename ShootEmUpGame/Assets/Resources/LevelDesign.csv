@@ -3,7 +3,7 @@ Level,EnemyData,AddOnDropPool,NumWave,BaseHP,StartHP,EndHP,StartDense,EndDense,D
 2,"Dive_Easy,Shoot_Easy","9,6,3",30,40,1,4,1,2,Dive_Easy,Shoot_Easy,,,
 3,"Dive_Normal,Shoot_Easy","1,6,9",30,40,1,4,1,2,Dive_Normal,Shoot_Easy,,,
 4,"Dive_Easy,Sniper_Easy","6,3,1",30,40,1,4,1,2,Dive_Easy,,Sniper_Easy,,
-5,"Dive_Easy,Shoot_Normal","4,6,9",30,40,1,4,1,2,Dive_Easy,Shoot_Normal,,,
+5,"Dive_Easy,Shoot_Normal","3,6,9",30,40,1,4,1,2,Dive_Easy,Shoot_Normal,,,
 6,"Shoot_Easy,Sniper_Easy","3,4,1",30,40,1,4,1,2,,Shoot_Easy,Sniper_Easy,,
 7,"Shoot_Easy,Tank_Easy","1,4,6",30,40,1,4,1,2,,Shoot_Easy,,Tank_Easy,
 8,"Dive_Normal,Shoot_Easy","2,9,3",30,40,1,4,1,2,Dive_Normal,Shoot_Easy,,,
