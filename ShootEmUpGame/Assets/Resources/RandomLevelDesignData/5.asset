@@ -24,7 +24,7 @@ MonoBehaviour:
   startDensity: 1
   endDensity: 2
   addOnDropPoolList:
-  - addOnDropList: 64000000
   - addOnDropList: 68000000
+  - addOnDropList: 0a000000
   - addOnDropList: c8000000
   dropRateMultiplier: 1
