@@ -121,7 +121,7 @@ public class GamePlayManager : MonoBehaviour
         UIManager.PlayVictory();
         yield return new WaitForSeconds(4.5f);
         Debug.LogError("Fake Win");
-        DataManager.Instance.LastLevelWin++;
+        DataManager.Instance.LastLevelWin = Mathf.Min(5, DataManager.Instance.LastLevelWin++);
         DataManager.Instance.playerData.Coin += GamePlayManager.Instance.Collection.gold;
         DataManager.Instance.playerData.Diamond += 2;
         DataManager.Save();

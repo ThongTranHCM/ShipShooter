@@ -65,7 +65,7 @@ public class PanelController : MonoBehaviour
         {
             presentedPanel.PanelWillAppear();
         }
-        gameObject.SetActive(true);
+        //gameObject.SetActive(true);
 
         if (childPanelControllers != null && childPanelControllers.Count > 0)
         {
@@ -110,7 +110,7 @@ public class PanelController : MonoBehaviour
         {
             presentedPanel.PanelWillDisappear();
         }
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
         isVisible = false;
 
         if (childPanelControllers != null && childPanelControllers.Count > 0)

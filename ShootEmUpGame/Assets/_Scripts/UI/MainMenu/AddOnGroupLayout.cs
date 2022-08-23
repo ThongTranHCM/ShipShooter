@@ -28,7 +28,7 @@ public class AddOnGroupLayout : MonoBehaviour
         string addOnName = "";
         AddOnUserData.AddOnInfo addOnInfo = null;
 
-        for (int i = 0; i < listAddOnData.Count; i++)
+        /*for (int i = 0; i < listAddOnData.Count; i++)
         {
             addOnName = listAddOnData[i].GetAddOnType.ToString();
             addOnInfo = DataManager.Instance.addOnUserData.GetAddOnInfo(listAddOnData[i].GetAddOnType);
@@ -40,7 +40,7 @@ public class AddOnGroupLayout : MonoBehaviour
                 continue;
             }
             listQualifiedType.Add(listAddOnData[i].GetAddOnType);
-        }
+        }*/
         UpdateListUISize(listQualifiedType.Count);
         for (int i = 0; i < listQualifiedType.Count; i++)
         {
