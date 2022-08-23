@@ -19,53 +19,69 @@ MonoBehaviour:
     loopStart: 0
     loopEnd: 0
     volume: 0.25
+    interval: 0.1
   - audioClip: {fileID: 8300000, guid: 16458abe8d5a64f7a8082f0de46d643f, type: 3}
     id: invalid_button
     loop: 0
     loopStart: 0
     loopEnd: 0
     volume: 1
+    interval: 0.1
   - audioClip: {fileID: 8300000, guid: 89b1de25a40ab44c38f4e5e0b7da8984, type: 3}
     id: back_button
     loop: 0
     loopStart: 0
     loopEnd: 0
     volume: 1
+    interval: 0.1
   - audioClip: {fileID: 8300000, guid: 1d9451f46b004438faaa8665ea8b280f, type: 3}
     id: player_death
     loop: 0
     loopStart: 0
     loopEnd: 0
     volume: 1
+    interval: 0.1
   - audioClip: {fileID: 8300000, guid: bca37a64604704def8659e7c2769936d, type: 3}
     id: enemy_death
     loop: 0
     loopStart: 0
     loopEnd: 0
     volume: 0.5
+    interval: 0.1
   - audioClip: {fileID: 8300000, guid: 67ff0f1f4f6f24ad5ac07ccfd34636fd, type: 3}
     id: hit
     loop: 0
     loopStart: 0
     loopEnd: 0
     volume: 0.05
+    interval: 0.1
   - audioClip: {fileID: 8300000, guid: 45b961abdff3b4af9892e460f6f6873c, type: 3}
     id: positive_button
     loop: 0
     loopStart: 0
     loopEnd: 0
     volume: 1
+    interval: 0.1
   - audioClip: {fileID: 8300000, guid: 8bf2c15f5768e41e7993d69804788709, type: 3}
     id: coin
     loop: 0
     loopStart: 0
     loopEnd: 0
     volume: 0.25
+    interval: 0.1
   - audioClip: {fileID: 8300000, guid: 5e08380e0a5f54e9fbb9f5658b186493, type: 3}
     id: collect_powerup
     loop: 0
     loopStart: 0
     loopEnd: 0
     volume: 0.5
+    interval: 0.1
+  - audioClip: {fileID: 8300000, guid: df0e60887b63f45c7801a38fccae1f8f, type: 3}
+    id: player_gothit
+    loop: 0
+    loopStart: 0
+    loopEnd: 0
+    volume: 2
+    interval: 0.1
   _TrackSourcePrefab: {fileID: 2813302250018182396, guid: 1360d1777bc969340a3a13d44fa0ad25,
     type: 3}

@@ -37,6 +37,12 @@ public class UIManager : MonoBehaviour
     [Header("Canvas")]
     [SerializeField]
     private GameObject _victoryCanvas;
+    [SerializeField]
+    private GameObject _tintCanvas;
+
+    [Header("Tint Color")]
+    [SerializeField]
+    private Color _hitTint;
 
     public void InstallLives(int iLifeCount)
     {
@@ -113,11 +119,32 @@ public class UIManager : MonoBehaviour
     public void PlayVictory()
     {
         LTSeq seq = LeanTween.sequence();
-        seq.append(LeanTween.scaleX(_victoryCanvas, 1, 0.5f).setEase(LeanTweenType.easeOutBack));
-        seq.insert(LeanTween.scaleY(_victoryCanvas, 1, 0.5f).setEase(LeanTweenType.easeOutBack));
+        seq.append(() => {
+            LeanTween.scaleY(_victoryCanvas, 1, 1.0f).setEase(LeanTweenType.easeOutBack);
+            LeanTween.scaleX(_victoryCanvas, 1, 1.0f).setEase(LeanTweenType.easeOutBack);
+            seq.append(0.75f);
+        });
         seq.append(3f);
-        seq.append(LeanTween.scaleX(_victoryCanvas, 0, 0.5f).setEase(LeanTweenType.easeInQuint));
-        seq.insert(LeanTween.scaleY(_victoryCanvas, 0, 0.5f).setEase(LeanTweenType.easeInQuint));
+        seq.append(() => {
+            LeanTween.scaleY(_victoryCanvas, 0, 0.5f).setEase(LeanTweenType.easeInQuint);
+            LeanTween.scaleX(_victoryCanvas, 0, 0.5f).setEase(LeanTweenType.easeInQuint);
+            seq.append(0.5f);
+        });
+    }
+
+    public void PlayGotHit(){
+        Debug.Log("Start PlayGotHit");
+        Color clearTint = new Color(_hitTint.r,_hitTint.g,_hitTint.b,0);
+        LTSeq seq = LeanTween.sequence();
+        seq.append(() => {_tintCanvas.SetActive(true);});
+        seq.append(LeanTween.value(_tintCanvas, 
+                                    (Color c) => {_tintCanvas.GetComponent<Image>().color = c;},
+                                    clearTint, _hitTint, 0f));
+        seq.append(LeanTween.value(_tintCanvas, 
+                                    (Color c) => {_tintCanvas.GetComponent<Image>().color = c;},
+                                    _hitTint , clearTint, 0.75f).setEase(LeanTweenType.easeOutBack));
+        seq.append(() => {_tintCanvas.SetActive(false);});
+        Debug.Log("Finish PlayGotHit");
     }
     #endregion
 }

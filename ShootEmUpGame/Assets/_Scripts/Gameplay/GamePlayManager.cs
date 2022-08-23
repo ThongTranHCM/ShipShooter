@@ -58,12 +58,6 @@ public class GamePlayManager : MonoBehaviour
         get { return _levelData; }
     }
     [SerializeField]
-    private SoundManager _soundManager;
-    public SoundManager SoundManager
-    {
-        get { return _soundManager; }
-    }
-    [SerializeField]
     private FillBarManager _progresBar;
     public FillBarManager ProgressBar
     {
@@ -74,7 +68,10 @@ public class GamePlayManager : MonoBehaviour
     {
         _mainCamera = Camera.main;
         _instance = this;
-        _soundManager.PlayBGM("bgm_1");
+    }
+
+    private void Start(){
+        SoundManager.Instance.PlayBGM("bgm_1");
         StartCoroutine(InstallGameRoutine());
     }
     private IEnumerator InstallGameRoutine()
@@ -136,14 +133,14 @@ public class GamePlayManager : MonoBehaviour
     public void OnEnemyGetKilled(ThongNguyen.PlayerController.IEnemyController enemy)
     {
         _collection.AddScore((int)enemy.MaxHp / 10);
-        _soundManager.PlaySFX("enemy_death");
+        SoundManager.Instance.PlaySFX("enemy_death");
         _levelDesign.DropOnKill(enemy);
         _playerManager.OnKillEnemy(enemy);
     }
     public void OnEnemyGetDamage(ThongNguyen.PlayerController.IEnemyController enemy, float damage, ApplyEffectData.DamageSource damageSource)
     {
         _playerManager.OnEnemyGetDamage(enemy, damage, damageSource);
-        _soundManager.PlaySFX("hit");
+        SoundManager.Instance.PlaySFX("hit");
     }
     public void OnEnemyRemove(ThongNguyen.PlayerController.IEnemyController enemy){
         _progresBar.SetValue(_levelDesign.GetProgress());

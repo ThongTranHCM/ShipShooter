@@ -3,7 +3,9 @@ guid: d9c67e135a03ef34d8f5a8c82dea1ace
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _sfxTrackList: {fileID: 11400000, guid: 7204f14f4c6571044916497c4fb52b60, type: 2}
+  - _bgmTrackList: {fileID: 11400000, guid: f5872e46177f54242a90a5089b15209f, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

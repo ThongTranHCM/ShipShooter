@@ -4,12 +4,23 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
-    public AudioTrackScriptableObject _sfxTrackList;
-    public AudioTrackScriptableObject _bgmTrackList;
+    private static SoundManager _instance;
+    public static SoundManager Instance
+    {
+        get { return _instance; }
+    }
+
+    [SerializeField]
+    private AudioTrackScriptableObject _sfxTrackList;
+    [SerializeField]
+    private AudioTrackScriptableObject _bgmTrackList;
     public void PlaySFX(string ID){
         _sfxTrackList.CreateTrackSource(ID);
     }
     public void PlayBGM(string ID){
         _bgmTrackList.CreateTrackSource(ID);
+    }
+    private void Awake(){
+        _instance = this;
     }
 }
