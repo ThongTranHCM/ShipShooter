@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using ThongNguyen.PlayerController;
+﻿using ThongNguyen.PlayerController;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "gunData_0", menuName = "Shooter/GunData")]

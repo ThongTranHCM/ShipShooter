@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec2eccb0970fd5a449e349d23eb6f26d, type: 3}
+  m_Name: Ship2Data
+  m_EditorClassIdentifier: 
+  shipName: Ship No2
+  basePower: 10
+  increasePowerValue: 1
+  shipObjectPrefab: {fileID: 8410542707672638798, guid: 214124039c102d34886e4126cbf9d404,
+    type: 3}
+  spritePresentShip: {fileID: 21300000, guid: 3d0570edadb79824b9ce4805ca9fca2c, type: 3}
+  meshShip: {fileID: -5495902117074765545, guid: 9a74a1d816b4b23438ab0f2bf7e64045,
+    type: 3}
+  materialShip: {fileID: 2100000, guid: 72da26a693cbe1a4b870ec0f7426857b, type: 2}
