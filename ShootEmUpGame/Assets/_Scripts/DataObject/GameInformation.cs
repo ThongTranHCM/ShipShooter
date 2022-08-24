@@ -22,6 +22,12 @@ public class GameInformation : MonoBehaviour
     }
 
     public AddOnEquipData addOnEquipData;
+    public List<DOShipData> shipData;
+
+    public DOShipData GetShipData(int index)
+    {
+        return shipData[index];
+    }
 
     #region TEAM LEVEL HELPER
     public bool isLevelMaxed(int level)

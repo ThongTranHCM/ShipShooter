@@ -2,24 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StoryModeUIController : GameModeUIManager
+public class StoryModeUIController : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private TMPro.TextMeshProUGUI _txtLevel;
 
-    // Update is called once per frame
-    void Update()
+    public void OnEnable()
     {
-        
-    }
-    protected override void UpdateLevelDesignData(){
-        return;
-    }
-    public override void ResetUI(){
-        DisplayEnemies();
-        return;
+        _txtLevel.text = "Level " + (DataManager.Instance.LastLevelWin + 1);
     }
 }

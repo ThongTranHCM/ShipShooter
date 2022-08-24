@@ -19,6 +19,9 @@ public class StoryModePanelController : PanelController
     {
         DataManager.Save();
         DataManager.Instance.selectedLevelIndex = DataManager.Instance.LastLevelWin + 1;
+        DataManager.Instance.selectedShipIndex = DataManager.Instance.LastShipIndex;
+        Debug.LogError("Hey, we don't have other ships. Choose ship 0");
+        DataManager.Instance.selectedShipIndex = 0;
         SceneLoader.LoadLevel(Constants.SCENENAME_GamePlay);
     }
 

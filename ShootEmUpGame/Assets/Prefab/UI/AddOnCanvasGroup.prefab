@@ -2188,6 +2188,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayEnemyCanvas: {fileID: 0}
   displayShipGameObject: {fileID: 6348027018752665033}
+  displayMesh: {fileID: 1065281520491246619}
+  displayRenderer: {fileID: 6934658064306225202}
+  _defaultScaleX: 20
 --- !u!1 &7770146361616641391
 GameObject:
   m_ObjectHideFlags: 0
@@ -3563,6 +3566,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6377849609955934207, guid: afd8d59e105aba54bb4e0a536ef4e7b6,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6377849610003173692, guid: afd8d59e105aba54bb4e0a536ef4e7b6,
         type: 3}
