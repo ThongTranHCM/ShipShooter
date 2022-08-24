@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1661a6d8f50d09f4795fe9b02ca78da1, type: 3}
   m_Name: Sniper_Easy
   m_EditorClassIdentifier: 
-  health: 8
+  health: 6
   attack: 0
   prefab: {fileID: 2875766626414885556, guid: 97529addc2b9b8641951fb4dfc78ab64, type: 3}
   gunObject: {fileID: 590637298946094918, guid: 764d127cdc45f55459b927b17033c4a2,
