@@ -23,6 +23,8 @@ public class IGunController : MonoBehaviour
     [SerializeField]
     private bool _isOrientate;
     [SerializeField]
+    private bool _isOrientateOncePerWave;
+    [SerializeField]
     private bool _isOrientateOncePerShot;
     private float[] _shootAngles;
     private float _tmpTimeDelay;
@@ -168,7 +170,7 @@ public class IGunController : MonoBehaviour
                 switch (_tmpShootPhase)
                 {
                     case 0: //Shoot
-                        if (!_isOrientateOncePerShot)
+                        if (_isOrientateOncePerWave)
                         {
                             for (int j = 0; j < bulletParticleSystems.Length; j++)
                             {

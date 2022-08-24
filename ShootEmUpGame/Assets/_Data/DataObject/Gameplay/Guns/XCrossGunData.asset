@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86c78a494fe158c44a9cbcd39ef9394d, type: 3}
   m_Name: XCrossGunData
   m_EditorClassIdentifier: 
-  attackSpeed: 2
-  numWavePerShot: 0
-  numOfBulletPerWave: 0
-  timeDelayForEachWave: 0
+  attackSpeed: 1
+  numWavePerShot: 2
+  numOfBulletPerWave: 2
+  timeDelayForEachWave: 0.1
   bulletData:
     speed: 5
     timeToMove: 6

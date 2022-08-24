@@ -39423,7 +39423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 068ac9c2615778d4891e19ebf38a7c93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _txtLevel: {fileID: 0}
+  _txtLevel: {fileID: 1745125900}
 --- !u!114 &1651545446 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6892056456054531869, guid: 494d997fbbd0afb419f9573f2af66517,
