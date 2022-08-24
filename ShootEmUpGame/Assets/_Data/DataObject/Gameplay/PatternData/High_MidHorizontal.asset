@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyOnComplete: 1
   difficulty: 0
-  duration: 10
+  duration: 6
   mirror: 0
   rotation: {x: 0, y: 0, z: 0}
   enemyInstanceList:

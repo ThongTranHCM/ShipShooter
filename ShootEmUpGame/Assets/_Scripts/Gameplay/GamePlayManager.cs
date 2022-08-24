@@ -109,7 +109,7 @@ public class GamePlayManager : MonoBehaviour
 
     public void GameOver(){
         LTSeq seq = LeanTween.sequence();
-        seq.append(LeanTween.value(this.transform.gameObject, (float x) => {Time.timeScale = x;}, 0.25f, 1.0f , 1.0f).setEase(LeanTweenType.easeInOutCubic));
+        seq.append(3.0f);
         seq.append(() => {
             PauseGame();
             _uiManager.ShowLoseScreen(false);
