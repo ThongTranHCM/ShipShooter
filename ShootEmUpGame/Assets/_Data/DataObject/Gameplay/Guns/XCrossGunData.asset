@@ -13,18 +13,18 @@ MonoBehaviour:
   m_Name: XCrossGunData
   m_EditorClassIdentifier: 
   attackSpeed: 1
-  numWavePerShot: 2
-  numOfBulletPerWave: 2
-  timeDelayForEachWave: 0.1
+  numWavePerShot: 0
+  numOfBulletPerWave: 0
+  timeDelayForEachWave: 0
   bulletData:
-    speed: 5
-    timeToMove: 6
+    speed: 10
+    timeToMove: 1
     canPenetrated: 1
     _targetLocked: {fileID: 0}
     rotSpeed: 0
     timeFollowTarget: 0
     _applyEfect:
-      attackPower: 20
+      attackPower: 10
       ratioDamage: 0
       criticalRate: 0
       criticalDamage: 0

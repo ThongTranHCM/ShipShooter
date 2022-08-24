@@ -74,7 +74,7 @@ Material:
     m_Floats:
     - _BumpScale: 1
     - _Clip: 0
-    - _Contrast: 0.2
+    - _Contrast: 0.3
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _Distortion: 1
@@ -99,9 +99,9 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _EndColor: {r: 0.9548146, g: 1, b: 0.68318343, a: 0}
+    - _EndColor: {r: 1, g: 1, b: 1, a: 0}
     - _LitHue: {r: 1, g: 1, b: 0.1, a: 1}
-    - _MidColor: {r: 0.4658832, g: 1, b: 0.2113207, a: 1}
+    - _MidColor: {r: 0.4943396, g: 0.8293397, b: 1, a: 1}
     - _ShadeHue: {r: 0.101960786, g: 0.1, b: 1, a: 1}
-    - _StartColor: {r: 0.13517328, g: 0.7660815, b: 0.5285799, a: 0}
+    - _StartColor: {r: 0.36834776, g: 0.3928215, b: 0.94680357, a: 0}
   m_BuildTextureStacks: []
