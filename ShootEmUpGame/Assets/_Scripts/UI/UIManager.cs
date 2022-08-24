@@ -36,7 +36,9 @@ public class UIManager : MonoBehaviour
 
     [Header("Canvas")]
     [SerializeField]
-    private GameObject _victoryCanvas;
+    private GameObject _endCanvas;
+    [SerializeField]
+    private GameObject _startCanvas;
     [SerializeField]
     private GameObject _tintCanvas;
 
@@ -116,18 +118,32 @@ public class UIManager : MonoBehaviour
         _pauseScreen.SetActive(!isHide);
     }
 
-    public void PlayVictory()
+    public void PlayLevelEnd()
     {
         LTSeq seq = LeanTween.sequence();
         seq.append(() => {
-            LeanTween.scaleY(_victoryCanvas, 1, 1.0f).setEase(LeanTweenType.easeOutBack);
-            LeanTween.scaleX(_victoryCanvas, 1, 1.0f).setEase(LeanTweenType.easeOutBack);
+            LeanTween.scaleY(_endCanvas, 1, 0.75f).setEase(LeanTweenType.easeOutBack);
+            LeanTween.scaleX(_endCanvas, 1, 0.75f).setEase(LeanTweenType.easeOutBack);
             seq.append(0.75f);
         });
         seq.append(3f);
         seq.append(() => {
-            LeanTween.scaleY(_victoryCanvas, 0, 0.5f).setEase(LeanTweenType.easeInQuint);
-            LeanTween.scaleX(_victoryCanvas, 0, 0.5f).setEase(LeanTweenType.easeInQuint);
+            LeanTween.scaleY(_endCanvas, 0, 0.5f).setEase(LeanTweenType.easeInQuint);
+            LeanTween.scaleX(_endCanvas, 0, 0.5f).setEase(LeanTweenType.easeInQuint);
+            seq.append(0.5f);
+        });
+    }
+
+    public void PlayLevelStart()
+    {
+        LTSeq seq = LeanTween.sequence();
+        seq.append(() => {
+            LeanTween.scaleX(_startCanvas, 1, 1.0f).setEase(LeanTweenType.easeOutBack);
+            seq.append(1.0f);
+        });
+        seq.append(3f);
+        seq.append(() => {
+            LeanTween.scaleX(_startCanvas, 0, 0.5f).setEase(LeanTweenType.easeInQuint);
             seq.append(0.5f);
         });
     }

@@ -108,14 +108,20 @@ public class GamePlayManager : MonoBehaviour
     }
 
     public void GameOver(){
-        PauseGame();
-        _uiManager.ShowLoseScreen(false);
+        LTSeq seq = LeanTween.sequence();
+        seq.append(LeanTween.value(this.transform.gameObject, (float x) => {Time.timeScale = x;}, 0.25f, 1.0f , 1.0f).setEase(LeanTweenType.easeInOutCubic));
+        seq.append(() => {
+            PauseGame();
+            _uiManager.ShowLoseScreen(false);
+        }); 
     }
 
     private IEnumerator GameFlow(){
+        UIManager.PlayLevelStart();
+        yield return new WaitForSeconds(4.5f);
         yield return StartCoroutine(_levelDesign.InstallWaves());
         yield return new WaitForSeconds(3);
-        UIManager.PlayVictory();
+        UIManager.PlayLevelEnd();
         yield return new WaitForSeconds(4.5f);
         Debug.LogError("Fake Win");
         DataManager.Instance.LastLevelWin++;
