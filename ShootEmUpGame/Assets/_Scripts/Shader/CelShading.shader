@@ -50,7 +50,7 @@ Shader "Unlit/CelShading"
 				fixed4 _UnlitTex_ST;
 				fixed _Brightness;
 				fixed _AmbientLight;
-				fixed4 _Color;
+				fixed4 _LightenColor;
 				
 				fixed4 Screen(fixed4 a, fixed4 b){
 					fixed4 result = 1 - (1 - a) * (1 - b);
@@ -86,9 +86,8 @@ Shader "Unlit/CelShading"
 					fixed light = NdotL;
 					fixed4 color = lerp(i.unlit, i.base, saturate(light + _AmbientLight));
 					color = lerp(color, i.lit, saturate(pow(specular,8)));
-					//color = lerp(color, lerp((_LightColor0 * color), Screen(_LightColor0, color), length(color) * 0.2f), saturate(light));
 					color = Screen(_LightColor0 * smoothstep(0,0.2f,light), color);
-					color = 1 - (1 - color)*(1 - _Color);
+					color = 1 - (1 - color)*(1 - _LightenColor);
 
 					return color;
 				}
@@ -135,7 +134,7 @@ Shader "Unlit/CelShading"
 				fixed _HighlightInterval;
 				fixed _HighlightStrength;
 				fixed _Brightness;
-				fixed4 _Color;
+				fixed4 _LightenColor;
 				fixed4 _OutlineColor;
 				fixed _OutlineWidth;
 
@@ -174,7 +173,7 @@ Shader "Unlit/CelShading"
 					color = lerp(color, i.lit, step(_SpecularThreshold,specular));
 					*/
 					fixed4 color = fixed4(i.unlit.rgb * 0.5f, 1);
-					color = 1 - (1 - color)*(1 - _Color);
+					color = 1 - (1 - color)*(1 - _LightenColor);
 					return color;
 				}
 				ENDCG
