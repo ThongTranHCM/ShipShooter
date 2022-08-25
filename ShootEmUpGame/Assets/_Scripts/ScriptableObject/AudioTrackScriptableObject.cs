@@ -14,7 +14,16 @@ public class AudioTrackScriptableObject : ScriptableObject
         public float loopEnd = 0;
         public float volume = 1;
         public float interval = 0.1f;
-        private float nextFire = 0.0f;
+        private float lastFire = 0.0f;
+        public void ResetTimer(){
+            lastFire = 0.0f;
+        }
+        public bool CanFire(){
+            return Time.time - lastFire > interval;
+        }
+        public void Fire(){
+            lastFire = Time.time;
+        }
     }
     public List<Track> _TrackList;
     public GameObject _TrackSourcePrefab;
@@ -22,11 +31,20 @@ public class AudioTrackScriptableObject : ScriptableObject
     public void CreateTrackSource(string ID){
         foreach (Track track in _TrackList){
             if (track.id == ID){
-                GameObject trackSource = Object.Instantiate(_TrackSourcePrefab);
-                trackSource.GetComponent<TrackSource>().SetTrack(track);
-                return;
+                if(track.CanFire()){
+                    track.Fire();
+                    GameObject trackSource = Object.Instantiate(_TrackSourcePrefab);
+                    trackSource.GetComponent<TrackSource>().SetTrack(track);
+                    return;
+                }
             }
         }
         return;
+    }
+
+    public void ResetTimer(){
+        foreach (Track track in _TrackList){
+            track.ResetTimer();
+        }
     }
 }

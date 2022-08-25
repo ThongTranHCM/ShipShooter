@@ -20,7 +20,12 @@ public class SoundManager : MonoBehaviour
     public void PlayBGM(string ID){
         _bgmTrackList.CreateTrackSource(ID);
     }
+    public void ResetTimer(){
+        _sfxTrackList.ResetTimer();
+        _bgmTrackList.ResetTimer();
+    }
     private void Awake(){
         _instance = this;
+        
     }
 }
