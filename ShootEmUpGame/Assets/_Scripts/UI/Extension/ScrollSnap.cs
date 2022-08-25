@@ -169,7 +169,6 @@ namespace UnityEngine.UI.Extensions
         //Function for switching to a specific screen
         public void GoToScreen(int screenIndex, bool animated = true)
         {
-            Debug.LogError("GoToScreen ---------- ");
             if (screenIndex <= _screens && screenIndex >= 0)
             {
                 if (animated)

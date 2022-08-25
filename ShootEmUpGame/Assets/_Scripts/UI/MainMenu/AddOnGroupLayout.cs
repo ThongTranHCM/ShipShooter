@@ -15,10 +15,17 @@ public class AddOnGroupLayout : MonoBehaviour
     private bool _show0Level0Fragment;
     private List<AddOnUIItem> _listAddOnUI;
 
+    [SerializeField]
+    private bool _updateParentSize;
+    private int rows = 2;
+    private float baseHeight = 130;
+    private float rowHeight = 150;
+
     public void OnEnable()
     {
         if (_listAddOnUI == null) _listAddOnUI = new List<AddOnUIItem>();
         Install(_show0Level, _show0Fragment, _show0Level0Fragment);
+        UpdateParentSize(rows);
     }
 
     public void Install(bool show0Level, bool show0Fragment, bool show0Level0Fragment)
@@ -99,4 +106,16 @@ public class AddOnGroupLayout : MonoBehaviour
             _uiEquipAddOn.InstallEquippedAddOns();
         }
     }
+
+    public void UpdateParentSize(int rows)
+    {
+        RectTransform rectTf = transform.parent as RectTransform;
+        float totalHeight = 0;
+        if (rows > 0)
+        {
+            totalHeight = baseHeight;
+        }
+        totalHeight += (rows - 1) * rowHeight;
+        rectTf.SetHeight(totalHeight);
+}
 }

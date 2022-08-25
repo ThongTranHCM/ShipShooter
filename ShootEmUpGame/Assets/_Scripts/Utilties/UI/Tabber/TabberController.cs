@@ -226,10 +226,7 @@ public class TabberController : PanelController
         }
         catch (Exception e) {}
 
-        Debug.LogError("Wait Move New");
         yield return new WaitUntil(() => movedToNewScreen);
-
-        Debug.LogError("Did Wait Move New");
         try
         {
             if (!isFirstLoaded)
