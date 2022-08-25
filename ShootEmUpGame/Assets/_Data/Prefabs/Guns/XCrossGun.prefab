@@ -2027,15 +2027,15 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0
           value: 1
-          inSlope: -7.312616
-          outSlope: -7.312616
+          inSlope: 0
+          outSlope: 0
           tangentMode: 0
           weightedMode: 0
           inWeight: 0
-          outWeight: 0.32036006
+          outWeight: 0
         - serializedVersion: 3
-          time: 0.3414904
-          value: 0.27027088
+          time: 0.10404205
+          value: 0.24324417
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -6886,15 +6886,15 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0
           value: 1
-          inSlope: -7.312616
-          outSlope: -7.312616
+          inSlope: 0
+          outSlope: 0
           tangentMode: 0
           weightedMode: 0
           inWeight: 0
-          outWeight: 0.32036006
+          outWeight: 0
         - serializedVersion: 3
-          time: 0.3414904
-          value: 0.27027088
+          time: 0.10404205
+          value: 0.24324417
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -11745,15 +11745,15 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0
           value: 1
-          inSlope: -7.312616
-          outSlope: -7.312616
+          inSlope: 0
+          outSlope: 0
           tangentMode: 0
           weightedMode: 0
           inWeight: 0
-          outWeight: 0.32036006
+          outWeight: 0
         - serializedVersion: 3
-          time: 0.3414904
-          value: 0.27027088
+          time: 0.10404205
+          value: 0.24324417
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -16604,15 +16604,15 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0
           value: 1
-          inSlope: -7.312616
-          outSlope: -7.312616
+          inSlope: 0
+          outSlope: 0
           tangentMode: 0
           weightedMode: 0
           inWeight: 0
-          outWeight: 0.32036006
+          outWeight: 0
         - serializedVersion: 3
-          time: 0.3414904
-          value: 0.27027088
+          time: 0.10404205
+          value: 0.24324417
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -21463,15 +21463,15 @@ ParticleSystem:
         - serializedVersion: 3
           time: 0
           value: 1
-          inSlope: -7.312616
-          outSlope: -7.312616
+          inSlope: 0
+          outSlope: 0
           tangentMode: 0
           weightedMode: 0
           inWeight: 0
-          outWeight: 0.32036006
+          outWeight: 0
         - serializedVersion: 3
-          time: 0.3414904
-          value: 0.27027088
+          time: 0.10404205
+          value: 0.24324417
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -24361,5 +24361,6 @@ MonoBehaviour:
   sizeX: 0
   sizeY: 0
   _isOrientate: 0
+  _isOrientateOncePerWave: 0
   _isOrientateOncePerShot: 0
   _bulletPrefab: {fileID: 0}
