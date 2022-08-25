@@ -53,7 +53,7 @@ MonoBehaviour:
     loop: 0
     loopStart: 0
     loopEnd: 0
-    volume: 0.2
+    volume: 0.15
     interval: 0.05
   - audioClip: {fileID: 8300000, guid: 45b961abdff3b4af9892e460f6f6873c, type: 3}
     id: positive_button
