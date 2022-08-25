@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Diver_Normal_Material
+  m_Name: Coin Material
   m_Shader: {fileID: 4800000, guid: 23c4f67eaed20db4489dd457c96653ca, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -44,11 +44,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LitTex:
-        m_Texture: {fileID: 2800000, guid: ed3efc15939241f4896cb85c558bb350, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7b53e592f05c5224898e60c24e6f1f01, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: d7d2aa84faf54c040bcf111e59420527, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2104ece2fe042224ebe6aeb52a178743, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -68,7 +68,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _UnlitTex:
-        m_Texture: {fileID: 2800000, guid: 463aedf45b4bf3647a454ca1f6369430, type: 3}
+        m_Texture: {fileID: 2800000, guid: b3d211b2d7d6b5847ab9238d06fdc50f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -81,7 +81,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _LitThreshold: 0
+    - _LitThreshold: 0.25
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -89,13 +89,13 @@ Material:
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _SpecularThreshold: 0.8
+    - _SpecularThreshold: 0.75
     - _SrcBlend: 1
-    - _Tiling: 1
+    - _Tiling: 2
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0, g: 0, b: 0, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineColor: {r: 0.2, g: 0.078431375, b: 0.2, a: 0}
   m_BuildTextureStacks: []
