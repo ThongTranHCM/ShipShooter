@@ -47,14 +47,14 @@ MonoBehaviour:
     loopStart: 0
     loopEnd: 0
     volume: 0.5
-    interval: 0.1
+    interval: 0.05
   - audioClip: {fileID: 8300000, guid: 67ff0f1f4f6f24ad5ac07ccfd34636fd, type: 3}
     id: hit
     loop: 0
     loopStart: 0
     loopEnd: 0
-    volume: 0.05
-    interval: 0.1
+    volume: 0.2
+    interval: 0.05
   - audioClip: {fileID: 8300000, guid: 45b961abdff3b4af9892e460f6f6873c, type: 3}
     id: positive_button
     loop: 0
