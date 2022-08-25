@@ -61,6 +61,7 @@ public class PanelController : MonoBehaviour
     // They will be invoked if the Panel is pushed/poped by PanelNavigationController or Presented/Dismissed by PanelController, or Showed by TabbarController
     public virtual void PanelWillAppear()
     {
+        Debug.LogError(gameObject.name + "WillAppear");
         if (presentedPanel != null)
         {
             presentedPanel.PanelWillAppear();
@@ -106,11 +107,11 @@ public class PanelController : MonoBehaviour
 
     public virtual void PanelWillDisappear()
     {
+        Debug.LogError(gameObject.name + " WillDisappear");
         if (presentedPanel != null)
         {
             presentedPanel.PanelWillDisappear();
         }
-        gameObject.SetActive(false);
         isVisible = false;
 
         if (childPanelControllers != null && childPanelControllers.Count > 0)
@@ -129,10 +130,12 @@ public class PanelController : MonoBehaviour
 
     public virtual void PanelDidDisappear()
     {
+        Debug.LogError(gameObject.name + " DidDisappear");
         if (presentedPanel != null)
         {
             presentedPanel.PanelDidDisappear();
         }
+        gameObject.SetActive(false);
 
         if (childPanelControllers != null && childPanelControllers.Count > 0)
         {

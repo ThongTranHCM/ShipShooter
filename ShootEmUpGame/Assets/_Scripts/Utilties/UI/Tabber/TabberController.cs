@@ -205,6 +205,7 @@ public class TabberController : PanelController
         bool movedToNewScreen = false;
         scrollSnap.didMoveToScreen = (int newScreen) =>
         {
+            Debug.LogError("DidMoveToScreen");
             movedToNewScreen = true;
             scrollSnap.didMoveToScreen = null;
         };
@@ -225,8 +226,10 @@ public class TabberController : PanelController
         }
         catch (Exception e) {}
 
+        Debug.LogError("Wait Move New");
         yield return new WaitUntil(() => movedToNewScreen);
 
+        Debug.LogError("Did Wait Move New");
         try
         {
             if (!isFirstLoaded)

@@ -46,6 +46,7 @@ namespace UnityEngine.UI.Extensions
         [Tooltip("The currently active page")]
         [SerializeField]
         private int _currentScreen;
+        private int _targetScreen;
 
         [Tooltip("The screen / page to start the control on")]
         [SerializeField]
@@ -117,9 +118,10 @@ namespace UnityEngine.UI.Extensions
             if (_lerp)
             {
                 _screensContainer.localPosition = Vector3.Lerp(_screensContainer.localPosition, _lerpTarget, _transitionSpeed * Time.deltaTime);
-                if (Vector3.Distance(_screensContainer.localPosition, _lerpTarget) < 0.005f)
+                if (Vector3.Distance(_screensContainer.localPosition, _lerpTarget) < 0.01f)
                 {
                     _lerp = false;
+                    didMoveToScreen?.Invoke(_targetScreen);
                 }
 
                 //change the info bullets at the bottom of the screen. Just for visual effect
@@ -143,6 +145,7 @@ namespace UnityEngine.UI.Extensions
             {
                 _currentScreen++;
                 _lerp = true;
+                _targetScreen = _currentScreen;
                 _lerpTarget = _positions[_currentScreen];
 
                 ChangeBulletsInfo(_currentScreen);
@@ -156,6 +159,7 @@ namespace UnityEngine.UI.Extensions
             {
                 _currentScreen--;
                 _lerp = true;
+                _targetScreen = _currentScreen;
                 _lerpTarget = _positions[_currentScreen];
 
                 ChangeBulletsInfo(_currentScreen);
@@ -165,6 +169,7 @@ namespace UnityEngine.UI.Extensions
         //Function for switching to a specific screen
         public void GoToScreen(int screenIndex, bool animated = true)
         {
+            Debug.LogError("GoToScreen ---------- ");
             if (screenIndex <= _screens && screenIndex >= 0)
             {
                 if (animated)
@@ -180,6 +185,7 @@ namespace UnityEngine.UI.Extensions
                     }
 
                     _lerpTarget = _positions[screenIndex];
+                    _targetScreen = screenIndex;
 
                     ChangeBulletsInfo(screenIndex);
                 }
@@ -202,6 +208,7 @@ namespace UnityEngine.UI.Extensions
             {
                 _lerp = true;
                 _lerpTarget = _positions[_currentScreen + 1];
+                _targetScreen = _currentScreen + 1;
 
                 ChangeBulletsInfo(_currentScreen + 1);
                 OnScreenChangedByDragging?.Invoke(_currentScreen + 1);
@@ -215,6 +222,7 @@ namespace UnityEngine.UI.Extensions
             {
                 _lerp = true;
                 _lerpTarget = _positions[_currentScreen - 1];
+                _targetScreen = _currentScreen - 1;
 
                 ChangeBulletsInfo(_currentScreen - 1);
                 OnScreenChangedByDragging?.Invoke(_currentScreen - 1);
