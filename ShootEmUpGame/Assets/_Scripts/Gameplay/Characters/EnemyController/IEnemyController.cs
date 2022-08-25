@@ -57,7 +57,7 @@ namespace ThongNguyen.PlayerController
         public List<Renderer> myBodyPartRenderers;
         private IGunController gunController;
         protected List<Material> piecesOfBodyMaterial;
-        private Color _currentColor = Color.white;
+        private Color _currentColor = Color.black;
         private float _currentBrightness = 0;
         private MaterialPropertyBlock materialPropertyBlock;
         private float gotHit;
@@ -325,7 +325,6 @@ namespace ThongNguyen.PlayerController
             if (!isFreeze && !isSlow)
             {
                 ChangeBodyColor(new Color(0.1f,0.3f,0.6f), 0.5f);
-                ChangeBrightness(0.5f, 0.5f);
                 if (actionSlow != null)
                 {
                     StopCoroutine(actionSlow);

@@ -87,7 +87,7 @@ Shader "Unlit/CelShading"
 					fixed4 color = lerp(i.unlit, i.base, saturate(light + _AmbientLight));
 					color = lerp(color, i.lit, saturate(pow(specular,8)));
 					color = Screen(_LightColor0 * smoothstep(0,0.2f,light), color);
-					color = 1 - (1 - color)*(1 - _LightenColor);
+					color = Screen(_LightenColor, color);
 
 					return color;
 				}
