@@ -152,7 +152,7 @@ namespace ThongNguyen.PlayerController
             {
                 myBodyPartRenderers[i].GetPropertyBlock(materialPropertyBlock);
                 // Assign our new value.
-                materialPropertyBlock.SetColor("_Color", _currentColor);
+                materialPropertyBlock.SetColor("_LightenColor", _currentColor);
                 materialPropertyBlock.SetFloat("_Brightness", _currentBrightness);
                 // Apply the edited values to the renderer.
                 myBodyPartRenderers[i].SetPropertyBlock(materialPropertyBlock);
@@ -324,7 +324,7 @@ namespace ThongNguyen.PlayerController
             }
             if (!isFreeze && !isSlow)
             {
-                ChangeBodyColor(new Color(0.6f,0.8f,1.0f), 0.5f);
+                ChangeBodyColor(new Color(0.1f,0.3f,0.6f), 0.5f);
                 ChangeBrightness(0.5f, 0.5f);
                 if (actionSlow != null)
                 {
@@ -386,7 +386,7 @@ namespace ThongNguyen.PlayerController
             }
             else
             {
-                ChangeBodyColor(Color.white, 0f);
+                ChangeBodyColor(Color.black, 0f);
             }
         }
         public void FinishSlow()
@@ -395,7 +395,7 @@ namespace ThongNguyen.PlayerController
             actionSlow = null;
 
             totalPercentSlowSpeed = 0;
-            ChangeBodyColor(Color.white, 0f);
+            ChangeBodyColor(Color.black, 0f);
         }
         #endregion
         public override void TakeDamage(ApplyEffectData effectData, float damage)

@@ -2,7 +2,7 @@ Shader "Unlit/CelShading"
 {
     Properties
 	{
-		_Color("Tint", Color) = (1,1,1,1)
+		_LightenColor("Lighten Color", Color) = (0,0,0,1)
 		_MainTex("Main Texture", 2D) = "white" {}
         _LitTex("Lit Texture", 2D) = "white" {}
         _UnlitTex("Unlit Texture", 2D) = "white" {}
@@ -51,6 +51,11 @@ Shader "Unlit/CelShading"
 				fixed _Brightness;
 				fixed _AmbientLight;
 				fixed4 _Color;
+				
+				fixed4 Screen(fixed4 a, fixed4 b){
+					fixed4 result = 1 - (1 - a) * (1 - b);
+					return result;
+				}
 
 				v2f vert(appdata_full v)
 				{
@@ -59,9 +64,9 @@ Shader "Unlit/CelShading"
 					o.worldNormal = UnityObjectToWorldNormal(v.normal);
 					o.scrPos = ComputeScreenPos(o.pos);
 					o.uv = TRANSFORM_TEX(v.texcoord, _MainTex);
-					o.base = tex2Dlod(_MainTex, fixed4(o.uv,0,0)) * _Color + _Brightness;
-					o.lit = tex2Dlod(_LitTex, fixed4(o.uv,0,0)) * _Color + _Brightness;
-					o.unlit = tex2Dlod(_UnlitTex, fixed4(o.uv,0,0)) * _Color + _Brightness;
+					o.base = tex2Dlod(_MainTex, fixed4(o.uv,0,0)) + _Brightness;
+					o.lit = tex2Dlod(_LitTex, fixed4(o.uv,0,0)) + _Brightness;
+					o.unlit = tex2Dlod(_UnlitTex, fixed4(o.uv,0,0)) + _Brightness;
 					return o;
 				}
 
@@ -80,9 +85,12 @@ Shader "Unlit/CelShading"
 
 					fixed light = NdotL;
 					fixed4 color = lerp(i.unlit, i.base, saturate(light + _AmbientLight));
-					color = lerp(color, i.lit, saturate(specular * specular));
+					color = lerp(color, i.lit, saturate(pow(specular,8)));
+					//color = lerp(color, lerp((_LightColor0 * color), Screen(_LightColor0, color), length(color) * 0.2f), saturate(light));
+					color = Screen(_LightColor0 * smoothstep(0,0.2f,light), color);
+					color = 1 - (1 - color)*(1 - _Color);
 
-					return color * _LightColor0;
+					return color;
 				}
 				ENDCG
 			}
@@ -165,7 +173,9 @@ Shader "Unlit/CelShading"
 					fixed4 color = lerp(i.unlit, i.base, step(_LitThreshold,light));
 					color = lerp(color, i.lit, step(_SpecularThreshold,specular));
 					*/
-					return fixed4(i.unlit.rgb * 0.5f, 1);
+					fixed4 color = fixed4(i.unlit.rgb * 0.5f, 1);
+					color = 1 - (1 - color)*(1 - _Color);
+					return color;
 				}
 				ENDCG
 			}
