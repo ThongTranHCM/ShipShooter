@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class RewardManager : MonoBehaviour
 {
-    private static RewardManager _instance;
+    private static RewardManager _instance = null;
     public static RewardManager Instance
     {
         get { return _instance; }
@@ -28,13 +28,10 @@ public class RewardManager : MonoBehaviour
     }
 
     public void Awake(){
-        Debug.Log("Awake");
         DontDestroyOnLoad(gameObject);
-        if(Instance == null){
-            Debug.Log("Set new Instance");
+        if(_instance == null){
             _instance = this;
         } else {
-            Debug.Log("Destroy new Instance");
             DestroyObject(gameObject);
         }
     }
@@ -45,33 +42,32 @@ public class RewardManager : MonoBehaviour
 
     public void GetReward(){
         if(_rewardQueue.Count > 0){
-            Debug.Log("Has Reward");
             GameReward reward = _rewardQueue.Dequeue();
+            GetPanel().transform.localScale = Vector3.one;
             PopUp(_resouceData.GetType(reward.Id));
-            this.transform.localScale = Vector3.one;
         } else {
-            Debug.Log("Empty");
-            this.transform.localScale = Vector3.zero;
+            GetPanel().transform.localScale = Vector3.zero;
         }
     }
 
     private void PopUp(ResourceData.Type Type){
-        GameObject content = this.transform.GetChild(0).gameObject;
+        GameObject panel = GetPanel();
+        GameObject content = panel.transform.GetChild(0).gameObject;
         LeanTween.cancel(content);
         content.transform.localScale = new Vector3(1.0f, 0.5f);
         LeanTween.scale(content,new Vector3(1.0f,1.0f),0.75f).setEase(LeanTweenType.easeOutElastic);   
     }
 
+    private GameObject GetPanel(){
+        return GameObject.FindWithTag("RewardPanelUI");
+    }
+
     public void AddGold(int amount){
-        Debug.Log("Add Gold");
         AddReward("Gold", amount);
-        Debug.Log(_rewardQueue.Count);
     }
 
     public void AddDiamond(int amount){
-        Debug.Log("Add Diamond");
         AddReward("Diamond", amount);
-        Debug.Log(_rewardQueue.Count);
     }
 
     void OnEnable()
