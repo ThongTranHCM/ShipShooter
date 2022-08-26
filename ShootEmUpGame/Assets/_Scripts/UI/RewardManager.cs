@@ -4,50 +4,65 @@ using UnityEngine;
 
 public class RewardManager : MonoBehaviour
 {
-    public GameObject _rewardPanel;
-    public ResourceData _RewardTypeSO;
-    private Queue<GameReward> _rewardQueue;
+    private static RewardManager _instance;
+    public static RewardManager Instance
+    {
+        get { return _instance; }
+    }
+    public ResourceData _resouceData;
+    private Queue<GameReward> _rewardQueue = new Queue<GameReward>();
     private class GameReward{
         private string _id;
-        private ResourceData.Type _type;
+        public string Id{
+            get {return _id;}
+        }
         private int _amount;
-        public GameReward(string ID, int Amount, ResourceData.Type Type){
+        public int Amount{
+            get {return _amount;}
+        }
+        public GameReward(string ID, int Amount){
             _id = ID;
             _amount = Amount;
-            _type = Type;
         }
     }
 
     public void Awake(){
-        _rewardQueue = new Queue<GameReward>();
+        if(_instance == null){
+            _instance = this;
+        }
+        DontDestroyOnLoad(this.gameObject);
     }
 
-    public void AddQueue(string id, int amount){
-        _rewardQueue.Enqueue(new GameReward(id, amount, _RewardTypeSO.GetType(id)));
-        PopUp();
-        _rewardPanel.SetActive(_rewardQueue.Count > 0);
+    public void AddReward(string id, int amount){
+        _rewardQueue.Enqueue(new GameReward(id, amount));
     }
 
-    public void PopQueue(){
-        _rewardQueue.Dequeue();
-        PopUp();
-        _rewardPanel.SetActive(_rewardQueue.Count > 0);
+    public void GetReward(){
+        if(_rewardQueue.Count > 0){
+            Debug.Log("Has Reward");
+            GameReward reward = _rewardQueue.Dequeue();
+            PopUp(_resouceData.GetType(reward.Id));
+            this.transform.localScale = Vector3.one;
+        } else {
+            Debug.Log("Empty");
+            this.transform.localScale = Vector3.zero;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
-    void PopUp(){
-        GameObject content = _rewardPanel.transform.GetChild(0).gameObject;
+    private void PopUp(ResourceData.Type Type){
+        GameObject content = this.transform.GetChild(0).gameObject;
         LeanTween.cancel(content);
         content.transform.localScale = new Vector3(1.0f, 0.5f);
-        LeanTween.scale(content,new Vector3(1.0f,1.0f),0.75f).setEase(LeanTweenType.easeOutElastic);
-        
+        LeanTween.scale(content,new Vector3(1.0f,1.0f),0.75f).setEase(LeanTweenType.easeOutElastic);   
     }
 
     public void AddGold(int amount){
-        AddQueue("Gold",amount);
+        Debug.Log("Add Gold");
+        AddReward("Gold", amount);
+    }
+
+    public void AddDiamond(int amount){
+        Debug.Log("Add Diamond");
+        AddReward("Diamond", amount);
     }
 }

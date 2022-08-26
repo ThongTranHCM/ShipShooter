@@ -127,6 +127,8 @@ public class GamePlayManager : MonoBehaviour
         DataManager.Instance.LastLevelWin++;
         DataManager.Instance.playerData.Coin += GamePlayManager.Instance.Collection.gold;
         DataManager.Instance.playerData.Diamond += 2;
+        RewardManager.Instance.AddGold(GamePlayManager.Instance.Collection.gold);
+        RewardManager.Instance.AddDiamond(2);
         DataManager.Save();
         SceneLoader.LoadLevel(Constants.SCENENAME_MainMenu);
     }
