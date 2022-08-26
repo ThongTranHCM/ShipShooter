@@ -124,7 +124,7 @@ Shader "Unlit/TempShader"
 				float lumi = YIQ.x;
 				float chroma = sqrt(YIQ.z * YIQ.z + YIQ.y * YIQ.y);
 					
-                sample = ShiftHue(sample, _TargetHue, 0, _HueShift * abs(lumi * _PercentLumiShift + _LumiShift), lumi * _PercentLumiShift + _LumiShift);
+                sample = ShiftHue(sample, _TargetHue, 0, _HueShift * abs(lumi * (1 - chroma) * _PercentLumiShift + _LumiShift), lumi * _PercentLumiShift + _LumiShift);
                 return sample;
             }
             ENDCG

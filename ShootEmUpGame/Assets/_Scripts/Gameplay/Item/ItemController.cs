@@ -15,6 +15,7 @@ public class ItemController : MonoBehaviour
         if (_addOnType != AddOnEquipData.AddOnType.None)
         {
             GamePlayManager.Instance.PlayerManager.InstallAddOn(_addOnType);
+            SoundManager.Instance.PlaySFX("collect_powerup");
             _addOnType = AddOnEquipData.AddOnType.None;
         }
         Despawn();
