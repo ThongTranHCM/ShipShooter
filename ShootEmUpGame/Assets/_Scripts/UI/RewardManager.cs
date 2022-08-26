@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class RewardManager : MonoBehaviour
@@ -27,10 +28,15 @@ public class RewardManager : MonoBehaviour
     }
 
     public void Awake(){
-        if(_instance == null){
+        Debug.Log("Awake");
+        DontDestroyOnLoad(gameObject);
+        if(Instance == null){
+            Debug.Log("Set new Instance");
             _instance = this;
+        } else {
+            Debug.Log("Destroy new Instance");
+            DestroyObject(gameObject);
         }
-        DontDestroyOnLoad(this.gameObject);
     }
 
     public void AddReward(string id, int amount){
@@ -59,10 +65,27 @@ public class RewardManager : MonoBehaviour
     public void AddGold(int amount){
         Debug.Log("Add Gold");
         AddReward("Gold", amount);
+        Debug.Log(_rewardQueue.Count);
     }
 
     public void AddDiamond(int amount){
         Debug.Log("Add Diamond");
         AddReward("Diamond", amount);
+        Debug.Log(_rewardQueue.Count);
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnLevelFinishedLoading;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnLevelFinishedLoading;
+    }
+
+    void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
+    {
+        GetReward();
     }
 }
