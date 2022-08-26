@@ -8,7 +8,6 @@ Shader "Unlit/CelShading"
         _UnlitTex("Unlit Texture", 2D) = "white" {}
         _OutlineWidth ("Outline Width", Range(0, 1)) = 0.002
 		_AmbientLight ("Ambient Light", Range(0, 1)) = 0
-		_Brightness ("Brightness", float) = 0
 	}
 		SubShader
 		{
@@ -64,9 +63,9 @@ Shader "Unlit/CelShading"
 					o.worldNormal = UnityObjectToWorldNormal(v.normal);
 					o.scrPos = ComputeScreenPos(o.pos);
 					o.uv = TRANSFORM_TEX(v.texcoord, _MainTex);
-					o.base = tex2Dlod(_MainTex, fixed4(o.uv,0,0)) + _Brightness;
-					o.lit = tex2Dlod(_LitTex, fixed4(o.uv,0,0)) + _Brightness;
-					o.unlit = tex2Dlod(_UnlitTex, fixed4(o.uv,0,0)) + _Brightness;
+					o.base = tex2Dlod(_MainTex, fixed4(o.uv,0,0));
+					o.lit = tex2Dlod(_LitTex, fixed4(o.uv,0,0));
+					o.unlit = tex2Dlod(_UnlitTex, fixed4(o.uv,0,0));
 					return o;
 				}
 
@@ -145,9 +144,9 @@ Shader "Unlit/CelShading"
 					//o.worldNormal = UnityObjectToWorldNormal(v.normal);
 					//o.scrPos = ComputeScreenPos(o.pos);
 					o.uv = TRANSFORM_TEX(v.texcoord, _MainTex);
-					o.base = tex2Dlod(_MainTex, fixed4(o.uv,0,0)) + _Brightness;
+					o.base = tex2Dlod(_MainTex, fixed4(o.uv,0,0));
 					//o.lit = tex2Dlod(_LitTex, fixed4(o.uv,0,0)) + _Brightness;
-					o.unlit = tex2Dlod(_UnlitTex, fixed4(o.uv,0,0)) + _Brightness;
+					o.unlit = tex2Dlod(_UnlitTex, fixed4(o.uv,0,0));
 					fixed3 clipNormal = mul((fixed3x3) UNITY_MATRIX_VP, mul((fixed3x3) UNITY_MATRIX_M, v.normal));
 					fixed2 offset = normalize(clipNormal.xy) / normalize(_ScreenParams.xy) * _OutlineWidth * o.pos.w * 2;
 					o.pos.xy += offset;

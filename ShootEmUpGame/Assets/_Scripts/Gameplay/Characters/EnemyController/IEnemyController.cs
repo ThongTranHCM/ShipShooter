@@ -58,7 +58,7 @@ namespace ThongNguyen.PlayerController
         private IGunController gunController;
         protected List<Material> piecesOfBodyMaterial;
         private Color _currentColor = Color.black;
-        private float _currentBrightness = 0;
+        private Color _currentBrightness = Color.black;
         private MaterialPropertyBlock materialPropertyBlock;
         private float gotHit;
         public bool isRotateTowardShip;
@@ -80,7 +80,7 @@ namespace ThongNguyen.PlayerController
                 //float brightness = (_lowPassHealth.Output() - CurrentHp) / MaxHp;
                 float hit = _lowPassHit.Output() / _lowPassHit.GetAlpha();
                 this.transform.GetChild(0).transform.localPosition = 0.1f * Vector3.up * hit;
-                ChangeBrightness(0.5f * hit, 0.5f);
+                ChangeBrightness(0.5f * hit * Color.white, 0.5f);
                 gotHit = 0;
             }
         }
@@ -139,7 +139,7 @@ namespace ThongNguyen.PlayerController
             }
         }
 
-        public void ChangeBrightness(float brightness, float changeDuration){
+        public void ChangeBrightness(Color brightness, float changeDuration){
             if (_currentBrightness != brightness){
                 _currentBrightness = brightness;
                 RefreshBodyColor();
@@ -152,8 +152,8 @@ namespace ThongNguyen.PlayerController
             {
                 myBodyPartRenderers[i].GetPropertyBlock(materialPropertyBlock);
                 // Assign our new value.
-                materialPropertyBlock.SetColor("_LightenColor", _currentColor);
-                materialPropertyBlock.SetFloat("_Brightness", _currentBrightness);
+                materialPropertyBlock.SetColor("_LightenColor", _currentColor + _currentBrightness);
+                //materialPropertyBlock.SetFloat("_Brightness", _currentBrightness);
                 // Apply the edited values to the renderer.
                 myBodyPartRenderers[i].SetPropertyBlock(materialPropertyBlock);
             }
@@ -432,7 +432,7 @@ namespace ThongNguyen.PlayerController
                 OnHitEffect onHitEffect = effectTf.GetComponent<OnHitEffect>();
                 onHitEffect.Install(this);
             }
-            ChangeBrightness(0,0);
+            ChangeBrightness(Color.black,0);
             OnRemove();
         }
 
