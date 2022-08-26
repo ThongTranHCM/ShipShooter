@@ -69,7 +69,7 @@ MonoBehaviour:
     loopEnd: 0
     volume: 0.25
     interval: 0.1
-  - audioClip: {fileID: 8300000, guid: 5e08380e0a5f54e9fbb9f5658b186493, type: 3}
+  - audioClip: {fileID: 8300000, guid: bc02d50dd8fba4e47a5e77187e55c1ed, type: 3}
     id: collect_powerup
     loop: 0
     loopStart: 0
