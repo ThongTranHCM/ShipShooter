@@ -70,8 +70,6 @@ public class AddOnGroupLayout : MonoBehaviour
 
     public void UpdateListUISize(int listSize)
     {
-        Debug.LogError("Height" + (transform as RectTransform).rect.height);
-        Debug.LogError("Pref Min" + _gridLayout.preferredHeight + "  " + _gridLayout.minHeight);
         int currentListSize = _listAddOnUI.Count;
         while (currentListSize > listSize)
         {
