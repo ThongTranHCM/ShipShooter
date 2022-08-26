@@ -17,15 +17,13 @@ public class AddOnGroupLayout : MonoBehaviour
 
     [SerializeField]
     private bool _updateParentSize;
-    private int rows = 2;
-    private float baseHeight = 130;
-    private float rowHeight = 150;
+    [SerializeField]
+    private UnityEngine.UI.GridLayoutGroup _gridLayout;
 
     public void OnEnable()
     {
         if (_listAddOnUI == null) _listAddOnUI = new List<AddOnUIItem>();
         Install(_show0Level, _show0Fragment, _show0Level0Fragment);
-        UpdateParentSize(rows);
     }
 
     public void Install(bool show0Level, bool show0Fragment, bool show0Level0Fragment)
@@ -72,6 +70,8 @@ public class AddOnGroupLayout : MonoBehaviour
 
     public void UpdateListUISize(int listSize)
     {
+        Debug.LogError("Height" + (transform as RectTransform).rect.height);
+        Debug.LogError("Pref Min" + _gridLayout.preferredHeight + "  " + _gridLayout.minHeight);
         int currentListSize = _listAddOnUI.Count;
         while (currentListSize > listSize)
         {
@@ -85,6 +85,10 @@ public class AddOnGroupLayout : MonoBehaviour
             GameObject _addOnItem = Instantiate<GameObject>(_prefab, transform);
             AddOnUIItem _addOnUiItem = _addOnItem.GetComponent<AddOnUIItem>();
             _listAddOnUI.Add(_addOnUiItem);
+        }
+        if (_updateParentSize)
+        {
+            UpdateParentSize();
         }
     }
 
@@ -107,15 +111,15 @@ public class AddOnGroupLayout : MonoBehaviour
         }
     }
 
-    public void UpdateParentSize(int rows)
+    public void UpdateParentSize()
     {
         RectTransform rectTf = transform.parent as RectTransform;
-        float totalHeight = 0;
-        if (rows > 0)
-        {
-            totalHeight = baseHeight;
-        }
-        totalHeight += (rows - 1) * rowHeight;
-        rectTf.SetHeight(totalHeight);
-}
+
+        float width = rectTf.rect.width;
+        int cellCountX = Mathf.Max(1, Mathf.FloorToInt((width - _gridLayout.padding.horizontal + _gridLayout.spacing.x + 0.001f) / (_gridLayout.cellSize.x + _gridLayout.spacing.x)));
+        int minRows = Mathf.CeilToInt(_listAddOnUI.Count / (float)cellCountX);
+
+        float minSpace = _gridLayout.padding.vertical + (_gridLayout.cellSize.y + _gridLayout.spacing.y) * minRows - _gridLayout.spacing.y;
+        rectTf.SetHeight(minSpace);
+    }
 }
