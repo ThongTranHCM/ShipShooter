@@ -18,11 +18,11 @@ MonoBehaviour:
   mirror: 0
   rotation: {x: 0, y: 0, z: 0}
   enemyInstanceList:
-  - start: {x: 0.4, y: 1}
-    end: {x: 0.4, y: 0}
+  - start: {x: 0.33, y: 1}
+    end: {x: 0.33, y: 0}
     timeDelay: 0
     pattern: 2
-  - start: {x: 0.6, y: 1}
-    end: {x: 0.6, y: 0}
+  - start: {x: 0.66, y: 1}
+    end: {x: 0.66, y: 0}
     timeDelay: 0
     pattern: 2

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1661a6d8f50d09f4795fe9b02ca78da1, type: 3}
   m_Name: Tank_Easy
   m_EditorClassIdentifier: 
-  health: 6
+  health: 14
   attack: 1
   prefab: {fileID: 4836962514766085484, guid: 8b87c0456e2973a4399f29d0a01eb215, type: 3}
   gunObject: {fileID: 0}
