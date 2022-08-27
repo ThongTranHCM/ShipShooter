@@ -35,31 +35,34 @@ public class RewardManager : MonoBehaviour
         if(instance == this){
             if(rewardQueue.Count > 0){
                 (string, int) reward = rewardQueue.Dequeue();
-                GetPanel().transform.localScale = Vector3.one;
-                PopUp(instance.resouceData.GetType(reward.Item1));
+                GetRewardCanvas().transform.localScale = Vector3.one;
+                PopUp(reward.Item1, reward.Item2);
             } else {
-                GetPanel().transform.localScale = Vector3.zero;
+                GetRewardCanvas().transform.localScale = Vector3.zero;
             }
         } else {
             instance.GetReward();
         }
     }
 
-    private static void PopUp(ResourceData.Type Type){
-        GameObject panel = GetPanel();
-        GameObject content = panel.transform.GetChild(0).gameObject;
+    private static void PopUp(string Type, int Amount){
+        GameObject canvas = GetRewardCanvas();
+        GameObject content = canvas.transform.GetChild(0).gameObject;
+        GameObject resourcePanel = canvas.transform.Find("Content/ResourcePanel").gameObject;
+        Debug.Log(Type);
+        resourcePanel.GetComponent<ResourcePanelManager>().SetReward(Type, Amount);
         LeanTween.cancel(content);
         content.transform.localScale = new Vector3(1.0f, 0.5f);
         LeanTween.scale(content,new Vector3(1.0f,1.0f),0.75f).setEase(LeanTweenType.easeOutElastic);   
     }
 
-    private static GameObject GetPanel(){
-        return GameObject.FindWithTag("RewardPanelUI");
+    private static GameObject GetRewardCanvas(){
+        return GameObject.FindWithTag("RewardCanvas");
     }
 
     public void AddGold(int amount){
         if(instance == this){
-            AddReward("Gold", amount);
+            AddReward("gold", amount);
         } else {
             instance.AddGold(amount);
         }
@@ -67,7 +70,7 @@ public class RewardManager : MonoBehaviour
 
     public void AddDiamond(int amount){
         if(instance == this){
-            AddReward("Diamond", amount);
+            AddReward("diamond", amount);
         } else {
             instance.AddDiamond(amount);
         }

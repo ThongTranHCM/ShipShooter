@@ -8,10 +8,9 @@ public class ResourceData : ScriptableObject
     [System.Serializable]
     public class Type{
         public string id;
-        public Sprite smallIcon;
-        public Vector3 scaleSmall = Vector3.one;
-        public Sprite bigIcon;
-        public Vector3 scaleBig = Vector3.one;
+        public string name;
+        public GameObject BigIconGameObject;
+        public GameObject SmallIconGameObject;
     }
 
     public List<Type> typeList;

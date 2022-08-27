@@ -14,22 +14,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeList:
   - id: gold
-    smallIcon: {fileID: 21300000, guid: 69898db9c7136ef4ebaf0ed76aede33d, type: 3}
-    scaleSmall: {x: 1, y: 1, z: 1}
-    bigIcon: {fileID: 21300000, guid: f76aa2c129818694f9d8d9027d2332e7, type: 3}
-    scaleBig: {x: 0.75, y: 0.75, z: 1}
+    name: Gold
+    BigIconGameObject: {fileID: 3520573372900180125, guid: 3962b3efd2d0d5c46ac9930063913394,
+      type: 3}
+    SmallIconGameObject: {fileID: 501760267992323622, guid: 3cf182c1f5977044d943dca2e0744e2b,
+      type: 3}
   - id: diamond
-    smallIcon: {fileID: 21300000, guid: 83e42c2a48c52be43abbe2fb73bfa669, type: 3}
-    scaleSmall: {x: 1, y: 1, z: 1}
-    bigIcon: {fileID: 21300000, guid: 65b121a48a0f242448784f89536abc26, type: 3}
-    scaleBig: {x: 1, y: 1, z: 1}
+    name: Diamond
+    BigIconGameObject: {fileID: 306301371854354463, guid: 905185531826d364e9abd348029b324a,
+      type: 3}
+    SmallIconGameObject: {fileID: 6475453878930092061, guid: f9ec3d98edbac904b89bcaad9a21bf46,
+      type: 3}
   - id: premium_box
-    smallIcon: {fileID: 21300000, guid: 46646ab55fc292d468ee3dd8750f675d, type: 3}
-    scaleSmall: {x: 1, y: 1, z: 1}
-    bigIcon: {fileID: 21300000, guid: 46646ab55fc292d468ee3dd8750f675d, type: 3}
-    scaleBig: {x: 1, y: 1, z: 1}
+    name: Premium Box
+    BigIconGameObject: {fileID: 5387013561686308324, guid: 6321fb0007bf1304eac08c6da9f41c0c,
+      type: 3}
+    SmallIconGameObject: {fileID: 5387013561686308324, guid: 6321fb0007bf1304eac08c6da9f41c0c,
+      type: 3}
   - id: regular_box
-    smallIcon: {fileID: 21300000, guid: 8fe3f894ac8746e4fbe5f1820477c497, type: 3}
-    scaleSmall: {x: 1, y: 1, z: 1}
-    bigIcon: {fileID: 21300000, guid: 8fe3f894ac8746e4fbe5f1820477c497, type: 3}
-    scaleBig: {x: 1, y: 1, z: 1}
+    name: Regular Box
+    BigIconGameObject: {fileID: 2601220070320877090, guid: b456c3be3a006104cbefcfdc1f939528,
+      type: 3}
+    SmallIconGameObject: {fileID: 2601220070320877090, guid: b456c3be3a006104cbefcfdc1f939528,
+      type: 3}

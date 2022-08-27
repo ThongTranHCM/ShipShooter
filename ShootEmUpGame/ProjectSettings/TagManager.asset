@@ -11,7 +11,7 @@ TagManager:
   - BulletOfEnemy
   - Pet
   - Item
-  - RewardPanelUI
+  - RewardCanvas
   layers:
   - Default
   - TransparentFX
