@@ -4,7 +4,11 @@ using UnityEngine;
 using ThongNguyen.PlayerController;
 public class PlayerManager : MonoBehaviour
 {
-    public IShipController _shipController;
+    private IShipController _shipController;
+    public GameObject shipObject
+    {
+        get { return _shipController.gameObject; }
+    }
     public AddOnEquipData addOnEquipData;
     public OnHitManager _onHitManager;
     private bool _isInstalled;
@@ -20,12 +24,14 @@ public class PlayerManager : MonoBehaviour
         SetLives(_iLives);
         yield return null;
     }
-    public Coroutine Install()
+    public Coroutine Install(int shipIndex)
     {
         if (_isInstalled)
         {
             return null;
         }
+        GameObject shipObject = Instantiate<GameObject>(GameInformation.Instance.shipData[shipIndex].shipObjectPrefab, transform);
+        _shipController = shipObject.GetComponent<IShipController>();
         return StartCoroutine(DoActionInstall());
     }
     public void InstallAddOns()

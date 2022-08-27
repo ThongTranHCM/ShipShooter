@@ -166,6 +166,6 @@ public class FindTargetController : MonoBehaviour
 
     GameObject FindPlayer()
     {
-        return GamePlayManager.Instance.PlayerManager._shipController.gameObject;
+        return GamePlayManager.Instance.PlayerManager.shipObject;
     }
 }

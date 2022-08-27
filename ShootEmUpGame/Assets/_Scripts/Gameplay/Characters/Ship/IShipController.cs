@@ -11,7 +11,6 @@ namespace ThongNguyen.PlayerController
             get { return _instance; }
         }
         private static IShipController _instance;
-        public DPadController dPadController;
         public IGunController gunController;
         [Header("Gliding")]
         public float angle;
@@ -80,7 +79,7 @@ namespace ThongNguyen.PlayerController
         }
         protected override void HandleDirection()
         {
-            dir = dPadController.GetDragDistance() / (Time.fixedDeltaTime);
+            dir = GamePlayManager.Instance.DPad.GetDragDistance() / (Time.fixedDeltaTime);
             _lowPassDir.Input(dir.x != 0 ? dir.x / Mathf.Abs(dir.x) : 0);
             angle = -_lowPassDir.Output() / _lowPassDir.GetAlpha() * velAngle;
             float tmpAngle = angle;
