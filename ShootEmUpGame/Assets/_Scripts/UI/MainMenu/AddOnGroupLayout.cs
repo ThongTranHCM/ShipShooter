@@ -13,6 +13,8 @@ public class AddOnGroupLayout : MonoBehaviour
     private bool _show0Fragment;
     [SerializeField]
     private bool _show0Level0Fragment;
+    [SerializeField]
+    private bool _allowEquip;
     private List<AddOnUIItem> _listAddOnUI;
 
     [SerializeField]
@@ -102,7 +104,7 @@ public class AddOnGroupLayout : MonoBehaviour
                 break;
             }
         }
-        if (i < listAddOn.Count)
+        if (i < listAddOn.Count && _allowEquip)
         {
             listAddOn[i] = addOnData.GetAddOnType.ToString();
             _uiEquipAddOn.InstallEquippedAddOns();
