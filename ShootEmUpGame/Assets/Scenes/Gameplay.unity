@@ -10024,7 +10024,7 @@ GameObject:
   - component: {fileID: 195470020}
   - component: {fileID: 195470019}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: StageText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10069,7 +10069,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Stage 101
+  m_text: Stage 000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b16b92a515ca0e945adfa91f912c7f9b, type: 2}
   m_sharedMaterial: {fileID: -5511232414365920899, guid: b16b92a515ca0e945adfa91f912c7f9b,
@@ -11230,6 +11230,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8647437166166032290, guid: 9512f62e3fc75ff4bb11e9b614c98095,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9512f62e3fc75ff4bb11e9b614c98095, type: 3}
@@ -29494,6 +29499,7 @@ MonoBehaviour:
   _shipHealthBar: {fileID: 559480385}
   _scoreValue: {fileID: 479172384}
   _goldValue: {fileID: 399835406}
+  _txtStage: {fileID: 195470019}
   _txtFps:
   - {fileID: 983697594}
   - {fileID: 231902030}

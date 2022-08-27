@@ -83,9 +83,11 @@ public class GamePlayManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Load Level " + DataManager.Instance.selectedLevelIndex);
-            string file = "RandomLevelDesignData/" + DataManager.Instance.selectedLevelIndex;
+            int levelIndex = DataManager.Instance.selectedLevelIndex;
+            Debug.LogError("Load Level " + levelIndex);
+            string file = "RandomLevelDesignData/" + levelIndex;
             _levelDesign = Resources.Load<LevelDesignData>(file);
+            GamePlayManager.Instance.UIManager.SetStageText(levelIndex);
         }
         _collection.Install();
         StartCoroutine(GameFlow());

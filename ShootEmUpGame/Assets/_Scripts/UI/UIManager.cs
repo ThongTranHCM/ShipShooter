@@ -12,6 +12,8 @@ public class UIManager : MonoBehaviour
     private ScoreValueUpdate _scoreValue;
     [SerializeField]
     private ScoreValueUpdate _goldValue;
+    [SerializeField]
+    private TMPro.TextMeshProUGUI _txtStage;
 
     //Editor Only
     [SerializeField]
@@ -63,6 +65,10 @@ public class UIManager : MonoBehaviour
     public void AddGold(int baseValue, int destValue)
     {
         _goldValue.UpdateProgress(baseValue, destValue);
+    }
+    public void SetStageText(int stageValue)
+    {
+        _txtStage.text = "Stage " + stageValue;
     }
 
     public void Awake()
