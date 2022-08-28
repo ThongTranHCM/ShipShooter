@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class UtilityCanvasManager : MonoBehaviour
 {
+    [System.Serializable]
+    public class OpenBoxCanvas{
+        public GameObject canvas;
+        public string id;
+    }
+
     private static UtilityCanvasManager instance = null;
     public static UtilityCanvasManager Instance{
         get { return instance; }
@@ -14,9 +20,7 @@ public class UtilityCanvasManager : MonoBehaviour
     [SerializeField]
     private GameObject rewardAddOnCanvas;
     [SerializeField]
-    private GameObject regularBoxCanvas;
-    [SerializeField]
-    private GameObject premiumBoxCanvas;
+    private List<OpenBoxCanvas> openBoxCanvasList;
 
     void Awake(){
         if(instance == null){
@@ -39,12 +43,14 @@ public class UtilityCanvasManager : MonoBehaviour
         rewardResourceCanvas.SetActive(false);
     }
 
-    public LTSeq ShowRegularBox(){
-        regularBoxCanvas.SetActive(true); 
-        return regularBoxCanvas.GetComponent<BoxCanvasManager>().GetAnimationSeq();
+    public LTSeq ShowOpenBoxCanvas(string Id){
+        GameObject canvas = openBoxCanvasList.Find((OpenBoxCanvas x) => {return x.id == Id;}).canvas;
+        canvas.SetActive(true); 
+        return canvas.GetComponent<BoxCanvasManager>().GetAnimationSeq();
     }
 
-    public void CloseRegularBox(){
-        regularBoxCanvas.SetActive(false);
+    public void CloseOpenBoxCanvas(string Id){
+        GameObject canvas = openBoxCanvasList.Find((OpenBoxCanvas x) => {return x.id == Id;}).canvas;
+        canvas.SetActive(false);
     }
 }

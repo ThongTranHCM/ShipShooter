@@ -45,15 +45,15 @@ public class RewardResourceManager : MonoBehaviour
         instance.GetReward();
     }
 
-    public void GetBoxReward(){
+    public void GetBoxReward(string Id){
         if(rewardQueue.Count > 0){
-            LTSeq seq = UtilityCanvasManager.Instance.ShowRegularBox();
+            LTSeq seq = UtilityCanvasManager.Instance.ShowOpenBoxCanvas(Id);
             seq.append(() => {GetReward();});
         }    
     }
 
-    public void InstanceGetBoxReward(){
-        instance.GetBoxReward();
+    public void InstanceBoxReward(string Id){
+        instance.GetBoxReward(Id);
     }
 
     public void AddGold(int amount){
