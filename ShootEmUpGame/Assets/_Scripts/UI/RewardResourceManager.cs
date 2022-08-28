@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class RewardManager : MonoBehaviour
+public class RewardResourceManager : MonoBehaviour
 {
-    private static RewardManager instance = null;
-    public static RewardManager Instance{
+    private static RewardResourceManager instance = null;
+    public static RewardResourceManager Instance{
         get {return instance;}
     }
     [SerializeField]
@@ -32,32 +32,28 @@ public class RewardManager : MonoBehaviour
     }
 
     public void GetReward(){
-        if(instance == this){
-            if(rewardQueue.Count > 0){
-                (string, int) reward = rewardQueue.Dequeue();
-                GetRewardCanvas().transform.localScale = Vector3.one;
-                PopUp(reward.Item1, reward.Item2);
-            } else {
-                GetRewardCanvas().transform.localScale = Vector3.zero;
-            }
+        if(rewardQueue.Count > 0){
+            (string, int) reward = rewardQueue.Dequeue();
+            SoundManager.Instance.PlaySFX("open_box");
+            UtilityCanvasManager.Instance.ShowRewardResource(reward.Item1, reward.Item2);
         } else {
-            instance.GetReward();
+            UtilityCanvasManager.Instance.CloseRewardResrouce();
         }
     }
 
-    private static void PopUp(string Type, int Amount){
-        GameObject canvas = GetRewardCanvas();
-        GameObject content = canvas.transform.GetChild(0).gameObject;
-        GameObject resourcePanel = canvas.transform.Find("Content/ResourcePanel").gameObject;
-        Debug.Log(Type);
-        resourcePanel.GetComponent<ResourcePanelManager>().SetReward(Type, Amount);
-        LeanTween.cancel(content);
-        content.transform.localScale = new Vector3(1.0f, 0.5f);
-        LeanTween.scale(content,new Vector3(1.0f,1.0f),0.75f).setEase(LeanTweenType.easeOutElastic);   
+    public void InstanceGetReward(){
+        instance.GetReward();
     }
 
-    private static GameObject GetRewardCanvas(){
-        return GameObject.FindWithTag("RewardCanvas");
+    public void GetBoxReward(){
+        if(rewardQueue.Count > 0){
+            LTSeq seq = UtilityCanvasManager.Instance.ShowRegularBox();
+            seq.append(() => {GetReward();});
+        }    
+    }
+
+    public void InstanceGetBoxReward(){
+        instance.GetBoxReward();
     }
 
     public void AddGold(int amount){

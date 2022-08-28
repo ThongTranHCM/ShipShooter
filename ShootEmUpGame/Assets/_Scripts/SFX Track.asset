@@ -81,7 +81,14 @@ MonoBehaviour:
     loop: 0
     loopStart: 0
     loopEnd: 0
-    volume: 2
+    volume: 1
+    interval: 0.1
+  - audioClip: {fileID: 8300000, guid: 1914159f0c7c3499596f8561ee5a4ec4, type: 3}
+    id: open_box
+    loop: 0
+    loopStart: 0
+    loopEnd: 0
+    volume: 1
     interval: 0.1
   _TrackSourcePrefab: {fileID: 2813302250018182396, guid: 1360d1777bc969340a3a13d44fa0ad25,
     type: 3}
