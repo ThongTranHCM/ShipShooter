@@ -57,7 +57,7 @@ public class FillBarManager : MonoBehaviour
     }
 
     private void UpdateFillBar(){
-        float offset = borderRectTransform.rect.width * animatedValue;
+        float offset = borderRectTransform.rect.width * Mathf.Clamp(animatedValue, 0, 1);
         fillRectTransform.sizeDelta = new Vector2(offset, fillRectTransform.sizeDelta.y);
     }
 
