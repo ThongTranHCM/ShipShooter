@@ -21,75 +21,72 @@ public class FillBarManager : MonoBehaviour
     private GameObject border;
     [SerializeField]
     private TextMeshProUGUI txtProgress;
-    private LowPassFilter valueLowPass;
-    private LowPassFilter changeLowPass;
     private RectTransform fillRectTransform;
     private RectTransform borderRectTransform;
     private Image fillImage;
     private Image borderImage;
+    private float animatedValue;
     
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        if (valueLowPass == null)
-        {
-            Init();
-        }
+        Init();
     }
 
     public void Init()
     {
-        valueLowPass = new LowPassFilter(0.1f, value);
-        changeLowPass = new LowPassFilter(0.1f, 0);
         fillRectTransform = fill.GetComponent<RectTransform>();
         borderRectTransform = border.GetComponent<RectTransform>();
         fillImage = fill.GetComponent<Image>();
         borderImage = border.GetComponent<Image>();
         fillImage.color = borderImage.color = baseColor;
+        animatedValue = value;
+        UpdateFillBar();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        valueLowPass.Input(value);
+        /*
         changeLowPass.Input(0);
         float progress = Mathf.Clamp(valueLowPass.Output(), 0, 1);
-        float offset = borderRectTransform.rect.width * progress;
-        fillRectTransform.sizeDelta = new Vector2(offset, fillRectTransform.sizeDelta.y);
+        
         fillImage.color = borderImage.color = (value != 1) ? baseColor : fullColor;
-        fillImage.color = borderImage.color += Color.white * changeLowPass.Output() / changeLowPass.GetAlpha();
+        fillImage.color = borderImage.color += highlight * Color.white * Mathf.Clamp(changeLowPass.Output() / changeLowPass.GetAlpha(),0,0.1f);
+        */
+    }
+
+    private void UpdateFillBar(){
+        float offset = borderRectTransform.rect.width * animatedValue;
+        fillRectTransform.sizeDelta = new Vector2(offset, fillRectTransform.sizeDelta.y);
     }
 
     public void SetValue(float Value)
     {
-        if (valueLowPass == null)
-        {
-            Init();
-        }
-        changeLowPass.Input(1);
-        value = Value;
+        float newValue = Value;
+        newValue = Mathf.Clamp(newValue, 0, 1);
+        PlayAnimation(value, newValue, 0.5f);
+        value = newValue;
     }
     public void SetValue(float current, float max)
     {
-        if (txtProgress != null)
-        {
-            txtProgress.text = "" + current + "/" + max;
-        }
-        if (valueLowPass == null)
-        {
-            Init();
-        }
-        changeLowPass.Input(1);
-        value = current/max;
+        float newValue = current/max;
+        newValue = Mathf.Clamp(newValue, 0, 1);
+        PlayAnimation(value, newValue, 0.5f);
+        value = newValue;
     }
 
     public void AddValue(float Value)
     {
-        if (valueLowPass == null)
-        {
-            Init();
-        }
-        changeLowPass.Input(1);
-        value += Value;
+        float newValue = value + Value;
+        newValue = Mathf.Clamp(newValue, 0, 1);
+        PlayAnimation(value, newValue, 0.5f);
+        value = newValue;
+    }
+
+    public void PlayAnimation(float a, float b, float duration){
+        LeanTween.cancel(gameObject);
+        LeanTween.value(gameObject,(float x) => {animatedValue = x; UpdateFillBar();},a,b,duration).setEase(LeanTweenType.easeOutBack);
+        LeanTween.value(gameObject,(float x) => {fillImage.color = borderImage.color = (value != 1) ? baseColor : fullColor; fillImage.color = borderImage.color += highlight * Color.white * x;},1,0,duration).setEase(LeanTweenType.easeInOutSine);
     }
 }
