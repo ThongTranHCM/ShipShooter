@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8846279992333118334
+--- !u!1 &6078679100143432692
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,43 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8331250547399686335}
-  - component: {fileID: 4392094762250200273}
+  - component: {fileID: 6078679100143432690}
+  - component: {fileID: 6078679100143432691}
   m_Layer: 0
-  m_Name: AutoLoadSingletons
+  m_Name: RewardResourceManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8331250547399686335
+--- !u!4 &6078679100143432690
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8846279992333118334}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 6078679100143432692}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4392094762250200273
+--- !u!114 &6078679100143432691
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8846279992333118334}
+  m_GameObject: {fileID: 6078679100143432692}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f14af9ea9632a74fae57d23b5ccd4ee, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c94d9b8f8cfc6e44a13a507e720e180, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _singletonObjects:
-  - {fileID: 4221430266131845756, guid: 2ad99be2ac72eae4fabad6e2fd6a7c3a, type: 3}
-  - {fileID: 4682864780934655146, guid: 9c680700fe498cb4cbe609a7a576723e, type: 3}
-  - {fileID: 6078679100143432692, guid: d440c472ae03d6545b1a15a40ed4e8a3, type: 3}
-  - {fileID: 1932898972449650471, guid: 0a4ccc7d0bd60bb44bdc61a3f04bc4df, type: 3}
+  resouceData: {fileID: 11400000, guid: 62bdbbc8a87a5054fb4239c354c22b15, type: 2}

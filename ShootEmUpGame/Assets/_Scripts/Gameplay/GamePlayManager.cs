@@ -102,7 +102,7 @@ public class GamePlayManager : MonoBehaviour
         else
         {
             levelIndex = DataManager.Instance.selectedLevelIndex;
-            shipIndex = DataManager.Instance.selectedLevelIndex;
+            shipIndex = DataManager.Instance.selectedShipIndex;
         }
         yield return _playerManager.Install(shipIndex);
         string file = "RandomLevelDesignData/" + levelIndex;

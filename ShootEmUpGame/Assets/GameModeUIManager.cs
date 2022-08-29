@@ -62,6 +62,7 @@ public class GameModeUIManager : MonoBehaviour
         DOShipData shipData = GameInformation.Instance.shipData[index];
         displayMesh.mesh = shipData.meshShip;
         displayRenderer.material = shipData.materialShip;
+        DataManager.Instance.selectedShipIndex = index;
     }
 
     protected void DisplayEnemies()
