@@ -20,6 +20,10 @@ public class UtilityCanvasManager : MonoBehaviour
     [SerializeField]
     private GameObject rewardAddOnCanvas;
     [SerializeField]
+    private GameObject rewardFragmentCanvas;
+    [SerializeField]
+    private GameObject unlockAddOnCanvas;
+    [SerializeField]
     private List<OpenBoxCanvas> openBoxCanvasList;
 
     void Awake(){

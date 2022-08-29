@@ -12,4 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a557ccfcefff0dd4c9da28f1061a65dd, type: 3}
   m_Name: Data
   m_EditorClassIdentifier: 
-  missionList: []
+  missionList:
+  - key: upgrade
+    description: Upgrade at least one time
+    requirement: 1
+    cooldown: 21600
+    reward: 7200
+  - key: kill_enemies
+    description: Defeat 500 enemies
+    requirement: 500
+    cooldown: 21600
+    reward: 7200
+  - key: play
+    description: Play at least 3 games
+    requirement: 3
+    cooldown: 21600
+    reward: 7200
+  - key: win
+    description: Win at least one game
+    requirement: 1
+    cooldown: 21600
+    reward: 7200
+  - key: ad
+    description: Watch this Ads
+    requirement: 1
+    cooldown: 0
+    reward: 1800
+  - key: box
+    description: Open at least one box
+    requirement: 1
+    cooldown: 21600
+    reward: 7200
