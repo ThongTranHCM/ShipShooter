@@ -84,6 +84,8 @@ public class RewardResourceManager : MonoBehaviour
 
     void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-        GetReward();
+        if(scene.name == "MainMenu"){
+            GetReward();
+        }
     }
 }
