@@ -43,6 +43,10 @@ public class MissionListData : ScriptableObject
         public int GetReward(){
             return reward;
         }
+
+        public bool IsOnCoolDown(){
+            return System.DateTime.Now.Second - timeComplete < cooldown;
+        }
     }
     [SerializeField]
     private List<Mission> missionList;
