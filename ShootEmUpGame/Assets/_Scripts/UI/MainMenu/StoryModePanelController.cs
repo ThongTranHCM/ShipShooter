@@ -17,9 +17,9 @@ public class StoryModePanelController : PanelController
     public bool isFirstInit = true;
     public void OnButtonPlayClicked()
     {
-        DataManager.Save();
         DataManager.Instance.selectedLevelIndex = DataManager.Instance.LastLevelWin + 1;
         DataManager.Instance.LastShipIndex = DataManager.Instance.selectedShipIndex;
+        DataManager.Save();
         SceneLoader.LoadLevel(Constants.SCENENAME_GamePlay);
     }
 

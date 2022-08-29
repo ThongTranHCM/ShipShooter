@@ -56,7 +56,6 @@ MonoBehaviour:
   isNormalize: 0
   limitInsideScreen: 1
   _drawSize: {x: 2, y: 1.2, z: 0}
-  dPadController: {fileID: 0}
   gunController: {fileID: 6148313791108289960}
   angle: 5
   velAngle: 5
