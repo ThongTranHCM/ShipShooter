@@ -28783,7 +28783,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1276046021}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 741315465}
@@ -29143,7 +29143,43 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1404611082}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 7204f14f4c6571044916497c4fb52b60, type: 2}
+        m_TargetAssemblyTypeName: AudioTrackScriptableObject, Assembly-CSharp
+        m_MethodName: CreateTrackSource
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: valid_button
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 741315466}
+        m_TargetAssemblyTypeName: GamePlayManager, Assembly-CSharp
+        m_MethodName: ResumeGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 741315466}
+        m_TargetAssemblyTypeName: GamePlayManager, Assembly-CSharp
+        m_MethodName: QuitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1404611082
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29561,7 +29597,7 @@ MonoBehaviour:
   - {fileID: 231902030}
   - {fileID: 988693898}
   _numFrame: 01000000030000000a000000
-  _gameLoseScreen: {fileID: 474445300}
+  _gameLoseScreen: {fileID: 1255940658}
   _timeOutScreen: {fileID: 474445300}
   _pauseScreen: {fileID: 424090043}
   _gameWinScreen: {fileID: 1602081624}

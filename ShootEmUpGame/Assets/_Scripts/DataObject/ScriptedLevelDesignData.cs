@@ -35,6 +35,7 @@ public class ScriptedLevelDesignData : LevelDesignData
         int index = 0;
         float sinceStartTime = 0;
         float sinceLastWave = 0;
+        Debug.LogError("Install");
         while( index < stampList.Count){
             if (sinceStartTime > stampList[index].GetDelay() && stampList[index].GetDelay() >= 0) {
                 stampList[index].GetWave().SpawnWave(ZOffset, padding);
