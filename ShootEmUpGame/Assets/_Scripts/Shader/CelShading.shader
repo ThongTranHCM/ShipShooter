@@ -85,7 +85,7 @@ Shader "Unlit/CelShading"
 					fixed light = NdotL;
 					fixed4 color = lerp(i.unlit, i.base, saturate(light + _AmbientLight));
 					color = lerp(color, i.lit, saturate(pow(specular,2)));
-					color = Screen(_LightColor0 * smoothstep(0,0.2f,light), color);
+					color = Screen(_LightColor0 * smoothstep(0,0.2f,saturate(light)), color);
 					color = Screen(_LightenColor, color);
 					return color;
 				}

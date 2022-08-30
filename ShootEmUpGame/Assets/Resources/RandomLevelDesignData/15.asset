@@ -21,7 +21,7 @@ MonoBehaviour:
   numWaveList: 30
   baseHealth: 40
   startHealthMultiplier: 1
-  endHealthMultiplier: 4
+  endHealthMultiplier: 3
   startDensity: 1
   endDensity: 2
   addOnDropPoolList:
