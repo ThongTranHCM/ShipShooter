@@ -14,10 +14,9 @@ public class RewardResourceCanvasManager : MonoBehaviour
     private GameObject resourcePanel;
     
     // Start is called before the first frame update
-    void Awake()
+    public RewardResourceCanvasManager()
     {
         instance = this;
-        instance.Close();
     }
 
     public void Show(string Type, int Amount){

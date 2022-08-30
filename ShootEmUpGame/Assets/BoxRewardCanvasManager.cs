@@ -21,9 +21,8 @@ public class BoxRewardCanvasManager : MonoBehaviour
     Transform start;
     [SerializeField]
     Transform stop;
-    void Awake(){
+    public BoxRewardCanvasManager(){
         instance = this;
-        instance.Close();
     }
 
     private LTSeq GetAnimationSeq(){
