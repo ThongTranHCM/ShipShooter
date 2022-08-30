@@ -19,12 +19,15 @@ public class AddOnUIItem : MonoBehaviour
     public void Install(string addOnText, Sprite sprAddOn, int level, int curFragment, int capFragment)
     {
         _txtAddOnLevel.text = "" + level;
-        _fillBarFragment.SetValue(curFragment, capFragment);
+        _fillBarFragment.SetRawValue(curFragment, capFragment);
         _imgAddOn.sprite = sprAddOn;
         _imgAddOn.color = (level == 0) ? Color.gray : Color.white;
     }
     public void OnItemClick()
     {
         onBtnClick?.Invoke();
+    }
+    public void UpdateFragment(int curFragment, int capFragment, float duration = 0.5f, float delay = 0.0f){
+        _fillBarFragment.UpdateRawValue(curFragment, capFragment, duration, delay);
     }
 }

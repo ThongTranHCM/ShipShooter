@@ -50,7 +50,7 @@ public class RewardResourceManager : MonoBehaviour
         if(rewardQueue.Count > 0){
             LTSeq seq = BoxRewardCanvasManager.Instance.Show(Id);
             //seq.append(() => {GetReward();});
-            seq.append(() => {GetAddOn();});
+            seq.append(() => {GetFragment();});
         }    
     }
 
@@ -61,6 +61,11 @@ public class RewardResourceManager : MonoBehaviour
     public void GetAddOn(){
         SoundManager.Instance.PlaySFX("open_box");
         UnlockAddOnCanvasManager.Instance.Show("GunSplit");
+    }
+
+    public void GetFragment(){
+        SoundManager.Instance.PlaySFX("open_box");
+        FragmentRewardCanvasManager.Instance.Show("GunSplit", 30);
     }
 
     public void AddGold(int amount){

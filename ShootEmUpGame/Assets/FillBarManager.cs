@@ -44,18 +44,6 @@ public class FillBarManager : MonoBehaviour
         UpdateFillBar();
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        /*
-        changeLowPass.Input(0);
-        float progress = Mathf.Clamp(valueLowPass.Output(), 0, 1);
-        
-        fillImage.color = borderImage.color = (value != 1) ? baseColor : fullColor;
-        fillImage.color = borderImage.color += highlight * Color.white * Mathf.Clamp(changeLowPass.Output() / changeLowPass.GetAlpha(),0,0.1f);
-        */
-    }
-
     private void UpdateFillBar(){
         float offset = borderRectTransform.rect.width * Mathf.Clamp(animatedValue, 0, 1);
         fillRectTransform.sizeDelta = new Vector2(offset, fillRectTransform.sizeDelta.y);
@@ -63,30 +51,47 @@ public class FillBarManager : MonoBehaviour
 
     public void SetValue(float Value)
     {
+        value = Mathf.Clamp(Value, 0, 1);
+        animatedValue = value;
+        UpdateFillBar();
+    }
+    public void SetRawValue(float current, float max)
+    {
+        value = Mathf.Clamp(current / max, 0, 1);
+        animatedValue = value;
+        UpdateFillBar();
+    }
+
+    public void UpdateValue(float Value, float duration = 0.5f, float delay = 0.0f)
+    {
         float newValue = Value;
         newValue = Mathf.Clamp(newValue, 0, 1);
-        PlayAnimation(value, newValue, 0.5f);
+        PlayAnimation(value, newValue, duration, delay);
         value = newValue;
     }
-    public void SetValue(float current, float max)
+    public void UpdateRawValue(float current, float max, float duration = 0.5f, float delay = 0.0f)
     {
         float newValue = current/max;
         newValue = Mathf.Clamp(newValue, 0, 1);
-        PlayAnimation(value, newValue, 0.5f);
+        PlayAnimation(value, newValue, duration, delay);
         value = newValue;
     }
 
-    public void AddValue(float Value)
+    public void AddValue(float Value, float duration = 0.5f, float delay = 0.0f)
     {
         float newValue = value + Value;
         newValue = Mathf.Clamp(newValue, 0, 1);
-        PlayAnimation(value, newValue, 0.5f);
+        PlayAnimation(value, newValue, duration, delay);
         value = newValue;
     }
 
-    public void PlayAnimation(float a, float b, float duration){
+    public void PlayAnimation(float a, float b, float duration, float delay){
         LeanTween.cancel(gameObject);
-        LeanTween.value(gameObject,(float x) => {animatedValue = x; UpdateFillBar();},a,b,duration).setEase(LeanTweenType.easeOutBack);
-        LeanTween.value(gameObject,(float x) => {fillImage.color = borderImage.color = (value != 1) ? baseColor : fullColor; fillImage.color = borderImage.color += highlight * Color.white * x;},1,0,duration).setEase(LeanTweenType.easeInOutSine);
+        LTSeq seq = LeanTween.sequence();
+        seq.append(delay);
+        seq.append( () => {
+            LeanTween.value(gameObject,(float x) => {animatedValue = x; UpdateFillBar();},a,b,duration).setEase(LeanTweenType.easeOutBack);
+            LeanTween.value(gameObject,(float x) => {fillImage.color = borderImage.color = (value != 1) ? baseColor : fullColor; fillImage.color = borderImage.color += highlight * Color.white * x;},1,0,duration).setEase(LeanTweenType.easeInOutSine);
+        });
     }
 }
