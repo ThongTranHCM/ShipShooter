@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 185791734706087034}
   - component: {fileID: 185791734706087032}
   - component: {fileID: 185791734706087033}
+  - component: {fileID: 8669484569183965895}
   m_Layer: 5
   m_Name: RewardCanvas
   m_TagString: Untagged
@@ -282,6 +283,20 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &8669484569183965895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185791734706087038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f837ea9bffba5049b88a862f998e96c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  content: {fileID: 185791734737569501}
+  resourcePanel: {fileID: 1428241565397503275}
 --- !u!1 &185791734737569501
 GameObject:
   m_ObjectHideFlags: 0
@@ -10467,6 +10482,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c4c3c37be73a4d448bc2eb100102ca2, type: 3}
+--- !u!1 &1428241565397503275 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 604829820320196653, guid: 7c4c3c37be73a4d448bc2eb100102ca2,
+    type: 3}
+  m_PrefabInstance: {fileID: 1997042585856173318}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &3956964607875488343 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3269364832234569553, guid: 7c4c3c37be73a4d448bc2eb100102ca2,

@@ -33,11 +33,12 @@ public class RewardResourceManager : MonoBehaviour
 
     public void GetReward(){
         if(rewardQueue.Count > 0){
+            Debug.Log(rewardQueue.Count);
             (string, int) reward = rewardQueue.Dequeue();
             SoundManager.Instance.PlaySFX("open_box");
-            UtilityCanvasManager.Instance.ShowRewardResource(reward.Item1, reward.Item2);
+            RewardResourceCanvasManager.Instance.Show(reward.Item1, reward.Item2);
         } else {
-            UtilityCanvasManager.Instance.CloseRewardResrouce();
+            RewardResourceCanvasManager.Instance.Close();
         }
     }
 
@@ -47,7 +48,7 @@ public class RewardResourceManager : MonoBehaviour
 
     public void GetBoxReward(string Id){
         if(rewardQueue.Count > 0){
-            LTSeq seq = UtilityCanvasManager.Instance.ShowOpenBoxCanvas(Id);
+            LTSeq seq = BoxRewardCanvasManager.Instance.Show(Id);
             seq.append(() => {GetReward();});
         }    
     }
