@@ -22,10 +22,12 @@ public class BoxRewardCanvasManager : MonoBehaviour
     [SerializeField]
     Transform stop;
     public BoxRewardCanvasManager(){
-        instance = this;
+        if(instance == null){
+            instance = this;
+        }
     }
 
-    private LTSeq GetAnimationSeq(){
+    private LTSeq AnimationSeq(){
         Vector3 stretch = Vector3.up * 2 + Vector3.right * 0.5f + Vector3.forward;
         Vector3 normal = Vector3.one;
         Vector3 squash = Vector3.up * 0.9f + Vector3.right * 1.11f + Vector3.forward;
@@ -50,7 +52,7 @@ public class BoxRewardCanvasManager : MonoBehaviour
     public LTSeq Show(string BoxId){
         gameObject.SetActive(true);
         SetBox(BoxId);
-        return GetAnimationSeq();
+        return AnimationSeq();
     }
 
     public void Close(){

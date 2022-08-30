@@ -49,12 +49,18 @@ public class RewardResourceManager : MonoBehaviour
     public void GetBoxReward(string Id){
         if(rewardQueue.Count > 0){
             LTSeq seq = BoxRewardCanvasManager.Instance.Show(Id);
-            seq.append(() => {GetReward();});
+            //seq.append(() => {GetReward();});
+            seq.append(() => {GetAddOn();});
         }    
     }
 
     public void InstanceBoxReward(string Id){
         instance.GetBoxReward(Id);
+    }
+
+    public void GetAddOn(){
+        SoundManager.Instance.PlaySFX("open_box");
+        UnlockAddOnCanvasManager.Instance.Show("GunSplit");
     }
 
     public void AddGold(int amount){

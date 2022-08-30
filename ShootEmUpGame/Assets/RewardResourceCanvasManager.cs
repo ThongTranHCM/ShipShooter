@@ -16,7 +16,9 @@ public class RewardResourceCanvasManager : MonoBehaviour
     // Start is called before the first frame update
     public RewardResourceCanvasManager()
     {
-        instance = this;
+        if(instance == null){
+            instance = this;
+        }
     }
 
     public void Show(string Type, int Amount){
