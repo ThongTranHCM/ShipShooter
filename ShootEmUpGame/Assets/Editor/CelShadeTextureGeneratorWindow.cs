@@ -115,6 +115,7 @@ public class CelShadeTextureGeneratorWindow : EditorWindow
                     ExportRenderTexture(_unlitDirectory + "/" +fileName);
                 }
                 AssetDatabase.Refresh();
+                SaveChanges();
             }
         }
     }

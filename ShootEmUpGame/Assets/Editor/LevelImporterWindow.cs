@@ -29,6 +29,7 @@ public class LevelImporterWindow : EditorWindow
             GUILayout.Label(string.Format("Loaded {0} enemy data.", enemyDataDict.Count));
             if (GUILayout.Button("Load Level Design CSV")){
                 LoadCSV("LevelDesign");
+                SaveChanges();
             }
         }
     }
