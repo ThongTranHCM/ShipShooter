@@ -43,7 +43,7 @@ public class IAddOnData
         GameObject gunObject = (GameObject)GameObject.Instantiate(_spawnGun);
         IGunController iGunController = gunObject.GetComponent<IGunController>();
         iGunController.CopyGunData(_spawnGunData);
-        iGunController.Install(GetValue);
+        iGunController.Install(GetValue, (!HasOnHit && !HasPowerUp));
         return iGunController;
     }
     public OnHitController InstallOnHit()

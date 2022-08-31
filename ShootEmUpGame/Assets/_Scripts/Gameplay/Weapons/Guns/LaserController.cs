@@ -14,10 +14,10 @@ public class LaserController : IGunController
     private Vector2 size;
     private IEnumerator laserTask;
     private int curBulletIndex = 0;
-    public override void Install()
+    public override void Install(bool syncTime)
     {
         Run();
-        base.Install();
+        base.Install(syncTime);
     }
 
     public void Run()

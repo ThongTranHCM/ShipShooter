@@ -19,7 +19,7 @@ public class PlayerManager : MonoBehaviour
     {
         _iLives = GamePlayManager.Instance.Level.PlayerHP;
         _shipController.gunController.CopyGunData(_gunData);
-        _shipController.gunController.Install();
+        _shipController.gunController.Install(true);
         InstallAddOns();
         SetLives(_iLives);
         yield return null;

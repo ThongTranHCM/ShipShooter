@@ -115,7 +115,7 @@ namespace ThongNguyen.PlayerController
             Transform tfGun = PoolManager.Pools[Constants.poolNameEnemyGun].Spawn(prefab.transform, transform.position, transform.rotation, transform);
             gunController = tfGun.GetComponent<IGunController>();
             gunController.CopyGunData(gunData);
-            gunController.Install();
+            gunController.Install(false);
         }
         protected List<Material> GetPiecesOfBody()
         {

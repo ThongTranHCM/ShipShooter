@@ -64,7 +64,7 @@ public class IGunController : MonoBehaviour
         }
     }
 
-    public virtual void Install(float ratioDamage)
+    public virtual void Install(float ratioDamage, bool syncTime = true)
     {
         gunData.bulletData.ApplyEfect.ratioDamage = ratioDamage;
 
@@ -73,14 +73,21 @@ public class IGunController : MonoBehaviour
         {
             _shootAngles[i] = shootTransforms[i].transform.localEulerAngles.z;
         }
-        Install();
+        Install(syncTime);
     }
 
-    public virtual void Install()
+    public virtual void Install(bool syncTime)
     {
         if (isInstalled)
         {
             return;
+        }
+        if (syncTime)
+        {
+            for (int i = 0; i < bulletParticleSystems.Length; i++)
+            {
+                bulletParticleSystems[i].myParticleSystem.Simulate(Time.time, false, true);
+            }
         }
         for (int i = 0; i < bulletParticleSystems.Length; i++)
         {
@@ -165,6 +172,7 @@ public class IGunController : MonoBehaviour
     {
         if (_state.Equals(GunState.shot))
         {
+            Debug.LogError("Time " + gameObject.name + "  " + Time.time + "  " + bulletParticleSystems[0].myParticleSystem.time);
             if (gunData.numWavePerShot > 0)
             {
                 switch (_tmpShootPhase)
@@ -177,7 +185,6 @@ public class IGunController : MonoBehaviour
                                 bulletParticleSystems[j].Orientate();
                             }
                         }
-
                         ShootParticles();
                         ShootObjects();
                         if (_tmpWaveId + 1 >= gunData.numWavePerShot)
