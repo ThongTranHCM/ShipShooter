@@ -352,7 +352,7 @@ MonoBehaviour:
   fullColor: {r: 0, g: 0, b: 0, a: 0}
   fill: {fileID: 6296525580308784142}
   border: {fileID: 5987160082100921286}
-  txtProgress: {fileID: 0}
+  txtProgress: {fileID: 14080955319908497}
 --- !u!114 &344367033874171616
 MonoBehaviour:
   m_ObjectHideFlags: 0

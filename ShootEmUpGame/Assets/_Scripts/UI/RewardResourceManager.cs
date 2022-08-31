@@ -28,12 +28,10 @@ public class RewardResourceManager : MonoBehaviour
         } else {
             instance.AddReward(id, amount);
         }
-        
     }
 
     public void GetReward(){
         if(rewardQueue.Count > 0){
-            Debug.Log(rewardQueue.Count);
             (string, int) reward = rewardQueue.Dequeue();
             SoundManager.Instance.PlaySFX("open_box");
             RewardResourceCanvasManager.Instance.Show(reward.Item1, reward.Item2);
@@ -49,23 +47,12 @@ public class RewardResourceManager : MonoBehaviour
     public void GetBoxReward(string Id){
         if(rewardQueue.Count > 0){
             LTSeq seq = BoxRewardCanvasManager.Instance.Show(Id);
-            //seq.append(() => {GetReward();});
-            seq.append(() => {GetFragment();});
+            seq.append(() => {GetReward();});
         }    
     }
 
     public void InstanceBoxReward(string Id){
         instance.GetBoxReward(Id);
-    }
-
-    public void GetAddOn(){
-        SoundManager.Instance.PlaySFX("open_box");
-        UnlockAddOnCanvasManager.Instance.Show("GunSplit");
-    }
-
-    public void GetFragment(){
-        SoundManager.Instance.PlaySFX("open_box");
-        FragmentRewardCanvasManager.Instance.Show("GunSplit", 30);
     }
 
     public void AddGold(int amount){

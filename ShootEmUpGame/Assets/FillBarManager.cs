@@ -66,23 +66,26 @@ public class FillBarManager : MonoBehaviour
     {
         float newValue = Value;
         newValue = Mathf.Clamp(newValue, 0, 1);
-        PlayAnimation(value, newValue, duration, delay);
+        float oldValue = value;
         value = newValue;
+        PlayAnimation(oldValue, newValue, duration, delay);
     }
     public void UpdateRawValue(float current, float max, float duration = 0.5f, float delay = 0.0f)
     {
         float newValue = current/max;
         newValue = Mathf.Clamp(newValue, 0, 1);
-        PlayAnimation(value, newValue, duration, delay);
+        float oldValue = value;
         value = newValue;
+        PlayAnimation(oldValue, newValue, duration, delay);
     }
 
     public void AddValue(float Value, float duration = 0.5f, float delay = 0.0f)
     {
         float newValue = value + Value;
         newValue = Mathf.Clamp(newValue, 0, 1);
-        PlayAnimation(value, newValue, duration, delay);
+        float oldValue = value;
         value = newValue;
+        PlayAnimation(oldValue, newValue, duration, delay);
     }
 
     public void PlayAnimation(float a, float b, float duration, float delay){
@@ -91,7 +94,7 @@ public class FillBarManager : MonoBehaviour
         seq.append(delay);
         seq.append( () => {
             LeanTween.value(gameObject,(float x) => {animatedValue = x; UpdateFillBar();},a,b,duration).setEase(LeanTweenType.easeOutBack);
-            LeanTween.value(gameObject,(float x) => {fillImage.color = borderImage.color = (value != 1) ? baseColor : fullColor; fillImage.color = borderImage.color += highlight * Color.white * x;},1,0,duration).setEase(LeanTweenType.easeInOutSine);
+            LeanTween.value(gameObject,(float x) => {fillImage.color = borderImage.color = (value != 1) ? baseColor : fullColor; fillImage.color = borderImage.color += Color.white * x;},1,0,duration).setEase(LeanTweenType.easeInSine);
         });
     }
 }
