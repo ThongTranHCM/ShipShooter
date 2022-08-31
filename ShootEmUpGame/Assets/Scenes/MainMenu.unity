@@ -54135,7 +54135,7 @@ PrefabInstance:
     - target: {fileID: 1317896785703650315, guid: e1328d33836c5884a939af5cad0a4d54,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: GetBoxReward
+      value: InstanceBoxReward
       objectReference: {fileID: 0}
     - target: {fileID: 1317896785703650315, guid: e1328d33836c5884a939af5cad0a4d54,
         type: 3}
@@ -55295,7 +55295,7 @@ PrefabInstance:
     - target: {fileID: 8679944845063796388, guid: e1328d33836c5884a939af5cad0a4d54,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: GetBoxReward
+      value: InstanceBoxReward
       objectReference: {fileID: 0}
     - target: {fileID: 8679944845063796388, guid: e1328d33836c5884a939af5cad0a4d54,
         type: 3}
