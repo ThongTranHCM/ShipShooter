@@ -4,7 +4,7 @@ using UnityEngine;
 using ThongNguyen.PlayerController;
 public class PlayerManager : MonoBehaviour
 {
-    private IShipController _shipController;
+    public IShipController _shipController;
     public GameObject shipObject
     {
         get { return _shipController.gameObject; }
