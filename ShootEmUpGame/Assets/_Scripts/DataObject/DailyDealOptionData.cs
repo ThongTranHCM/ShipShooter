@@ -13,32 +13,38 @@ public class DailyDealOptionData : ScriptableObject
         public string ID{
             get{ return id;}
         }
-        private float interval;
-        private int lastTime;
-        private bool isInit = false;
+        [SerializeField]
+        private List<float> probList;
+        private int level;
         const float gamma = 0.5f;
 
-        public void Init(){
-            if(!isInit){
-                interval = 8 * 3600;
-                lastTime = System.DateTime.Now.Second - 8 * 3600;
-                isInit = true;
+        public void Update(){
+            for(int i = 0; i < probList.Count; i++){
+                if(i < level){
+                    probList[i] = probList[i] * gamma + (1 - gamma);
+                } else {
+                    probList[i] = probList[i] * gamma;
+                }
             }
         }
 
-        public void Update(){
-            Init();
-            float estimateInterval = System.DateTime.Now.Second - lastTime;
-            lastTime = System.DateTime.Now.Second;
-            estimateInterval = estimateInterval * gamma + interval * (1 - gamma);
-            interval = estimateInterval;
-            Debug.Log(interval);
+        public float GetProbability(int Index){
+            for(int i = probList.Count - 1; i < Index; i++){
+                probList.Add(0);
+            }
+            return probList[Index];
         }
 
-        public float GetChosenProbability(){
-            Init();
-            float delay = System.DateTime.Now.Second - lastTime;
-            return Mathf.Exp(-delay/interval);
+        public int GetLevel(){
+            return level;
+        }
+
+        public void IncreaseLevel(){
+            level += 1;
+        }
+
+        public void ResetLevel(){
+            level = 0;
         }
     }
     [System.Serializable]
@@ -77,5 +83,8 @@ public class DailyDealOptionData : ScriptableObject
     public int GetDiamondCost(int index){
         index = Mathf.Min(index, conversionList.Count - 1);
         return conversionList[index].Diamond;
+    }
+    public int GetConversionListCount(){
+        return conversionList.Count;
     }
 }

@@ -14,31 +14,43 @@ public class DailyDealManager : MonoBehaviour
         public DailyDealOptionData.Option Option{
             get{ return option; }
         }
-        private int index;
-        public int Index{
-            get{ return index; }
-        }
         private DailyDealOptionData dailyDealOptionData;
 
         public Deal(DailyDealOptionData Data, DailyDealOptionData.Option Option){
             dailyDealOptionData = Data;
             option = Option;
-            index = 0;
         }
 
-        public void UpdateDeal(){
-            if(index == 0){
-                option.Update();
-            }
-            index += 1;
+        public void UpdateLevel(){
+            option.IncreaseLevel();
+        }
+
+        public void UpdateProb(){
+            option.Update();
         }
 
         public int GetFragment(){
-            return dailyDealOptionData.GetFragment(index);
+            return dailyDealOptionData.GetFragment(option.GetLevel());
         }
 
         public int GetDiamondCost(){
-            return dailyDealOptionData.GetDiamondCost(index);
+            return dailyDealOptionData.GetDiamondCost(option.GetLevel());
+        }
+
+        public float BestDeal(){
+            float max = 0;
+            float diamondSum = 0;
+            for(int i = 0; i < dailyDealOptionData.GetConversionListCount(); i++){
+                diamondSum += dailyDealOptionData.GetDiamondCost(i);
+                if(diamondSum * option.GetProbability(i) > max){
+                    max = diamondSum * option.GetProbability(i);
+                }
+            }
+            return max;
+        }
+
+        public void ResetLevel(){
+            option.ResetLevel();
         }
     }
     [SerializeField]
@@ -75,7 +87,7 @@ public class DailyDealManager : MonoBehaviour
         for(int i = 0; i < Num; i++){
             Deal best = allList[0];
             foreach(Deal deal in allList){
-                if(deal.Option.GetChosenProbability() > best.Option.GetChosenProbability()){
+                if(deal.BestDeal() > best.BestDeal()){
                     best = deal;
                 }
             }
@@ -90,7 +102,8 @@ public class DailyDealManager : MonoBehaviour
         int cur_time = (int)(System.DateTime.UtcNow - epochStart).TotalSeconds;
         countDown = cur_time % interval;
         foreach(Deal deal in dealList){
-            deal.UpdateDeal();
+            deal.UpdateProb();
+            deal.ResetLevel();
         }
         ResetDeals();
     }
