@@ -34,6 +34,7 @@ public class IGunController : MonoBehaviour
     [SerializeField]
     private GameObject _bulletPrefab;
     private GunState _state;
+    private bool needSyncTime = false;
 
     private System.Action callbackAllGunsEmptyParticle;
 
@@ -82,13 +83,6 @@ public class IGunController : MonoBehaviour
         {
             return;
         }
-        if (syncTime)
-        {
-            for (int i = 0; i < bulletParticleSystems.Length; i++)
-            {
-                bulletParticleSystems[i].myParticleSystem.Simulate(Time.time, false, true);
-            }
-        }
         for (int i = 0; i < bulletParticleSystems.Length; i++)
         {
             bulletParticleSystems[i].Install(gunData, !stopGunAtInstall);
@@ -96,6 +90,14 @@ public class IGunController : MonoBehaviour
         for (int i = 0; i < bulletControllers.Length; i++)
         {
             bulletControllers[i].Install(this, gunData.bulletData);
+        }
+        if (syncTime)
+        {
+            needSyncTime = syncTime;
+            for (int i = 0; i < bulletParticleSystems.Length; i++)
+            {
+                bulletParticleSystems[i].myParticleSystem.Simulate(GamePlayManager.Instance.PlayerManager._shipController.gunController.bulletParticleSystems[0].myParticleSystem.time, false, true);
+            }
         }
         isInstalled = true;
         if (!stopGunAtInstall)
@@ -172,6 +174,15 @@ public class IGunController : MonoBehaviour
     {
         if (_state.Equals(GunState.shot))
         {
+            if (needSyncTime)
+            {
+                needSyncTime = false;
+                for (int i = 0; i < bulletParticleSystems.Length; i++)
+                {
+                    bulletParticleSystems[i].myParticleSystem.time = GamePlayManager.Instance.PlayerManager._shipController.gunController.bulletParticleSystems[0].myParticleSystem.time;
+                }
+            }
+            //Debug.LogError("Time " + gameObject.name + "  " + bulletParticleSystems[0].myParticleSystem.time + "  " + GamePlayManager.Instance.PlayerManager._shipController.gunController.bulletParticleSystems[0].myParticleSystem.time);
             if (gunData.numWavePerShot > 0)
             {
                 switch (_tmpShootPhase)
