@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RewardAddOnManager : MonoBehaviour
+public class RewardFragmentManager : MonoBehaviour
 {
-    private static RewardAddOnManager instance = null;
-    public static RewardAddOnManager Instance{
+    private static RewardFragmentManager instance = null;
+    public static RewardFragmentManager Instance{
         get {return instance;}
     }
     [SerializeField]
     private AddOnEquipData addOnEquipData;
-    private Queue<string> rewardQueue = new Queue<string>();
+    private Queue<(string, int)> rewardQueue = new Queue<(string,int)>();
     public void Awake(){
         DontDestroyOnLoad(gameObject);
         if(instance == null){
@@ -20,25 +20,27 @@ public class RewardAddOnManager : MonoBehaviour
         }
     }
 
-    public void AddReward(string id){
+    
+    public void AddReward(string ID, int Amount){
         if(instance == this){
-            rewardQueue.Enqueue(id);
+            rewardQueue.Enqueue((ID, Amount));
         } else {
-            instance.AddReward(id);
+            instance.AddReward(ID, Amount);
         }
     }
 
     public void GetReward(){
         if(rewardQueue.Count > 0){
-            string reward = rewardQueue.Dequeue();
-            IAddOnData data = addOnEquipData.GetAddOnData(reward);
+            (string,int) reward = rewardQueue.Dequeue();
+            IAddOnData data = addOnEquipData.GetAddOnData(reward.Item1);
             SoundManager.Instance.PlaySFX("open_box");
-            UnlockAddOnCanvasManager.Instance.Show(reward);
+            FragmentRewardCanvasManager.Instance.Show(reward.Item1, reward.Item2);
         } else {
-            UnlockAddOnCanvasManager.Instance.Close();
+            FragmentRewardCanvasManager.Instance.Close();
         }
     }
 
+    
     public void InstanceGetReward(){
         instance.GetReward();
     }

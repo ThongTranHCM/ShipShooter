@@ -17,7 +17,7 @@ MonoBehaviour:
     name: Gold
     BigIconGameObject: {fileID: 3520573372900180125, guid: 3962b3efd2d0d5c46ac9930063913394,
       type: 3}
-    SmallIconGameObject: {fileID: 501760267992323622, guid: 3cf182c1f5977044d943dca2e0744e2b,
+    SmallIconGameObject: {fileID: 6309908646811936866, guid: 0eacc8ff0eb2ee048b76422cae947a46,
       type: 3}
   - id: diamond
     name: Diamond

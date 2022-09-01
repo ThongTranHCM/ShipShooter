@@ -13,41 +13,32 @@ public class DailyDealOptionData : ScriptableObject
         public string ID{
             get{ return id;}
         }
-        private List<float> intervals = new List<float>();
-        private List<int> lastTimes = new List<int>();
-        const int defaultInterval = 8 * 3600;
-        const float gamma = 0.1f;
-        
-        public float GetInterval(int Index){
-            for(int i = intervals.Count; i <= Index; i++){
-                intervals.Add(defaultInterval);
+        private float interval;
+        private int lastTime;
+        private bool isInit = false;
+        const float gamma = 0.5f;
+
+        public void Init(){
+            if(!isInit){
+                interval = 8 * 3600;
+                lastTime = System.DateTime.Now.Second - 8 * 3600;
+                isInit = true;
             }
-            return intervals[Index];
         }
 
-        public void SetInterval(int Index, float Value){
-            GetInterval(Index);
-            intervals[Index] = Value;
+        public void Update(){
+            Init();
+            float estimateInterval = System.DateTime.Now.Second - lastTime;
+            lastTime = System.DateTime.Now.Second;
+            estimateInterval = estimateInterval * gamma + interval * (1 - gamma);
+            interval = estimateInterval;
+            Debug.Log(interval);
         }
 
-        public int GetLastTime(int Index){
-            for(int i = intervals.Count; i <= Index; i++){
-                lastTimes.Add(System.DateTime.Now.Second - defaultInterval);
-            }
-            return lastTimes[Index];
-        }
-
-        public void ResetLastTime(int Index){
-            if(Index > lastTimes.Count){
-                lastTimes[lastTimes.Count - 1] = System.DateTime.Now.Second;
-            }
-            lastTimes[Index] = System.DateTime.Now.Second;
-        }
-
-        public void UpdateInterval(int Index){
-            float estimateInterval = System.DateTime.Now.Second - GetLastTime(Index);
-            estimateInterval = estimateInterval * gamma + intervals[Index] * (1 - gamma);
-            SetInterval(Index, estimateInterval);
+        public float GetChosenProbability(){
+            Init();
+            float delay = System.DateTime.Now.Second - lastTime;
+            return Mathf.Exp(-delay/interval);
         }
     }
     [System.Serializable]
@@ -80,9 +71,11 @@ public class DailyDealOptionData : ScriptableObject
     [SerializeField]
     private List<Conversion> conversionList;
     public int GetFragment(int index){
+        index = Mathf.Min(index, conversionList.Count - 1);
         return conversionList[index].Fragment;
     }
     public int GetDiamondCost(int index){
+        index = Mathf.Min(index, conversionList.Count - 1);
         return conversionList[index].Diamond;
     }
 }

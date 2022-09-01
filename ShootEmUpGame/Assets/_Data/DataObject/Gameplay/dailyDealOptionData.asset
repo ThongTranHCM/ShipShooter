@@ -14,9 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   optionList:
   - id: GunSplit
+    interval: 0
+    lastTime: -1
   - id: GunLaser
+    interval: 0
+    lastTime: -1
   - id: GunEnergyOrb
+    interval: 0
+    lastTime: -1
   - id: GunPlasma
+    interval: 0
+    lastTime: -1
   conversionList:
   - fragment: 35
     diamond: 15

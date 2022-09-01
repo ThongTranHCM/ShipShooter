@@ -26,15 +26,10 @@ public class DailyDealManager : MonoBehaviour
             index = 0;
         }
 
-        public float GetChosenProbability(){
-            int LastTime = option.GetLastTime(index);
-            float Interval = index;
-            float delay = System.DateTime.Now.Second - LastTime;
-            return Mathf.Exp(-delay/Interval);
-        }
-
         public void UpdateDeal(){
-            option.UpdateInterval(index);
+            if(index == 0){
+                option.Update();
+            }
             index += 1;
         }
 
@@ -80,7 +75,7 @@ public class DailyDealManager : MonoBehaviour
         for(int i = 0; i < Num; i++){
             Deal best = allList[0];
             foreach(Deal deal in allList){
-                if(deal.GetChosenProbability() > best.GetChosenProbability()){
+                if(deal.Option.GetChosenProbability() > best.Option.GetChosenProbability()){
                     best = deal;
                 }
             }
