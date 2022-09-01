@@ -35,6 +35,7 @@ public class RewardFragmentManager : MonoBehaviour
             IAddOnData data = addOnEquipData.GetAddOnData(reward.Item1);
             SoundManager.Instance.PlaySFX("open_box");
             FragmentRewardCanvasManager.Instance.Show(reward.Item1, reward.Item2);
+            IncreaseFragment(reward.Item1, reward.Item2);
         } else {
             FragmentRewardCanvasManager.Instance.Close();
         }
@@ -58,5 +59,9 @@ public class RewardFragmentManager : MonoBehaviour
 
     public IAddOnData GetAddOnData(string Id){
         return addOnEquipData.GetAddOnData(Id);
+    }
+
+    private void IncreaseFragment(string Id, int Amount){
+        DataManager.Instance.addOnUserData.GetAddOnInfo(addOnEquipData.GetType(Id)).CurrentFragment += Amount;
     }
 }

@@ -36,8 +36,10 @@ public class FragmentRewardCanvasManager : MonoBehaviour
 
     private void AddFragment(string Id, int Amount){
         IAddOnData addOnData = addOnEquipData.GetAddOnData(Id);
-        addOnItem.Install(Id, addOnData.GetSprite, (int)addOnData.GetLevel, 20, 100);
-        addOnItem.UpdateFragment(20 + Amount, 100, 1.0f, 0.1f);
+        int oldFragment = addOnData.GetFragment;
+        int newFragment = oldFragment + Amount;
+        addOnItem.Install(Id, addOnData.GetSprite, (int)addOnData.GetLevel, addOnData.GetFragment, 1000);
+        addOnItem.UpdateFragment(newFragment, 1000, 1.0f, 0.1f);
     }
 
     public void Close(){

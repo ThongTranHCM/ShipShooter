@@ -80,7 +80,7 @@ public class AddOnEquipData : ScriptableObject
     public IAddOnData GetAddOnData(string addOnStr)
     {
         IAddOnData result = null;
-        AddOnType addOnType = (AddOnType)Enum.Parse(typeof(AddOnType), addOnStr);
+        AddOnType addOnType = GetType(addOnStr);
         for (int i = 0; i < addOnDatas.Count; i++)
         {
             if (addOnDatas[i].GetAddOnType.Equals(addOnType) && addOnDatas[i].IsUnlocked)
@@ -90,5 +90,8 @@ public class AddOnEquipData : ScriptableObject
             }
         }
         return result;
+    }
+    public AddOnType GetType(string addOnStr){
+        return (AddOnType)Enum.Parse(typeof(AddOnType), addOnStr);
     }
 }
