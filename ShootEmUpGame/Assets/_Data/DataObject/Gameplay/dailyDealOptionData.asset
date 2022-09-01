@@ -15,7 +15,7 @@ MonoBehaviour:
   optionList:
   - id: GunSplit
   - id: GunLaser
-  - id: GunOrb
+  - id: GunEnergyOrb
   - id: GunPlasma
   conversionList:
   - fragment: 35

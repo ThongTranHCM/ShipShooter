@@ -37,3 +37,9 @@ MonoBehaviour:
       type: 3}
     SmallIconGameObject: {fileID: 2601220070320877090, guid: b456c3be3a006104cbefcfdc1f939528,
       type: 3}
+  - id: fragment
+    name: Fragment
+    BigIconGameObject: {fileID: 501760267992323622, guid: 3cf182c1f5977044d943dca2e0744e2b,
+      type: 3}
+    SmallIconGameObject: {fileID: 501760267992323622, guid: 3cf182c1f5977044d943dca2e0744e2b,
+      type: 3}

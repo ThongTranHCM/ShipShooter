@@ -15,7 +15,7 @@ public class DailyDealPanelManager : MonoBehaviour
 
     public void SetDeal(DailyDealManager.Deal Deal){
         IAddOnData addOnData = addOnEquipData.GetAddOnData(Deal.Option.ID);
-        addOnUIItem.Install(Deal.Option.ID, addOnData.GetSprite, (int)addOnData.GetLevel, 0, 0);
+        addOnUIItem.Install(Deal.Option.ID, addOnData.GetSprite, (int)addOnData.GetLevel, 0, 100);
         fragmentText.SetResource("fragment");
         fragmentText.SetText(string.Format("+{0}",Deal.GetFragment().ToString()));
         diamondText.SetResource("diamond");

@@ -63966,8 +63966,7 @@ MonoBehaviour:
   resourceAmount: 0
   resourceData: {fileID: 11400000, guid: 62bdbbc8a87a5054fb4239c354c22b15, type: 2}
   bigIcon: {fileID: 4507386703793674006}
-  smallIcon: {fileID: 6611465416320308962}
-  amountTxt: {fileID: 3939007166147684964}
+  resourceText: {fileID: 0}
   nameTxt: {fileID: 7904043587272589232}
 --- !u!1001 &1019313080413238251
 PrefabInstance:
@@ -70763,10 +70762,20 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6728150902322149313, guid: 26fc74154055ce6448d9fc3e09116dc1,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6855973663712832065, guid: 26fc74154055ce6448d9fc3e09116dc1,
         type: 3}
       propertyPath: m_SizeDelta.x
       value: -24.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 7172212788225350632, guid: 26fc74154055ce6448d9fc3e09116dc1,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7376166140119469064, guid: 26fc74154055ce6448d9fc3e09116dc1,
         type: 3}
@@ -70941,6 +70950,11 @@ PrefabInstance:
     - target: {fileID: 9089741721223872949, guid: 26fc74154055ce6448d9fc3e09116dc1,
         type: 3}
       propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9146032206831154443, guid: 26fc74154055ce6448d9fc3e09116dc1,
+        type: 3}
+      propertyPath: m_Interactable
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9183959503409360139, guid: 26fc74154055ce6448d9fc3e09116dc1,
