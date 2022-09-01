@@ -172,7 +172,6 @@ public class IGunController : MonoBehaviour
     {
         if (_state.Equals(GunState.shot))
         {
-            Debug.LogError("Time " + gameObject.name + "  " + Time.time + "  " + bulletParticleSystems[0].myParticleSystem.time);
             if (gunData.numWavePerShot > 0)
             {
                 switch (_tmpShootPhase)
