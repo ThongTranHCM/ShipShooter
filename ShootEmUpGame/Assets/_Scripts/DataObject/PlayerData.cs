@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 /**
  * PlayerSetting : Class cấu hình hệ thống nhân vật bao gồm thú cưỡi (MountSetting) và thú cưng (Pet)
@@ -75,7 +77,6 @@ public class PlayerData
 
     public PlayerData()
     {
-
     }
 
     public void InitData()
@@ -115,6 +116,32 @@ public class PlayerData
     public int GetExpForLevel(int level)
     {
         return 500;
+    }
+
+    [System.Serializable]
+    public class ShipProgressData
+    {
+        public int shipId;
+        public int shipLevel;
+    }
+
+    [SerializeField]
+    private List<ShipProgressData> _listShipProgress;
+    public List<ShipProgressData> ListShipProgress
+    {
+        get
+        {
+            if (_listShipProgress == null)
+            {
+                Debug.LogError("Create New Ship Progress");
+                _listShipProgress = new List<ShipProgressData>();
+                ShipProgressData startingShip = new ShipProgressData();
+                startingShip.shipId = 0;
+                startingShip.shipLevel = 1;
+                _listShipProgress.Add(startingShip);
+            }
+            return _listShipProgress;
+        }
     }
 }
 
