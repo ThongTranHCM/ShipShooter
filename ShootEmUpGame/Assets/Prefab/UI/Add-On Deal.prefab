@@ -290,19 +290,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7503971795824776551}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11400000, guid: 7204f14f4c6571044916497c4fb52b60, type: 2}
-        m_TargetAssemblyTypeName: AudioTrackScriptableObject, Assembly-CSharp
-        m_MethodName: CreateTrackSource
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: valid_button
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &4130866832364114083
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,6 +307,7 @@ MonoBehaviour:
   addOnUIItem: {fileID: 34054167706547517}
   fragmentText: {fileID: 744298266671440057}
   diamondText: {fileID: 4678673828378908487}
+  button: {fileID: 6561056722781256630}
 --- !u!1001 &1991474491025625303
 PrefabInstance:
   m_ObjectHideFlags: 0

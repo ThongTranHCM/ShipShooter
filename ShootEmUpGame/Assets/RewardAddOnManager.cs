@@ -50,9 +50,7 @@ public class RewardAddOnManager : MonoBehaviour
     }
 
     public void GetBoxReward(string Id){
-        Debug.Log("Checking If Has Reward");
         if(rewardQueue.Count > 0){
-            Debug.Log("Open Box");
             LTSeq seq = BoxRewardCanvasManager.Instance.Show(Id);
             seq.append(() => {GetReward();});
         }    

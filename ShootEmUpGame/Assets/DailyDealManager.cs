@@ -43,7 +43,7 @@ public class DailyDealManager : MonoBehaviour
         }
 
         public int GetDiamondCost(){
-            return dailyDealOptionData.GetFragment(index);
+            return dailyDealOptionData.GetDiamondCost(index);
         }
     }
     [SerializeField]
@@ -97,8 +97,7 @@ public class DailyDealManager : MonoBehaviour
         foreach(Deal deal in dealList){
             deal.UpdateDeal();
         }
-        
-        //ResetUI();
+        ResetDeals();
     }
 
     public void ResetDeals(){
