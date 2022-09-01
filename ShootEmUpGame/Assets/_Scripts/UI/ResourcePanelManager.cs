@@ -16,9 +16,7 @@ public class ResourcePanelManager : MonoBehaviour
     [SerializeField]
     private GameObject bigIcon;
     [SerializeField]
-    private GameObject smallIcon;
-    [SerializeField]
-    private TextMeshProUGUI amountTxt;
+    private ResourceTextManager resourceText;
     [SerializeField]
     private TextMeshProUGUI nameTxt;
 
@@ -34,26 +32,24 @@ public class ResourcePanelManager : MonoBehaviour
 
     private void UpdateUI(string ID, int Amount){
         ResourceData.Type type = resourceData.GetType(ID);
-        RemoveIcon();
-        Instantiate(type.BigIconGameObject, bigIcon.transform.position, Quaternion.identity, bigIcon.transform);
-        Instantiate(type.SmallIconGameObject, smallIcon.transform.position, Quaternion.identity, smallIcon.transform);
+        SetBigIcon(ID);
+        resourceText.SetResource(ID);
         if(Amount <= 1){
             nameTxt.text = type.name;
             nameTxt.gameObject.SetActive(true);
-            amountTxt.gameObject.SetActive(false);
+            resourceText.gameObject.SetActive(false);
         } else {
-            amountTxt.text = Amount.ToString();
+            resourceText.SetText(Amount.ToString());
             nameTxt.gameObject.SetActive(false);
-            amountTxt.gameObject.SetActive(true);
+            resourceText.gameObject.SetActive(true);
         }
     }
 
-    private void RemoveIcon(){
+    private void SetBigIcon(string ID){
+        ResourceData.Type type = resourceData.GetType(ID);
         foreach(Transform child in bigIcon.transform){
             Object.Destroy(child.gameObject);
         }
-        foreach(Transform child in smallIcon.transform){
-            Object.Destroy(child.gameObject);
-        }
+        Instantiate(type.BigIconGameObject, bigIcon.transform.position, Quaternion.identity, bigIcon.transform);
     }
 }

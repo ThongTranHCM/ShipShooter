@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47dd127c9daeaa640bf0515254295c17, type: 3}
+  m_Name: dailyDealOptionData
+  m_EditorClassIdentifier: 
+  optionList:
+  - id: GunSplit
+  - id: GunLaser
+  - id: GunOrb
+  - id: GunPlasma
+  conversionList:
+  - fragment: 35
+    diamond: 15
+  - fragment: 50
+    diamond: 25
+  - fragment: 70
+    diamond: 45
+  - fragment: 100
+    diamond: 85
+  - fragment: 145
+    diamond: 145
+  - fragment: 205
+    diamond: 265
+  - fragment: 295
+    diamond: 470
+  - fragment: 420
+    diamond: 845
+  - fragment: 600
+    diamond: 1515

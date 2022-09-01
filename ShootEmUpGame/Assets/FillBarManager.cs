@@ -20,12 +20,13 @@ public class FillBarManager : MonoBehaviour
     [SerializeField]
     private GameObject border;
     [SerializeField]
-    private TextMeshProUGUI txtProgress;
-    private RectTransform fillRectTransform;
-    private RectTransform borderRectTransform;
-    private Image fillImage;
-    private Image borderImage;
+    private TextMeshProUGUI txtProgress = null;
+    private RectTransform fillRectTransform = null;
+    private RectTransform borderRectTransform = null;
+    private Image fillImage = null;
+    private Image borderImage = null;
     private float animatedValue;
+    private bool didInit = false;
     
     // Start is called before the first frame update
     void Awake()
@@ -41,12 +42,18 @@ public class FillBarManager : MonoBehaviour
         borderImage = border.GetComponent<Image>();
         fillImage.color = borderImage.color = baseColor;
         animatedValue = value;
+        didInit = true;
         UpdateFillBar();
     }
 
     private void UpdateFillBar(){
-        float offset = borderRectTransform.rect.width * Mathf.Clamp(animatedValue, 0, 1);
-        fillRectTransform.sizeDelta = new Vector2(offset, fillRectTransform.sizeDelta.y);
+        if(didInit){
+            float offset = borderRectTransform.rect.width * Mathf.Clamp(animatedValue, 0, 1);
+            fillRectTransform.sizeDelta = new Vector2(offset, fillRectTransform.sizeDelta.y);
+        } else {
+            Init();
+        }
+        
     }
 
     public void SetValue(float Value)

@@ -17,9 +17,9 @@ MonoBehaviour:
   numOfBulletPerWave: 0
   timeDelayForEachWave: 0
   bulletData:
-    speed: 15
-    timeToMove: 1
-    canPenetrated: 1
+    speed: 25
+    timeToMove: 2
+    canPenetrated: 0
     _targetLocked: {fileID: 0}
     rotSpeed: 0
     timeFollowTarget: 0
