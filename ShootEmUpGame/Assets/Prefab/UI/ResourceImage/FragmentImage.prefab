@@ -7,6 +7,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 761489414458619069, guid: 0eacc8ff0eb2ee048b76422cae947a46,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7185f77154ecfae46b815ef46f22fd23,
+        type: 3}
     - target: {fileID: 3107366528092547584, guid: 0eacc8ff0eb2ee048b76422cae947a46,
         type: 3}
       propertyPath: m_LocalScale.x
