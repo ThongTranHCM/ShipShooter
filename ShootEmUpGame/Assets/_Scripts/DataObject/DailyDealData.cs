@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-[CreateAssetMenu(fileName = "dailyDealData", menuName = "Data/DailyDealData")]
-public class DailyDealData : ScriptableObject
+public class DailyDealData
 {
     [System.Serializable]
     public class Option{
@@ -14,9 +13,8 @@ public class DailyDealData : ScriptableObject
             get{ return id;}
         }
         private List<float> probList = new List<float>();
-        private int level;
+        private int level = 0;
         const float gamma = 0.5f;
-
         public void Update(){
             for(int i = 0; i < probList.Count; i++){
                 if(i < level){
@@ -26,26 +24,23 @@ public class DailyDealData : ScriptableObject
                 }
             }
         }
-
         public float GetProbability(int Index){
             for(int i = probList.Count - 1; i < Index; i++){
                 probList.Add(1);
             }
             return probList[Index];
         }
-
         public int GetLevel(){
             return level;
         }
-
         public void IncreaseLevel(){
             level += 1;
         }
-
         public void ResetLevel(){
             level = 0;
         }
     }
+
     [System.Serializable]
     public class Conversion{
         [SerializeField]
@@ -60,21 +55,28 @@ public class DailyDealData : ScriptableObject
         }
     }
     [SerializeField]
+    private List<Conversion> conversionList;
     private List<Option> optionList;
     public List<Option> OptionList{
-        get {return optionList;}
+        get { return optionList; }
     }
-    public Option GetOption(string Id){
-        foreach(Option option in optionList){
-            if(option.ID == Id){
-                return option;
-            }
-        }
-        return null;
+    private int startTime;
+    public int StartTime{
+        get { return startTime; }
     }
+    const int interval = 24 * 3600;
 
-    [SerializeField]
-    private List<Conversion> conversionList;
+    public void InitData(){
+        UpdateStartTime();
+        conversionList = GameInformation.Instance.dailyDealConversionList;
+        foreach( Conversion conversion in conversionList){
+            Debug.Log(conversion.Fragment);
+        }
+        optionList = GameInformation.Instance.dailyDealOptionList;
+        foreach( Option option in optionList){
+            Debug.Log(option.ID);
+        }
+    }
     public int GetFragment(int index){
         index = Mathf.Min(index, conversionList.Count - 1);
         return conversionList[index].Fragment;
@@ -85,5 +87,29 @@ public class DailyDealData : ScriptableObject
     }
     public int GetConversionListCount(){
         return conversionList.Count;
+    }
+    public Option GetOption(string Id){
+        foreach(Option option in optionList){
+            if(option.ID == Id){
+                return option;
+            }
+        }
+        return null; 
+    }
+    public bool HasFinished(){
+        TimeSpan span= DateTime.Now.Subtract(new DateTime(1970,1,1,0,0,0, DateTimeKind.Utc));
+        int curTime = (int)span.TotalSeconds;
+        return (curTime - startTime) > interval;
+    }
+    public string GetCountDown(){
+        TimeSpan span= DateTime.Now.Subtract(new DateTime(1970,1,1,0,0,0, DateTimeKind.Utc));
+        int curTime = (int)span.TotalSeconds;
+        span = TimeSpan.FromSeconds(interval - (curTime - startTime));
+        return string.Format("Reset in {0}:{1}:{2}", span.Hours, span.Minutes, span.Seconds);
+    }
+    public void UpdateStartTime(){
+        TimeSpan span= DateTime.Now.Subtract(new DateTime(1970,1,1,0,0,0, DateTimeKind.Utc));
+        startTime = (int)(span.TotalSeconds / interval);
+        startTime *= interval;
     }
 }

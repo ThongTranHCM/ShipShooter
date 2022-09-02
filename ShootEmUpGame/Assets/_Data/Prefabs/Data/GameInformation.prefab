@@ -49,3 +49,29 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 21ea835b769dea14783931512bd019ad, type: 2}
   - {fileID: 11400000, guid: 187e61bf987c08c479f2f6898db99e74, type: 2}
   - {fileID: 11400000, guid: 3de45a3373cdf3248afb3e1775f566e2, type: 2}
+  dailyDealConversionList:
+  - fragment: 35
+    diamond: 15
+  - fragment: 65
+    diamond: 30
+  - fragment: 120
+    diamond: 85
+  - fragment: 225
+    diamond: 240
+  - fragment: 420
+    diamond: 670
+  - fragment: 780
+    diamond: 1855
+  - fragment: 1450
+    diamond: 5155
+  - fragment: 2695
+    diamond: 14310
+  - fragment: 5005
+    diamond: 39680
+  - fragment: 9295
+    diamond: 110085
+  dailyDealOptionList:
+  - id: GunSplit
+  - id: GunLaser
+  - id: GunEnergyOrb
+  - id: GunPlasma
