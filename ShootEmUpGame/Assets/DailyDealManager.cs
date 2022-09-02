@@ -11,13 +11,13 @@ public class DailyDealManager : MonoBehaviour
         get { return instance; }
     }
     public class Deal{
-        private DailyDealOptionData.Option option;
-        public DailyDealOptionData.Option Option{
+        private DailyDealData.Option option;
+        public DailyDealData.Option Option{
             get{ return option; }
         }
-        private DailyDealOptionData dailyDealOptionData;
+        private DailyDealData dailyDealOptionData;
 
-        public Deal(DailyDealOptionData Data, DailyDealOptionData.Option Option){
+        public Deal(DailyDealData Data, DailyDealData.Option Option){
             dailyDealOptionData = Data;
             option = Option;
         }
@@ -59,7 +59,7 @@ public class DailyDealManager : MonoBehaviour
     [SerializeField]
     private int interval;
     [SerializeField]
-    private DailyDealOptionData dailyDealOptionData;
+    private DailyDealData dailyDealOptionData;
     private List<Deal> dealList;
     [SerializeField]
     private GameObject addOnDealPanelPrefab;
@@ -82,7 +82,7 @@ public class DailyDealManager : MonoBehaviour
 
     private List<Deal> GetAllDeals(){
         List<Deal> dealList = new List<Deal>();
-        foreach(DailyDealOptionData.Option option in dailyDealOptionData.OptionList){
+        foreach(DailyDealData.Option option in dailyDealOptionData.OptionList){
             dealList.Add(new Deal(dailyDealOptionData, option));
         }
         return dealList;

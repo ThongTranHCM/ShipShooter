@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-[CreateAssetMenu(fileName = "dailyDealOptionData", menuName = "Data/DailyDealOptionData")]
-public class DailyDealOptionData : ScriptableObject
+[CreateAssetMenu(fileName = "dailyDealData", menuName = "Data/DailyDealData")]
+public class DailyDealData : ScriptableObject
 {
     [System.Serializable]
     public class Option{
@@ -13,8 +13,7 @@ public class DailyDealOptionData : ScriptableObject
         public string ID{
             get{ return id;}
         }
-        [SerializeField]
-        private List<float> probList;
+        private List<float> probList = new List<float>();
         private int level;
         const float gamma = 0.5f;
 
@@ -30,7 +29,7 @@ public class DailyDealOptionData : ScriptableObject
 
         public float GetProbability(int Index){
             for(int i = probList.Count - 1; i < Index; i++){
-                probList.Add(0);
+                probList.Add(1);
             }
             return probList[Index];
         }
