@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using TMPro;
 
 public class DailyDealManager : MonoBehaviour
 {
@@ -62,6 +63,8 @@ public class DailyDealManager : MonoBehaviour
     private List<Deal> dealList;
     [SerializeField]
     private GameObject addOnDealPanelPrefab;
+    [SerializeField]
+    private TextMeshProUGUI countDownText;
     private List<GameObject> addOnDealPanelList;
     DailyDealManager(){
         if(instance == null){
@@ -71,6 +74,10 @@ public class DailyDealManager : MonoBehaviour
 
     void Start(){
         ResetDeals();
+    }
+
+    void FixedUpdate(){
+        UpdateTimer();
     }
 
     private List<Deal> GetAllDeals(){
@@ -97,15 +104,19 @@ public class DailyDealManager : MonoBehaviour
         return bestList;
     }
 
-    public void ResetTimer(){
+    public void UpdateTimer(){
         System.DateTime epochStart = new System.DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
         int cur_time = (int)(System.DateTime.UtcNow - epochStart).TotalSeconds;
         countDown = cur_time % interval;
-        foreach(Deal deal in dealList){
-            deal.UpdateProb();
-            deal.ResetLevel();
+        TimeSpan span = TimeSpan.FromSeconds(countDown);
+        countDownText.text = string.Format("Reset in {0}:{1}:{2}", span.Hours, span.Minutes, span.Seconds);
+        if(countDown == 0){
+            foreach(Deal deal in dealList){
+                deal.UpdateProb();
+                deal.ResetLevel();
+            }
+            ResetDeals();
         }
-        ResetDeals();
     }
 
     public void ResetDeals(){

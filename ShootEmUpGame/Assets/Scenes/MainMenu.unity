@@ -32656,6 +32656,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: ResourceText
       objectReference: {fileID: 0}
+    - target: {fileID: 8354567211676492974, guid: d98289d2635e34f448ecb9c6d415e1a7,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 1e562a6b7bf4581488ed3ee65c22f3ef,
+        type: 2}
+    - target: {fileID: 8354567211676492974, guid: d98289d2635e34f448ecb9c6d415e1a7,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d98289d2635e34f448ecb9c6d415e1a7, type: 3}
 --- !u!1 &1188464633 stripped
@@ -54066,6 +54077,11 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 151156959775255637, guid: e1328d33836c5884a939af5cad0a4d54,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 157240995593671709, guid: e1328d33836c5884a939af5cad0a4d54,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -55152,6 +55168,11 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 2100000, guid: c13d025e81c26a544802ec80647f49d4, type: 2}
+    - target: {fileID: 7504760088889335546, guid: e1328d33836c5884a939af5cad0a4d54,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7508165423854551811, guid: e1328d33836c5884a939af5cad0a4d54,
         type: 3}
       propertyPath: m_AnchorMax.y
