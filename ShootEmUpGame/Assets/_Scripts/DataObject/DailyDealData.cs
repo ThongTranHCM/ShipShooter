@@ -111,5 +111,6 @@ public class DailyDealData
         TimeSpan span= DateTime.Now.Subtract(new DateTime(1970,1,1,0,0,0, DateTimeKind.Utc));
         startTime = (int)(span.TotalSeconds / interval);
         startTime *= interval;
+        DataManager.Save();
     }
 }

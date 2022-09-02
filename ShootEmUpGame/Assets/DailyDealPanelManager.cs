@@ -28,6 +28,7 @@ public class DailyDealPanelManager : MonoBehaviour
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(() => {SoundManager.Instance.PlaySFX("valid_button");});
         button.onClick.AddListener(() => {GetDeal();});
+        button.onClick.AddListener(() => {DataManager.Save();});
     }
 
     private void GetDeal(){
