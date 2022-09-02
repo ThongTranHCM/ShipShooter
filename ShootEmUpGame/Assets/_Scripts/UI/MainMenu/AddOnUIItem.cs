@@ -20,6 +20,7 @@ public class AddOnUIItem : MonoBehaviour
     {
         _txtAddOnLevel.text = "" + level;
         _fillBarFragment.SetRawValue(curFragment, capFragment);
+        ((FillBarFragmentTextManager)_fillBarFragment.GetFillBarTextManager()).SetValue(capFragment);
         _imgAddOn.sprite = sprAddOn;
         _imgAddOn.color = (level == 0) ? Color.gray : Color.white;
     }

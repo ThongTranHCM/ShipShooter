@@ -20,7 +20,7 @@ public class FillBarManager : MonoBehaviour
     [SerializeField]
     private GameObject border;
     [SerializeField]
-    private TextMeshProUGUI txtProgress = null;
+    private FillBarTextManager txtProgress;
     private RectTransform fillRectTransform = null;
     private RectTransform borderRectTransform = null;
     private Image fillImage = null;
@@ -43,36 +43,36 @@ public class FillBarManager : MonoBehaviour
         fillImage.color = borderImage.color = baseColor;
         animatedValue = value;
         didInit = true;
-        UpdateFillBar();
+        txtProgress.Install(this);
+        SetFillBar(value);
     }
 
-    private void UpdateFillBar(){
+    private void SetFillBar(float x){
         if(didInit){
-            float offset = borderRectTransform.rect.width * Mathf.Clamp(animatedValue, 0, 1);
+            float offset = borderRectTransform.rect.width * Mathf.Clamp(x, 0, 1);
             fillRectTransform.sizeDelta = new Vector2(offset, fillRectTransform.sizeDelta.y);
         } else {
             Init();
+            SetFillBar(x);
         }
         
     }
-
     public void SetValue(float Value)
     {
-        value = Mathf.Clamp(Value, 0, 1);
+        value = Value;
         animatedValue = value;
-        UpdateFillBar();
+        SetFillBar(value);
     }
     public void SetRawValue(float current, float max)
     {
-        value = Mathf.Clamp(current / max, 0, 1);
+        value = current / max;
         animatedValue = value;
-        UpdateFillBar();
+        SetFillBar(value);
     }
 
     public void UpdateValue(float Value, float duration = 0.5f, float delay = 0.0f)
     {
         float newValue = Value;
-        newValue = Mathf.Clamp(newValue, 0, 1);
         float oldValue = value;
         value = newValue;
         PlayAnimation(oldValue, newValue, duration, delay);
@@ -80,7 +80,6 @@ public class FillBarManager : MonoBehaviour
     public void UpdateRawValue(float current, float max, float duration = 0.5f, float delay = 0.0f)
     {
         float newValue = current/max;
-        newValue = Mathf.Clamp(newValue, 0, 1);
         float oldValue = value;
         value = newValue;
         PlayAnimation(oldValue, newValue, duration, delay);
@@ -100,8 +99,27 @@ public class FillBarManager : MonoBehaviour
         LTSeq seq = LeanTween.sequence();
         seq.append(delay);
         seq.append( () => {
-            LeanTween.value(gameObject,(float x) => {animatedValue = x; UpdateFillBar();},a,b,duration).setEase(LeanTweenType.easeOutBack);
-            LeanTween.value(gameObject,(float x) => {fillImage.color = borderImage.color = (value != 1) ? baseColor : fullColor; fillImage.color = borderImage.color += Color.white * x;},1,0,duration).setEase(LeanTweenType.easeInSine);
+            LeanTween.value(gameObject,(float x) => {SetFillBar(x);},a,b,duration).setEase(LeanTweenType.easeOutBack);
+            LeanTween.value(gameObject,(float x) => {animatedValue = x; txtProgress.UpdateText();},a,b,duration).setEase(LeanTweenType.easeInSine);
+            LeanTween.value(gameObject,(float x) => {fillImage.color = borderImage.color = (value < 1) ? baseColor : fullColor; fillImage.color = borderImage.color += Color.white * x;},1,0,duration).setEase(LeanTweenType.easeInSine);
         });
+    }
+
+    public float GetAnimatedValue(){
+        return animatedValue;
+    }
+
+    public FillBarTextManager GetFillBarTextManager(){
+        return txtProgress;
+    }
+
+    public class FillBarTextManager:MonoBehaviour{
+        protected FillBarManager fillBarManager;
+        [SerializeField]
+        protected TextMeshProUGUI txtTMP;
+        public void Install(FillBarManager FillBarManager){
+            fillBarManager = FillBarManager;
+        }
+        public virtual void UpdateText(){ return; }
     }
 }
