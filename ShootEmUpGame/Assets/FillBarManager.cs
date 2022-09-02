@@ -51,6 +51,7 @@ public class FillBarManager : MonoBehaviour
         if(didInit){
             float offset = borderRectTransform.rect.width * Mathf.Clamp(x, 0, 1);
             fillRectTransform.sizeDelta = new Vector2(offset, fillRectTransform.sizeDelta.y);
+            fillImage.color = borderImage.color = (x < 1) ? baseColor : fullColor;
         } else {
             Init();
             SetFillBar(x);
