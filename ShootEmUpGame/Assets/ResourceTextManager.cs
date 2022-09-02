@@ -8,20 +8,34 @@ public class ResourceTextManager : MonoBehaviour
     [SerializeField]
     private GameObject iconPlaceHolderGameObject;
     [SerializeField]
-    private TextMeshProUGUI text;
-    [SerializeField]
     private ResourceData resourceData;
+    [SerializeField]
+    private string text;
+    [SerializeField]
+    private string id;
+
+    void Awake(){
+        Init(text, id);
+    }
+
+    void Init(string Text, string Id){
+        SetText(Text);
+        SetResource(Id);
+    }
 
     public void SetText(string Text){
-        text.text = Text;
+        text = Text;
+        GetComponent<TextMeshProUGUI>().text = text;
     }
 
     public void SetResource(string Id){
-        ResourceData.Type type = resourceData.GetType(Id);
-        GameObject icon = type.SmallIconGameObject;
-        foreach (Transform child in iconPlaceHolderGameObject.transform) {
-            GameObject.Destroy(child.gameObject);
+        if(Id != ""){
+            ResourceData.Type type = resourceData.GetType(Id);
+            GameObject icon = type.SmallIconGameObject;
+            foreach (Transform child in iconPlaceHolderGameObject.transform) {
+                GameObject.Destroy(child.gameObject);
+            }
+            Object.Instantiate(icon, iconPlaceHolderGameObject.transform.position, Quaternion.identity, iconPlaceHolderGameObject.transform);
         }
-        Object.Instantiate(icon, iconPlaceHolderGameObject.transform.position, Quaternion.identity, iconPlaceHolderGameObject.transform);
     }
 }

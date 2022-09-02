@@ -11,6 +11,6 @@ public class FillBarFragmentTextManager : FillBarManager.FillBarTextManager
         UpdateText();
     }
     public override void UpdateText(){
-        txtTMP.text = string.Format("{0}/{1}", Mathf.Floor(requirement * fillBarManager.GetAnimatedValue()), requirement);
+        txtTMP.text = string.Format("{0}", Mathf.Floor(requirement * fillBarManager.GetAnimatedValue()));
     }
 }
