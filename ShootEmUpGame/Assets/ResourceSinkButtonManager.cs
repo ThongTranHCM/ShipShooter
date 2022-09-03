@@ -16,6 +16,7 @@ public class ResourceSinkButtonManager : MonoBehaviour
     private GameObject invalidButton;
     [SerializeField]
     private ResourceTextManager invalidCostText;
+    private bool lastSufficentCheck = false;
 
     public void SetCost(string Id, int Cost){
         resourceId = Id;
@@ -25,10 +26,14 @@ public class ResourceSinkButtonManager : MonoBehaviour
     } 
 
     public void Update(){
-        validCostText.SetValue(resourceId, resourceCost.ToString());
-        invalidCostText.SetValue(resourceId, resourceCost.ToString());
-        validButton.SetActive(IsSufficent());
-        invalidButton.SetActive(!IsSufficent());
+        bool isSufficent = IsSufficent();
+        if(lastSufficentCheck != isSufficent){
+            validCostText.SetValue(resourceId, resourceCost.ToString());
+            invalidCostText.SetValue(resourceId, resourceCost.ToString());
+            validButton.SetActive(IsSufficent());
+            invalidButton.SetActive(!IsSufficent());
+            lastSufficentCheck = isSufficent;
+        }
     }
 
     private bool IsSufficent(){
