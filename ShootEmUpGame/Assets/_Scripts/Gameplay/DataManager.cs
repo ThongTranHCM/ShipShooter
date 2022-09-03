@@ -169,6 +169,8 @@ public class DataManager
     public static void ResetToDefault()
     {
         _instance = new DataManager();
+        int shipDefault = 0;
+        _instance.playerData.GetShipProgress(shipDefault).shipLevel = 1;
     }
     #region Ship/AddOns
     public PlayerData playerData

@@ -14,6 +14,8 @@ public class ShipGroupLayout : MonoBehaviour
     [SerializeField]
     private UnityEngine.UI.GridLayoutGroup _gridLayout;
 
+    public System.Action<int> callbackUIClick;
+
     public void OnEnable()
     {
         if (_listShipSelectUI == null) _listShipSelectUI = new List<ShipSelectUIController>();
@@ -73,12 +75,13 @@ public class ShipGroupLayout : MonoBehaviour
         }
     }
 
-    public void OnShipItemClick(int id)
+    private void OnShipItemClick(int id)
     {
         Debug.LogError("ShipItem " + id);
+        callbackUIClick?.Invoke(id);
     }
 
-    public void UpdateParentSize()
+    private void UpdateParentSize()
     {
         RectTransform rectTf = transform.parent as RectTransform;
 

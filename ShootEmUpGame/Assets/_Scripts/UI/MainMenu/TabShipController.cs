@@ -5,7 +5,7 @@ using TMPro;
 
 public class TabShipController : MonoBehaviour
 {
-    public GameObject shipPanelPrefab;
+    [Header("Ship Info")]
     [SerializeField]
     private GameObject displayShipGameObject;
     [SerializeField]
@@ -15,12 +15,20 @@ public class TabShipController : MonoBehaviour
 
     [SerializeField]
     private TextMeshProUGUI _txtShipName;
+
+    [Header("Ship Stats")]
     [SerializeField]
     private TextMeshProUGUI _txtShipLevel;
     [SerializeField]
     private TextMeshProUGUI _txtShipPower;
     [SerializeField]
+    private TextMeshProUGUI _txtAction;
+    [SerializeField]
     private TextMeshProUGUI _txtShipCost;
+
+    [Header("Ship Group")]
+    [SerializeField]
+    private ShipGroupLayout _layoutShip;
 
     [SerializeField]
     private float _defaultScaleX;
@@ -28,33 +36,83 @@ public class TabShipController : MonoBehaviour
     private int shipCount;
     const float shrinkDuration = 0.1f;
     const float expandDuration = 0.5f;
+    private string _strName;
+    private int _intShipLevel;
+    private int _intShipPower;
+    private int _intShipCost;
+
     private void PlayShipTransitionAnimation()
     {
         float scale = _defaultScaleX;
         LeanTween.cancel(displayShipGameObject);
-        LTSeq seq = LeanTween.sequence();
-        seq.append(LeanTween.scaleX(displayShipGameObject, 0, shrinkDuration).setEase(LeanTweenType.easeInBack));
+        //LTSeq seq = LeanTween.sequence();
+        //seq.append(LeanTween.scaleX(displayShipGameObject, 0, shrinkDuration).setEase(LeanTweenType.easeInBack));
         UpdateShipInfo(shipIndex);
-        seq.append(LeanTween.scaleX(displayShipGameObject, scale, expandDuration).setEase(LeanTweenType.easeOutElastic));
+        UpdateShipStats(shipIndex);
+        //seq.append(LeanTween.scaleX(displayShipGameObject, scale, expandDuration).setEase(LeanTweenType.easeOutElastic));
     }
 
     private void UpdateShipInfo(int index)
     {
-        //Name
-        _txtShipName.text = "Name";
-        //Level
-        _txtShipLevel.text = "Level 12";
-        _txtShipPower.text = "Power 2500";
-        _txtShipCost.text = "50";
-        //Models
         DOShipData shipData = GameInformation.Instance.shipData[index];
+        _strName = shipData.shipName;
+        //Name
+        _txtShipName.text = _strName;
+        //Models
         displayMesh.mesh = shipData.meshShip;
         displayRenderer.material = shipData.materialShip;
         DataManager.Instance.selectedShipIndex = index;
     }
 
-    public void OnEnable()
+    private void UpdateShipStats(int index)
     {
+        _intShipLevel = DataManager.Instance.playerData.GetShipProgress(shipIndex).shipLevel;
+        _intShipCost = 50 + _intShipLevel;
+        _intShipPower = 2000 + _intShipLevel * 50;
+        //Level
+        _txtShipLevel.text = "Level " + _intShipLevel;
+        _txtShipPower.text = "Power " + _intShipPower;
+        _txtShipCost.text = "" + _intShipCost;
+        if (_intShipLevel > 0)
+        {
+            _txtAction.text = "Upgrade";
+        }
+        else
+        {
+            _txtAction.text = "Buy";
+        }
+    }
+
+    public void Start()
+    {
+        Install();
+    }
+
+    public void Install()
+    {
+        shipIndex = 0;
+        shipCount = GameInformation.Instance.shipData.Count;
+        _layoutShip.callbackUIClick = OnShipLayoutClick;
+        UpdateShipInfo(shipIndex);
+        UpdateShipStats(shipIndex);
+    }
+
+    public void OnShipLayoutClick(int index)
+    {
+        shipIndex = index;
         PlayShipTransitionAnimation();
+    }
+
+    public void OnShipUpgrade()
+    {
+        Debug.LogError("Upgrade");
+        UpdateShipStats(shipIndex);
+    }
+
+    public void OnShipUpgradeUIClick()
+    {
+        DataManager.Instance.playerData.GetShipProgress(shipIndex).shipLevel += 1;
+        RewardResourceManager.Instance.Purchase("gold", _intShipCost, new List<(string, int)>());
+        OnShipUpgrade();
     }
 }

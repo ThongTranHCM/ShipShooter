@@ -50,7 +50,7 @@ public class PlayerData
             }
         }
     }
-    public int coin;
+    private int coin;
     public int Diamond
     {
         get
@@ -67,7 +67,7 @@ public class PlayerData
             }
         }
     }
-    public int diamond;
+    private int diamond;
 
     public string name = string.Empty;
     public string avatarUrl = string.Empty;
@@ -123,7 +123,6 @@ public class PlayerData
     {
         public int shipId;
         public int shipLevel;
-        public int shipFragment;
     }
 
     [SerializeField]
@@ -148,13 +147,20 @@ public class PlayerData
     public ShipProgressData GetShipProgress(int index)
     {
         ShipProgressData result = null;
-        for (int i = 0; i < _listShipProgress.Count; i++)
+        for (int i = 0; i < ListShipProgress.Count; i++)
         {
-            if (_listShipProgress[i].shipId == index)
+            if (ListShipProgress[i].shipId == index)
             {
-                result = _listShipProgress[i];
+                result = ListShipProgress[i];
                 break;
             }
+        }
+        if (result == null)
+        {
+            result = new ShipProgressData();
+            result.shipLevel = -1;
+            result.shipId = index;
+            ListShipProgress.Add(result);
         }
         return result;
     }
