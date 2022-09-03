@@ -264,7 +264,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2853045591120400262}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
   m_Name: 
@@ -701,18 +701,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7823083633269788747, guid: 149a54af34ca299408d3f40c01cc7382,
         type: 3}
+      propertyPath: baseColor.b
+      value: 0.8018868
+      objectReference: {fileID: 0}
+    - target: {fileID: 7823083633269788747, guid: 149a54af34ca299408d3f40c01cc7382,
+        type: 3}
+      propertyPath: baseColor.g
+      value: 0.50934607
+      objectReference: {fileID: 0}
+    - target: {fileID: 7823083633269788747, guid: 149a54af34ca299408d3f40c01cc7382,
+        type: 3}
+      propertyPath: baseColor.r
+      value: 0.14676036
+      objectReference: {fileID: 0}
+    - target: {fileID: 7823083633269788747, guid: 149a54af34ca299408d3f40c01cc7382,
+        type: 3}
       propertyPath: fullColor.a
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7823083633269788747, guid: 149a54af34ca299408d3f40c01cc7382,
         type: 3}
       propertyPath: fullColor.b
-      value: 0.40943396
+      value: 0.4377358
       objectReference: {fileID: 0}
     - target: {fileID: 7823083633269788747, guid: 149a54af34ca299408d3f40c01cc7382,
         type: 3}
       propertyPath: fullColor.g
-      value: 0.6998763
+      value: 0.71435773
       objectReference: {fileID: 0}
     - target: {fileID: 7823083633269788747, guid: 149a54af34ca299408d3f40c01cc7382,
         type: 3}

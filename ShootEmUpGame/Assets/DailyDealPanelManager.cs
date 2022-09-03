@@ -19,8 +19,8 @@ public class DailyDealPanelManager : MonoBehaviour
 
     public void SetDeal(DailyDealManager.Deal Deal){
         deal = Deal;
-        IAddOnData addOnData = addOnEquipData.GetAddOnData(deal.Option.ID);
-        addOnUIItem.Install(deal.Option.ID, addOnData.GetSprite, (int)addOnData.GetLevel, addOnData.GetFragment, 1000);
+        IAddOnData addOnData = addOnEquipData.GetAddOnData(deal.OptionId);
+        addOnUIItem.Install(deal.OptionId, addOnData.GetSprite, (int)addOnData.GetLevel, addOnData.GetFragment, 1000);
         fragmentText.SetResource("fragment");
         fragmentText.SetText(string.Format("+{0}",deal.GetFragment().ToString()));
         diamondText.SetResource("diamond");
@@ -28,10 +28,11 @@ public class DailyDealPanelManager : MonoBehaviour
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(() => {SoundManager.Instance.PlaySFX("valid_button");});
         button.onClick.AddListener(() => {GetDeal();});
+        button.onClick.AddListener(() => {DataManager.Save();});
     }
 
     private void GetDeal(){
-        RewardFragmentManager.Instance.AddReward(deal.Option.ID, deal.GetFragment());
+        RewardFragmentManager.Instance.AddReward(deal.OptionId, deal.GetFragment());
         RewardFragmentManager.Instance.GetReward();
         deal.UpdateLevel();
         SetDeal(deal);

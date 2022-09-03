@@ -65,6 +65,7 @@ public class DataManager
 #else
         path = Application.persistentDataPath;
 #endif
+        Debug.Log(path);
         return path;
     }
 
@@ -208,9 +209,29 @@ public class DataManager
             _addOnUserData = value;
         }
     }
+    public DailyDealData dailyDealData
+    {
+        get
+        {
+            if (_dailyDealData == null)
+            {
+#if TEST
+				Debug.Log("--- Create New PlayerData! ---");
+#endif
+                _dailyDealData = new DailyDealData();
+                _dailyDealData.InitData();
+            }
+            return _dailyDealData;
+        }
+        set
+        {
+            _dailyDealData = value;
+        }
+    }
 
     private PlayerData _playerData;
     private AddOnUserData _addOnUserData;
+    private DailyDealData _dailyDealData;
     #endregion
     #region Player Progression
     private int _lastLevelWin;
@@ -230,5 +251,7 @@ public class DataManager
     [System.NonSerialized] public bool dataSubmitScoreStoryMode;
     [System.NonSerialized] public int selectedLevelIndex;
     [System.NonSerialized] public int selectedShipIndex;
+    [System.NonSerialized] public int lastTimeOpenTimeChest;
+    [System.NonSerialized] public int lastTimeGetDailyDeal;
     #endregion
 }

@@ -23,6 +23,8 @@ public class GameInformation : MonoBehaviour
 
     public AddOnEquipData addOnEquipData;
     public List<DOShipData> shipData;
+    public List<DailyDealData.Conversion> dailyDealConversionList;
+    public List<DailyDealData.Option> dailyDealOptionList;
 
     public DOShipData GetShipData(int index)
     {

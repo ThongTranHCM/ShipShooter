@@ -11,55 +11,51 @@ public class DailyDealManager : MonoBehaviour
         get { return instance; }
     }
     public class Deal{
-        private DailyDealData.Option option;
-        public DailyDealData.Option Option{
-            get{ return option; }
+        private string optionId;
+        public string OptionId{
+            get{ return optionId; }
         }
-        private DailyDealData dailyDealOptionData;
 
-        public Deal(DailyDealData Data, DailyDealData.Option Option){
-            dailyDealOptionData = Data;
-            option = Option;
+        public Deal(string Id){
+            optionId = Id;
         }
 
         public void UpdateLevel(){
-            option.IncreaseLevel();
+            DataManager.Instance.dailyDealData.GetOption(optionId).IncreaseLevel();
         }
 
         public void UpdateProb(){
-            option.Update();
+            DataManager.Instance.dailyDealData.GetOption(optionId).Update();
         }
 
         public int GetFragment(){
-            return dailyDealOptionData.GetFragment(option.GetLevel());
+            return DataManager.Instance.dailyDealData.GetFragment(DataManager.Instance.dailyDealData.GetOption(optionId).GetLevel());
         }
 
         public int GetDiamondCost(){
-            return dailyDealOptionData.GetDiamondCost(option.GetLevel());
+            return DataManager.Instance.dailyDealData.GetDiamondCost(DataManager.Instance.dailyDealData.GetOption(optionId).GetLevel());
         }
 
         public float BestDeal(){
             float max = 0;
             float diamondSum = 0;
-            for(int i = 0; i < dailyDealOptionData.GetConversionListCount(); i++){
-                diamondSum += dailyDealOptionData.GetDiamondCost(i);
-                if(diamondSum * option.GetProbability(i) > max){
-                    max = diamondSum * option.GetProbability(i);
+            for(int i = 0; i < DataManager.Instance.dailyDealData.GetConversionListCount(); i++){
+                diamondSum += DataManager.Instance.dailyDealData.GetDiamondCost(i);
+                if(diamondSum * DataManager.Instance.dailyDealData.GetOption(optionId).GetProbability(i) > max){
+                    max = diamondSum * DataManager.Instance.dailyDealData.GetOption(optionId).GetProbability(i);
                 }
             }
             return max;
         }
 
         public void ResetLevel(){
-            option.ResetLevel();
+            DataManager.Instance.dailyDealData.GetOption(optionId).ResetLevel();
         }
     }
     [SerializeField]
     private int countDown;
     [SerializeField]
     private int interval;
-    [SerializeField]
-    private DailyDealData dailyDealOptionData;
     private List<Deal> dealList;
     [SerializeField]
     private GameObject addOnDealPanelPrefab;
@@ -82,8 +78,8 @@ public class DailyDealManager : MonoBehaviour
 
     private List<Deal> GetAllDeals(){
         List<Deal> dealList = new List<Deal>();
-        foreach(DailyDealData.Option option in dailyDealOptionData.OptionList){
-            dealList.Add(new Deal(dailyDealOptionData, option));
+        for(int i = 0 ; i < DataManager.Instance.dailyDealData.OptionList.Count ; i++ ){
+            dealList.Add(new Deal(DataManager.Instance.dailyDealData.OptionList[i].ID));
         }
         return dealList;
     }
@@ -105,12 +101,9 @@ public class DailyDealManager : MonoBehaviour
     }
 
     public void UpdateTimer(){
-        System.DateTime epochStart = new System.DateTime(1970, 1, 1, 0, 0, 0, System.DateTimeKind.Utc);
-        int cur_time = (int)(System.DateTime.UtcNow - epochStart).TotalSeconds;
-        countDown = cur_time % interval;
-        TimeSpan span = TimeSpan.FromSeconds(countDown);
-        countDownText.text = string.Format("Reset in {0}:{1}:{2}", span.Hours, span.Minutes, span.Seconds);
-        if(countDown == 0){
+        countDownText.text = DataManager.Instance.dailyDealData.GetCountDown();
+        if(DataManager.Instance.dailyDealData.HasFinished()){
+            DataManager.Instance.dailyDealData.UpdateStartTime();
             foreach(Deal deal in dealList){
                 deal.UpdateProb();
                 deal.ResetLevel();
