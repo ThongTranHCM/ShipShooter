@@ -52,10 +52,6 @@ public class DailyDealManager : MonoBehaviour
             DataManager.Instance.dailyDealData.GetOption(optionId).ResetLevel();
         }
     }
-    [SerializeField]
-    private int countDown;
-    [SerializeField]
-    private int interval;
     private List<Deal> dealList;
     [SerializeField]
     private GameObject addOnDealPanelPrefab;

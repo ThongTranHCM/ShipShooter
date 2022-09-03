@@ -75,3 +75,14 @@ MonoBehaviour:
   - id: GunLaser
   - id: GunEnergyOrb
   - id: GunPlasma
+  dailyOfferRewardList:
+  - id: diamond
+    amount: 30
+  - id: gold
+    amount: 1000
+  - id: diamond
+    amount: 30
+  - id: gold
+    amount: 1000
+  - id: regular_box
+    amount: 1

@@ -32709,27 +32709,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d98289d2635e34f448ecb9c6d415e1a7, type: 3}
---- !u!1 &1188464633 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3969066359577143584, guid: e1328d33836c5884a939af5cad0a4d54,
-    type: 3}
-  m_PrefabInstance: {fileID: 1595459580}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1188464638
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1188464633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfabb0440166ab443bba8876756fdfa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0.22226182, b: 0.254717, a: 1}
-  m_EffectDistance: {x: 2, y: -2}
-  m_UseGraphicAlpha: 1
 --- !u!1 &1208927789
 GameObject:
   m_ObjectHideFlags: 0
@@ -54082,6 +54061,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -5
       objectReference: {fileID: 0}
+    - target: {fileID: 2243891154139380537, guid: 9ae13910d5925134db057f2a66dd3ed6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3212221257523770548, guid: 9ae13910d5925134db057f2a66dd3ed6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ae13910d5925134db057f2a66dd3ed6, type: 3}
 --- !u!1 &1589148272
@@ -65029,6 +65018,11 @@ PrefabInstance:
     - target: {fileID: 4748957010613200970, guid: 127d44f7d42feea449294ee43f5560b0,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748957010613200970, guid: 127d44f7d42feea449294ee43f5560b0,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_StringArgument
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4748957010613200970, guid: 127d44f7d42feea449294ee43f5560b0,

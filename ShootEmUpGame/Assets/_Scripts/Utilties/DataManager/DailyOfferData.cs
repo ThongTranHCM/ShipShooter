@@ -3,13 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class DailyOfferData : MonoBehaviour
+public class DailyOfferData
 {
+    [System.Serializable]
     public class Reward{
         [SerializeField]
-        private string resourceId;
+        string id;
         [SerializeField]
-        private int rewardAmount; 
+        int amount;
+        public Reward(string Id, int Amount){
+            id = Id;
+            amount = Amount;
+        }
+        public (string, int) ToTuple(){
+            return (id, amount);
+        }
     }
     private int startTime;
     public int StartTime{
@@ -18,6 +26,11 @@ public class DailyOfferData : MonoBehaviour
     const int interval = 24 * 3600;
     public void InitData(){
         UpdateStartTime();
+    }
+    public bool HasFinished(){
+        TimeSpan span= DateTime.Now.Subtract(new DateTime(1970,1,1,0,0,0, DateTimeKind.Utc));
+        int curTime = (int)span.TotalSeconds;
+        return (curTime - startTime) > interval;
     }
     public string GetCountDown(){
         TimeSpan span= DateTime.Now.Subtract(new DateTime(1970,1,1,0,0,0, DateTimeKind.Utc));
@@ -31,16 +44,7 @@ public class DailyOfferData : MonoBehaviour
         startTime *= interval;
         DataManager.Save();
     }
-    public (string, int) GetReward(){
-        /*
-        int playerLevel = DataManager.Instance;
-        return GetReward(playerLevel);
-        */
-        return ("gold",0);
-    }
-    public bool HasFinished(){
-        TimeSpan span= DateTime.Now.Subtract(new DateTime(1970,1,1,0,0,0, DateTimeKind.Utc));
-        int curTime = (int)span.TotalSeconds;
-        return (curTime - startTime) > interval;
+    public List<Reward> GetRewardList(){
+        return GameInformation.Instance.dailyOfferRewardList;
     }
 }

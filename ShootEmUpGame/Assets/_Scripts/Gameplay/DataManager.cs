@@ -218,7 +218,7 @@ public class DataManager
             if (_dailyDealData == null)
             {
 #if TEST
-				Debug.Log("--- Create New PlayerData! ---");
+				Debug.Log("--- Create New dailyDealData! ---");
 #endif
                 _dailyDealData = new DailyDealData();
                 _dailyDealData.InitData();
@@ -237,7 +237,7 @@ public class DataManager
             if (_timeChestData == null)
             {
 #if TEST
-				Debug.Log("--- Create New PlayerData! ---");
+				Debug.Log("--- Create New timeChestData! ---");
 #endif
                 _timeChestData = new TimeChestData();
                 _timeChestData.InitData();
@@ -256,8 +256,8 @@ public class DataManager
             if (_dailyOfferData == null)
             {
 #if TEST
-				Debug.Log("--- Create New PlayerData! ---");
-#endif
+				Debug.Log("--- Create New dailyOfferData! ---");
+#endif  
                 _dailyOfferData = new DailyOfferData();
                 _dailyOfferData.InitData();
             }
@@ -293,7 +293,5 @@ public class DataManager
     [System.NonSerialized] public bool dataSubmitScoreStoryMode;
     [System.NonSerialized] public int selectedLevelIndex;
     [System.NonSerialized] public int selectedShipIndex;
-    [System.NonSerialized] public int lastTimeOpenTimeChest;
-    [System.NonSerialized] public int lastTimeGetDailyDeal;
     #endregion
 }
