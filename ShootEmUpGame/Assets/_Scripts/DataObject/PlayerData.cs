@@ -123,6 +123,7 @@ public class PlayerData
     {
         public int shipId;
         public int shipLevel;
+        public int shipFragment;
     }
 
     [SerializeField]
@@ -142,6 +143,20 @@ public class PlayerData
             }
             return _listShipProgress;
         }
+    }
+
+    public ShipProgressData GetShipProgress(int index)
+    {
+        ShipProgressData result = null;
+        for (int i = 0; i < _listShipProgress.Count; i++)
+        {
+            if (_listShipProgress[i].shipId == index)
+            {
+                result = _listShipProgress[i];
+                break;
+            }
+        }
+        return result;
     }
 }
 

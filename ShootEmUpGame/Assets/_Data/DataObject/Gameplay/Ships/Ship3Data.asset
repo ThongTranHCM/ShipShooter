@@ -17,7 +17,7 @@ MonoBehaviour:
   increasePowerValue: 1
   shipObjectPrefab: {fileID: 1120784706168142232, guid: 58703a12489c4c54786c94c3d40c3492,
     type: 3}
-  spritePresentShip: {fileID: 21300000, guid: 3d0570edadb79824b9ce4805ca9fca2c, type: 3}
+  spritePresentShip: {fileID: 21300000, guid: 8f85d8ce213015144a117d359c69fcbd, type: 3}
   meshShip: {fileID: -5495902117074765545, guid: 858becba435fe7e48ac8ecfa0f3c64de,
     type: 3}
   materialShip: {fileID: 2100000, guid: aee0382ee7e51b0438795a630478c7ac, type: 2}

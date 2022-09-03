@@ -17,7 +17,7 @@ public class ShipGroupLayout : MonoBehaviour
     public void OnEnable()
     {
         if (_listShipSelectUI == null) _listShipSelectUI = new List<ShipSelectUIController>();
-        //Install();
+        Install();
     }
 
     public void Install()
@@ -28,22 +28,32 @@ public class ShipGroupLayout : MonoBehaviour
 
         for (int i = 0; i < listShipData.Count; i++)
         {
-            listQualifiedShip.Add(i);
+           listQualifiedShip.Add(i);
         }
         UpdateListUISize(listQualifiedShip.Count);
+        int selected = 1;
         for (int i = 0; i < listQualifiedShip.Count; i++)
         {
             shipData = listShipData[listQualifiedShip[i]];
+            DataManager.Instance.playerData.GetShipProgress(i);
             ShipSelectUIController _shipSelectItem = _listShipSelectUI[i];
             int tmp = i;
             _shipSelectItem.Install(shipData.spritePresentShip, 2, shipData.shipName);
+            if (selected == i)
+            {
+                _shipSelectItem.ShowAsSelected();
+            }
+            else
+            {
+                _shipSelectItem.ShowAsShip();
+            }
             _shipSelectItem.onBtnClick = () => OnShipItemClick(tmp);
         }
     }
 
     public void UpdateListUISize(int listSize)
     {
-        /*int currentListSize = _listShipSelectUI.Count;
+        int currentListSize = _listShipSelectUI.Count;
         while (currentListSize > listSize)
         {
             currentListSize--;
@@ -53,12 +63,6 @@ public class ShipGroupLayout : MonoBehaviour
         while (currentListSize < listSize)
         {
             currentListSize++;
-            GameObject shipItem = Instantiate<GameObject>(_shipUIPrefab, transform);
-            ShipSelectUIController shipUIItem = shipItem.GetComponent<ShipSelectUIController>();
-            _listShipSelectUI.Add(shipUIItem);
-        }*/
-        for (int i = 0; i < listSize; i++)
-        {
             GameObject shipItem = Instantiate<GameObject>(_shipUIPrefab, transform);
             ShipSelectUIController shipUIItem = shipItem.GetComponent<ShipSelectUIController>();
             _listShipSelectUI.Add(shipUIItem);
