@@ -38,14 +38,19 @@ public class DailyDealManager : MonoBehaviour
 
         public float BestDeal(){
             float max = 0;
-            float expectedDiamondSum = 0;
+            float diamondSum = 0;
             float prob = 0;
             for(int i = 0; i < DataManager.Instance.dailyDealData.ConversionList.Count; i++){
                 prob = DataManager.Instance.dailyDealData.GetOption(optionId).GetProbability(i);
-                prob = Random.Range(0,1) < prob ? 1 : 0;
-                expectedDiamondSum += DataManager.Instance.dailyDealData.GetDiamondCost(i) * prob;
+                prob = UnityEngine.Random.Range(0,1) < prob ? 1 : 0;
+                diamondSum += DataManager.Instance.dailyDealData.GetDiamondCost(i);
+                if(diamondSum * prob > max){
+                    max = diamondSum * prob;
+                }
             }
-            return expectedDiamondSum;
+            //In case everything is 0, use this to randomize all of them;
+            max += UnityEngine.Random.Range(0,1);
+            return max;
         }
 
         public void ResetLevel(){
