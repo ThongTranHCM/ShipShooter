@@ -69,13 +69,7 @@ public class DailyDealData
     public void InitData(){
         UpdateStartTime();
         conversionList = GameInformation.Instance.dailyDealConversionList;
-        foreach( Conversion conversion in conversionList){
-            Debug.Log(conversion.Fragment);
-        }
         optionList = GameInformation.Instance.dailyDealOptionList;
-        foreach( Option option in optionList){
-            Debug.Log(option.ID);
-        }
     }
     public int GetFragment(int index){
         index = Mathf.Min(index, conversionList.Count - 1);

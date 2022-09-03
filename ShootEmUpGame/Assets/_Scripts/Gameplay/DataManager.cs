@@ -228,10 +228,50 @@ public class DataManager
             _dailyDealData = value;
         }
     }
+    public TimeChestData timeChestData
+    {
+        get
+        {
+            if (_timeChestData == null)
+            {
+#if TEST
+				Debug.Log("--- Create New PlayerData! ---");
+#endif
+                _timeChestData = new TimeChestData();
+                _timeChestData.InitData();
+            }
+            return _timeChestData;
+        }
+        set
+        {
+            _timeChestData = value;
+        }
+    }
+    public DailyOfferData dailyOfferData
+    {
+        get
+        {
+            if (_dailyOfferData == null)
+            {
+#if TEST
+				Debug.Log("--- Create New PlayerData! ---");
+#endif
+                _dailyOfferData = new DailyOfferData();
+                _dailyOfferData.InitData();
+            }
+            return _dailyOfferData;
+        }
+        set
+        {
+            _dailyOfferData = value;
+        }
+    }
 
     private PlayerData _playerData;
     private AddOnUserData _addOnUserData;
     private DailyDealData _dailyDealData;
+    private TimeChestData _timeChestData;
+    private DailyOfferData _dailyOfferData;
     #endregion
     #region Player Progression
     private int _lastLevelWin;
