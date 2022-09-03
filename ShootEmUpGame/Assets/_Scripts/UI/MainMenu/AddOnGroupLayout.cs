@@ -82,9 +82,9 @@ public class AddOnGroupLayout : MonoBehaviour
         while (currentListSize < listSize)
         {
             currentListSize++;
-            GameObject _addOnItem = Instantiate<GameObject>(_prefab, transform);
-            AddOnUIItem _addOnUiItem = _addOnItem.GetComponent<AddOnUIItem>();
-            _listAddOnUI.Add(_addOnUiItem);
+            GameObject addOnItem = Instantiate<GameObject>(_prefab, transform);
+            AddOnUIItem addOnUiItem = addOnItem.GetComponent<AddOnUIItem>();
+            _listAddOnUI.Add(addOnUiItem);
         }
         if (_updateParentSize)
         {
