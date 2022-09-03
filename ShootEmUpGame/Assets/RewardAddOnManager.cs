@@ -43,6 +43,26 @@ public class RewardAddOnManager : MonoBehaviour
         instance.GetReward();
     }
 
+    public void Purchase(string RequireResource, int RequireAmount, string AddOn){
+        int check = 0;
+        switch( RequireResource ){
+            case "gold":
+                check = DataManager.Instance.playerData.Coin;
+                break;
+            case "diamond":
+                check = DataManager.Instance.playerData.Diamond;
+                break;
+            default:
+                return;
+        }
+        if(check > RequireAmount){
+            AddReward(AddOn);
+            GetReward();
+        } else {
+            //Get More Resource;
+        }
+    }
+
     public void GetBoxReward(string Id){
         if(rewardQueue.Count > 0){
             LTSeq seq = BoxRewardCanvasManager.Instance.Show(Id);
@@ -52,6 +72,26 @@ public class RewardAddOnManager : MonoBehaviour
 
     public void InstanceBoxReward(string Id){
         instance.GetBoxReward(Id);
+    }
+
+    public void BoxPurchase(string Box, string RequireResource, int RequireAmount, string AddOn){
+        int check = 0;
+        switch( RequireResource ){
+            case "gold":
+                check = DataManager.Instance.playerData.Coin;
+                break;
+            case "diamond":
+                check = DataManager.Instance.playerData.Diamond;
+                break;
+            default:
+                return;
+        }
+        if(check > RequireAmount){
+            AddReward(AddOn);
+            GetBoxReward(Box);
+        } else {
+            //Get More Resource;
+        }
     }
 
     public IAddOnData GetAddOnData(string Id){

@@ -40,6 +40,26 @@ public class RewardResourceManager : MonoBehaviour
         }
     }
 
+    public void Purchase(string RequireResource, int RequireAmount, string rewardResource, int RewardAmount){
+        int check = 0;
+        switch( RequireResource ){
+            case "gold":
+                check = DataManager.Instance.playerData.Coin;
+                break;
+            case "diamond":
+                check = DataManager.Instance.playerData.Diamond;
+                break;
+            default:
+                return;
+        }
+        if(check > RequireAmount){
+            AddReward(rewardResource, RewardAmount);
+            GetReward();
+        } else {
+            //Get More Resource;
+        }
+    }
+
     public void InstanceGetReward(){
         instance.GetReward();
     }
@@ -53,6 +73,26 @@ public class RewardResourceManager : MonoBehaviour
 
     public void InstanceBoxReward(string Id){
         instance.GetBoxReward(Id);
+    }
+
+    public void BoxPurchase(string Box, string RequireResource, int RequireAmount, string rewardResource, int RewardAmount){
+        int check = 0;
+        switch( RequireResource ){
+            case "gold":
+                check = DataManager.Instance.playerData.Coin;
+                break;
+            case "diamond":
+                check = DataManager.Instance.playerData.Diamond;
+                break;
+            default:
+                return;
+        }
+        if(check > RequireAmount){
+            AddReward(rewardResource, RewardAmount);
+            GetBoxReward(Box);
+        } else {
+            //Get More Resource;
+        }
     }
 
     public void AddGold(int amount){
