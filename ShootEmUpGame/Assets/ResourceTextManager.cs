@@ -30,7 +30,6 @@ public class ResourceTextManager : MonoBehaviour
 
     public void SetResource(string Id){
         if(Id != ""){
-            Debug.Log(Id);
             ResourceData.Type type = resourceData.GetType(Id);
             GameObject icon = type.SmallIconGameObject;
             foreach (Transform child in iconPlaceHolderGameObject.transform) {

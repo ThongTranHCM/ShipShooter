@@ -161,7 +161,7 @@ public class RewardResourceManager : MonoBehaviour
                 DataManager.Instance.playerData.Coin += Amount;
                 break;
             case "diamond":
-                DataManager.Instance.playerData.Coin += Amount;
+                DataManager.Instance.playerData.Diamond += Amount;
                 break;
             default:
                 return;
