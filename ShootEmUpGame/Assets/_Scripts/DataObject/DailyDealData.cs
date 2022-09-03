@@ -54,8 +54,10 @@ public class DailyDealData
             get { return diamond; }
         }
     }
-    [SerializeField]
     private List<Conversion> conversionList;
+    public List<Conversion> ConversionList{
+        get { return conversionList; }
+    }
     private List<Option> optionList;
     public List<Option> OptionList{
         get { return optionList; }
@@ -67,9 +69,9 @@ public class DailyDealData
     const int interval = 24 * 3600;
 
     public void InitData(){
-        UpdateStartTime();
         conversionList = GameInformation.Instance.dailyDealConversionList;
         optionList = GameInformation.Instance.dailyDealOptionList;
+        UpdateStartTime();
     }
     public int GetFragment(int index){
         index = Mathf.Min(index, conversionList.Count - 1);
@@ -78,9 +80,6 @@ public class DailyDealData
     public int GetDiamondCost(int index){
         index = Mathf.Min(index, conversionList.Count - 1);
         return conversionList[index].Diamond;
-    }
-    public int GetConversionListCount(){
-        return conversionList.Count;
     }
     public Option GetOption(string Id){
         foreach(Option option in optionList){

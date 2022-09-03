@@ -39,7 +39,7 @@ public class DailyDealManager : MonoBehaviour
         public float BestDeal(){
             float max = 0;
             float diamondSum = 0;
-            for(int i = 0; i < DataManager.Instance.dailyDealData.GetConversionListCount(); i++){
+            for(int i = 0; i < DataManager.Instance.dailyDealData.ConversionList.Count; i++){
                 diamondSum += DataManager.Instance.dailyDealData.GetDiamondCost(i);
                 if(diamondSum * DataManager.Instance.dailyDealData.GetOption(optionId).GetProbability(i) > max){
                     max = diamondSum * DataManager.Instance.dailyDealData.GetOption(optionId).GetProbability(i);

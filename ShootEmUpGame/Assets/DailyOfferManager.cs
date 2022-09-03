@@ -41,7 +41,7 @@ public class DailyOfferManager : MonoBehaviour
         foreach(Transform child in offerListGameObject.gameObject.transform){
             GameObject.Destroy(child);
         }
-        List<DailyOfferData.Reward> rewards = DataManager.Instance.dailyOfferData.GetRewardList();
+        List<DailyOfferData.Reward> rewards = DataManager.Instance.dailyOfferData.RewardList;
         foreach(DailyOfferData.Reward reward in rewards){
             (string, int) tuple = reward.ToTuple();
             GameObject resourceReward = GameObject.Instantiate(resourcePanelPrefab,offerListGameObject.transform.position, Quaternion.identity, offerListGameObject.transform);

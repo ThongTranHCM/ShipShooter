@@ -11,10 +11,6 @@ public class DailyOfferData
         string id;
         [SerializeField]
         int amount;
-        public Reward(string Id, int Amount){
-            id = Id;
-            amount = Amount;
-        }
         public (string, int) ToTuple(){
             return (id, amount);
         }
@@ -23,8 +19,13 @@ public class DailyOfferData
     public int StartTime{
         get { return startTime; }
     }
+    private List<Reward> rewardList;
+    public List<Reward> RewardList{
+        get { return rewardList; }
+    }
     const int interval = 24 * 3600;
     public void InitData(){
+        rewardList = GameInformation.Instance.dailyOfferRewardList; 
         UpdateStartTime();
     }
     public bool HasFinished(){
@@ -43,8 +44,5 @@ public class DailyOfferData
         startTime = (int)(span.TotalSeconds / interval);
         startTime *= interval;
         DataManager.Save();
-    }
-    public List<Reward> GetRewardList(){
-        return GameInformation.Instance.dailyOfferRewardList;
     }
 }

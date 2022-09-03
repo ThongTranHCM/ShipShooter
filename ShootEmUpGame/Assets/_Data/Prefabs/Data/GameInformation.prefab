@@ -80,9 +80,7 @@ MonoBehaviour:
     amount: 30
   - id: gold
     amount: 1000
-  - id: diamond
-    amount: 30
-  - id: gold
-    amount: 1000
   - id: regular_box
+    amount: 1
+  - id: premium_box
     amount: 1
