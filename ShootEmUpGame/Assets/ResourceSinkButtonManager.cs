@@ -5,49 +5,53 @@ using UnityEngine;
 public class ResourceSinkButtonManager : MonoBehaviour
 {
     [SerializeField]
-    private string resourceId;
+    protected string resourceId;
     [SerializeField]
-    private int resourceCost;
+    protected int resourceCost;
     [SerializeField]
-    private GameObject validButton;
+    protected GameObject validButton;
     [SerializeField]
-    private ResourceTextManager validCostText;
+    protected ResourceTextManager validCostText;
     [SerializeField]
-    private GameObject invalidButton;
+    protected GameObject invalidButton;
     [SerializeField]
-    private ResourceTextManager invalidCostText;
-    private bool lastSufficentCheck = false;
+    protected ResourceTextManager invalidCostText;
+    protected bool lastSufficentCheck = false;
 
-    public void SetCost(string Id, int Cost){
+    public void Update(){
+        CheckUpdate();
+    }
+
+    public virtual void SetValue(string Id, int Cost){
         resourceId = Id;
         resourceCost = Cost;
         validCostText.SetValue(Id, Cost.ToString());
         invalidCostText.SetValue(Id, Cost.ToString());
     } 
 
-    public void Update(){
-        bool isSufficent = IsSufficent();
-        if(lastSufficentCheck != isSufficent){
-            validCostText.SetValue(resourceId, resourceCost.ToString());
-            invalidCostText.SetValue(resourceId, resourceCost.ToString());
-            validButton.SetActive(IsSufficent());
-            invalidButton.SetActive(!IsSufficent());
-            lastSufficentCheck = isSufficent;
-        }
-    }
-
-    private bool IsSufficent(){
-        int check = 0;
+    protected virtual bool IsSufficent(){
+        int checkValue = 0;
         switch(resourceId){
             case "gold":
-                check = DataManager.Instance.playerData.Coin;
+                checkValue = DataManager.Instance.playerData.Coin;
                 break;
             case "diamond":
-                check = DataManager.Instance.playerData.Diamond;
+                checkValue = DataManager.Instance.playerData.Diamond;
                 break;
             default:
                 return false;
         }
-        return check > resourceCost;
+        return checkValue > resourceCost;
+    }
+
+    public void CheckUpdate(){
+        bool isSufficent = IsSufficent();
+        if(lastSufficentCheck != isSufficent){
+            validCostText.SetValue(resourceId, resourceCost.ToString());
+            invalidCostText.SetValue(resourceId, resourceCost.ToString());
+            validButton.SetActive(isSufficent);
+            invalidButton.SetActive(!isSufficent);
+            lastSufficentCheck = isSufficent;
+        }
     }
 }
