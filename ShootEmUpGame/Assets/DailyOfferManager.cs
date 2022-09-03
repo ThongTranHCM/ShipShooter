@@ -38,14 +38,12 @@ public class DailyOfferManager : MonoBehaviour
     }
 
     public void ResetOffers(){
-        foreach(Transform child in offerListGameObject.gameObject.transform){
-            GameObject.Destroy(child);
-        }
         List<DailyOfferData.Reward> rewards = DataManager.Instance.dailyOfferData.RewardList;
-        foreach(DailyOfferData.Reward reward in rewards){
-            (string, int) tuple = reward.ToTuple();
-            GameObject resourceReward = GameObject.Instantiate(resourcePanelPrefab,offerListGameObject.transform.position, Quaternion.identity, offerListGameObject.transform);
-            resourceReward.GetComponent<ResourcePanelManager>().SetReward(tuple.Item1, tuple.Item2);
+        int i = 0;
+        foreach(Transform child in offerListGameObject.transform){
+            (string, int) tuple = rewards[i].ToTuple();
+            child.gameObject.GetComponent<ResourcePanelManager>().SetReward(tuple.Item1, tuple.Item2);
+            i = Mathf.Min(i + 1, rewards.Count - 1);
         }
     }
 }

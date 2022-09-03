@@ -54,6 +54,8 @@ public class DailyDealManager : MonoBehaviour
     }
     private List<Deal> dealList;
     [SerializeField]
+    private GameObject content;
+    [SerializeField]
     private GameObject addOnDealPanelPrefab;
     [SerializeField]
     private TextMeshProUGUI countDownText;
@@ -109,15 +111,11 @@ public class DailyDealManager : MonoBehaviour
     }
 
     public void ResetDeals(){
-        dealList = GetBestDeals(3);
-        addOnDealPanelList = new List<GameObject>();
+        dealList = GetBestDeals(gameObject.transform.childCount);
+        int i = 0;
         foreach(Transform child in gameObject.transform){
-            GameObject.Destroy(child);
-        }
-        for(int i = 0; i < dealList.Count; i++){
-            GameObject dealPanel = GameObject.Instantiate(addOnDealPanelPrefab,gameObject.transform.position, Quaternion.identity, gameObject.transform);
-            dealPanel.GetComponent<DailyDealPanelManager>().SetDeal(dealList[i]);
-            addOnDealPanelList.Add(dealPanel);
+            child.GetComponent<DailyDealPanelManager>().SetDeal(dealList[i]);
+            i += 1;
         }
     }
 }

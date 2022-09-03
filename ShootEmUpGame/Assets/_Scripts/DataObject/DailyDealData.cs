@@ -66,7 +66,7 @@ public class DailyDealData
     public int StartTime{
         get { return startTime; }
     }
-    const int interval = 24 * 3600;
+    const int interval = 1;
 
     public void InitData(){
         conversionList = GameInformation.Instance.dailyDealConversionList;
