@@ -55,7 +55,7 @@ public class RewardAddOnManager : MonoBehaviour
             default:
                 return;
         }
-        if(check > RequireAmount){
+        if(check >= RequireAmount){
             switch( RequireResource ){
                 case "gold":
                     DataManager.Instance.playerData.Coin -= RequireAmount;
@@ -99,7 +99,7 @@ public class RewardAddOnManager : MonoBehaviour
             default:
                 return;
         }
-        if(check > RequireAmount){
+        if(check >= RequireAmount){
             switch( RequireResource ){
                 case "gold":
                     DataManager.Instance.playerData.Coin -= RequireAmount;

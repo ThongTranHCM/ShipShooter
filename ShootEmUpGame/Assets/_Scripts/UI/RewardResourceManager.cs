@@ -35,6 +35,7 @@ public class RewardResourceManager : MonoBehaviour
             (string, int) reward = rewardQueue.Dequeue();
             SoundManager.Instance.PlaySFX("open_box");
             RewardResourceCanvasManager.Instance.Show(reward.Item1, reward.Item2);
+            IncreaseResource(reward.Item1, reward.Item2);
         } else {
             RewardResourceCanvasManager.Instance.Close();
         }
@@ -52,7 +53,7 @@ public class RewardResourceManager : MonoBehaviour
             default:
                 return;
         }
-        if(check > RequireAmount){
+        if(check >= RequireAmount){
             switch( RequireResource ){
                 case "gold":
                     DataManager.Instance.playerData.Coin -= RequireAmount;
@@ -100,7 +101,7 @@ public class RewardResourceManager : MonoBehaviour
             default:
                 return;
         }
-        if(check > RequireAmount){
+        if(check >= RequireAmount){
             switch( RequireResource ){
                 case "gold":
                     DataManager.Instance.playerData.Coin -= RequireAmount;
@@ -115,7 +116,7 @@ public class RewardResourceManager : MonoBehaviour
             foreach((string,int) reward in Rewards){
                 AddReward(reward.Item1, reward.Item2);
             }
-            GetReward();
+            GetBoxReward(Box);
         } else {
             //Get More Resource;
         }
@@ -152,5 +153,19 @@ public class RewardResourceManager : MonoBehaviour
         if(scene.name == "MainMenu"){
             GetReward();
         }
+    }
+
+    private void IncreaseResource(string Id, int Amount){
+        switch( Id ){
+            case "gold":
+                DataManager.Instance.playerData.Coin += Amount;
+                break;
+            case "diamond":
+                DataManager.Instance.playerData.Coin += Amount;
+                break;
+            default:
+                return;
+        }
+        DataManager.Save();
     }
 }

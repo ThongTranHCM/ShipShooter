@@ -57,7 +57,7 @@ public class RewardFragmentManager : MonoBehaviour
             default:
                 return;
         }
-        if(check > RequireAmount){
+        if(check >= RequireAmount){
             switch( RequireResource ){
                 case "gold":
                     DataManager.Instance.playerData.Coin -= RequireAmount;
@@ -101,7 +101,7 @@ public class RewardFragmentManager : MonoBehaviour
             default:
                 return;
         }
-        if(check > RequireAmount){
+        if(check >= RequireAmount){
             switch( RequireResource ){
                 case "gold":
                     DataManager.Instance.playerData.Coin -= RequireAmount;
@@ -128,5 +128,6 @@ public class RewardFragmentManager : MonoBehaviour
 
     private void IncreaseFragment(string Id, int Amount){
         DataManager.Instance.addOnUserData.GetAddOnInfo(addOnEquipData.GetType(Id)).CurrentFragment += Amount;
+        DataManager.Save();
     }
 }

@@ -36,9 +36,11 @@ public class PurchaseResourceButtonManager : ResourceSinkButtonManager
         foreach(Reward reward in rewards){
             tuples.Add(reward.ToTuple());
         }
+        Debug.Log(box);
         if(box == ""){
             RewardResourceManager.Instance.Purchase(costId, costAmount, tuples);
         } else {
+            Debug.Log("Opening Box");
             RewardResourceManager.Instance.BoxPurchase(box, costId, costAmount, tuples);
         }
         
