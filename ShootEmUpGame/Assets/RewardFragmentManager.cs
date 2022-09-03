@@ -45,7 +45,7 @@ public class RewardFragmentManager : MonoBehaviour
         instance.GetReward();
     }
 
-    public void Purchase(string RequireResource, int RequireAmount, string AddOn, int Amount){
+    public void Purchase(string RequireResource, int RequireAmount, List<(string, int)> Rewards){
         int check = 0;
         switch( RequireResource ){
             case "gold":
@@ -58,7 +58,20 @@ public class RewardFragmentManager : MonoBehaviour
                 return;
         }
         if(check > RequireAmount){
-            AddReward(AddOn, Amount);
+            switch( RequireResource ){
+                case "gold":
+                    DataManager.Instance.playerData.Coin -= RequireAmount;
+                    break;
+                case "diamond":
+                    DataManager.Instance.playerData.Coin -= RequireAmount;
+                    break;
+                default:
+                    return;
+            }
+            DataManager.Save();
+            foreach((string,int) reward in Rewards){
+                AddReward(reward.Item1, reward.Item2);
+            }
             GetReward();
         } else {
             //Get More Resource;
@@ -76,7 +89,7 @@ public class RewardFragmentManager : MonoBehaviour
         instance.GetBoxReward(Id);
     }
 
-    public void BoxPurchase(string Box, string RequireResource, int RequireAmount, string AddOn, int Amount){
+    public void BoxPurchase(string Box, string RequireResource, int RequireAmount, List<(string, int)> Rewards){
         int check = 0;
         switch( RequireResource ){
             case "gold":
@@ -89,7 +102,20 @@ public class RewardFragmentManager : MonoBehaviour
                 return;
         }
         if(check > RequireAmount){
-            AddReward(AddOn, Amount);
+            switch( RequireResource ){
+                case "gold":
+                    DataManager.Instance.playerData.Coin -= RequireAmount;
+                    break;
+                case "diamond":
+                    DataManager.Instance.playerData.Coin -= RequireAmount;
+                    break;
+                default:
+                    return;
+            }
+            DataManager.Save();
+            foreach((string,int) reward in Rewards){
+                AddReward(reward.Item1, reward.Item2);
+            }
             GetBoxReward(Box);
         } else {
             //Get More Resource;

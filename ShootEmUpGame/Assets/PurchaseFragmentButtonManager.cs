@@ -4,16 +4,27 @@ using UnityEngine;
 
 public class PurchaseFragmentButtonManager : ResourceSinkButtonManager
 {
+    [System.Serializable]
+    public class Reward{
+        [SerializeField]
+        string id;
+        [SerializeField]
+        int amount;
+        public Reward(string Id, int Amount){
+            id = Id;
+            amount = Amount;
+        }
+        public (string, int) ToTuple(){
+            return (id, amount);
+        }
+    }
     [SerializeField]
-    private string rewardId;
-    [SerializeField]
-    private int rewardAmount;
+    private List<Reward> rewards;
     [SerializeField]
     private string box;
 
-    public void SetReward(string Id, int Amount){
-        rewardId = Id;
-        rewardAmount = Amount;
+    public void SetReward(List<Reward> Rewards){
+        rewards = Rewards;
     }
 
     public void SetBox(string Box){
@@ -21,10 +32,14 @@ public class PurchaseFragmentButtonManager : ResourceSinkButtonManager
     }
 
     public void PurchaseReward(){
+        List<(string,int)> tuples = new List<(string, int)>();
+        foreach(Reward reward in rewards){
+            tuples.Add(reward.ToTuple());
+        }
         if(box == ""){
-            RewardFragmentManager.Instance.Purchase(costId, costAmount, rewardId, rewardAmount);
+            RewardFragmentManager.Instance.Purchase(costId, costAmount, tuples);
         } else {
-            RewardFragmentManager.Instance.BoxPurchase(box, costId, costAmount, rewardId, rewardAmount);
+            RewardFragmentManager.Instance.BoxPurchase(box, costId, costAmount, tuples);
         }
         
     }

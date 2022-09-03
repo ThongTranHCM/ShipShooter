@@ -40,7 +40,7 @@ public class RewardResourceManager : MonoBehaviour
         }
     }
 
-    public void Purchase(string RequireResource, int RequireAmount, string rewardResource, int RewardAmount){
+    public void Purchase(string RequireResource, int RequireAmount, List<(string, int)> Rewards){
         int check = 0;
         switch( RequireResource ){
             case "gold":
@@ -53,7 +53,20 @@ public class RewardResourceManager : MonoBehaviour
                 return;
         }
         if(check > RequireAmount){
-            AddReward(rewardResource, RewardAmount);
+            switch( RequireResource ){
+                case "gold":
+                    DataManager.Instance.playerData.Coin -= RequireAmount;
+                    break;
+                case "diamond":
+                    DataManager.Instance.playerData.Coin -= RequireAmount;
+                    break;
+                default:
+                    return;
+            }
+            DataManager.Save();
+            foreach((string,int) reward in Rewards){
+                AddReward(reward.Item1, reward.Item2);
+            }
             GetReward();
         } else {
             //Get More Resource;
@@ -75,7 +88,7 @@ public class RewardResourceManager : MonoBehaviour
         instance.GetBoxReward(Id);
     }
 
-    public void BoxPurchase(string Box, string RequireResource, int RequireAmount, string rewardResource, int RewardAmount){
+    public void BoxPurchase(string Box, string RequireResource, int RequireAmount, List<(string, int)> Rewards){
         int check = 0;
         switch( RequireResource ){
             case "gold":
@@ -88,8 +101,21 @@ public class RewardResourceManager : MonoBehaviour
                 return;
         }
         if(check > RequireAmount){
-            AddReward(rewardResource, RewardAmount);
-            GetBoxReward(Box);
+            switch( RequireResource ){
+                case "gold":
+                    DataManager.Instance.playerData.Coin -= RequireAmount;
+                    break;
+                case "diamond":
+                    DataManager.Instance.playerData.Coin -= RequireAmount;
+                    break;
+                default:
+                    return;
+            }
+            DataManager.Save();
+            foreach((string,int) reward in Rewards){
+                AddReward(reward.Item1, reward.Item2);
+            }
+            GetReward();
         } else {
             //Get More Resource;
         }

@@ -5,13 +5,13 @@ using UnityEngine;
 public class PurchaseAddOnButtonManager : ResourceSinkButtonManager
 {
     [SerializeField]
-    private string rewardId;
+    private List<string> rewardId;
     [SerializeField]
     private string box;
 
-    public void SetReward(string Id){
+    public void SetReward(List<string> Id){
         rewardId = Id;
-    } 
+    }
 
     public void SetBox(string Box){
         box = Box;

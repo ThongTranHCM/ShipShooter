@@ -43,7 +43,7 @@ public class RewardAddOnManager : MonoBehaviour
         instance.GetReward();
     }
 
-    public void Purchase(string RequireResource, int RequireAmount, string AddOn){
+    public void Purchase(string RequireResource, int RequireAmount, List<string> AddOns){
         int check = 0;
         switch( RequireResource ){
             case "gold":
@@ -56,7 +56,20 @@ public class RewardAddOnManager : MonoBehaviour
                 return;
         }
         if(check > RequireAmount){
-            AddReward(AddOn);
+            switch( RequireResource ){
+                case "gold":
+                    DataManager.Instance.playerData.Coin -= RequireAmount;
+                    break;
+                case "diamond":
+                    DataManager.Instance.playerData.Coin -= RequireAmount;
+                    break;
+                default:
+                    return;
+            }
+            DataManager.Save();
+            foreach(string addOn in AddOns){
+                AddReward(addOn);
+            }
             GetReward();
         } else {
             //Get More Resource;
@@ -74,7 +87,7 @@ public class RewardAddOnManager : MonoBehaviour
         instance.GetBoxReward(Id);
     }
 
-    public void BoxPurchase(string Box, string RequireResource, int RequireAmount, string AddOn){
+    public void BoxPurchase(string Box, string RequireResource, int RequireAmount, List<string> AddOns){
         int check = 0;
         switch( RequireResource ){
             case "gold":
@@ -87,7 +100,20 @@ public class RewardAddOnManager : MonoBehaviour
                 return;
         }
         if(check > RequireAmount){
-            AddReward(AddOn);
+            switch( RequireResource ){
+                case "gold":
+                    DataManager.Instance.playerData.Coin -= RequireAmount;
+                    break;
+                case "diamond":
+                    DataManager.Instance.playerData.Coin -= RequireAmount;
+                    break;
+                default:
+                    return;
+            }
+            DataManager.Save();
+            foreach(string addOn in AddOns){
+                AddReward(addOn);
+            }
             GetBoxReward(Box);
         } else {
             //Get More Resource;
