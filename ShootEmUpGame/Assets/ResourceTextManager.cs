@@ -15,10 +15,10 @@ public class ResourceTextManager : MonoBehaviour
     private string id;
 
     void Awake(){
-        Init(text, id);
+        SetValue(text, id);
     }
 
-    void Init(string Text, string Id){
+    public void SetValue(string Id, string Text){
         SetText(Text);
         SetResource(Id);
     }
