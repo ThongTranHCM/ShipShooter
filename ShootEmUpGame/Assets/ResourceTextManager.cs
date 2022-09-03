@@ -15,12 +15,12 @@ public class ResourceTextManager : MonoBehaviour
     private string id;
 
     void Awake(){
-        SetValue(text, id);
+        SetValue(id, text);
     }
 
     public void SetValue(string Id, string Text){
-        SetText(Text);
         SetResource(Id);
+        SetText(Text);
     }
 
     public void SetText(string Text){
@@ -30,6 +30,7 @@ public class ResourceTextManager : MonoBehaviour
 
     public void SetResource(string Id){
         if(Id != ""){
+            Debug.Log(Id);
             ResourceData.Type type = resourceData.GetType(Id);
             GameObject icon = type.SmallIconGameObject;
             foreach (Transform child in iconPlaceHolderGameObject.transform) {
