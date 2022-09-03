@@ -507,18 +507,6 @@ MonoBehaviour:
   validCostText: {fileID: 3068321890623104923}
   invalidButton: {fileID: 8188580503331415098}
   invalidCostText: {fileID: 5397312496598771871}
---- !u!114 &8868831892270772054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7070159343277957357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c77f5eacad0c9c49abc3d129018b5ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &4279469315944830965
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -564,7 +552,7 @@ PrefabInstance:
     - target: {fileID: 613985290915857211, guid: d98289d2635e34f448ecb9c6d415e1a7,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 34.19
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 613985290915857211, guid: d98289d2635e34f448ecb9c6d415e1a7,
         type: 3}
