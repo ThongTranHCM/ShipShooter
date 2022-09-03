@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055a9b627e30abd45995385891ef787a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _itemPrefab: {fileID: 817807483124458328, guid: f1c9699671891f34ea950d6902e597b6,
+  _itemPrefab: {fileID: 5954857955201066212, guid: 811a96a3f152c62469e52379c35ed365,
     type: 3}
   _totalDamageToTrigger: 300
   damageRatio:
