@@ -2,23 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ResourceSinkButtonManager : MonoBehaviour
+public abstract class ResourceSinkButtonManager : MonoBehaviour
 {
     [SerializeField]
-    protected string resourceId;
+    protected string costId;
     [SerializeField]
-    protected int resourceCost;
+    protected int costAmount;
     [SerializeField]
     protected ResourceTextManager costText;
     protected bool lastSufficentCheck = false;
 
     void Awake(){
-        SetValue(resourceId, resourceCost);
+        SetCost(costId, costAmount);
     }
 
-    public virtual void SetValue(string Id, int Cost){
-        resourceId = Id;
-        resourceCost = Cost;
-        costText.SetValue(Id, Cost.ToString());
+    public void SetCost(string Id, int Amount){
+        costId = Id;
+        costAmount = Amount;
+        costText.SetValue(Id, Amount.ToString());
     } 
 }
