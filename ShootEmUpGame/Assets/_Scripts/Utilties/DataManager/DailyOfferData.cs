@@ -54,7 +54,7 @@ public class DailyOfferData
         DataManager.Save();
     }
     public void UpdateIndex(){
-        index = Mathf.Min(index + 1, rewardList.Count);
+        index = Mathf.Min(index + 1, rewardList.Count - 1);
     }
     public void ResetIndex(){
         index = 0;

@@ -43,7 +43,7 @@ public class RewardAddOnManager : MonoBehaviour
         instance.GetReward();
     }
 
-    public void Purchase(string RequireResource, int RequireAmount, List<string> AddOns){
+    public bool Purchase(string RequireResource, int RequireAmount, List<string> AddOns){
         int check = 0;
         switch( RequireResource ){
             case "gold":
@@ -53,7 +53,7 @@ public class RewardAddOnManager : MonoBehaviour
                 check = DataManager.Instance.playerData.Diamond;
                 break;
             default:
-                return;
+                return false;
         }
         if(check >= RequireAmount){
             switch( RequireResource ){
@@ -64,15 +64,17 @@ public class RewardAddOnManager : MonoBehaviour
                     DataManager.Instance.playerData.Coin -= RequireAmount;
                     break;
                 default:
-                    return;
+                    return false;
             }
             DataManager.Save();
             foreach(string addOn in AddOns){
                 AddReward(addOn);
             }
             GetReward();
+            return true;
         } else {
             //Get More Resource;
+            return false;
         }
     }
 
@@ -87,7 +89,7 @@ public class RewardAddOnManager : MonoBehaviour
         instance.GetBoxReward(Id);
     }
 
-    public void BoxPurchase(string Box, string RequireResource, int RequireAmount, List<string> AddOns){
+    public bool BoxPurchase(string Box, string RequireResource, int RequireAmount, List<string> AddOns){
         int check = 0;
         switch( RequireResource ){
             case "gold":
@@ -97,7 +99,7 @@ public class RewardAddOnManager : MonoBehaviour
                 check = DataManager.Instance.playerData.Diamond;
                 break;
             default:
-                return;
+                return false;
         }
         if(check >= RequireAmount){
             switch( RequireResource ){
@@ -108,15 +110,17 @@ public class RewardAddOnManager : MonoBehaviour
                     DataManager.Instance.playerData.Coin -= RequireAmount;
                     break;
                 default:
-                    return;
+                    return false;
             }
             DataManager.Save();
             foreach(string addOn in AddOns){
                 AddReward(addOn);
             }
             GetBoxReward(Box);
+            return true;
         } else {
             //Get More Resource;
+            return false;
         }
     }
 

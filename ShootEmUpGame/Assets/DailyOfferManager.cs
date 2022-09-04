@@ -12,9 +12,9 @@ public class DailyOfferManager : MonoBehaviour
     [SerializeField]
     private GameObject offerListGameObject;
     [SerializeField]
-    private GameObject resourcePanelPrefab;
-    [SerializeField]
     private TextMeshProUGUI countDownText;
+    [SerializeField]
+    private PurchaseResourceButtonManager purchaseButton;
     DailyOfferManager(){
         if(instance == null){
             instance = this;
@@ -46,6 +46,8 @@ public class DailyOfferManager : MonoBehaviour
             child.gameObject.GetComponent<ResourcePanelManager>().SetReward(tuple.Item1, tuple.Item2);
             i = Mathf.Min(i + 1, rewards.Count - 1);
         }
+        (string, int) cost = DataManager.Instance.dailyOfferData.GetReward().CostTuple();
+        purchaseButton.SetCost(cost.Item1, cost.Item2);
     }
 
     public void ClaimReward(){
@@ -53,8 +55,9 @@ public class DailyOfferManager : MonoBehaviour
         (string, int) cost = DataManager.Instance.dailyOfferData.GetReward().CostTuple();
         List<(string, int)> rewardList = new List<(string, int)>();
         rewardList.Add(reward);
-        RewardResourceManager.Instance.Purchase(cost.Item1,cost.Item2,rewardList);
-        DataManager.Instance.dailyOfferData.UpdateIndex();
+        if(RewardResourceManager.Instance.Purchase(cost.Item1,cost.Item2,rewardList)){
+            DataManager.Instance.dailyOfferData.UpdateIndex();
+        }
     }
 
     public void ClaimRewardAd(){
@@ -62,6 +65,8 @@ public class DailyOfferManager : MonoBehaviour
         (string, int) cost = DataManager.Instance.dailyOfferData.GetReward().CostTuple();
         List<(string, int)> rewardList = new List<(string, int)>();
         rewardList.Add(reward);
-        RewardResourceManager.Instance.Purchase(cost.Item1,cost.Item2,rewardList);
+        if(RewardResourceManager.Instance.Purchase(cost.Item1,cost.Item2,rewardList)){
+            DataManager.Instance.dailyOfferData.UpdateIndex();
+        }
     }
 }
