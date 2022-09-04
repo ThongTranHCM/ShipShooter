@@ -34,6 +34,7 @@ public class DailyOfferData
     const int interval = 24 * 3600;
     public void InitData(){
         rewardList = GameInformation.Instance.dailyOfferRewardList; 
+        ResetIndex();
         UpdateStartTime();
     }
     public bool HasFinished(){

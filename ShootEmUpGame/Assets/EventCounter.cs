@@ -84,4 +84,16 @@ public class EventCounter : MonoBehaviour
             eventStampDictionary.Remove(Key);
         }
     }
+
+    public void GetLast(string Key){
+        if(eventStampDictionary.ContainsKey(Key)){ // check key before removing it
+            eventStampDictionary.Remove(Key);
+        }
+    }
+
+    public float OccurProbablity(string Key, int Duration, float Time, string Unit){
+        float rate = Rate(Key, Duration, Unit);
+        return 1 - Mathf.Exp(X / rate);
+    }
+
 }
