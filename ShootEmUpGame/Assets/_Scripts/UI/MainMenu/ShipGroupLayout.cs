@@ -27,29 +27,37 @@ public class ShipGroupLayout : MonoBehaviour
         List<DOShipData> listShipData = GameInformation.Instance.shipData;
         List<int> listQualifiedShip = new List<int>();
         DOShipData shipData;
+        PlayerData.ShipProgressData shipProgress;
 
         for (int i = 0; i < listShipData.Count; i++)
         {
            listQualifiedShip.Add(i);
         }
         UpdateListUISize(listQualifiedShip.Count);
-        int selected = 1;
         for (int i = 0; i < listQualifiedShip.Count; i++)
         {
             shipData = listShipData[listQualifiedShip[i]];
-            DataManager.Instance.playerData.GetShipProgress(i);
+            shipProgress = DataManager.Instance.playerData.GetShipProgress(i);
             ShipSelectUIController _shipSelectItem = _listShipSelectUI[i];
             int tmp = i;
-            _shipSelectItem.Install(shipData.spritePresentShip, 2, shipData.shipName);
-            if (selected == i)
+            _shipSelectItem.Install(shipData.spritePresentShip, shipProgress.shipLevel, shipData.shipName);
+            _shipSelectItem.onBtnClick = () => OnShipItemClick(tmp);
+        }
+        SelectShip(0);
+    }
+
+    public void SelectShip(int index)
+    {
+        for (int i = 0; i < _listShipSelectUI.Count; i++)
+        {
+            if (index == i)
             {
-                _shipSelectItem.ShowAsSelected();
+                _listShipSelectUI[i].ShowAsSelected();
             }
             else
             {
-                _shipSelectItem.ShowAsShip();
+                _listShipSelectUI[i].ShowAsShip();
             }
-            _shipSelectItem.onBtnClick = () => OnShipItemClick(tmp);
         }
     }
 

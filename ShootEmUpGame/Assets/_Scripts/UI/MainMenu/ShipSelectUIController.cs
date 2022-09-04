@@ -12,6 +12,10 @@ public class ShipSelectUIController : MonoBehaviour
     private TextMeshProUGUI _txtLabel;
     [SerializeField]
     private Image _imgMain;
+    [SerializeField]
+    private Image _imgOverlay;
+    [SerializeField]
+    private Image _imgLock;
     public System.Action onBtnClick;
 
     [SerializeField]
@@ -32,14 +36,38 @@ public class ShipSelectUIController : MonoBehaviour
     public void ShowAsSelected()
     {
         _imgMain.sprite = _sprSelected;
-        _txtLevel.text = _intLevel.ToString();
+        if (_intLevel > 0)
+        {
+            _imgLock.gameObject.SetActive(false);
+            _txtLevel.gameObject.SetActive(true);
+            _imgOverlay.gameObject.SetActive(false);
+            _txtLevel.text = _intLevel.ToString();
+        }
+        else
+        {
+            _imgLock.gameObject.SetActive(true);
+            _txtLevel.gameObject.SetActive(false);
+            _imgOverlay.gameObject.SetActive(true);
+        }
         _txtLabel.text = "Selected";
     }
 
     public void ShowAsShip()
     {
         _imgMain.sprite = _sprShip;
-        _txtLevel.text = _intLevel.ToString();
+        if (_intLevel > 0)
+        {
+            _imgLock.gameObject.SetActive(false);
+            _txtLevel.gameObject.SetActive(true);
+            _imgOverlay.gameObject.SetActive(false);
+            _txtLevel.text = _intLevel.ToString();
+        }
+        else
+        {
+            _imgLock.gameObject.SetActive(true);
+            _txtLevel.gameObject.SetActive(false);
+            _imgOverlay.gameObject.SetActive(true);
+        }
         _txtLabel.text = _strName;
     }
     public void OnUIClick()

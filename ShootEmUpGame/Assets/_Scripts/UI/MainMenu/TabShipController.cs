@@ -22,9 +22,9 @@ public class TabShipController : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI _txtShipPower;
     [SerializeField]
-    private TextMeshProUGUI _txtAction;
+    private PurchaseResourceButtonManager _purchaseButton;
     [SerializeField]
-    private TextMeshProUGUI _txtShipCost;
+    private PurchaseResourceButtonManager _upgradeButton;
 
     [Header("Ship Group")]
     [SerializeField]
@@ -72,14 +72,23 @@ public class TabShipController : MonoBehaviour
         //Level
         _txtShipLevel.text = "Level " + _intShipLevel;
         _txtShipPower.text = "Power " + _intShipPower;
-        _txtShipCost.text = "" + _intShipCost;
-        if (_intShipLevel > 0)
+        //Button
+        List<PurchaseResourceButtonManager.Reward> rewards = new List<PurchaseResourceButtonManager.Reward>();
+        bool showPurchaseButton = (_intShipLevel > 0);
+        bool showUpgradeButton = (_intShipLevel <= 0);
+        _purchaseButton.gameObject.SetActive(showPurchaseButton);
+        _upgradeButton.gameObject.SetActive(showUpgradeButton);
+        if (showPurchaseButton)
         {
-            _txtAction.text = "Upgrade";
+            _purchaseButton.SetCost("diamond", _intShipCost);
+            rewards.Add(new PurchaseResourceButtonManager.Reward("diamond", 3));
+            _purchaseButton.SetReward(rewards);
         }
-        else
+        if (showUpgradeButton)
         {
-            _txtAction.text = "Buy";
+            _upgradeButton.SetCost("gold", _intShipCost);
+            rewards.Add(new PurchaseResourceButtonManager.Reward("gold", 3));
+            _upgradeButton.SetReward(rewards);
         }
     }
 
