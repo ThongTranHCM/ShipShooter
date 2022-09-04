@@ -70,10 +70,10 @@ MonoBehaviour:
     diamond: 39680
   - fragment: 9295
     diamond: 110085
-  dailyDealOptionList:
-  - id: GunSplit
+  dailyDealDealList:
   - id: GunLaser
   - id: GunEnergyOrb
+  - id: GunSplit
   - id: GunPlasma
   dailyOfferRewardList:
   - id: diamond

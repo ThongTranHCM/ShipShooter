@@ -6,7 +6,7 @@ using System;
 public class DailyDealData
 {
     [System.Serializable]
-    public class Option{
+    public class Deal{
         [SerializeField]
         private string id;
         public string ID{
@@ -15,7 +15,7 @@ public class DailyDealData
         private List<float> probList = new List<float>();
         private int level = 0;
         const float gamma = 0.5f;
-        public void Update(){
+        public void UpdateProb(){
             for(int i = 0; i < probList.Count; i++){
                 if(i < level){
                     probList[i] = probList[i] * gamma + (1 - gamma);
@@ -39,6 +39,28 @@ public class DailyDealData
         public void ResetLevel(){
             level = 0;
         }
+        public int GetFragment(){
+            return DataManager.Instance.dailyDealData.GetFragment(level);
+        }
+        public int GetDiamondCost(){
+            return DataManager.Instance.dailyDealData.GetDiamondCost(level);
+        }
+        public float BestDeal(){
+            float max = 0;
+            float diamondSum = 0;
+            float prob = 0;
+            for(int i = 0; i < GameInformation.Instance.dailyDealConversionList.Count; i++){
+                prob = GetProbability(i);
+                prob = UnityEngine.Random.Range(0.0f,1.0f) < prob ? 1 : 0;
+                diamondSum += DataManager.Instance.dailyDealData.GetDiamondCost(i);
+                if(diamondSum * prob > max){
+                    max = diamondSum * prob;
+                }
+            }
+            //In case everything is 0, use this to randomize all of them;
+            max += UnityEngine.Random.Range(0.0f,1.0f);
+            return max;
+        }
     }
 
     [System.Serializable]
@@ -54,13 +76,9 @@ public class DailyDealData
             get { return diamond; }
         }
     }
-    private List<Conversion> conversionList;
-    public List<Conversion> ConversionList{
-        get { return conversionList; }
-    }
-    private List<Option> optionList;
-    public List<Option> OptionList{
-        get { return optionList; }
+    private List<Deal> dealList;
+    public List<Deal> DealList{
+        get { return dealList; }
     }
     private int startTime;
     public int StartTime{
@@ -69,22 +87,21 @@ public class DailyDealData
     const int interval = 5;
 
     public void InitData(){
-        conversionList = GameInformation.Instance.dailyDealConversionList;
-        optionList = GameInformation.Instance.dailyDealOptionList;
+        dealList = GameInformation.Instance.dailyDealDealList;
         UpdateStartTime();
     }
     public int GetFragment(int index){
-        index = Mathf.Min(index, conversionList.Count - 1);
-        return conversionList[index].Fragment;
+        index = Mathf.Min(index, GameInformation.Instance.dailyDealConversionList.Count - 1);
+        return GameInformation.Instance.dailyDealConversionList[index].Fragment;
     }
     public int GetDiamondCost(int index){
-        index = Mathf.Min(index, conversionList.Count - 1);
-        return conversionList[index].Diamond;
+        index = Mathf.Min(index, GameInformation.Instance.dailyDealConversionList.Count - 1);
+        return GameInformation.Instance.dailyDealConversionList[index].Diamond;
     }
-    public Option GetOption(string Id){
-        foreach(Option option in optionList){
-            if(option.ID == Id){
-                return option;
+    public DailyDealData.Deal GetDeal(string Id){
+        foreach(DailyDealData.Deal deal in dealList){
+            if(deal.ID == Id){
+                return deal;
             }
         }
         return null; 

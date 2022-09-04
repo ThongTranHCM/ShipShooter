@@ -10,54 +10,7 @@ public class DailyDealManager : MonoBehaviour
     public static DailyDealManager Instance{
         get { return instance; }
     }
-    public class Deal{
-        private string optionId;
-        public string OptionId{
-            get{ return optionId; }
-        }
-
-        public Deal(string Id){
-            optionId = Id;
-        }
-
-        public void UpdateLevel(){
-            DataManager.Instance.dailyDealData.GetOption(optionId).IncreaseLevel();
-        }
-
-        public void UpdateProb(){
-            DataManager.Instance.dailyDealData.GetOption(optionId).Update();
-        }
-
-        public int GetFragment(){
-            return DataManager.Instance.dailyDealData.GetFragment(DataManager.Instance.dailyDealData.GetOption(optionId).GetLevel());
-        }
-
-        public int GetDiamondCost(){
-            return DataManager.Instance.dailyDealData.GetDiamondCost(DataManager.Instance.dailyDealData.GetOption(optionId).GetLevel());
-        }
-
-        public float BestDeal(){
-            float max = 0;
-            float diamondSum = 0;
-            float prob = 0;
-            for(int i = 0; i < DataManager.Instance.dailyDealData.ConversionList.Count; i++){
-                prob = DataManager.Instance.dailyDealData.GetOption(optionId).GetProbability(i);
-                prob = UnityEngine.Random.Range(0.0f,1.0f) < prob ? 1 : 0;
-                diamondSum += DataManager.Instance.dailyDealData.GetDiamondCost(i);
-                if(diamondSum * prob > max){
-                    max = diamondSum * prob;
-                }
-            }
-            //In case everything is 0, use this to randomize all of them;
-            max += UnityEngine.Random.Range(0.0f,1.0f);
-            return max;
-        }
-
-        public void ResetLevel(){
-            DataManager.Instance.dailyDealData.GetOption(optionId).ResetLevel();
-        }
-    }
-    private List<Deal> dealList;
+    private List<DailyDealData.Deal> dealList;
     [SerializeField]
     private GameObject content;
     [SerializeField]
@@ -79,35 +32,11 @@ public class DailyDealManager : MonoBehaviour
         UpdateTimer();
     }
 
-    private List<Deal> GetAllDeals(){
-        List<Deal> dealList = new List<Deal>();
-        for(int i = 0 ; i < DataManager.Instance.dailyDealData.OptionList.Count ; i++ ){
-            dealList.Add(new Deal(DataManager.Instance.dailyDealData.OptionList[i].ID));
-        }
-        return dealList;
-    }
-
-    private List<Deal> GetBestDeals(int Num){
-        List<Deal> allList = GetAllDeals();
-        List<Deal> bestList = new List<Deal>();
-        for(int i = 0; i < Num; i++){
-            Deal best = allList[0];
-            foreach(Deal deal in allList){
-                if(deal.BestDeal() > best.BestDeal()){
-                    best = deal;
-                }
-            }
-            bestList.Add(best);
-            allList.Remove(best);
-        }
-        return bestList;
-    }
-
     public void UpdateTimer(){
         countDownText.text = DataManager.Instance.dailyDealData.GetCountDown();
         if(DataManager.Instance.dailyDealData.HasFinished()){
             DataManager.Instance.dailyDealData.UpdateStartTime();
-            foreach(Deal deal in dealList){
+            foreach(DailyDealData.Deal deal in dealList){
                 deal.UpdateProb();
                 deal.ResetLevel();
             }
@@ -115,8 +44,21 @@ public class DailyDealManager : MonoBehaviour
         }
     }
 
+    public void SortDeal(){
+        for(int i = dealList.Count - 1; i >= 0; i--){
+            for(int j = 0; j < i; j++){
+                if(dealList[j].BestDeal() > dealList[j + 1].BestDeal()){
+                    DailyDealData.Deal tmp = dealList[j];
+                    dealList[j] = dealList[j + 1];
+                    dealList[j + 1] = tmp;
+                }
+            }
+        }
+    }
+
     public void ResetDeals(){
-        dealList = GetBestDeals(gameObject.transform.childCount);
+        dealList = DataManager.Instance.dailyDealData.DealList;
+        SortDeal();
         int i = 0;
         foreach(Transform child in gameObject.transform){
             child.GetComponent<DailyDealPanelManager>().SetDeal(dealList[i]);

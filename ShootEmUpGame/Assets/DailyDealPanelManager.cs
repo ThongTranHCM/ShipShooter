@@ -15,12 +15,12 @@ public class DailyDealPanelManager : MonoBehaviour
     private ResourceTextManager diamondText;
     [SerializeField]
     private Button button;
-    private DailyDealManager.Deal deal;
+    private DailyDealData.Deal deal;
 
-    public void SetDeal(DailyDealManager.Deal Deal){
+    public void SetDeal(DailyDealData.Deal Deal){
         deal = Deal;
-        IAddOnData addOnData = addOnEquipData.GetAddOnData(deal.OptionId);
-        addOnUIItem.Install(deal.OptionId, addOnData.GetSprite, (int)addOnData.GetLevel, addOnData.GetFragment, 1000);
+        IAddOnData addOnData = addOnEquipData.GetAddOnData(deal.ID);
+        addOnUIItem.Install(deal.ID, addOnData.GetSprite, (int)addOnData.GetLevel, addOnData.GetFragment, 1000);
         fragmentText.SetResource("fragment");
         fragmentText.SetText(string.Format("+{0}",deal.GetFragment().ToString()));
         diamondText.SetResource("diamond");
@@ -32,9 +32,9 @@ public class DailyDealPanelManager : MonoBehaviour
     }
 
     private void GetDeal(){
-        RewardFragmentManager.Instance.AddReward(deal.OptionId, deal.GetFragment());
+        RewardFragmentManager.Instance.AddReward(deal.ID, deal.GetFragment());
         RewardFragmentManager.Instance.GetReward();
-        deal.UpdateLevel();
+        deal.UpdateProb();
         SetDeal(deal);
     }
 }
