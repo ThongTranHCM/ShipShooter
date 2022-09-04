@@ -15,9 +15,9 @@ public class DailyDealPanelManager : MonoBehaviour
     private ResourceTextManager diamondText;
     [SerializeField]
     private Button button;
-    private DailyDealData.Deal deal;
+    private DailyDealManager.Deal deal;
 
-    public void SetDeal(DailyDealData.Deal Deal){
+    public void SetDeal(DailyDealManager.Deal Deal){
         deal = Deal;
         IAddOnData addOnData = addOnEquipData.GetAddOnData(deal.ID);
         addOnUIItem.Install(deal.ID, addOnData.GetSprite, (int)addOnData.GetLevel, addOnData.GetFragment, 1000);

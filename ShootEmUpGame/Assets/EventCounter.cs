@@ -35,6 +35,8 @@ public class EventCounter : MonoBehaviour
     }
 
     public float Rate(string Key, int Duration, string unit = "milliseconds"){
+        if( Count(Key) == 0)
+            return 0;
         int scale = 1;
         switch (unit) {
             case "Month":
@@ -67,9 +69,9 @@ public class EventCounter : MonoBehaviour
 
     public void LogKey(string Key){
         int curTime = GetCurTime();
-        eventStampDictionary[Key].Add(curTime);
-        if(eventStampDictionary[Key].Count > limit){
-            eventStampDictionary[Key].RemoveAt(0);
+        GetStamps(Key).Add(curTime);
+        if(GetStamps(Key).Count > limit){
+            GetStamps(Key).RemoveAt(0);
         }
     }
 
@@ -80,18 +82,20 @@ public class EventCounter : MonoBehaviour
     }
 
     public void RemoveKey(string Key){
-        if(eventStampDictionary.ContainsKey(Key)){ // check key before removing it
+        if(eventStampDictionary.ContainsKey(Key)){
             eventStampDictionary.Remove(Key);
         }
     }
 
-    public void GetLast(string Key){
-        if(eventStampDictionary.ContainsKey(Key)){ // check key before removing it
-            eventStampDictionary.Remove(Key);
-        }
+    public int GetLast(string Key){
+        if( Count(Key) == 0)
+            return -1;
+        return GetStamps(Key)[GetStamps(Key).Count - 1];
     }
 
     public float OccurProbablity(string Key, int Duration, float Time, string Unit){
+        if( Count(Key) == 0)
+            return 0;
         float rate = Rate(Key, Duration, Unit);
         return 1 - Mathf.Exp(Time / rate);
     }

@@ -211,6 +211,7 @@ public class DataManager
             _addOnUserData = value;
         }
     }
+    /*
     public DailyDealData dailyDealData
     {
         get
@@ -230,6 +231,7 @@ public class DataManager
             _dailyDealData = value;
         }
     }
+    */
     public TimeChestData timeChestData
     {
         get
@@ -269,11 +271,32 @@ public class DataManager
         }
     }
 
+    public EventCounter eventCounter
+    {
+        get
+        {
+            if (_eventCounter == null)
+            {
+#if TEST
+				Debug.Log("--- Create New dailyOfferData! ---");
+#endif  
+                _eventCounter = new EventCounter();
+                _eventCounter.InitData();
+            }
+            return _eventCounter;
+        }
+        set
+        {
+            _eventCounter = value;
+        }
+    }
+
     private PlayerData _playerData;
     private AddOnUserData _addOnUserData;
-    private DailyDealData _dailyDealData;
+    //private DailyDealData _dailyDealData;
     private TimeChestData _timeChestData;
     private DailyOfferData _dailyOfferData;
+    private EventCounter _eventCounter;
     #endregion
     #region Player Progression
     private int _lastLevelWin;
@@ -293,5 +316,6 @@ public class DataManager
     [System.NonSerialized] public bool dataSubmitScoreStoryMode;
     [System.NonSerialized] public int selectedLevelIndex;
     [System.NonSerialized] public int selectedShipIndex;
+    [System.NonSerialized] public int dailyDealStartTime;
     #endregion
 }
