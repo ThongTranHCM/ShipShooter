@@ -51,22 +51,26 @@ public class DailyOfferManager : MonoBehaviour
     }
 
     public void ClaimReward(){
-        (string, int) reward = DataManager.Instance.dailyOfferData.GetReward().RewardTuple();
-        (string, int) cost = DataManager.Instance.dailyOfferData.GetReward().CostTuple();
-        List<(string, int)> rewardList = new List<(string, int)>();
-        rewardList.Add(reward);
-        if(RewardResourceManager.Instance.Purchase(cost.Item1,cost.Item2,rewardList)){
-            DataManager.Instance.dailyOfferData.UpdateIndex();
+        if(DataManager.Instance.dailyOfferData.GetReward() != null){
+            (string, int) reward = DataManager.Instance.dailyOfferData.GetReward().RewardTuple();
+            (string, int) cost = DataManager.Instance.dailyOfferData.GetReward().CostTuple();
+            List<(string, int)> rewardList = new List<(string, int)>();
+            rewardList.Add(reward);
+            if(RewardResourceManager.Instance.Purchase(cost.Item1,cost.Item2,rewardList)){
+                DataManager.Instance.dailyOfferData.UpdateIndex();
+            }
         }
     }
 
     public void ClaimRewardAd(){
-        (string, int) reward = DataManager.Instance.dailyOfferData.GetReward().RewardTuple();
-        (string, int) cost = DataManager.Instance.dailyOfferData.GetReward().CostTuple();
-        List<(string, int)> rewardList = new List<(string, int)>();
-        rewardList.Add(reward);
-        if(RewardResourceManager.Instance.Purchase(cost.Item1,cost.Item2,rewardList)){
-            DataManager.Instance.dailyOfferData.UpdateIndex();
+        if(DataManager.Instance.dailyOfferData.GetReward() != null){
+            (string, int) reward = DataManager.Instance.dailyOfferData.GetReward().RewardTuple();
+            (string, int) cost = DataManager.Instance.dailyOfferData.GetReward().CostTuple();
+            List<(string, int)> rewardList = new List<(string, int)>();
+            rewardList.Add(reward);
+            if(RewardResourceManager.Instance.Purchase(cost.Item1,cost.Item2,rewardList)){
+                DataManager.Instance.dailyOfferData.UpdateIndex();
+            }
         }
     }
 }

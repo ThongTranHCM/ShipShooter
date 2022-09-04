@@ -54,12 +54,15 @@ public class DailyOfferData
         DataManager.Save();
     }
     public void UpdateIndex(){
-        index = Mathf.Min(index + 1, rewardList.Count - 1);
+        index = Mathf.Min(index + 1, rewardList.Count);
     }
     public void ResetIndex(){
         index = 0;
     }
     public Reward GetReward(){
+        if(index >= rewardList.Count){
+            return null;
+        }
         return rewardList[index];
     }
 }
