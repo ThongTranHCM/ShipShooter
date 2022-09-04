@@ -49,6 +49,7 @@ public class TabShipController : MonoBehaviour
         //seq.append(LeanTween.scaleX(displayShipGameObject, 0, shrinkDuration).setEase(LeanTweenType.easeInBack));
         UpdateShipInfo(shipIndex);
         UpdateShipStats(shipIndex);
+        _layoutShip.SelectShip(shipIndex);
         //seq.append(LeanTween.scaleX(displayShipGameObject, scale, expandDuration).setEase(LeanTweenType.easeOutElastic));
     }
 
@@ -74,8 +75,8 @@ public class TabShipController : MonoBehaviour
         _txtShipPower.text = "Power " + _intShipPower;
         //Button
         List<PurchaseResourceButtonManager.Reward> rewards = new List<PurchaseResourceButtonManager.Reward>();
-        bool showPurchaseButton = (_intShipLevel > 0);
-        bool showUpgradeButton = (_intShipLevel <= 0);
+        bool showPurchaseButton = (_intShipLevel <= 0);
+        bool showUpgradeButton = (_intShipLevel > 0);
         _purchaseButton.gameObject.SetActive(showPurchaseButton);
         _upgradeButton.gameObject.SetActive(showUpgradeButton);
         if (showPurchaseButton)
@@ -101,21 +102,23 @@ public class TabShipController : MonoBehaviour
     {
         shipIndex = 0;
         shipCount = GameInformation.Instance.shipData.Count;
+        _layoutShip.Install();
         _layoutShip.callbackUIClick = OnShipLayoutClick;
         UpdateShipInfo(shipIndex);
         UpdateShipStats(shipIndex);
     }
 
+    #region Callback Click
     public void OnShipLayoutClick(int index)
     {
         shipIndex = index;
         PlayShipTransitionAnimation();
     }
 
-    public void OnShipUpgrade()
+    private void OnShipUpgrade()
     {
-        Debug.LogError("Upgrade");
         UpdateShipStats(shipIndex);
+        _layoutShip.Install();
     }
 
     public void OnShipUpgradeUIClick()
@@ -124,4 +127,19 @@ public class TabShipController : MonoBehaviour
         RewardResourceManager.Instance.Purchase("gold", _intShipCost, new List<(string, int)>());
         OnShipUpgrade();
     }
+
+    private void OnShipBuy()
+    {
+        UpdateShipStats(shipIndex);
+        _layoutShip.UpdateInfo();
+        _layoutShip.SelectShip(shipIndex);
+    }
+
+    public void OnShipBuyUIClick()
+    {
+        DataManager.Instance.playerData.GetShipProgress(shipIndex).shipLevel = Mathf.Max(DataManager.Instance.playerData.GetShipProgress(shipIndex).shipLevel, 1);
+        RewardResourceManager.Instance.Purchase("gold", _intShipCost, new List<(string, int)>());
+        OnShipBuy();
+    }
+    #endregion
 }

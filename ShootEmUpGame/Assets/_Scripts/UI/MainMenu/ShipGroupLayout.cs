@@ -6,10 +6,13 @@ public class ShipGroupLayout : MonoBehaviour
 {
     [SerializeField]
     private GameObject _shipUIPrefab;
+    [SerializeField]
+    private int _shipIndex = 0;
 
     private List<ShipSelectUIController> _listShipSelectUI;
+    private List<int> _listQualifiedShip;
 
-    [SerializeField]
+     [SerializeField]
     private bool _updateParentSize;
     [SerializeField]
     private UnityEngine.UI.GridLayoutGroup _gridLayout;
@@ -19,35 +22,42 @@ public class ShipGroupLayout : MonoBehaviour
     public void OnEnable()
     {
         if (_listShipSelectUI == null) _listShipSelectUI = new List<ShipSelectUIController>();
-        Install();
+        if (_listQualifiedShip == null) _listQualifiedShip = new List<int>();
     }
 
     public void Install()
     {
         List<DOShipData> listShipData = GameInformation.Instance.shipData;
-        List<int> listQualifiedShip = new List<int>();
-        DOShipData shipData;
-        PlayerData.ShipProgressData shipProgress;
+        _listQualifiedShip.Clear();
 
         for (int i = 0; i < listShipData.Count; i++)
         {
-           listQualifiedShip.Add(i);
+            _listQualifiedShip.Add(i);
         }
-        UpdateListUISize(listQualifiedShip.Count);
-        for (int i = 0; i < listQualifiedShip.Count; i++)
+        UpdateListUISize(_listQualifiedShip.Count);
+        UpdateInfo();
+        SelectShip(_shipIndex);
+    }
+
+    public void UpdateInfo()
+    {
+        List<DOShipData> listShipData = GameInformation.Instance.shipData;
+        DOShipData shipData;
+        PlayerData.ShipProgressData shipProgress;
+        for (int i = 0; i < _listQualifiedShip.Count; i++)
         {
-            shipData = listShipData[listQualifiedShip[i]];
+            shipData = listShipData[_listQualifiedShip[i]];
             shipProgress = DataManager.Instance.playerData.GetShipProgress(i);
             ShipSelectUIController _shipSelectItem = _listShipSelectUI[i];
             int tmp = i;
             _shipSelectItem.Install(shipData.spritePresentShip, shipProgress.shipLevel, shipData.shipName);
             _shipSelectItem.onBtnClick = () => OnShipItemClick(tmp);
         }
-        SelectShip(0);
     }
 
     public void SelectShip(int index)
     {
+        _shipIndex = index;
         for (int i = 0; i < _listShipSelectUI.Count; i++)
         {
             if (index == i)
@@ -85,7 +95,6 @@ public class ShipGroupLayout : MonoBehaviour
 
     private void OnShipItemClick(int id)
     {
-        Debug.LogError("ShipItem " + id);
         callbackUIClick?.Invoke(id);
     }
 
