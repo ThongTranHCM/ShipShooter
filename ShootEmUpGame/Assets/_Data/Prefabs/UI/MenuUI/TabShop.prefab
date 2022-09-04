@@ -4906,6 +4906,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6124020116166352323, guid: 7c4c3c37be73a4d448bc2eb100102ca2,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8318585618995209395, guid: 7c4c3c37be73a4d448bc2eb100102ca2,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -5952,6 +5957,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6124020116166352323, guid: 7c4c3c37be73a4d448bc2eb100102ca2,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8318585618995209395, guid: 7c4c3c37be73a4d448bc2eb100102ca2,
         type: 3}
       propertyPath: m_SizeDelta.x
@@ -6080,6 +6090,11 @@ PrefabInstance:
     - target: {fileID: 3269364832234569553, guid: 7c4c3c37be73a4d448bc2eb100102ca2,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6124020116166352323, guid: 7c4c3c37be73a4d448bc2eb100102ca2,
+        type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8318585618995209395, guid: 7c4c3c37be73a4d448bc2eb100102ca2,
@@ -6211,6 +6226,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PositiveButton (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1806177114905322927, guid: b68518972313a574d822b0584ca22800,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1806177114905322927, guid: b68518972313a574d822b0584ca22800,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1806177114905322927, guid: b68518972313a574d822b0584ca22800,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 5802222465285150425}
+    - target: {fileID: 1806177114905322927, guid: b68518972313a574d822b0584ca22800,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1806177114905322927, guid: b68518972313a574d822b0584ca22800,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: ClaimReward
+      objectReference: {fileID: 0}
+    - target: {fileID: 1806177114905322927, guid: b68518972313a574d822b0584ca22800,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: DailyOfferManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1806177114905322927, guid: b68518972313a574d822b0584ca22800,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1806177114905322927, guid: b68518972313a574d822b0584ca22800,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b68518972313a574d822b0584ca22800, type: 3}
@@ -8007,6 +8062,11 @@ PrefabInstance:
     - target: {fileID: 3269364832234569553, guid: 7c4c3c37be73a4d448bc2eb100102ca2,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6124020116166352323, guid: 7c4c3c37be73a4d448bc2eb100102ca2,
+        type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8318585618995209395, guid: 7c4c3c37be73a4d448bc2eb100102ca2,

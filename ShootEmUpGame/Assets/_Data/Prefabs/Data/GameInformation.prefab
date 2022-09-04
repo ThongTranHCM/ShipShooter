@@ -76,11 +76,19 @@ MonoBehaviour:
   - id: GunSplit
   - id: GunPlasma
   dailyOfferRewardList:
-  - id: diamond
-    amount: 30
-  - id: gold
-    amount: 1000
-  - id: regular_box
-    amount: 1
-  - id: premium_box
-    amount: 1
+  - rewardId: diamond
+    rewardAmount: 30
+    costId: diamond
+    costAmount: 15
+  - rewardId: gold
+    rewardAmount: 1000
+    costId: diamond
+    costAmount: 20
+  - rewardId: diamond
+    rewardAmount: 30
+    costId: diamond
+    costAmount: 30
+  - rewardId: regular_box
+    rewardAmount: 1
+    costId: diamond
+    costAmount: 40

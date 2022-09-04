@@ -8,13 +8,21 @@ public class DailyOfferData
     [System.Serializable]
     public class Reward{
         [SerializeField]
-        string id;
+        string rewardId;
         [SerializeField]
-        int amount;
-        public (string, int) ToTuple(){
-            return (id, amount);
+        int rewardAmount;
+        [SerializeField]
+        string costId;
+        [SerializeField]
+        int costAmount;
+        public (string, int) RewardTuple(){
+            return (rewardId, rewardAmount);
+        }
+        public (string, int) CostTuple(){
+            return (costId, costAmount);
         }
     }
+    private int index;
     private int startTime;
     public int StartTime{
         get { return startTime; }
@@ -44,5 +52,14 @@ public class DailyOfferData
         startTime = (int)(span.TotalSeconds / interval);
         startTime *= interval;
         DataManager.Save();
+    }
+    public void UpdateIndex(){
+        index = Mathf.Min(index + 1, rewardList.Count);
+    }
+    public void ResetIndex(){
+        index = 0;
+    }
+    public Reward GetReward(){
+        return rewardList[index];
     }
 }
