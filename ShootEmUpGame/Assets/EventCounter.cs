@@ -93,7 +93,7 @@ public class EventCounter : MonoBehaviour
 
     public float OccurProbablity(string Key, int Duration, float Time, string Unit){
         float rate = Rate(Key, Duration, Unit);
-        return 1 - Mathf.Exp(X / rate);
+        return 1 - Mathf.Exp(Time / rate);
     }
 
 }

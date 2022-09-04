@@ -34,7 +34,7 @@ public class DailyDealPanelManager : MonoBehaviour
     private void GetDeal(){
         RewardFragmentManager.Instance.AddReward(deal.ID, deal.GetFragment());
         RewardFragmentManager.Instance.GetReward();
-        deal.UpdateProb();
+        deal.IncreaseLevel();
         SetDeal(deal);
     }
 }
