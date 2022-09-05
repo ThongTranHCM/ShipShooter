@@ -70,20 +70,13 @@ public class DailyDealManager : MonoBehaviour
         public List<Deal> dealList;
         
         public void InitData(){
+            int interval = GameInformation.Instance.dailyDealInterval;
+            TimeSpan span= DateTime.Now.Subtract(new DateTime(1970,1,1,0,0,0, DateTimeKind.Utc));
+            int curTime = (int)span.TotalSeconds;
+            int startTime = (int)(curTime/interval);
+            startTime *= interval;
             dealList = GameInformation.Instance.dailyDealList;
-            prevStartTime = DailyDealManager.Instance.GetStartTime();
-        }
-        public void LoadData(){
-            if(DataManager.Instance.dailyDealManagerData != null){
-                dealList = DataManager.Instance.dailyDealManagerData.dealList;
-                prevStartTime = DataManager.Instance.dailyDealManagerData.prevStartTime;
-            } else {
-                InitData();
-            }
-        }
-        public void SaveData(){
-            DataManager.Instance.dailyDealManagerData = this;
-            DataManager.Save();
+            prevStartTime = startTime;
         }
     }
 
@@ -100,9 +93,12 @@ public class DailyDealManager : MonoBehaviour
             instance = this;
         }        
     }
+    public void Save(){
+        DataManager.Instance.dailyDealManagerData = data;
+        DataManager.Save();
+    }
     public void Start(){
-        data = new Data();
-        data.LoadData();
+        data = DataManager.Instance.dailyDealManagerData;
         UpdateDealPanel();
     }
     public void FixedUpdate(){
@@ -111,7 +107,6 @@ public class DailyDealManager : MonoBehaviour
     private void UpdateTimer(){
         countDownText.text = GetCountDown();
         if(HasFinished()){
-            data.prevStartTime = GetStartTime();
             int i = 0;
             foreach(Transform child in gameObject.transform){
                 data.dealList[i].UpdateHistory();
@@ -121,6 +116,7 @@ public class DailyDealManager : MonoBehaviour
                 deal.ResetLevel();
             }
             SortDeal();
+            Save();
             UpdateDealPanel();
         }
     }
@@ -149,6 +145,7 @@ public class DailyDealManager : MonoBehaviour
     private bool HasFinished(){
         if(data.prevStartTime != GetStartTime()){
             data.prevStartTime = GetStartTime();
+            Save();
             return true;
         }
         return false;

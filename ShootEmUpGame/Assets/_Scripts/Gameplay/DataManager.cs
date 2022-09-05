@@ -211,23 +211,23 @@ public class DataManager
             _addOnUserData = value;
         }
     }
-    public TimeChestData timeChestData
+    public TimeChestManager.Data timeChestManagerData
     {
         get
         {
-            if (_timeChestData == null)
+            if (_timeChestManagerData == null)
             {
 #if TEST
 				Debug.Log("--- Create New timeChestData! ---");
 #endif
-                _timeChestData = new TimeChestData();
-                _timeChestData.InitData();
+                _timeChestManagerData = new TimeChestManager.Data();
+                _timeChestManagerData.InitData();
             }
-            return _timeChestData;
+            return _timeChestManagerData;
         }
         set
         {
-            _timeChestData = value;
+            _timeChestManagerData = value;
         }
     }
     public DailyDealManager.Data dailyDealManagerData
@@ -249,7 +249,7 @@ public class DataManager
             _dailyDealManagerData = value;
         }
     }
-    public DailyOfferManager.Data dailOfferManagerData
+    public DailyOfferManager.Data dailyOfferManagerData
     {
         get
         {
@@ -270,7 +270,7 @@ public class DataManager
     }
     private PlayerData _playerData;
     private AddOnUserData _addOnUserData;
-    private TimeChestData _timeChestData;
+    private TimeChestManager.Data _timeChestManagerData;
     private DailyDealManager.Data _dailyDealManagerData;
     private DailyOfferManager.Data _dailyOfferManagerData;
     #endregion

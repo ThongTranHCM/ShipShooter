@@ -25,6 +25,7 @@ public class GameInformation : MonoBehaviour
     public List<DOShipData> shipData;
     public int dailyDealInterval = 5;
     public int dailyOfferInterval = 5;
+    public int timeChestInterval = 10;
     public List<DailyDealManager.Conversion> dailyDealConversionList;
     public List<DailyDealManager.Deal> dailyDealList;
     public List<DailyOfferManager.Offer> dailyOfferList;

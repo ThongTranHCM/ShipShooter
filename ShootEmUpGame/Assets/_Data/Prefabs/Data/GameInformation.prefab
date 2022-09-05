@@ -49,8 +49,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 21ea835b769dea14783931512bd019ad, type: 2}
   - {fileID: 11400000, guid: 187e61bf987c08c479f2f6898db99e74, type: 2}
   - {fileID: 11400000, guid: 3de45a3373cdf3248afb3e1775f566e2, type: 2}
-  dailyDealInterval: 5
-  dailyOfferInterval: 5
+  dailyDealInterval: 86400
+  dailyOfferInterval: 86400
+  timeChestInterval: 10
   dailyDealConversionList:
   - fragment: 35
     diamond: 15
@@ -78,19 +79,23 @@ MonoBehaviour:
   - id: GunEnergyOrb
   - id: GunPlasma
   dailyOfferList:
-  - rewardId: gold
-    rewardAmount: 100
+  - rewardId: diamond
+    rewardAmount: 30
     costId: diamond
     costAmount: 10
+    efficency: 0
   - rewardId: gold
-    rewardAmount: 100
+    rewardAmount: 1000
     costId: diamond
     costAmount: 10
-  - rewardId: gold
-    rewardAmount: 100
+    efficency: 0
+  - rewardId: diamond
+    rewardAmount: 40
     costId: diamond
     costAmount: 10
-  - rewardId: gold
-    rewardAmount: 100
+    efficency: 0
+  - rewardId: regular_box
+    rewardAmount: 1
     costId: diamond
     costAmount: 10
+    efficency: 0

@@ -101,7 +101,7 @@ public class FillBarManager : MonoBehaviour
         seq.append(delay);
         seq.append( () => {
             LeanTween.value(gameObject,(float x) => {SetFillBar(x);},a,b,duration).setEase(LeanTweenType.easeOutBack);
-            LeanTween.value(gameObject,(float x) => {animatedValue = x; txtProgress.UpdateText();},a,b,duration).setEase(LeanTweenType.easeInSine);
+            LeanTween.value(gameObject,(float x) => {animatedValue = x;},a,b,duration).setEase(LeanTweenType.easeInSine);
             LeanTween.value(gameObject,(float x) => {fillImage.color = borderImage.color = (value < 1) ? baseColor : fullColor; fillImage.color = borderImage.color += Color.white * x;},1,0,duration).setEase(LeanTweenType.easeInSine);
         });
     }
@@ -114,12 +114,15 @@ public class FillBarManager : MonoBehaviour
         return txtProgress;
     }
 
-    public class FillBarTextManager:MonoBehaviour{
+    public class FillBarTextManager: MonoBehaviour{
         protected FillBarManager fillBarManager;
         [SerializeField]
         protected TextMeshProUGUI txtTMP;
         public void Install(FillBarManager FillBarManager){
             fillBarManager = FillBarManager;
+        }
+        public void FixedUpdate(){
+            UpdateText();
         }
         public virtual void UpdateText(){ return; }
     }
