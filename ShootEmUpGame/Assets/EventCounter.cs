@@ -11,73 +11,52 @@ public class EventCounter : MonoBehaviour
         eventStampDictionary = new Dictionary<string, List<int>>();
     }
 
-    private List<int> GetStamps(string Key){
+    public int Count(string Key, int Duration = -1){
         if (eventStampDictionary.ContainsKey(Key))
         {
-            return eventStampDictionary[Key];
-        }
-        else
-        {
-            List<int> newStampList = new List<int>();
-            eventStampDictionary.Add(Key, newStampList);
-            return newStampList;
-        }
-    }
-
-    public int Count(string Key, int Duration = -1){
-        if( Duration == -1){
-            return GetStamps(Key).Count;
+            if( Duration == -1){
+                return eventStampDictionary[Key].Count;
+            } else {
+                int curTime = GetCurTime();
+                int minTime = curTime - Duration;
+                return eventStampDictionary[Key].FindAll(x => x >= minTime).Count;
+            }
         } else {
-            int curTime = GetCurTime();
-            int minTime = curTime - Duration;
-            return GetStamps(Key).FindAll(x => x > minTime).Count;
+            eventStampDictionary.Add(Key, new List<int>());
+            return Count(Key, Duration);
         }
     }
 
-    public float Rate(string Key, int Duration, string unit = "milliseconds"){
-        if( Count(Key) == 0)
-            return 0;
-        int scale = 1;
-        switch (unit) {
-            case "Month":
-                scale /= 30 / 7;
-                goto case "Week";
-            case "Week":
-                scale /= 7;
-                goto case "Day";
-            case "Day":
-                scale /= 24;
-                goto case "Hour";
-            case "Hour":
-                scale /= 60;
-                goto case "Minute";
-            case "Minute":
-                scale /= 60;
-                goto case "Second";
-            case "Second":
-                scale /= 1000;
-                goto case "MilliSecond";
-            case "MilliSecond":
-                scale = 1;
-                goto default;
-            default:
-                break;
+    public float Rate(string Key, int Duration){
+        if (eventStampDictionary.ContainsKey(Key))
+        {
+            if( Count(Key) == 0)
+                return 0;
+            Duration = Mathf.FloorToInt(Duration);
+            return (float)Count(Key, Duration) / (float)Duration;
+        } else {
+            eventStampDictionary.Add(Key, new List<int>());
+            return Count(Key, Duration);
         }
-        Duration = Mathf.FloorToInt(Duration * scale);
-        return (float)Count(Key, Duration) / (float)Duration;
     }
 
     public void LogKey(string Key){
-        int curTime = GetCurTime();
-        GetStamps(Key).Add(curTime);
-        if(GetStamps(Key).Count > limit){
-            GetStamps(Key).RemoveAt(0);
+        if (eventStampDictionary.ContainsKey(Key))
+        {
+            int curTime = GetCurTime();
+            eventStampDictionary[Key].Add(curTime);
+            if(eventStampDictionary[Key].Count > limit){
+                eventStampDictionary[Key].RemoveAt(0);
+            }
+        } else {
+            eventStampDictionary.Add(Key, new List<int>());
+            LogKey(Key);
         }
     }
 
     private int GetCurTime(){
         TimeSpan span= DateTime.Now.Subtract(new DateTime(1970,1,1,0,0,0, DateTimeKind.Utc));
-        int curTime = (int)span.TotalMilliseconds;
+        int curTime = (int)span.TotalSeconds;
         return curTime;
     }
 
@@ -88,16 +67,28 @@ public class EventCounter : MonoBehaviour
     }
 
     public int GetLast(string Key){
-        if( Count(Key) == 0)
-            return -1;
-        return GetStamps(Key)[GetStamps(Key).Count - 1];
+        if (eventStampDictionary.ContainsKey(Key))
+        {
+            if(Count(Key) == 0)
+                return -1;
+            return eventStampDictionary[Key][eventStampDictionary[Key].Count - 1];
+        } else {
+            eventStampDictionary.Add(Key, new List<int>());
+            return GetLast(Key);
+        }
     }
 
-    public float OccurProbablity(string Key, int Duration, float Time, string Unit){
-        if( Count(Key) == 0)
-            return 0;
-        float rate = Rate(Key, Duration, Unit);
-        return 1 - Mathf.Exp(Time / rate);
+    public float OccurProbablity(string Key, int Duration, float Time){
+        if (eventStampDictionary.ContainsKey(Key))
+        {
+            if( Count(Key) == 0)
+                return 0;
+            float rate = Rate(Key, Duration);
+            return 1 - Mathf.Exp(Time / rate);
+        } else {
+            eventStampDictionary.Add(Key, new List<int>());
+            return GetLast(Key);
+        }
     }
 
 }

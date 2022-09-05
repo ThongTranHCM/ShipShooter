@@ -1,10 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using TMPro;
 
 public class DailyOfferManager : MonoBehaviour
 {
+    [System.Serializable]
+    public class Offer{
+        [SerializeField]
+        string rewardId;
+        [SerializeField]
+        int rewardAmount;
+        [SerializeField]
+        string costId;
+        [SerializeField]
+        int costAmount;
+
+        public (string, int) RewardTuple(){
+            return (rewardId, rewardAmount);
+        }
+        public (string, int) CostTuple(){
+            return (costId, costAmount);
+        }
+    }
     private static DailyOfferManager instance = null;
     public static DailyOfferManager Instance{
         get { return instance; }
@@ -15,6 +34,9 @@ public class DailyOfferManager : MonoBehaviour
     private TextMeshProUGUI countDownText;
     [SerializeField]
     private PurchaseResourceButtonManager purchaseButton;
+    private List<Offer> offerList;
+    private int prevStartTime;
+    private int index;
     DailyOfferManager(){
         if(instance == null){
             instance = this;
@@ -22,7 +44,7 @@ public class DailyOfferManager : MonoBehaviour
     }
 
     void Start(){
-        ResetOffers();
+        InitData();
     }
 
     void FixedUpdate(){
@@ -30,47 +52,58 @@ public class DailyOfferManager : MonoBehaviour
     }
 
     public void UpdateTimer(){
-        countDownText.text = DataManager.Instance.dailyOfferData.GetCountDown();
-        if(DataManager.Instance.dailyOfferData.HasFinished()){
-            DataManager.Instance.dailyOfferData.UpdateStartTime();
-            ResetOffers();
+        countDownText.text = GetCountDown();
+        if(HasFinished()){
+            prevStartTime = GetStartTime();
+            InitData();
         }
     }
 
-    public void ResetOffers(){
-        DataManager.Instance.dailyOfferData.ResetIndex();
-        List<DailyOfferData.Reward> rewards = DataManager.Instance.dailyOfferData.RewardList;
+    private void InitData(){
+        index = 0;
+        offerList = GameInformation.Instance.dailyOfferList;
         int i = 0;
-        foreach(Transform child in offerListGameObject.transform){
-            (string, int) tuple = rewards[i].RewardTuple();
+        foreach(Transform child in gameObject.transform){
+            (string, int) tuple = offerList[i].RewardTuple();
             child.gameObject.GetComponent<ResourcePanelManager>().SetReward(tuple.Item1, tuple.Item2);
-            i = Mathf.Min(i + 1, rewards.Count - 1);
+            i += 1;
         }
-        (string, int) cost = DataManager.Instance.dailyOfferData.GetReward().CostTuple();
-        purchaseButton.SetCost(cost.Item1, cost.Item2);
     }
 
     public void ClaimReward(){
-        if(DataManager.Instance.dailyOfferData.GetReward() != null){
-            (string, int) reward = DataManager.Instance.dailyOfferData.GetReward().RewardTuple();
-            (string, int) cost = DataManager.Instance.dailyOfferData.GetReward().CostTuple();
+        if(offerList[index] != null){
+            (string, int) reward = offerList[index].RewardTuple();
+            (string, int) cost = offerList[index].CostTuple();
             List<(string, int)> rewardList = new List<(string, int)>();
             rewardList.Add(reward);
             if(RewardResourceManager.Instance.Purchase(cost.Item1,cost.Item2,rewardList)){
-                DataManager.Instance.dailyOfferData.UpdateIndex();
+                index += 1;
             }
         }
     }
 
-    public void ClaimRewardAd(){
-        if(DataManager.Instance.dailyOfferData.GetReward() != null){
-            (string, int) reward = DataManager.Instance.dailyOfferData.GetReward().RewardTuple();
-            (string, int) cost = DataManager.Instance.dailyOfferData.GetReward().CostTuple();
-            List<(string, int)> rewardList = new List<(string, int)>();
-            rewardList.Add(reward);
-            if(RewardResourceManager.Instance.Purchase(cost.Item1,cost.Item2,rewardList)){
-                DataManager.Instance.dailyOfferData.UpdateIndex();
-            }
+    private int GetStartTime(){
+        int interval = GameInformation.Instance.dailyDealInterval;
+        TimeSpan span= DateTime.Now.Subtract(new DateTime(1970,1,1,0,0,0, DateTimeKind.Utc));
+        int curTime = (int)span.TotalSeconds;
+        int startTime = (int)(curTime/interval);
+        startTime *= interval;
+        return startTime;
+    }
+
+    private string GetCountDown(){
+        int interval = GameInformation.Instance.dailyDealInterval;
+        TimeSpan span= DateTime.Now.Subtract(new DateTime(1970,1,1,0,0,0, DateTimeKind.Utc));
+        int curTime = (int)span.TotalSeconds;
+        span = TimeSpan.FromSeconds(interval - (curTime - GetStartTime()) - 1);
+        return string.Format("Reset in {0}:{1}:{2}", span.Hours, span.Minutes, span.Seconds);
+    }
+    
+    private bool HasFinished(){
+        if(prevStartTime != GetStartTime()){
+            prevStartTime = GetStartTime();
+            return true;
         }
+        return false;
     }
 }

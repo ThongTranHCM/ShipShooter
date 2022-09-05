@@ -211,27 +211,6 @@ public class DataManager
             _addOnUserData = value;
         }
     }
-    /*
-    public DailyDealData dailyDealData
-    {
-        get
-        {
-            if (_dailyDealData == null)
-            {
-#if TEST
-				Debug.Log("--- Create New dailyDealData! ---");
-#endif
-                _dailyDealData = new DailyDealData();
-                _dailyDealData.InitData();
-            }
-            return _dailyDealData;
-        }
-        set
-        {
-            _dailyDealData = value;
-        }
-    }
-    */
     public TimeChestData timeChestData
     {
         get
@@ -251,26 +230,6 @@ public class DataManager
             _timeChestData = value;
         }
     }
-    public DailyOfferData dailyOfferData
-    {
-        get
-        {
-            if (_dailyOfferData == null)
-            {
-#if TEST
-				Debug.Log("--- Create New dailyOfferData! ---");
-#endif  
-                _dailyOfferData = new DailyOfferData();
-                _dailyOfferData.InitData();
-            }
-            return _dailyOfferData;
-        }
-        set
-        {
-            _dailyOfferData = value;
-        }
-    }
-
     public EventCounter eventCounter
     {
         get
@@ -293,9 +252,7 @@ public class DataManager
 
     private PlayerData _playerData;
     private AddOnUserData _addOnUserData;
-    //private DailyDealData _dailyDealData;
     private TimeChestData _timeChestData;
-    private DailyOfferData _dailyOfferData;
     private EventCounter _eventCounter;
     #endregion
     #region Player Progression

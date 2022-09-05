@@ -49,6 +49,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 21ea835b769dea14783931512bd019ad, type: 2}
   - {fileID: 11400000, guid: 187e61bf987c08c479f2f6898db99e74, type: 2}
   - {fileID: 11400000, guid: 3de45a3373cdf3248afb3e1775f566e2, type: 2}
+  dailyDealInterval: 10
+  dailyOfferInterval: 10
   dailyDealConversionList:
   - fragment: 35
     diamond: 15
@@ -70,25 +72,25 @@ MonoBehaviour:
     diamond: 39680
   - fragment: 9295
     diamond: 110085
-  dailyDealDealList:
+  dailyDealList:
+  - id: GunSplit
   - id: GunLaser
   - id: GunEnergyOrb
-  - id: GunSplit
   - id: GunPlasma
-  dailyOfferRewardList:
-  - rewardId: diamond
-    rewardAmount: 30
-    costId: diamond
-    costAmount: 15
+  dailyOfferList:
   - rewardId: gold
-    rewardAmount: 1000
+    rewardAmount: 100
     costId: diamond
-    costAmount: 20
-  - rewardId: diamond
-    rewardAmount: 30
+    costAmount: 10
+  - rewardId: gold
+    rewardAmount: 100
     costId: diamond
-    costAmount: 30
-  - rewardId: regular_box
-    rewardAmount: 1
+    costAmount: 10
+  - rewardId: gold
+    rewardAmount: 100
     costId: diamond
-    costAmount: 40
+    costAmount: 10
+  - rewardId: gold
+    rewardAmount: 100
+    costId: diamond
+    costAmount: 10

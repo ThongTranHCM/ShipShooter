@@ -24,7 +24,7 @@ public class DailyDealPanelManager : MonoBehaviour
         fragmentText.SetResource("fragment");
         fragmentText.SetText(string.Format("+{0}",deal.GetFragment().ToString()));
         diamondText.SetResource("diamond");
-        diamondText.SetText(deal.GetDiamondCost().ToString());
+        diamondText.SetText(deal.GetDiamond().ToString());
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(() => {SoundManager.Instance.PlaySFX("valid_button");});
         button.onClick.AddListener(() => {GetDeal();});
