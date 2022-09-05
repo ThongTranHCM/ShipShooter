@@ -17,6 +17,7 @@ public class DailyDealManager : MonoBehaviour
         private int Level{
             get { return level; }
         }
+        private List<int> history = new List<int>();
         public void IncreaseLevel(){
             level = Mathf.Min(level + 1, GameInformation.Instance.dailyDealInterval);
         }
@@ -28,6 +29,27 @@ public class DailyDealManager : MonoBehaviour
         }
         public int GetDiamond(){
             return GameInformation.Instance.dailyDealConversionList[level].Diamond;
+        }
+        public void UpdateHistory(){
+            history.Add(level);
+            if(history.Count > 100){
+                history.RemoveAt(0);
+            }
+        }
+        public float GetProb(int Index){
+            if( history.Count == 0){
+                return 0.5f;
+            }
+            return history.FindAll(x => x > Index).Count / history.Count;
+        }
+        public float GetBestDeal(){
+            float sum = 0;
+            for(int i = 0; i < GameInformation.Instance.dailyDealConversionList.Count; i++){
+                float prob = GetProb(i);
+                prob = prob > UnityEngine.Random.RandomRange(0.0f, 1.0f) ? 1 : 0;
+                sum += GameInformation.Instance.dailyDealConversionList[i].Diamond * prob;
+            }
+            return sum + UnityEngine.Random.RandomRange(0.0f, 1.0f);
         }
     }
     [System.Serializable]
@@ -46,6 +68,7 @@ public class DailyDealManager : MonoBehaviour
     public class Data{
         public int prevStartTime;
         public List<Deal> dealList;
+        
         public void InitData(){
             dealList = GameInformation.Instance.dailyDealList;
             prevStartTime = DailyDealManager.Instance.GetStartTime();
@@ -89,9 +112,15 @@ public class DailyDealManager : MonoBehaviour
         countDownText.text = GetCountDown();
         if(HasFinished()){
             data.prevStartTime = GetStartTime();
+            int i = 0;
+            foreach(Transform child in gameObject.transform){
+                data.dealList[i].UpdateHistory();
+                i += 1;
+            }
             foreach(Deal deal in data.dealList){
                 deal.ResetLevel();
             }
+            SortDeal();
             UpdateDealPanel();
         }
     }
@@ -124,5 +153,15 @@ public class DailyDealManager : MonoBehaviour
         }
         return false;
     }
-
+    private void SortDeal(){
+        for(int i = data.dealList.Count - 1; i >= 0; i--){
+            for(int j = 0; j < i; j++){
+                if(data.dealList[j].GetBestDeal() < data.dealList[j + 1].GetBestDeal()){
+                    Deal tmp = data.dealList[j];
+                    data.dealList[j] = data.dealList[j + 1];
+                    data.dealList[j + 1] = tmp;
+                }
+            }
+        }
+    }
 }
