@@ -24,6 +24,29 @@ public class DailyOfferManager : MonoBehaviour
             return (costId, costAmount);
         }
     }
+    public class Data{
+        public List<Offer> offerList;
+        public int prevStartTime;
+        public int index;
+        public void InitData(){
+            offerList = GameInformation.Instance.dailyOfferList;
+            prevStartTime = DailyOfferManager.Instance.GetStartTime();
+            index = 0;
+        }
+        public void LoadData(){
+            if(DataManager.Instance.dailyDealManagerData != null){
+                offerList = DataManager.Instance.dailOfferManagerData.offerList;
+                prevStartTime = DataManager.Instance.dailOfferManagerData.prevStartTime;
+                index = DataManager.Instance.dailOfferManagerData.index;
+            } else {
+                InitData();
+            }
+        }
+        public void SaveData(){
+            DataManager.Instance.dailOfferManagerData = this;
+            DataManager.Save();
+        }
+    }
     private static DailyOfferManager instance = null;
     public static DailyOfferManager Instance{
         get { return instance; }
@@ -34,9 +57,7 @@ public class DailyOfferManager : MonoBehaviour
     private TextMeshProUGUI countDownText;
     [SerializeField]
     private PurchaseResourceButtonManager purchaseButton;
-    private List<Offer> offerList;
-    private int prevStartTime;
-    private int index;
+    private Data data;
     DailyOfferManager(){
         if(instance == null){
             instance = this;
@@ -44,7 +65,9 @@ public class DailyOfferManager : MonoBehaviour
     }
 
     void Start(){
-        InitData();
+        data = new Data();
+        data.InitData();
+        UpdateOfferPanel();
     }
 
     void FixedUpdate(){
@@ -54,30 +77,28 @@ public class DailyOfferManager : MonoBehaviour
     public void UpdateTimer(){
         countDownText.text = GetCountDown();
         if(HasFinished()){
-            prevStartTime = GetStartTime();
-            InitData();
+            data.prevStartTime = GetStartTime();
+            UpdateOfferPanel();
         }
     }
 
-    private void InitData(){
-        index = 0;
-        offerList = GameInformation.Instance.dailyOfferList;
+    private void UpdateOfferPanel(){
         int i = 0;
         foreach(Transform child in gameObject.transform){
-            (string, int) tuple = offerList[i].RewardTuple();
+            (string, int) tuple = data.offerList[i].RewardTuple();
             child.gameObject.GetComponent<ResourcePanelManager>().SetReward(tuple.Item1, tuple.Item2);
             i += 1;
         }
     }
 
     public void ClaimReward(){
-        if(offerList[index] != null){
-            (string, int) reward = offerList[index].RewardTuple();
-            (string, int) cost = offerList[index].CostTuple();
+        if(data.offerList[data.index] != null){
+            (string, int) reward = data.offerList[data.index].RewardTuple();
+            (string, int) cost = data.offerList[data.index].CostTuple();
             List<(string, int)> rewardList = new List<(string, int)>();
             rewardList.Add(reward);
             if(RewardResourceManager.Instance.Purchase(cost.Item1,cost.Item2,rewardList)){
-                index += 1;
+                data.index += 1;
             }
         }
     }
@@ -98,10 +119,10 @@ public class DailyOfferManager : MonoBehaviour
         span = TimeSpan.FromSeconds(interval - (curTime - GetStartTime()) - 1);
         return string.Format("Reset in {0}:{1}:{2}", span.Hours, span.Minutes, span.Seconds);
     }
-    
+
     private bool HasFinished(){
-        if(prevStartTime != GetStartTime()){
-            prevStartTime = GetStartTime();
+        if(data.prevStartTime != GetStartTime()){
+            data.prevStartTime = GetStartTime();
             return true;
         }
         return false;

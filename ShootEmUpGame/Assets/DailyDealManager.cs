@@ -43,36 +43,62 @@ public class DailyDealManager : MonoBehaviour
             get { return diamond;}
         }
     }
+    public class Data{
+        public int prevStartTime;
+        public List<Deal> dealList;
+        public void InitData(){
+            dealList = GameInformation.Instance.dailyDealList;
+            prevStartTime = DailyDealManager.Instance.GetStartTime();
+        }
+        public void LoadData(){
+            if(DataManager.Instance.dailyDealManagerData != null){
+                dealList = DataManager.Instance.dailyDealManagerData.dealList;
+                prevStartTime = DataManager.Instance.dailyDealManagerData.prevStartTime;
+            } else {
+                InitData();
+            }
+        }
+        public void SaveData(){
+            DataManager.Instance.dailyDealManagerData = this;
+            DataManager.Save();
+        }
+    }
+
     private static DailyDealManager instance = null;
     public static DailyDealManager Instance{
         get { return instance; }
     }
     [SerializeField]
     private TextMeshProUGUI countDownText;
-    private int prevStartTime;
-    private List<Deal> dealList;
+    private Data data;
+
+    public void Awake(){
+        if(instance == null){
+            instance = this;
+        }        
+    }
     public void Start(){
-        InitData();
+        data = new Data();
+        data.LoadData();
+        UpdateDealPanel();
     }
     public void FixedUpdate(){
         UpdateTimer();
     }
-    public void UpdateTimer(){
+    private void UpdateTimer(){
         countDownText.text = GetCountDown();
         if(HasFinished()){
-            Debug.Log("RESET");
-            prevStartTime = GetStartTime();
-            foreach(Deal deal in dealList){
+            data.prevStartTime = GetStartTime();
+            foreach(Deal deal in data.dealList){
                 deal.ResetLevel();
             }
-            InitData();
+            UpdateDealPanel();
         }
     }
-    private void InitData(){
-        dealList = GameInformation.Instance.dailyDealList;
+    private void UpdateDealPanel(){
         int i = 0;
         foreach(Transform child in gameObject.transform){
-            child.GetComponent<DailyDealPanelManager>().SetDeal(dealList[i]);
+            child.GetComponent<DailyDealPanelManager>().SetDeal(data.dealList[i]);
             i += 1;
         }
     }
@@ -92,8 +118,8 @@ public class DailyDealManager : MonoBehaviour
         return string.Format("Reset in {0}:{1}:{2}", span.Hours, span.Minutes, span.Seconds);
     }
     private bool HasFinished(){
-        if(prevStartTime != GetStartTime()){
-            prevStartTime = GetStartTime();
+        if(data.prevStartTime != GetStartTime()){
+            data.prevStartTime = GetStartTime();
             return true;
         }
         return false;

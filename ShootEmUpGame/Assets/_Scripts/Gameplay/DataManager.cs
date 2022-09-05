@@ -230,30 +230,49 @@ public class DataManager
             _timeChestData = value;
         }
     }
-    public EventCounter eventCounter
+    public DailyDealManager.Data dailyDealManagerData
     {
         get
         {
-            if (_eventCounter == null)
+            if (_dailyDealManagerData == null)
             {
 #if TEST
-				Debug.Log("--- Create New dailyOfferData! ---");
-#endif  
-                _eventCounter = new EventCounter();
-                _eventCounter.InitData();
+				Debug.Log("--- Create New timeChestData! ---");
+#endif
+                _dailyDealManagerData = new DailyDealManager.Data();
+                _dailyDealManagerData.InitData();
             }
-            return _eventCounter;
+            return _dailyDealManagerData;
         }
         set
         {
-            _eventCounter = value;
+            _dailyDealManagerData = value;
         }
     }
-
+    public DailyOfferManager.Data dailOfferManagerData
+    {
+        get
+        {
+            if (_dailyOfferManagerData == null)
+            {
+#if TEST
+				Debug.Log("--- Create New timeChestData! ---");
+#endif
+                _dailyOfferManagerData = new DailyOfferManager.Data();
+                _dailyOfferManagerData.InitData();
+            }
+            return _dailyOfferManagerData;
+        }
+        set
+        {
+            _dailyOfferManagerData = value;
+        }
+    }
     private PlayerData _playerData;
     private AddOnUserData _addOnUserData;
     private TimeChestData _timeChestData;
-    private EventCounter _eventCounter;
+    private DailyDealManager.Data _dailyDealManagerData;
+    private DailyOfferManager.Data _dailyOfferManagerData;
     #endregion
     #region Player Progression
     private int _lastLevelWin;
