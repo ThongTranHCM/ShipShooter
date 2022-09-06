@@ -17,14 +17,14 @@ MonoBehaviour:
   numOfBulletPerWave: 0
   timeDelayForEachWave: 0
   bulletData:
-    speed: 25
-    timeToMove: 2
+    speed: 6
+    timeToMove: 4
     canPenetrated: 0
     _targetLocked: {fileID: 0}
     rotSpeed: 0
     timeFollowTarget: 0
     _applyEfect:
-      attackPower: 10
+      attackPower: 5
       ratioDamage: 0
       criticalRate: 0
       criticalDamage: 0

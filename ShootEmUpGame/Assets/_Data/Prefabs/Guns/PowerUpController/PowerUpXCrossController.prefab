@@ -54,4 +54,4 @@ MonoBehaviour:
     - 5
     - 0
     triggerDamageRatio: 1000
-  _gunDurationActive: 6
+  _gunDurationActive: 3

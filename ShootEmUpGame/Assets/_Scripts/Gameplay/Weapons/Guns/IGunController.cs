@@ -118,6 +118,11 @@ public class IGunController : MonoBehaviour
 
     public void SetUpPlay()
     {
+        for (int i = 0; i < bulletParticleSystems.Length; i++)
+        {
+            bulletParticleSystems[i].CancelStopEmit();
+        }
+        callbackAllGunsEmptyParticle = null;
         if (gunData.numWavePerShot > 0)
         {
             _tmpShootPhase = 0;
@@ -131,6 +136,7 @@ public class IGunController : MonoBehaviour
                 bulletParticleSystems[i].StartEmit();
             }
         }
+        Debug.LogError(" SetUpGun Play ");
         _state = GunState.shot;
     }
 
@@ -182,7 +188,6 @@ public class IGunController : MonoBehaviour
                     bulletParticleSystems[i].myParticleSystem.time = GamePlayManager.Instance.PlayerManager._shipController.gunController.bulletParticleSystems[0].myParticleSystem.time;
                 }
             }
-            //Debug.LogError("Time " + gameObject.name + "  " + bulletParticleSystems[0].myParticleSystem.time + "  " + GamePlayManager.Instance.PlayerManager._shipController.gunController.bulletParticleSystems[0].myParticleSystem.time);
             if (gunData.numWavePerShot > 0)
             {
                 switch (_tmpShootPhase)

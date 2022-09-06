@@ -36,6 +36,7 @@ public class IParticleSystem : MonoBehaviour
     private Stack<ParticleCollider> stackColliderToDestroy;
     public bool isInstalled;
     private bool flag = false;
+    private System.Action callbackNoParticles;
     #region UNITY FUNCTIONS
     public void Start()
     {
@@ -132,6 +133,13 @@ public class IParticleSystem : MonoBehaviour
 
         myParticleSystem.SetParticles(_arrayParticle, particleAmount);
         _listParticleToDestroy.Clear();
+
+        if (callbackNoParticles != null && myParticleSystem.particleCount == 0)
+        {
+            Debug.LogError(" Callback   " + gameObject.name);
+            //callbackNoParticles.Invoke();
+            callbackNoParticles = null;
+        }
     }
     #endregion
     public virtual void OnParticleCollide(ParticleSystem.Particle particle, Collider2D collider)
@@ -159,26 +167,24 @@ public class IParticleSystem : MonoBehaviour
     }
     public void StopEmit(System.Action callback, bool afterNoParticle)
     {
+        Debug.LogError("Stop Emit " + gameObject.name);
         if (gameObject.activeSelf)
         {
             myParticleSystem.Stop();
-            if (afterNoParticle)
+            if (afterNoParticle && myParticleSystem.particleCount > 0)
             {
-                StartCoroutine(WaitUntilNoParticle(callback));
+                callbackNoParticles = callback;
             }
             else
             {
+                Debug.LogError(" Callback   " + gameObject.name);
                 callback?.Invoke();
             }
         }
     }
-    public IEnumerator WaitUntilNoParticle(System.Action callback)
+    public void CancelStopEmit()
     {
-        while (myParticleSystem.particleCount > 0)
-        {
-            yield return Yielder.Get(1);
-        }
-        callback?.Invoke();
+        callbackNoParticles = null;
     }
     public void Install()
     {

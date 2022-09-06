@@ -62,5 +62,10 @@ public class PowerUpAddOnController : MonoBehaviour
                 _gunIsActive = false;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            OnPowerUpConsume();
+        }
     }
 }
