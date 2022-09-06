@@ -20,14 +20,20 @@ public class MissionPanelManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI reward;
 
-    public void SetMission(TimeChestManager.Mission Mission){
-        mission = Mission;
-        description.text = mission.Description;
-        reward.text = ((float)mission.Reward / 3600).ToString();
-        claimButton.gameObject.SetActive(mission.IsFinish());
-        goToButton.gameObject.SetActive(!mission.IsFinish());
-        fillBarManager.SetRawValue(mission.CurProgress, mission.Requirement);
-        fillBarTextManager.SetValue(mission.Requirement);
+    public void SetMission(TimeChestManager.Mission TargetMission){
+        description.text = TargetMission.Description;
+        reward.text = ((float)TargetMission.Reward / 3600).ToString();
+        claimButton.gameObject.SetActive(TargetMission.IsFinish());
+        goToButton.gameObject.SetActive(!TargetMission.IsFinish());
+        if( mission != null ){
+            if (mission.CurProgress != TargetMission.CurProgress || mission.Requirement != TargetMission.Requirement){
+                fillBarManager.UpdateRawValue(TargetMission.CurProgress, TargetMission.Requirement);
+            }
+        } else {
+            fillBarManager.UpdateRawValue(TargetMission.CurProgress, TargetMission.Requirement);
+        }
+        fillBarTextManager.SetValue(TargetMission.Requirement);
+        mission = TargetMission;
     }
 
     public void CompleteMission(){

@@ -115,7 +115,7 @@ public class TimeChestManager : MonoBehaviour
             if(HasFinished()){
                 ClaimReward();
             }
-            TimeChestContentManager.Instance.UpdateFillBar(GetCurTime(), data.prevStartTime, GameInformation.Instance.timeChestInterval);
+            TimeChestContentManager.Instance.SetFillBar(GetCurTime(), data.prevStartTime, GameInformation.Instance.timeChestInterval);
             TimeChestContentManager.Instance.UpdatePurchaseButton();
             if(prevData != data){   
                 TimeChestContentManager.Instance.UpdateMissionPanel(data.missionList);
@@ -125,7 +125,7 @@ public class TimeChestManager : MonoBehaviour
 
     public void InitContent(){
         if(TimeChestContentManager.Instance != null && data != null){
-            TimeChestContentManager.Instance.UpdateFillBar(GetCurTime(), data.prevStartTime, GameInformation.Instance.timeChestInterval);
+            TimeChestContentManager.Instance.SetFillBar(GetCurTime(), data.prevStartTime, GameInformation.Instance.timeChestInterval);
             TimeChestContentManager.Instance.UpdatePurchaseButton();
             TimeChestContentManager.Instance.UpdateMissionPanel(data.missionList);
         }
