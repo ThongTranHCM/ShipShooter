@@ -70,6 +70,19 @@ public class TimeChestManager : MonoBehaviour
             int curTime = (int)span.TotalSeconds;
             prevStartTime = curTime;
         }
+        public void UpdateList(){
+            List<Mission> tmp = GameInformation.Instance.timeChestMissionList;
+            for(int i = 0; i < tmp.Count; i++){
+                if(missionList.Find( x => x.ID == tmp[i].ID) == null){
+                    missionList.Add(tmp[i]);
+                }
+            }
+            for(int i = 0; i < missionList.Count; i++){
+                if(tmp.Find( x => x.ID == missionList[i].ID) == null){
+                    missionList.Remove(missionList[i]);
+                }
+            }
+        }
     }
     private static TimeChestManager instance = null;
     public static TimeChestManager Instance{
@@ -114,10 +127,11 @@ public class TimeChestManager : MonoBehaviour
                 ClaimReward();
             }
             TimeChestContentManager.Instance.SetFillBar(GetCurTime(), data.prevStartTime, GameInformation.Instance.timeChestInterval);
-            TimeChestContentManager.Instance.UpdatePurchaseButton();
             if(prevData != data){   
+                TimeChestContentManager.Instance.UpdatePurchaseButton();
                 TimeChestContentManager.Instance.UpdateMissionPanel(data.missionList);
             }
+            prevData = data;
         }
     }
 

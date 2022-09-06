@@ -76,6 +76,19 @@ public class DailyDealManager : MonoBehaviour
             dealList = GameInformation.Instance.dailyDealList;
             prevStartTime = startTime;
         }
+        public void UpdateList(){
+            List<Deal> tmp = GameInformation.Instance.dailyDealList;
+            for(int i = 0; i < tmp.Count; i++){
+                if(dealList.Find( x => x.ID == tmp[i].ID) == null){
+                    dealList.Add(tmp[i]);
+                }
+            }
+            for(int i = 0; i < dealList.Count; i++){
+                if(tmp.Find( x => x.ID == dealList[i].ID) == null){
+                    dealList.Remove(dealList[i]);
+                }
+            }
+        }
     }
 
     private static DailyDealManager instance = null;

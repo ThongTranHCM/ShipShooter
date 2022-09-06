@@ -223,6 +223,7 @@ public class DataManager
                 _timeChestManagerData = new TimeChestManager.Data();
                 _timeChestManagerData.InitData();
             }
+            _timeChestManagerData.UpdateList();
             return _timeChestManagerData;
         }
         set
@@ -242,6 +243,7 @@ public class DataManager
                 _dailyDealManagerData = new DailyDealManager.Data();
                 _dailyDealManagerData.InitData();
             }
+            _dailyDealManagerData.UpdateList();
             return _dailyDealManagerData;
         }
         set
@@ -261,6 +263,7 @@ public class DataManager
                 _dailyOfferManagerData = new DailyOfferManager.Data();
                 _dailyOfferManagerData.InitData();
             }
+            _dailyOfferManagerData.UpdateList();
             return _dailyOfferManagerData;
         }
         set

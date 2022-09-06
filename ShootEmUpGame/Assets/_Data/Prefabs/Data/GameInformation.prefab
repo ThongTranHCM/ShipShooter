@@ -79,9 +79,9 @@ MonoBehaviour:
   - id: GunLaser
   - id: GunSplit
   dailyOfferList:
-  - id: 20_diamond
+  - id: 30_diamond
     rewardId: diamond
-    rewardAmount: 20
+    rewardAmount: 30
     costId: diamond
     costAmount: 0
     efficency: 0
@@ -121,16 +121,6 @@ MonoBehaviour:
     requirement: 3
   - id: upgrade_ship
     description: Upgrade ship once
-    reward: 7200
-    interval: 28800
-    requirement: 1
-  - id: purchase_box
-    description: Purchase a Box
-    reward: 7200
-    interval: 28800
-    requirement: 1
-  - id: purchase_fragment
-    description: Purchase Fragments
     reward: 7200
     interval: 28800
     requirement: 1

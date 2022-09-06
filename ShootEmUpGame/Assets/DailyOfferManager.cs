@@ -28,21 +28,6 @@ public class DailyOfferManager : MonoBehaviour
         public (string, int) CostTuple(){
             return (costId, costAmount);
         }
-        public void UpdateHistory(bool Claimed){
-            history.Add(Claimed);
-            if(history.Count > 100){
-                history.RemoveAt(0);
-            }
-        }
-        private float GetRate(){
-            if( history.Count == 0){
-                return 0.5f;
-            }
-            return history.FindAll(x => x == true).Count / history.Count;
-        }
-        public float GetValue(){
-            return GetRate() * efficency;
-        }
     }
     public class Data{
         public List<Offer> offerList;
@@ -57,6 +42,19 @@ public class DailyOfferManager : MonoBehaviour
             offerList = GameInformation.Instance.dailyOfferList;
             prevStartTime = startTime;
             index = 0;
+        }
+        public void UpdateList(){
+            List<Offer> tmp = GameInformation.Instance.dailyOfferList;
+            for(int i = 0; i < tmp.Count; i++){
+                if(offerList.Find( x => x.ID == tmp[i].ID) == null){
+                    offerList.Add(tmp[i]);
+                }
+            }
+            for(int i = 0; i < offerList.Count; i++){
+                if(tmp.Find( x => x.ID == offerList[i].ID) == null){
+                    offerList.Remove(offerList[i]);
+                }
+            }
         }
     }
     private static DailyOfferManager instance = null;
@@ -103,14 +101,6 @@ public class DailyOfferManager : MonoBehaviour
     }
 
     private void RestartOffers(){
-        Debug.Log("Restart Offers");
-        for( int i = 0; i < data.offerList.Count; i++){
-            if( i < data.index){
-                data.offerList[i].UpdateHistory(true);
-            } else {
-                data.offerList[i].UpdateHistory(false);
-            }
-        }
         data.index = 0;
         DataManager.Save();
     }
