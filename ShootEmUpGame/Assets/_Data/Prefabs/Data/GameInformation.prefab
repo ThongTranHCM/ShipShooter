@@ -50,7 +50,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 187e61bf987c08c479f2f6898db99e74, type: 2}
   - {fileID: 11400000, guid: 3de45a3373cdf3248afb3e1775f566e2, type: 2}
   dailyDealInterval: 86400
-  dailyOfferInterval: 86400
+  dailyOfferInterval: 10
   timeChestInterval: 28800
   dailyDealConversionList:
   - fragment: 35
@@ -82,29 +82,29 @@ MonoBehaviour:
   - rewardId: diamond
     rewardAmount: 30
     costId: diamond
-    costAmount: 10
+    costAmount: 0
     efficency: 0
   - rewardId: gold
     rewardAmount: 1000
     costId: diamond
-    costAmount: 10
+    costAmount: 0
     efficency: 0
   - rewardId: diamond
     rewardAmount: 40
     costId: diamond
-    costAmount: 10
+    costAmount: 0
     efficency: 0
   - rewardId: regular_box
     rewardAmount: 1
     costId: diamond
-    costAmount: 10
+    costAmount: 0
     efficency: 0
   timeChestMissionList:
   - missionID: defeat_enemy
     description: Defeat 500 enemies
     reward: 7200
     interval: 28800
-    requirement: 500
+    requirement: 200
   - missionID: clear_stage
     description: Clear one stage
     reward: 7200

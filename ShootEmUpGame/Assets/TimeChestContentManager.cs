@@ -50,7 +50,7 @@ public class TimeChestContentManager : MonoBehaviour
     }
 
     public void SetFillBar(int curTime, int prevStartTime, int interval){
-        fillBarManager.UpdateRawValue(curTime - prevStartTime, interval);
+        fillBarManager.SetRawValue(curTime - prevStartTime, interval);
         fillBarTimeTextManager.SetValue(interval);
     }
 }

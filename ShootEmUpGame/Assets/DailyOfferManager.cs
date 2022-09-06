@@ -18,7 +18,7 @@ public class DailyOfferManager : MonoBehaviour
         int costAmount;
         [SerializeField]
         float efficency;
-        List<bool> history;
+        List<bool> history = new List<bool>();
         public (string, int) RewardTuple(){
             return (rewardId, rewardAmount);
         }
@@ -82,8 +82,9 @@ public class DailyOfferManager : MonoBehaviour
             }
             DailyOfferContentManager.Instance.SetCountDownText(GetCountDown());
             if(prevData != data){
-                Debug.Log("UpdateOffer");
                 DailyOfferContentManager.Instance.UpdateOfferPanel(data.offerList);
+                (string, int) cost = data.offerList[data.index].CostTuple();
+                DailyOfferContentManager.Instance.UpdatePurchaseButton(cost.Item1, cost.Item2);
             }
             prevData = data;
         } 
@@ -93,10 +94,13 @@ public class DailyOfferManager : MonoBehaviour
         if(data != null && DailyOfferContentManager.Instance != null){
             DailyOfferContentManager.Instance.SetCountDownText(GetCountDown());
             DailyOfferContentManager.Instance.UpdateOfferPanel(data.offerList);
+            (string, int) cost = data.offerList[data.index].CostTuple();
+            DailyOfferContentManager.Instance.UpdatePurchaseButton(cost.Item1, cost.Item2);
         } 
     }
 
     private void RestartOffers(){
+        Debug.Log("Restart Offers");
         for( int i = 0; i < data.offerList.Count; i++){
             if( i < data.index){
                 data.offerList[i].UpdateHistory(true);
@@ -110,25 +114,28 @@ public class DailyOfferManager : MonoBehaviour
 
     
 
-    public void ClaimReward(){
+    public void PurchaseReward(){
         if(data.index < data.offerList.Count){
-            if(data.offerList[data.index] != null){
-                (string, int) reward = data.offerList[data.index].RewardTuple();
-                (string, int) cost = data.offerList[data.index].CostTuple();
-                List<(string, int)> rewardList = new List<(string, int)>();
-                rewardList.Add(reward);
-                if(RewardResourceManager.Instance.Purchase(cost.Item1,cost.Item2,rewardList)){
-                    data.index += 1;
-                    DataManager.Save();
-                }
-            }   
+            Debug.Log("Claim Reward");
+            (string, int) reward = data.offerList[data.index].RewardTuple();
+            (string, int) cost = data.offerList[data.index].CostTuple();
+            List<(string, int)> rewardList = new List<(string, int)>();
+            rewardList.Add(reward);
+            if(RewardResourceManager.Instance.Purchase(cost.Item1,cost.Item2,rewardList)){
+                data.index += 1;
+                DataManager.Save();
+            }
         } else {
             Debug.Log("You have collected all of the reward");
         }
     }
 
+    public void InstancePurchaseReward(){
+        Instance.PurchaseReward();
+    }
+
     private int GetStartTime(){
-        int interval = GameInformation.Instance.dailyDealInterval;
+        int interval = GameInformation.Instance.dailyOfferInterval;
         TimeSpan span= DateTime.Now.Subtract(new DateTime(1970,1,1,0,0,0, DateTimeKind.Utc));
         int curTime = (int)span.TotalSeconds;
         int startTime = (int)(curTime/interval);
@@ -137,7 +144,7 @@ public class DailyOfferManager : MonoBehaviour
     }
 
     private string GetCountDown(){
-        int interval = GameInformation.Instance.dailyDealInterval;
+        int interval = GameInformation.Instance.dailyOfferInterval;
         TimeSpan span= DateTime.Now.Subtract(new DateTime(1970,1,1,0,0,0, DateTimeKind.Utc));
         int curTime = (int)span.TotalSeconds;
         span = TimeSpan.FromSeconds(interval - (curTime - GetStartTime()) - 1);

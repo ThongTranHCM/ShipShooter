@@ -40,4 +40,8 @@ public class DailyOfferContentManager : MonoBehaviour
     public void SetCountDownText(string Text){
         countDownText.text = Text;
     }
+
+    public void UpdatePurchaseButton(string ID, int Cost){
+        purchaseButton.SetCost(ID, Cost);
+    }
 }
