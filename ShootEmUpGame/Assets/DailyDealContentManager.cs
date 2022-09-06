@@ -17,6 +17,11 @@ public class DailyDealContentManager : MonoBehaviour
             instance = this;
         }
     }
+
+    void Start(){
+        DailyDealManager.Instance.InitContent();
+    }
+
     void FixedUpdate(){
         DailyDealManager.Instance.UpdateContent();
     }

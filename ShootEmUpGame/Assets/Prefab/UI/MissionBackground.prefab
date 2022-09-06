@@ -619,6 +619,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7823083633269788747, guid: 149a54af34ca299408d3f40c01cc7382,
         type: 3}
+      propertyPath: fullColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7823083633269788747, guid: 149a54af34ca299408d3f40c01cc7382,
+        type: 3}
+      propertyPath: fullColor.b
+      value: 0.39607844
+      objectReference: {fileID: 0}
+    - target: {fileID: 7823083633269788747, guid: 149a54af34ca299408d3f40c01cc7382,
+        type: 3}
+      propertyPath: fullColor.g
+      value: 0.7529412
+      objectReference: {fileID: 0}
+    - target: {fileID: 7823083633269788747, guid: 149a54af34ca299408d3f40c01cc7382,
+        type: 3}
+      propertyPath: fullColor.r
+      value: 0.10980392
+      objectReference: {fileID: 0}
+    - target: {fileID: 7823083633269788747, guid: 149a54af34ca299408d3f40c01cc7382,
+        type: 3}
       propertyPath: txtProgress
       value: 
       objectReference: {fileID: 3881080945389125859}
@@ -962,6 +982,46 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ActionButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189077119675521811, guid: 41274d14b7a8bf349af02bd154de459b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189077119675521811, guid: 41274d14b7a8bf349af02bd154de459b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189077119675521811, guid: 41274d14b7a8bf349af02bd154de459b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 4193952599374658425}
+    - target: {fileID: 5189077119675521811, guid: 41274d14b7a8bf349af02bd154de459b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189077119675521811, guid: 41274d14b7a8bf349af02bd154de459b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: CompleteMission
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189077119675521811, guid: 41274d14b7a8bf349af02bd154de459b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: MissionPanelManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189077119675521811, guid: 41274d14b7a8bf349af02bd154de459b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_StringArgument
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5189077119675521811, guid: 41274d14b7a8bf349af02bd154de459b,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 41274d14b7a8bf349af02bd154de459b, type: 3}

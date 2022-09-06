@@ -21,7 +21,9 @@ public class DailyOfferContentManager : MonoBehaviour
             instance = this;
         }
     }
-
+    void Start(){
+        DailyOfferManager.Instance.InitContent();
+    }
     void FixedUpdate(){
         DailyOfferManager.Instance.UpdateContent();
     }

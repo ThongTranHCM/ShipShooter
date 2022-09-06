@@ -89,6 +89,13 @@ public class DailyOfferManager : MonoBehaviour
         } 
     }
 
+    public void InitContent(){
+        if(data != null && DailyOfferContentManager.Instance != null){
+            DailyOfferContentManager.Instance.SetCountDownText(GetCountDown());
+            DailyOfferContentManager.Instance.UpdateOfferPanel(data.offerList);
+        } 
+    }
+
     private void RestartOffers(){
         for( int i = 0; i < data.offerList.Count; i++){
             if( i < data.index){

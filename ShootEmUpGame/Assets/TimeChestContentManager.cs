@@ -20,6 +20,9 @@ public class TimeChestContentManager : MonoBehaviour
             instance = this;
         }
     }
+    void Start(){
+        TimeChestManager.Instance.InitContent();
+    }
 
     void FixedUpdate(){
         TimeChestManager.Instance.UpdateContent();

@@ -29,4 +29,8 @@ public class MissionPanelManager : MonoBehaviour
         fillBarManager.SetRawValue(mission.CurProgress, mission.Requirement);
         fillBarTextManager.SetValue(mission.Requirement);
     }
+
+    public void CompleteMission(){
+        TimeChestManager.Instance.CompleteMission(mission);
+    }
 }

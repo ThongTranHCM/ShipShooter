@@ -58,6 +58,9 @@ public class TimeChestManager : MonoBehaviour
         public bool IsFinish(){
             return curProgress >= requirement;
         }
+        public float GetPercentCompletion(){
+            return (float)curProgress / requirement;
+        }
     }
     public class Data{
         public List<Mission> missionList;
@@ -120,6 +123,14 @@ public class TimeChestManager : MonoBehaviour
         }
     }
 
+    public void InitContent(){
+        if(TimeChestContentManager.Instance != null && data != null){
+            TimeChestContentManager.Instance.UpdateFillBar(GetCurTime(), data.prevStartTime, GameInformation.Instance.timeChestInterval);
+            TimeChestContentManager.Instance.UpdatePurchaseButton();
+            TimeChestContentManager.Instance.UpdateMissionPanel(data.missionList);
+        }
+    }
+
     private void UpdateMissionActive(){
         foreach(Mission mission in data.missionList){
             mission.UpdateActive();
@@ -145,5 +156,12 @@ public class TimeChestManager : MonoBehaviour
                 mission.AddProgress(Amount);
             }
         }
+    }
+
+    public void CompleteMission(Mission TargetMission){
+        TargetMission.Complete();
+        UpdateMissionActive();
+        data.prevStartTime -= TargetMission.Reward;
+        DataManager.Save();
     }
 }

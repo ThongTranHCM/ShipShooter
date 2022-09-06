@@ -114,6 +114,13 @@ public class DailyDealManager : MonoBehaviour
         }
     }
 
+    public void InitContent(){
+        if(data != null && DailyDealContentManager.Instance != null){
+            DailyDealContentManager.Instance.SetTimeCounter(GetCountDown());
+            DailyDealContentManager.Instance.UpdateDealPanel(data.dealList);
+        }
+    }
+
     private void RestartDeals(){
             int i = 0;
             foreach(Transform child in gameObject.transform){
