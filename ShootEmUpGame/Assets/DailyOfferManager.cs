@@ -60,51 +60,45 @@ public class DailyOfferManager : MonoBehaviour
     public static DailyOfferManager Instance{
         get { return instance; }
     }
-    [SerializeField]
-    private GameObject offerListGameObject;
-    [SerializeField]
-    private TextMeshProUGUI countDownText;
-    [SerializeField]
-    private PurchaseResourceButtonManager purchaseButton;
     private Data data{
         get { return DataManager.Instance.dailyOfferManagerData;} 
         set { DataManager.Instance.dailyOfferManagerData = value;} 
     }
-    DailyOfferManager(){
+    private Data prevData;
+
+    void Awake(){
         if(instance == null){
             instance = this;
-        }
-    }
-
-    void FixedUpdate(){
-        UpdateContent();
+        }        
     }
 
     public void UpdateContent(){
-        countDownText.text = GetCountDown();
-        UpdateOfferPanel();
-        if(HasFinished()){
-            for( int i = 0; i < data.offerList.Count; i++){
-                if( i < data.index){
-                    data.offerList[i].UpdateHistory(true);
-                } else {
-                    data.offerList[i].UpdateHistory(false);
-                }
+        if(data != null && DailyOfferContentManager.Instance != null){
+            if(HasFinished()){
+                RestartOffers();
             }
-            data.index = 0;
-            DataManager.Save();
-            UpdateOfferPanel();
-        }
+            DailyOfferContentManager.Instance.SetCountDownText(GetCountDown());
+            if(prevData != data){
+                Debug.Log("UpdateOffer");
+                DailyOfferContentManager.Instance.UpdateOfferPanel(data.offerList);
+            }
+            prevData = data;
+        } 
     }
 
-    private void UpdateOfferPanel(){
-        int i = 0;
-        foreach(Transform child in gameObject.transform){
-            (string, int) tuple = data.offerList[i].RewardTuple();
-            child.gameObject.GetComponent<ResourcePanelManager>().SetReward(tuple.Item1, tuple.Item2);
-            i += 1;
+    private void RestartOffers(){
+        for( int i = 0; i < data.offerList.Count; i++){
+            if( i < data.index){
+                data.offerList[i].UpdateHistory(true);
+            } else {
+                data.offerList[i].UpdateHistory(false);
+            }
         }
+        data.index = 0;
+        DataManager.Save();
     }
+
+    
 
     public void ClaimReward(){
         if(data.index < data.offerList.Count){
