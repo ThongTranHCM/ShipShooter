@@ -19,7 +19,7 @@ public class DailyDealManager : MonoBehaviour
         }
         private List<int> history = new List<int>();
         public void IncreaseLevel(){
-            level = Mathf.Min(level + 1, GameInformation.Instance.dailyDealInterval);
+            level = Mathf.Min(level + 1, GameInformation.Instance.dailyDealConversionList.Count - 1);
         }
         public void ResetLevel(){
             level = 0;
