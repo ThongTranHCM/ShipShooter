@@ -100,27 +100,33 @@ MonoBehaviour:
     costAmount: 10
     efficency: 0
   timeChestMissionList:
-  - description: Defeat 500 enemies
+  - id: defeat_enemy
+    description: Defeat 500 enemies
     reward: 7200
     interval: 28800
     requirement: 500
-  - description: Clear one stage
+  - id: clear_stage
+    description: Clear one stage
     reward: 7200
     interval: 28800
     requirement: 1
-  - description: Play 3 games
+  - id: 
+    description: Play 3 games
     reward: 7200
     interval: 28800
     requirement: 3
-  - description: Upgrade ship once
+  - id: upgrade_ship
+    description: Upgrade ship once
     reward: 7200
     interval: 28800
     requirement: 1
-  - description: Purchase a Box
+  - id: purchase_box
+    description: Purchase a Box
     reward: 7200
     interval: 28800
     requirement: 1
-  - description: Purchase Fragments
+  - id: purchase_fragment
+    description: Purchase Fragments
     reward: 7200
     interval: 28800
     requirement: 1

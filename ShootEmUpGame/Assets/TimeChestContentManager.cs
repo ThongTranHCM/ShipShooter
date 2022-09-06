@@ -21,6 +21,10 @@ public class TimeChestContentManager : MonoBehaviour
         }
     }
 
+    void FixedUpdate(){
+        TimeChestManager.Instance.UpdateContent();
+    }
+
     public void UpdateMissionPanel(List<TimeChestManager.Mission> missionList){
         for(int i = transform.childCount; i < missionList.Count; i++){
             GameObject missionPanel = Instantiate(missionPrefab, transform.position, Quaternion.identity, transform);

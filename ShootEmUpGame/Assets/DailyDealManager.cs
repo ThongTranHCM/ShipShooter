@@ -84,12 +84,13 @@ public class DailyDealManager : MonoBehaviour
     public static DailyDealManager Instance{
         get { return instance; }
     }
-    [SerializeField]
-    private TextMeshProUGUI countDownText;
     private Data data{
         get { return DataManager.Instance.dailyDealManagerData; } 
-        set { DataManager.Instance.dailyDealManagerData  = value;}
+        set { 
+            DataManager.Instance.dailyDealManagerData  = value;
+        }
     }
+    private Data prevData = null;
 
     void Awake(){
         if(instance == null){
@@ -97,15 +98,20 @@ public class DailyDealManager : MonoBehaviour
         }        
     }
 
-    public void FixedUpdate(){
-        if(data != null){
-            UpdateContent();
+    public void UpdateContent(){
+        if(data != null && DailyDealContentManager.Instance != null){
+            if(HasFinished()){
+                RestartDeals();
+            }
+            DailyDealContentManager.Instance.SetTimeCounter(GetCountDown());
+            if(prevData != data){
+                DailyDealContentManager.Instance.UpdateDealPanel(data.dealList);
+            }
+            prevData = data;
         }
     }
-    private void UpdateContent(){
-        countDownText.text = GetCountDown();
-        UpdateDealPanel();
-        if(HasFinished()){
+
+    private void RestartDeals(){
             int i = 0;
             foreach(Transform child in gameObject.transform){
                 data.dealList[i].UpdateHistory();
@@ -114,18 +120,10 @@ public class DailyDealManager : MonoBehaviour
             foreach(Deal deal in data.dealList){
                 deal.ResetLevel();
             }
-            DataManager.Save();
             SortDeal();
-            UpdateDealPanel();
-        }
+            DataManager.Save();
     }
-    private void UpdateDealPanel(){
-        int i = 0;
-        foreach(Transform child in gameObject.transform){
-            child.GetComponent<DailyDealPanelManager>().SetDeal(data.dealList[i]);
-            i += 1;
-        }
-    }
+
     private int GetStartTime(){
         int interval = GameInformation.Instance.dailyDealInterval;
         TimeSpan span= DateTime.Now.Subtract(new DateTime(1970,1,1,0,0,0, DateTimeKind.Utc));
