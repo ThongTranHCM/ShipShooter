@@ -9,10 +9,8 @@ public class DailyDealManager : MonoBehaviour
     [System.Serializable]
     public class Deal{
         [SerializeField]
-        private string id;
-        public string ID{
-            get{ return id;}
-        }
+        string id;
+        public string ID { get { return id;}}
         private int level;
         private int Level{
             get { return level; }

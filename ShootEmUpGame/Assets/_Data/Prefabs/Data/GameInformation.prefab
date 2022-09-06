@@ -74,58 +74,62 @@ MonoBehaviour:
   - fragment: 9295
     diamond: 110085
   dailyDealList:
-  - id: GunSplit
-  - id: GunLaser
-  - id: GunEnergyOrb
   - id: GunPlasma
+  - id: GunEnergyOrb
+  - id: GunLaser
+  - id: GunSplit
   dailyOfferList:
-  - rewardId: diamond
-    rewardAmount: 30
+  - id: 20_diamond
+    rewardId: diamond
+    rewardAmount: 20
     costId: diamond
     costAmount: 0
     efficency: 0
-  - rewardId: gold
+  - id: 1000_gold
+    rewardId: gold
     rewardAmount: 1000
     costId: diamond
     costAmount: 0
     efficency: 0
-  - rewardId: diamond
+  - id: 40_diamond
+    rewardId: diamond
     rewardAmount: 40
     costId: diamond
     costAmount: 0
     efficency: 0
-  - rewardId: regular_box
+  - id: 1_RegBox
+    rewardId: regular_box
     rewardAmount: 1
     costId: diamond
     costAmount: 0
     efficency: 0
   timeChestMissionList:
-  - missionID: defeat_enemy
+  - id: defeat_enemy
     description: Defeat 500 enemies
     reward: 7200
     interval: 28800
     requirement: 200
-  - missionID: clear_stage
+  - id: clear_stage
     description: Clear one stage
     reward: 7200
     interval: 28800
     requirement: 1
-  - missionID: play_game
+  - id: play_game
     description: Play 3 games
     reward: 7200
     interval: 28800
     requirement: 3
-  - missionID: upgrade_ship
+  - id: upgrade_ship
     description: Upgrade ship once
     reward: 7200
     interval: 28800
     requirement: 1
-  - missionID: purchase_box
+  - id: purchase_box
     description: Purchase a Box
     reward: 7200
     interval: 28800
     requirement: 1
-  - missionID: purchase_fragment
+  - id: purchase_fragment
     description: Purchase Fragments
     reward: 7200
     interval: 28800

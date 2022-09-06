@@ -9,6 +9,9 @@ public class DailyOfferManager : MonoBehaviour
     [System.Serializable]
     public class Offer{
         [SerializeField]
+        string id;
+        public string ID { get { return id;}}
+        [SerializeField]
         string rewardId;
         [SerializeField]
         int rewardAmount;

@@ -8,10 +8,8 @@ public class TimeChestManager : MonoBehaviour
     [System.Serializable]
     public class Mission{
         [SerializeField]
-        string missionID;
-        public string MissionID{
-            get { return missionID; }
-        }
+        string id;
+        public string ID { get { return id;}}
         [SerializeField]
         string description;
         public string Description{
@@ -151,8 +149,8 @@ public class TimeChestManager : MonoBehaviour
 
     public void ProgressMission(string ID, int Amount = 1){
         foreach(Mission mission in data.missionList){
-            Debug.Log(mission.MissionID);
-            if(mission.MissionID == ID){
+            Debug.Log(mission.ID);
+            if(mission.ID == ID){
                 mission.AddProgress(Amount);
             }
         }
