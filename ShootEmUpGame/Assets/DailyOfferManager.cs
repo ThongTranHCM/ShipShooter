@@ -65,7 +65,6 @@ public class DailyOfferManager : MonoBehaviour
         get { return DataManager.Instance.dailyOfferManagerData;} 
         set { DataManager.Instance.dailyOfferManagerData = value;} 
     }
-    private Data prevData;
 
     void Awake(){
         DontDestroyOnLoad(gameObject);
@@ -82,19 +81,16 @@ public class DailyOfferManager : MonoBehaviour
                 RestartOffers();
             }
             DailyOfferContentManager.Instance.SetCountDownText(GetCountDown());
-            if(prevData != data){
-                DailyOfferContentManager.Instance.UpdateOfferPanel(data.offerList);
-                (string, int) cost = data.offerList[data.index].CostTuple();
-                DailyOfferContentManager.Instance.UpdatePurchaseButton(cost.Item1, cost.Item2);
-            }
-            prevData = data;
+            DailyOfferContentManager.Instance.UpdateOfferPanel(data.offerList, data.index);
+            (string, int) cost = data.offerList[data.index].CostTuple();
+            DailyOfferContentManager.Instance.UpdatePurchaseButton(cost.Item1, cost.Item2);
         } 
     }
 
     public void InitContent(){
         if(data != null && DailyOfferContentManager.Instance != null){
             DailyOfferContentManager.Instance.SetCountDownText(GetCountDown());
-            DailyOfferContentManager.Instance.UpdateOfferPanel(data.offerList);
+            DailyOfferContentManager.Instance.UpdateOfferPanel(data.offerList, data.index);
             (string, int) cost = data.offerList[data.index].CostTuple();
             DailyOfferContentManager.Instance.UpdatePurchaseButton(cost.Item1, cost.Item2);
         } 
@@ -104,8 +100,6 @@ public class DailyOfferManager : MonoBehaviour
         data.index = 0;
         DataManager.Save();
     }
-
-    
 
     public void PurchaseReward(){
         if(data.index < data.offerList.Count){
