@@ -86,26 +86,25 @@ public class DailyDealManager : MonoBehaviour
     }
     [SerializeField]
     private TextMeshProUGUI countDownText;
-    private Data data;
+    private Data data{
+        get { return DataManager.Instance.dailyDealManagerData; } 
+        set { DataManager.Instance.dailyDealManagerData  = value;}
+    }
 
-    public void Awake(){
+    void Awake(){
         if(instance == null){
             instance = this;
         }        
     }
-    public void Save(){
-        DataManager.Instance.dailyDealManagerData = data;
-        DataManager.Save();
-    }
-    public void Start(){
-        data = DataManager.Instance.dailyDealManagerData;
-        UpdateDealPanel();
-    }
+
     public void FixedUpdate(){
-        UpdateTimer();
+        if(data != null){
+            UpdateContent();
+        }
     }
-    private void UpdateTimer(){
+    private void UpdateContent(){
         countDownText.text = GetCountDown();
+        UpdateDealPanel();
         if(HasFinished()){
             int i = 0;
             foreach(Transform child in gameObject.transform){
@@ -115,8 +114,8 @@ public class DailyDealManager : MonoBehaviour
             foreach(Deal deal in data.dealList){
                 deal.ResetLevel();
             }
+            DataManager.Save();
             SortDeal();
-            Save();
             UpdateDealPanel();
         }
     }
@@ -145,7 +144,7 @@ public class DailyDealManager : MonoBehaviour
     private bool HasFinished(){
         if(data.prevStartTime != GetStartTime()){
             data.prevStartTime = GetStartTime();
-            Save();
+            DataManager.Save();
             return true;
         }
         return false;

@@ -51,7 +51,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3de45a3373cdf3248afb3e1775f566e2, type: 2}
   dailyDealInterval: 86400
   dailyOfferInterval: 86400
-  timeChestInterval: 10
+  timeChestInterval: 28800
   dailyDealConversionList:
   - fragment: 35
     diamond: 15
@@ -99,3 +99,28 @@ MonoBehaviour:
     costId: diamond
     costAmount: 10
     efficency: 0
+  timeChestMissionList:
+  - description: Defeat 500 enemies
+    reward: 7200
+    interval: 28800
+    requirement: 500
+  - description: Clear one stage
+    reward: 7200
+    interval: 28800
+    requirement: 1
+  - description: Play 3 games
+    reward: 7200
+    interval: 28800
+    requirement: 3
+  - description: Upgrade ship once
+    reward: 7200
+    interval: 28800
+    requirement: 1
+  - description: Purchase a Box
+    reward: 7200
+    interval: 28800
+    requirement: 1
+  - description: Purchase Fragments
+    reward: 7200
+    interval: 28800
+    requirement: 1

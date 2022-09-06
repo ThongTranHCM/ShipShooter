@@ -66,29 +66,23 @@ public class DailyOfferManager : MonoBehaviour
     private TextMeshProUGUI countDownText;
     [SerializeField]
     private PurchaseResourceButtonManager purchaseButton;
-    private Data data;
+    private Data data{
+        get { return DataManager.Instance.dailyOfferManagerData;} 
+        set { DataManager.Instance.dailyOfferManagerData = value;} 
+    }
     DailyOfferManager(){
         if(instance == null){
             instance = this;
         }
     }
 
-    public void Save(){
-        DataManager.Instance.dailyOfferManagerData = data;
-        DataManager.Save();
-    }
-
-    void Start(){
-        data = DataManager.Instance.dailyOfferManagerData;
-        UpdateOfferPanel();
-    }
-
     void FixedUpdate(){
-        UpdateTimer();
+        UpdateContent();
     }
 
-    public void UpdateTimer(){
+    public void UpdateContent(){
         countDownText.text = GetCountDown();
+        UpdateOfferPanel();
         if(HasFinished()){
             for( int i = 0; i < data.offerList.Count; i++){
                 if( i < data.index){
@@ -98,7 +92,7 @@ public class DailyOfferManager : MonoBehaviour
                 }
             }
             data.index = 0;
-            Save();
+            DataManager.Save();
             UpdateOfferPanel();
         }
     }
@@ -121,7 +115,7 @@ public class DailyOfferManager : MonoBehaviour
                 rewardList.Add(reward);
                 if(RewardResourceManager.Instance.Purchase(cost.Item1,cost.Item2,rewardList)){
                     data.index += 1;
-                    Save();
+                    DataManager.Save();
                 }
             }   
         } else {
@@ -149,7 +143,7 @@ public class DailyOfferManager : MonoBehaviour
     private bool HasFinished(){
         if(data.prevStartTime != GetStartTime()){
             data.prevStartTime = GetStartTime();
-            Save();
+            DataManager.Save();
             return true;
         }
         return false;

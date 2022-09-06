@@ -29,6 +29,7 @@ public class GameInformation : MonoBehaviour
     public List<DailyDealManager.Conversion> dailyDealConversionList;
     public List<DailyDealManager.Deal> dailyDealList;
     public List<DailyOfferManager.Offer> dailyOfferList;
+    public List<TimeChestManager.Mission> timeChestMissionList;
 
 
     public DOShipData GetShipData(int index)

@@ -21,7 +21,13 @@ public class TimeChestManager : MonoBehaviour
         int interval;
         [SerializeField]
         int requirement;
+        public int Requirement{
+            get { return requirement; }
+        }
         int curProgress;
+        public int CurProgress{
+            get { return curProgress; }
+        }
         int startTime;
         public void AddProgress(){
             curProgress = Mathf.Min(curProgress + 1, requirement);
@@ -39,15 +45,15 @@ public class TimeChestManager : MonoBehaviour
             int curTime = (int)span.TotalSeconds;
             return curTime > startTime;
         }
-        public (int,int) GetProgress(){
-            return (curProgress, requirement);
+        public bool IsFinish(){
+            return curProgress >= requirement;
         }
     }
     public class Data{
         public List<Mission> missionList;
         public int prevStartTime;
         public void InitData(){
-            //missionList = GameInformation.Instance.dailyOfferList;
+            missionList = GameInformation.Instance.timeChestMissionList;
             int interval = GameInformation.Instance.timeChestInterval;
             TimeSpan span= DateTime.Now.Subtract(new DateTime(1970,1,1,0,0,0, DateTimeKind.Utc));
             int curTime = (int)span.TotalSeconds;
@@ -58,37 +64,28 @@ public class TimeChestManager : MonoBehaviour
     public static TimeChestManager Instance{
         get { return instance; }
     }
-    [SerializeField]
-    private FillBarManager fillBarManager;
-    [SerializeField]
-    private FillBarTimeTextManager fillBarTimeTextManager;
-    private Data data;
+    private TimeChestManager.Data data{
+        get { return DataManager.Instance.timeChestManagerData;}
+        set { DataManager.Instance.timeChestManagerData = value;}
+    }
 
-    TimeChestManager(){
+    void Awake(){
         if(instance == null){
             instance = this;
         }
     }
 
-    public void Save(){
-        DataManager.Instance.timeChestManagerData = data;
-        DataManager.Save();
-    }
-
-    void Start(){
-        data = DataManager.Instance.timeChestManagerData;
-        UpdateMissionPanel();
-    }
-
     void FixedUpdate(){
-        UpdateTimer();
+        if(TimeChestContentManager.Instance != null && data != null){
+            UpdateContent();
+        }
     }
 
     private bool HasFinished(){
         int interval = GameInformation.Instance.timeChestInterval;
         if( GetCurTime() - data.prevStartTime > interval){
             data.prevStartTime = GetCurTime();
-            Save();
+            DataManager.Save();
             return true;
         }
         return false;
@@ -101,30 +98,21 @@ public class TimeChestManager : MonoBehaviour
         return curTime;
     }
 
-    private void UpdateFillBar(){
-        int interval = GameInformation.Instance.timeChestInterval;
-        int curTime = GetCurTime();
-        fillBarManager.SetRawValue(curTime - data.prevStartTime, interval);
-        fillBarTimeTextManager.SetValue(interval);
-    }
-
-    private void UpdateTimer(){
-        UpdateFillBar();
+    private void UpdateContent(){
+        TimeChestContentManager.Instance.UpdateFillBar(GetCurTime(), data.prevStartTime, GameInformation.Instance.timeChestInterval);
+        TimeChestContentManager.Instance.UpdateMissionPanel(data.missionList);
+        TimeChestContentManager.Instance.UpdatePurchaseButton();
         if(HasFinished()){
-            AutoClaimReward();
-            UpdateMissionPanel();
+            ClaimReward();
         }
-    }
-
-    private void UpdateMissionPanel(){
-        return;
     }
 
     private void PuchaseReward(){
         return;
     }
 
-    private void AutoClaimReward(){
+    private void ClaimReward(){
+        data.prevStartTime = GetCurTime();
         RewardResourceManager.Instance.AddReward("gold", 1000);
         RewardResourceManager.Instance.AddReward("diamond", 1000);
         RewardResourceManager.Instance.GetBoxReward("regular_box");
