@@ -93,9 +93,12 @@ public class DailyDealManager : MonoBehaviour
     private Data prevData = null;
 
     void Awake(){
+        DontDestroyOnLoad(gameObject);
         if(instance == null){
             instance = this;
-        }        
+        } else {
+            DestroyObject(gameObject);
+        }
     }
 
     public void UpdateContent(){

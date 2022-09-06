@@ -32,7 +32,7 @@ public class TimeChestContentManager : MonoBehaviour
         for(int i = 0; i < missionList.Count; i++){
             GameObject missionPanel = transform.GetChild(i).gameObject;
             missionPanel.GetComponent<MissionPanelManager>().SetMission(missionList[i]);
-            missionPanel.SetActive(missionList[i].IsActive());
+            missionPanel.SetActive(missionList[i].IsActive);
         }
         return;
     }

@@ -8,9 +8,9 @@ public class TimeChestManager : MonoBehaviour
     [System.Serializable]
     public class Mission{
         [SerializeField]
-        string id;
-        public string ID{
-            get { return id; }
+        string missionID;
+        public string MissionID{
+            get { return missionID; }
         }
         [SerializeField]
         string description;
@@ -26,6 +26,10 @@ public class TimeChestManager : MonoBehaviour
         int interval;
         [SerializeField]
         int requirement;
+        bool isActive = false;
+        public bool IsActive{
+            get { return isActive; }
+        }
         public int Requirement{
             get { return requirement; }
         }
@@ -35,18 +39,21 @@ public class TimeChestManager : MonoBehaviour
         }
         int startTime;
         public void AddProgress(int Amount){
-            curProgress = Mathf.Min(curProgress + Amount, requirement);
+            if(isActive){
+                curProgress = Mathf.Min(curProgress + Amount, requirement);
+            }
         }
         public void Complete(){
             TimeSpan span= DateTime.Now.Subtract(new DateTime(1970,1,1,0,0,0, DateTimeKind.Utc));
             int curTime = (int)span.TotalSeconds;
             startTime = curTime + interval;
             curProgress = 0;
+            isActive = false;
         }
-        public bool IsActive(){
+        public void UpdateActive(){
             TimeSpan span= DateTime.Now.Subtract(new DateTime(1970,1,1,0,0,0, DateTimeKind.Utc));
             int curTime = (int)span.TotalSeconds;
-            return curTime > startTime;
+            isActive = curTime > startTime;
         }
         public bool IsFinish(){
             return curProgress >= requirement;
@@ -74,8 +81,11 @@ public class TimeChestManager : MonoBehaviour
     private Data prevData = null;
 
     void Awake(){
+        DontDestroyOnLoad(gameObject);
         if(instance == null){
             instance = this;
+        } else {
+            DestroyObject(gameObject);
         }
     }
 
@@ -98,6 +108,7 @@ public class TimeChestManager : MonoBehaviour
 
     public void UpdateContent(){
         if(TimeChestContentManager.Instance != null && data != null){
+            UpdateMissionActive();
             if(HasFinished()){
                 ClaimReward();
             }
@@ -106,6 +117,12 @@ public class TimeChestManager : MonoBehaviour
             if(prevData != data){   
                 TimeChestContentManager.Instance.UpdateMissionPanel(data.missionList);
             }
+        }
+    }
+
+    private void UpdateMissionActive(){
+        foreach(Mission mission in data.missionList){
+            mission.UpdateActive();
         }
     }
 
@@ -121,9 +138,10 @@ public class TimeChestManager : MonoBehaviour
         return;
     }
 
-    private void ProgressMission(string ID, int Amount = 1){
+    public void ProgressMission(string ID, int Amount = 1){
         foreach(Mission mission in data.missionList){
-            if(mission.ID == ID){
+            Debug.Log(mission.MissionID);
+            if(mission.MissionID == ID){
                 mission.AddProgress(Amount);
             }
         }

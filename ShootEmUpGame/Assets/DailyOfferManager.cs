@@ -67,9 +67,12 @@ public class DailyOfferManager : MonoBehaviour
     private Data prevData;
 
     void Awake(){
+        DontDestroyOnLoad(gameObject);
         if(instance == null){
             instance = this;
-        }        
+        } else {
+            DestroyObject(gameObject);
+        }
     }
 
     public void UpdateContent(){

@@ -167,6 +167,9 @@ public class GamePlayManager : MonoBehaviour
         SoundManager.Instance.PlaySFX("enemy_death");
         _levelDesign.DropOnKill(enemy);
         _playerManager.OnKillEnemy(enemy);
+        if(TimeChestManager.Instance != null){
+            TimeChestManager.Instance.ProgressMission("defeat_enemy",1);
+        }
     }
     public void OnEnemyGetDamage(ThongNguyen.PlayerController.IEnemyController enemy, float damage, ApplyEffectData.DamageSource damageSource)
     {
