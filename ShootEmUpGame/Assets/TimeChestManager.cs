@@ -154,14 +154,16 @@ public class TimeChestManager : MonoBehaviour
     }
 
     private void UpdateMissionActive(){
-        bool update = false;
-        foreach(Mission mission in data.missionList){
-            if(mission.UpdateActive()){
-                update = true;
+        if(data != null){
+            bool update = false;
+            foreach(Mission mission in data.missionList){
+                if(mission.UpdateActive()){
+                    update = true;
+                }
             }
-        }
-        if(update && TimeChestContentManager.Instance != null && data != null){
-            UpdateContent();
+            if(update && TimeChestContentManager.Instance != null && data != null){
+                UpdateContent();
+            }
         }
     }
 

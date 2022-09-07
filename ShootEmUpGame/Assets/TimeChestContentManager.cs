@@ -39,7 +39,7 @@ public class TimeChestContentManager : MonoBehaviour
         }
         return;
     }
-    
+
     public void UpdatePurchaseButton(){
         return;
     }
@@ -47,6 +47,17 @@ public class TimeChestContentManager : MonoBehaviour
     public void UpdateFillBar(int curTime, int prevStartTime, int interval){
         fillBarManager.UpdateRawValue(curTime - prevStartTime, interval, 1.0f);
         fillBarTimeTextManager.SetValue(interval);
+        LTSeq seq = LeanTween.sequence();
+        seq.append(() => {
+            LeanTween.scaleY(fillBarManager.gameObject, 1.15f, 0.25f).setEase(LeanTweenType.easeOutBack);
+            LeanTween.scaleX(fillBarManager.gameObject, 1.1f, 0.25f).setEase(LeanTweenType.easeOutBack);
+        });
+        seq.append(0.85f);
+        seq.append(() => {
+            LeanTween.scaleY(fillBarManager.gameObject, 1 / 1.15f, 0.25f).setEase(LeanTweenType.easeOutBack);
+            LeanTween.scaleX(fillBarManager.gameObject, 1 / 1.1f, 0.25f).setEase(LeanTweenType.easeOutBack);
+        });
+        
     }
 
     public void SetFillBar(int curTime, int prevStartTime, int interval){

@@ -108,7 +108,7 @@ MonoBehaviour:
     description: Defeat 500 enemies
     reward: 7200
     interval: 28800
-    requirement: 200
+    requirement: 500
   - id: clear_stage
     description: Clear one stage
     reward: 7200

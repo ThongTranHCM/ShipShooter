@@ -139,6 +139,9 @@ public class GamePlayManager : MonoBehaviour
     }
 
     private IEnumerator GameFlow(){
+        if(TimeChestManager.Instance != null){
+            TimeChestManager.Instance.ProgressMission("play_game",1);
+        }
         UIManager.PlayLevelStart();
         yield return new WaitForSeconds(4.5f);
         Debug.LogError("LevelDesign");
@@ -148,6 +151,9 @@ public class GamePlayManager : MonoBehaviour
         yield return new WaitForSeconds(4.5f);
         Debug.LogError("Fake Win");
         DataManager.Instance.LastLevelWin++;
+        if(TimeChestManager.Instance != null){
+            TimeChestManager.Instance.ProgressMission("clear_stage",1);
+        }
         DataManager.Instance.playerData.Coin += GamePlayManager.Instance.Collection.gold;
         DataManager.Instance.playerData.Diamond += 2;
         RewardResourceManager.Instance.AddGold(GamePlayManager.Instance.Collection.gold);
