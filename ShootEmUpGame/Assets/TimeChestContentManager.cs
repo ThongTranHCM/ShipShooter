@@ -14,6 +14,8 @@ public class TimeChestContentManager : MonoBehaviour
     private FillBarTimeTextManager fillBarTimeTextManager;
     [SerializeField]
     private GameObject missionPrefab;
+    [SerializeField]
+    private TabberController tabberController;
 
     void Awake(){
         if(instance == null){
@@ -63,5 +65,9 @@ public class TimeChestContentManager : MonoBehaviour
     public void SetFillBar(int curTime, int prevStartTime, int interval){
         fillBarManager.SetRawValue(curTime - prevStartTime, interval);
         fillBarTimeTextManager.SetValue(interval);
+    }
+
+    public bool IsInTab(){
+        return tabberController.currentTab == 1;
     }
 }

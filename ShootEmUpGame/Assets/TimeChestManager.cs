@@ -128,7 +128,7 @@ public class TimeChestManager : MonoBehaviour
     public void UpdateCounter(){
         if(TimeChestContentManager.Instance != null && data != null){
             UpdateMissionActive();
-            if(HasFinished()){
+            if(HasFinished() && TimeChestContentManager.Instance.IsInTab()){
                 ClaimReward();
             }
             TimeChestContentManager.Instance.SetFillBar(GetCurTime(), data.prevStartTime, GameInformation.Instance.timeChestInterval);
