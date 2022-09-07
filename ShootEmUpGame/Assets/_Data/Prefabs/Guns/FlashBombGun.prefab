@@ -52,6 +52,8 @@ MonoBehaviour:
   sizeX: 1
   sizeY: 1
   _isOrientate: 0
+  _isOrientateOncePerWave: 0
   _isOrientateOncePerShot: 0
   _bulletPrefab: {fileID: 3838677212333051533, guid: 93b4bb0a0931c024080cbb529f1e8281,
     type: 3}
+  _resetOnPlay: 1

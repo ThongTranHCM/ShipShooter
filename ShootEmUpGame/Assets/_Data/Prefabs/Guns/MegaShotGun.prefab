@@ -24367,6 +24367,7 @@ MonoBehaviour:
   _isOrientateOncePerWave: 0
   _isOrientateOncePerShot: 0
   _bulletPrefab: {fileID: 0}
+  _resetOnPlay: 1
 --- !u!1 &8577784233491477519
 GameObject:
   m_ObjectHideFlags: 0

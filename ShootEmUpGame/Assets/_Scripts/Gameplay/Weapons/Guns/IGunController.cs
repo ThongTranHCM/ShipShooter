@@ -34,7 +34,10 @@ public class IGunController : MonoBehaviour
     [SerializeField]
     private GameObject _bulletPrefab;
     private GunState _state;
-    private bool needSyncTime = false;
+    private bool _needSyncTime = false;
+    private bool _needResetTime = false;
+    [SerializeField]
+    private bool _resetOnPlay = false;
 
     private System.Action callbackAllGunsEmptyParticle;
 
@@ -93,7 +96,7 @@ public class IGunController : MonoBehaviour
         }
         if (syncTime)
         {
-            needSyncTime = syncTime;
+            _needSyncTime = syncTime;
             for (int i = 0; i < bulletParticleSystems.Length; i++)
             {
                 bulletParticleSystems[i].myParticleSystem.Simulate(GamePlayManager.Instance.PlayerManager._shipController.gunController.bulletParticleSystems[0].myParticleSystem.time, false, true);
@@ -118,6 +121,14 @@ public class IGunController : MonoBehaviour
 
     public void SetUpPlay()
     {
+        if (_resetOnPlay)
+        {
+            _needResetTime = true;
+            for (int i = 0; i < bulletParticleSystems.Length; i++)
+            {
+                bulletParticleSystems[i].myParticleSystem.Simulate(1/gunData.attackSpeed, false, true);
+            }
+        }
         if (gunData.numWavePerShot > 0)
         {
             _tmpShootPhase = 0;
@@ -174,12 +185,21 @@ public class IGunController : MonoBehaviour
     {
         if (_state.Equals(GunState.shot))
         {
-            if (needSyncTime)
+            if (_needSyncTime)
             {
-                needSyncTime = false;
+                _needSyncTime = false;
                 for (int i = 0; i < bulletParticleSystems.Length; i++)
                 {
                     bulletParticleSystems[i].myParticleSystem.time = GamePlayManager.Instance.PlayerManager._shipController.gunController.bulletParticleSystems[0].myParticleSystem.time;
+                }
+            }
+            if (_needResetTime)
+            {
+                _needResetTime = false;
+                Debug.LogError("Reset " + gameObject.name + Time.time);
+                for (int i = 0; i < bulletParticleSystems.Length; i++)
+                {
+                    bulletParticleSystems[i].myParticleSystem.time = 0f;
                 }
             }
             //Debug.LogError("Time " + gameObject.name + "  " + bulletParticleSystems[0].myParticleSystem.time + "  " + GamePlayManager.Instance.PlayerManager._shipController.gunController.bulletParticleSystems[0].myParticleSystem.time);
