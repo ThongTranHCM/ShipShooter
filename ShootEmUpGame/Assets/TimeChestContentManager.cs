@@ -35,17 +35,17 @@ public class TimeChestContentManager : MonoBehaviour
         for(int i = 0; i < missionList.Count; i++){
             GameObject missionPanel = transform.GetChild(i).gameObject;
             missionPanel.GetComponent<MissionPanelManager>().SetMission(missionList[i]);
-            missionPanel.OpenMission();
+            missionPanel.SetActive(missionList[i].IsActive);
         }
         return;
     }
-
+    
     public void UpdatePurchaseButton(){
         return;
     }
 
     public void UpdateFillBar(int curTime, int prevStartTime, int interval){
-        fillBarManager.UpdateRawValue(curTime - prevStartTime, interval);
+        fillBarManager.UpdateRawValue(curTime - prevStartTime, interval, 1.0f);
         fillBarTimeTextManager.SetValue(interval);
     }
 
