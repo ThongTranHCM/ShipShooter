@@ -51,7 +51,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3de45a3373cdf3248afb3e1775f566e2, type: 2}
   dailyDealInterval: 86400
   dailyOfferInterval: 10
-  timeChestInterval: 28800
+  timeChestInterval: 10
   dailyDealConversionList:
   - fragment: 35
     diamond: 15

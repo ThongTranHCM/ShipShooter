@@ -113,8 +113,6 @@ public class TimeChestManager : MonoBehaviour
     private bool HasFinished(){
         int interval = GameInformation.Instance.timeChestInterval;
         if( GetCurTime() - data.prevStartTime > interval){
-            data.prevStartTime = GetCurTime();
-            DataManager.Save();
             return true;
         }
         return false;
@@ -173,6 +171,7 @@ public class TimeChestManager : MonoBehaviour
 
     private void ClaimReward(){
         data.prevStartTime = GetCurTime();
+        DataManager.Save();
         RewardResourceManager.Instance.AddReward("gold", 1000);
         RewardResourceManager.Instance.AddReward("diamond", 1000);
         RewardResourceManager.Instance.GetBoxReward("regular_box");
