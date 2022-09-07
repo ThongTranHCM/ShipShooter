@@ -187,9 +187,11 @@ public class TimeChestManager : MonoBehaviour
     }
 
     public void CompleteMission(Mission TargetMission){
+        if(TargetMission.IsActive){
+            data.prevStartTime -= TargetMission.Reward;
+        }
         TargetMission.Complete();
         UpdateMissionActive();
-        data.prevStartTime -= TargetMission.Reward;
         DataManager.Save();
         TimeChestContentManager.Instance.UpdateFillBar(GetCurTime(), data.prevStartTime, GameInformation.Instance.timeChestInterval);
     }

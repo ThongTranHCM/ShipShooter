@@ -43,5 +43,18 @@ public class MissionPanelManager : MonoBehaviour
 
     public void CompleteMission(){
         TimeChestManager.Instance.CompleteMission(mission);
+        CloseMission();
+    }
+
+    public void OpenMission(){
+        LTSeq seq = LeanTween.sequence();
+        seq.Add(() => gameObject.SetActive(true));
+        seq.Add(LeanTween.scaleY(gameObject, 0, 0.5f).setEase(LeanTweenType.easeInOutSine)); 
+    }
+
+    public void CloseMission(){
+        LTSeq seq = LeanTween.sequence();
+        seq.Add(LeanTween.scaleY(gameObject, 0, 0.5f).setEase(LeanTweenType.easeInOutSine)); 
+        seq.Add(() => gameObject.SetActive(false));
     }
 }
