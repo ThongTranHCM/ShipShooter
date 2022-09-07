@@ -54399,11 +54399,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 727337386}
+      objectReference: {fileID: 89591635338787952, guid: 03074c4418a6e4a44a61b0d5cc1cba94,
+        type: 3}
     - target: {fileID: 1127038354024089319, guid: e1328d33836c5884a939af5cad0a4d54,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: ClaimReward
+      value: InstancePurchaseReward
       objectReference: {fileID: 0}
     - target: {fileID: 1284683036466383320, guid: e1328d33836c5884a939af5cad0a4d54,
         type: 3}

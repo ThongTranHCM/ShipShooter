@@ -48,10 +48,13 @@ public class TimeChestManager : MonoBehaviour
             curProgress = 0;
             isActive = false;
         }
-        public void UpdateActive(){
-            TimeSpan span= DateTime.Now.Subtract(new DateTime(1970,1,1,0,0,0, DateTimeKind.Utc));
-            int curTime = (int)span.TotalSeconds;
-            isActive = curTime > startTime;
+        public bool UpdateActive(){
+            if( isActive == false){
+                TimeSpan span= DateTime.Now.Subtract(new DateTime(1970,1,1,0,0,0, DateTimeKind.Utc));
+                int curTime = (int)span.TotalSeconds;
+                isActive = curTime > startTime;
+            }
+            return isActive;
         }
         public bool IsFinish(){
             return curProgress >= requirement;
@@ -103,6 +106,10 @@ public class TimeChestManager : MonoBehaviour
         }
     }
 
+    void Update(){
+        UpdateMissionActive();
+    }
+
     private bool HasFinished(){
         int interval = GameInformation.Instance.timeChestInterval;
         if( GetCurTime() - data.prevStartTime > interval){
@@ -120,23 +127,26 @@ public class TimeChestManager : MonoBehaviour
         return curTime;
     }
 
-    public void UpdateContent(){
+    public void UpdateCounter(){
         if(TimeChestContentManager.Instance != null && data != null){
             UpdateMissionActive();
             if(HasFinished()){
                 ClaimReward();
             }
             TimeChestContentManager.Instance.SetFillBar(GetCurTime(), data.prevStartTime, GameInformation.Instance.timeChestInterval);
-            if(prevData != data){   
-                TimeChestContentManager.Instance.UpdatePurchaseButton();
-                TimeChestContentManager.Instance.UpdateMissionPanel(data.missionList);
-            }
-            prevData = data;
+            TimeChestContentManager.Instance.UpdatePurchaseButton();
+        }
+    }
+
+    public void UpdateContent(){
+        if(TimeChestContentManager.Instance != null && data != null){
+            TimeChestContentManager.Instance.UpdateMissionPanel(data.missionList);
         }
     }
 
     public void InitContent(){
         if(TimeChestContentManager.Instance != null && data != null){
+            UpdateMissionActive();
             TimeChestContentManager.Instance.SetFillBar(GetCurTime(), data.prevStartTime, GameInformation.Instance.timeChestInterval);
             TimeChestContentManager.Instance.UpdatePurchaseButton();
             TimeChestContentManager.Instance.UpdateMissionPanel(data.missionList);
@@ -144,8 +154,14 @@ public class TimeChestManager : MonoBehaviour
     }
 
     private void UpdateMissionActive(){
+        bool update = false;
         foreach(Mission mission in data.missionList){
-            mission.UpdateActive();
+            if(mission.UpdateActive()){
+                update = true;
+            }
+        }
+        if(update && TimeChestContentManager.Instance != null && data != null){
+            UpdateContent();
         }
     }
 

@@ -25,7 +25,7 @@ public class TimeChestContentManager : MonoBehaviour
     }
 
     void FixedUpdate(){
-        TimeChestManager.Instance.UpdateContent();
+        TimeChestManager.Instance.UpdateCounter();
     }
 
     public void UpdateMissionPanel(List<TimeChestManager.Mission> missionList){

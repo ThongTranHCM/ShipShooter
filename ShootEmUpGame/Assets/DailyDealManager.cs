@@ -112,16 +112,19 @@ public class DailyDealManager : MonoBehaviour
         }
     }
 
-    public void UpdateContent(){
+    public void UpdateCounter(){
         if(data != null && DailyDealContentManager.Instance != null){
             if(HasFinished()){
                 RestartDeals();
+                UpdateContent();
             }
             DailyDealContentManager.Instance.SetTimeCounter(GetCountDown());
-            if(prevData != data){
-                DailyDealContentManager.Instance.UpdateDealPanel(data.dealList);
-            }
-            prevData = data;
+        }
+    }
+
+    public void UpdateContent(){
+        if(data != null && DailyDealContentManager.Instance != null){
+            DailyDealContentManager.Instance.UpdateDealPanel(data.dealList);
         }
     }
 
@@ -133,16 +136,16 @@ public class DailyDealManager : MonoBehaviour
     }
 
     private void RestartDeals(){
-            int i = 0;
-            foreach(Transform child in gameObject.transform){
-                data.dealList[i].UpdateHistory();
-                i += 1;
-            }
-            foreach(Deal deal in data.dealList){
-                deal.ResetLevel();
-            }
-            SortDeal();
-            DataManager.Save();
+        int i = 0;
+        foreach(Transform child in gameObject.transform){
+            data.dealList[i].UpdateHistory();
+            i += 1;
+        }
+        foreach(Deal deal in data.dealList){
+            deal.ResetLevel();
+        }
+        SortDeal();
+        DataManager.Save();
     }
 
     private int GetStartTime(){
@@ -178,5 +181,9 @@ public class DailyDealManager : MonoBehaviour
                 }
             }
         }
+    }
+    public void IncreaseLevel(Deal deal){
+        deal.IncreaseLevel();
+        UpdateContent();
     }
 }

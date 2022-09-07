@@ -77,13 +77,19 @@ public class DailyOfferManager : MonoBehaviour
 
     public void UpdateContent(){
         if(data != null && DailyOfferContentManager.Instance != null){
-            if(HasFinished()){
-                RestartOffers();
-            }
-            DailyOfferContentManager.Instance.SetCountDownText(GetCountDown());
             DailyOfferContentManager.Instance.UpdateOfferPanel(data.offerList, data.index);
             (string, int) cost = data.offerList[data.index].CostTuple();
             DailyOfferContentManager.Instance.UpdatePurchaseButton(cost.Item1, cost.Item2);
+        } 
+    }
+
+    public void UpdateCounter(){
+        if(data != null && DailyOfferContentManager.Instance != null){
+            if(HasFinished()){
+                RestartOffers();
+                UpdateContent();
+            }
+            DailyOfferContentManager.Instance.SetCountDownText(GetCountDown());
         } 
     }
 
@@ -110,6 +116,7 @@ public class DailyOfferManager : MonoBehaviour
             rewardList.Add(reward);
             if(RewardResourceManager.Instance.Purchase(cost.Item1,cost.Item2,rewardList)){
                 data.index += 1;
+                UpdateContent();
                 DataManager.Save();
             }
         } else {

@@ -23,7 +23,7 @@ public class DailyDealContentManager : MonoBehaviour
     }
 
     void FixedUpdate(){
-        DailyDealManager.Instance.UpdateContent();
+        DailyDealManager.Instance.UpdateCounter();
     }
     public void UpdateDealPanel(List<DailyDealManager.Deal> dealList){
         int i = 0;

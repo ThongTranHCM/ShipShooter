@@ -25,7 +25,7 @@ public class DailyOfferContentManager : MonoBehaviour
         DailyOfferManager.Instance.InitContent();
     }
     void FixedUpdate(){
-        DailyOfferManager.Instance.UpdateContent();
+        DailyOfferManager.Instance.UpdateCounter();
     }
 
     public void UpdateOfferPanel(List<DailyOfferManager.Offer> offerList, int Index){
