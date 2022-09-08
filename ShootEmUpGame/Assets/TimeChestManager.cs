@@ -129,7 +129,7 @@ public class TimeChestManager : MonoBehaviour
         int curTime = GetCurTime();
         int left = GameInformation.Instance.timeChestInterval - (curTime - data.prevStartTime);
         TimeSpan span = TimeSpan.FromSeconds(left);
-        return string.Format("{0}:{1}:{2}", span.Hours, span.Minutes, span.Seconds);
+        return string.Format("{0:0}:{1:00}:{2:00}", span.Hours, span.Minutes, span.Seconds);
     }
 
     public void UpdateCounter(){

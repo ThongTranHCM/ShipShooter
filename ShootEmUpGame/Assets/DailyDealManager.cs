@@ -161,7 +161,7 @@ public class DailyDealManager : MonoBehaviour
         TimeSpan span= DateTime.Now.Subtract(new DateTime(1970,1,1,0,0,0, DateTimeKind.Utc));
         int curTime = (int)span.TotalSeconds;
         span = TimeSpan.FromSeconds(interval - (curTime - GetStartTime()) - 1);
-        return string.Format("Reset in {0}:{1}:{2}", span.Hours, span.Minutes, span.Seconds);
+        return string.Format("Reset in {0:0}:{1:00}:{2:00}", span.Hours, span.Minutes, span.Seconds);
     }
     private bool HasFinished(){
         if(data.prevStartTime != GetStartTime()){
