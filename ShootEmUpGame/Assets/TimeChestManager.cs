@@ -125,6 +125,13 @@ public class TimeChestManager : MonoBehaviour
         return curTime;
     }
 
+    public string GetTimeCountDown(){
+        int curTime = GetCurTime();
+        int left = GameInformation.Instance.timeChestInterval - (curTime - data.prevStartTime);
+        TimeSpan span = TimeSpan.FromSeconds(left);
+        return string.Format("{0}:{1}:{2}", span.Hours, span.Minutes, span.Seconds);
+    }
+
     public void UpdateCounter(){
         if(TimeChestContentManager.Instance != null && data != null){
             UpdateMissionActive();
@@ -180,7 +187,6 @@ public class TimeChestManager : MonoBehaviour
 
     public void ProgressMission(string ID, int Amount = 1){
         foreach(Mission mission in data.missionList){
-            Debug.Log(mission.ID);
             if(mission.ID == ID){
                 mission.AddProgress(Amount);
             }
@@ -195,5 +201,14 @@ public class TimeChestManager : MonoBehaviour
         UpdateMissionActive();
         DataManager.Save();
         TimeChestContentManager.Instance.UpdateFillBar(GetCurTime(), data.prevStartTime, GameInformation.Instance.timeChestInterval);
+    }
+
+    public bool CheckClaimNotification(){
+        foreach(Mission mission in data.missionList){
+            if(mission.IsFinish()){
+                return true;
+            }
+        }
+        return HasFinished();
     }
 }
