@@ -139,27 +139,26 @@ public class GamePlayManager : MonoBehaviour
     }
 
     private IEnumerator GameFlow(){
-        if(TimeChestManager.Instance != null){
-            TimeChestManager.Instance.ProgressMission("play_game",1);
-        }
-        UIManager.PlayLevelStart();
-        yield return new WaitForSeconds(4.5f);
-        Debug.LogError("LevelDesign");
+        yield return StartCoroutine(_levelDesign.StartGame());
         yield return StartCoroutine(_levelDesign.InstallWaves());
-        yield return new WaitForSeconds(3);
-        UIManager.PlayLevelEnd();
-        yield return new WaitForSeconds(4.5f);
-        Debug.LogError("Fake Win");
-        DataManager.Instance.LastLevelWin++;
-        if(TimeChestManager.Instance != null){
-            TimeChestManager.Instance.ProgressMission("clear_stage",1);
-        }
+        yield return StartCoroutine(_levelDesign.EndGame());
         DataManager.Instance.playerData.Coin += GamePlayManager.Instance.Collection.gold;
         DataManager.Instance.playerData.Diamond += 2;
         RewardResourceManager.Instance.AddGold(GamePlayManager.Instance.Collection.gold);
         RewardResourceManager.Instance.AddDiamond(2);
         DataManager.Save();
         SceneLoader.LoadLevel(Constants.SCENENAME_MainMenu);
+    }
+
+    public IEnumerator StartGame(){
+        UIManager.PlayLevelStart();
+        yield return new WaitForSeconds(4.5f);
+    }
+
+    public IEnumerator EndGame(){
+        yield return new WaitForSeconds(3);
+        UIManager.PlayLevelEnd();
+        yield return new WaitForSeconds(4.5f);
     }
 
     void OnDestroy()

@@ -15,6 +15,14 @@ public class LevelDesignData : ScriptableObject
         yield return null;
     }
 
+    public virtual IEnumerator StartGame(){
+        yield return null;
+    }
+
+    public virtual IEnumerator EndGame(){
+        yield return null;
+    }
+
     public virtual float GetProgress(){
         return 0;
     }

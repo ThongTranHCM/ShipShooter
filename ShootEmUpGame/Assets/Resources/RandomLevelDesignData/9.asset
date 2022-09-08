@@ -15,6 +15,7 @@ MonoBehaviour:
   ZOffset: 0
   padding: 0.2
   enemyDataPool:
+  - {fileID: 11400000, guid: 95c2d0453bd1b1c478a035641256f031, type: 2}
   - {fileID: 11400000, guid: 1e908260587d33b4097e468f53345c00, type: 2}
   - {fileID: 11400000, guid: 01f9cb4bf2861574cb145040e9e80b14, type: 2}
   numWaveList: 30

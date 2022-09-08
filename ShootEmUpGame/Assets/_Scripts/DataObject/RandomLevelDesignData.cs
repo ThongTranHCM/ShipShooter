@@ -37,6 +37,10 @@ public class RandomLevelDesignData : LevelDesignData
     private List<AddOnDropPool> addOnDropPoolList;
     [SerializeField]
     private float dropRateMultiplier = 1;
+    [SerializeField]
+    private float bonusProb = 1;
+    [SerializeField]
+    private float bonusGold = 1;
 
     private List<AddOnEquipData.AddOnType> generatedAddOnDropList;
     private List<WaveManager> generatedWaveList;
@@ -166,5 +170,20 @@ public class RandomLevelDesignData : LevelDesignData
 
     public override List<EnemyData> GetEnemyDataList(){
         return enemyDataPool;
+    }
+
+    public override IEnumerator StartGame(){
+        if(TimeChestManager.Instance != null){
+            TimeChestManager.Instance.ProgressMission("play_game",1);
+        }
+        return GamePlayManager.Instance.StartGame();
+    }
+
+    public override IEnumerator EndGame(){
+        if(TimeChestManager.Instance != null){
+            TimeChestManager.Instance.ProgressMission("clear_stage",1);
+        }
+        DataManager.Instance.LastLevelWin++;
+        return GamePlayManager.Instance.EndGame();
     }
 }

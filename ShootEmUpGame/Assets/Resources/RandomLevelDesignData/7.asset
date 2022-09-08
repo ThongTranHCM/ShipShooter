@@ -17,6 +17,7 @@ MonoBehaviour:
   enemyDataPool:
   - {fileID: 11400000, guid: 4608637a3e5cf93458d23038d95e7c65, type: 2}
   - {fileID: 11400000, guid: 01f9cb4bf2861574cb145040e9e80b14, type: 2}
+  - {fileID: 11400000, guid: 01f9cb4bf2861574cb145040e9e80b14, type: 2}
   numWaveList: 30
   baseHealth: 40
   startHealthMultiplier: 1

@@ -1,61 +1,121 @@
-Level,EnemyData,AddOnDropPool,NumWave,BaseHP,StartHP,EndHP,StartDense,EndDense,Dive,Shoot,Sniper,Tank,Burst
-1,"Dive_Easy,Dive_Normal","6,3,9",30,40,1,3,1,2,"Dive_Easy,Dive_Normal",,,,
-2,"Dive_Easy,Shoot_Easy","9,6,3",30,40,1,3,1,2,Dive_Easy,Shoot_Easy,,,
-3,"Dive_Normal,Shoot_Easy","1,6,9",30,40,1,3,1,2,Dive_Normal,Shoot_Easy,,,
-4,"Dive_Easy,Sniper_Easy","6,3,1",30,40,1,3,1,2,Dive_Easy,,Sniper_Easy,,
-5,"Dive_Easy,Shoot_Normal","4,6,9",30,40,1,3,1,2,Dive_Easy,Shoot_Normal,,,
-6,"Shoot_Easy,Sniper_Easy","3,4,1",30,40,1,3,1,2,,Shoot_Easy,Sniper_Easy,,
-7,"Shoot_Easy,Tank_Easy","1,4,6",30,40,1,3,1,2,,Shoot_Easy,,Tank_Easy,
-8,"Dive_Normal,Shoot_Easy","2,9,3",30,40,1,3,1,2,Dive_Normal,Shoot_Easy,,,
-9,"Shoot_Normal,Tank_Easy","1,4,6",30,40,1,3,1,2,,Shoot_Normal,,Tank_Easy,
-10,"Dive_Easy,Dive_Normal,Sniper_Easy","4,3,1",30,40,1,3,1,2,"Dive_Easy,Dive_Normal",,Sniper_Easy,,
-11,"Dive_Normal,Tank_Easy","1,6,9",30,40,1,3,1,2,Dive_Normal,,,Tank_Easy,
-12,"Dive_Easy,Dive_Hard,Shoot_Easy","2,10,6",30,40,1,3,1,2,"Dive_Easy,Dive_Hard",Shoot_Easy,,,
-13,"Dive_Easy,Shoot_Normal,Tank_Easy","1,2,6",30,40,1,3,1,2,Dive_Easy,Shoot_Normal,,Tank_Easy,
-14,"Dive_Hard,Sniper_Easy,Tank_Easy","7,1,10",30,40,1,3,1,2,Dive_Hard,,Sniper_Easy,Tank_Easy,
-15,"Dive_Easy,Shoot_Normal,Sniper_Easy","4,3,10",30,40,1,3,1,2,Dive_Easy,Shoot_Normal,Sniper_Easy,,
-16,"Dive_Easy,Shoot_Easy,Shoot_Normal","1,9,6",30,40,1,3,1,2,Dive_Easy,"Shoot_Easy,Shoot_Normal",,,
-17,"Shoot_Easy,Sniper_Easy,Tank_Easy","1,8,4",30,40,1,3,1,2,,Shoot_Easy,Sniper_Easy,Tank_Easy,
-18,"Dive_Hard,Shoot_Normal,Tank_Easy","2,10,3",30,40,1,3,1,2,Dive_Hard,Shoot_Normal,,Tank_Easy,
-19,"Dive_Extreme,Sniper_Easy,Tank_Easy","0,7,9",30,40,1,3,1,2,Dive_Extreme,,Sniper_Easy,Tank_Easy,
-20,"Dive_Normal,Dive_Hard,Shoot_Normal","9,2,10",30,40,1,3,1,2,"Dive_Normal,Dive_Hard",Shoot_Normal,,,
-21,,,,,,,,,,,,,
-22,,,,,,,,,,,,,
-23,,,,,,,,,,,,,
-24,,,,,,,,,,,,,
-25,,,,,,,,,,,,,
-26,,,,,,,,,,,,,
-27,,,,,,,,,,,,,
-28,,,,,,,,,,,,,
-29,,,,,,,,,,,,,
-30,,,,,,,,,,,,,
-31,,,,,,,,,,,,,
-32,,,,,,,,,,,,,
-33,,,,,,,,,,,,,
-34,,,,,,,,,,,,,
-35,,,,,,,,,,,,,
-36,,,,,,,,,,,,,
-37,,,,,,,,,,,,,
-38,,,,,,,,,,,,,
-39,,,,,,,,,,,,,
-40,,,,,,,,,,,,,
-41,,,,,,,,,,,,,
-42,,,,,,,,,,,,,
-43,,,,,,,,,,,,,
-44,,,,,,,,,,,,,
-45,,,,,,,,,,,,,
-46,,,,,,,,,,,,,
-47,,,,,,,,,,,,,
-48,,,,,,,,,,,,,
-49,,,,,,,,,,,,,
-50,,,,,,,,,,,,,
-51,,,,,,,,,,,,,
-52,,,,,,,,,,,,,
-53,,,,,,,,,,,,,
-54,,,,,,,,,,,,,
-55,,,,,,,,,,,,,
-56,,,,,,,,,,,,,
-57,,,,,,,,,,,,,
-58,,,,,,,,,,,,,
-59,,,,,,,,,,,,,
-60,,,,,,,,,,,,,
+Level,EnemyData,AddOnDropPool,NumWave,BaseHP,StartHP,EndHP,StartDense,EndDense
+1,"Dive_Easy,Dive_Normal,Dive_ Normal","6,3,9",30,40,1,3,1,2
+2,"Dive_Easy,Dive_ Easy,Shoot_Easy","9,6,3",30,40,1,3,1,2
+3,"Dive_Normal,Dive_ Easy,Shoot_Easy","1,6,9",30,40,1,3,1,2
+4,"Dive_Easy,Dive_ Easy,Sniper_Easy","6,3,1",30,40,1,3,1,2
+5,"Dive_Easy,Dive_ Normal,Shoot_Normal","4,6,9",30,40,1,3,1,2
+6,"Dive_Easy,Shoot_Easy,Sniper_Easy","3,4,1",30,40,1,3,1,2
+7,"Shoot_Easy,Tank_Easy,Tank_ Easy","1,4,6",30,40,1,3,1,2
+8,"Dive_Normal,Dive_Hard,Tank_Easy","2,9,3",30,40,1,3,1,2
+9,"Dive_Easy,Shoot_Normal,Tank_Easy","1,4,6",30,40,1,3,1,2
+10,"Dive_Easy,Dive_Normal,Sniper_Easy","4,3,1",30,40,1,3,1,2
+11,"Dive_Normal,Sniper_Easy,Tank_Easy","1,6,9",30,40,1,3,1,2
+12,"Dive_Easy,Dive_Hard,Shoot_Easy","2,10,6",30,40,1,3,1,2
+13,"Dive_Easy,Shoot_Normal,Tank_Easy","1,2,6",30,40,1,3,1,2
+14,"Dive_Hard,Sniper_Easy,Tank_Easy","7,1,10",30,40,1,3,1,2
+15,"Dive_Easy,Shoot_Normal,Sniper_Easy","4,3,10",30,40,1,3,1,2
+16,"Dive_Easy,Shoot_Easy,Shoot_Normal","1,9,6",30,40,1,3,1,2
+17,"Shoot_Easy,Sniper_Easy,Tank_Easy","1,8,4",30,40,1,3,1,2
+18,"Dive_Hard,Shoot_Normal,Tank_Easy","2,10,3",30,40,1,3,1,2
+19,"Dive_Extreme,Sniper_Easy,Tank_Easy","0,7,9",30,40,1,3,1,2
+20,"Dive_Normal,Dive_Hard,Shoot_Normal","9,2,10",30,40,1,3,1,2
+21,"Dive_Easy,Shoot_Hard,Tank_Easy","5,10,3",30,40,1,3,1,2
+22,"Dive_Extreme,Shoot_Easy,Sniper_Easy","2,4,9",30,40,1,3,1,2
+23,"Dive_Hard,Shoot_Hard,Sniper_Easy","0,5,10",30,40,1,3,1,2
+24,"Dive_Extreme,Shoot_Easy,Tank_Easy","0,7,11",30,40,1,3,1,2
+25,"Dive_Extreme,Shoot_Normal,Tank_Easy","6,1,10",30,40,1,3,1,2
+26,"Dive_Hard,Shoot_Normal,Sniper_Easy","9,2,4",30,40,1,3,1,2
+27,"Dive_Easy,Shoot_Hard,Sniper_Easy","4,1,8",30,40,1,3,1,2
+28,"Dive_Easy,Shoot_Extreme,Tank_Easy","1,9,4",30,40,1,3,1,2
+29,"Dive_Extreme,Shoot_Normal,Sniper_Easy","6,0,9",30,40,1,3,1,2
+30,"Dive_Easy,Shoot_Normal,Shoot_Hard","10,5,3",30,40,1,3,1,2
+31,"Dive_Easy,Shoot_Extreme,Sniper_Easy","7,1,8",30,40,1,3,1,2
+32,"Dive_Extreme,Sniper_Easy,Tank_Easy","7,1,9",30,40,1,3,1,2
+33,"Dive_Extreme,Shoot_Hard,Sniper_Easy","6,2,9",30,40,1,3,1,2
+34,"Dive_Extreme,Dive_ Hard,Sniper_Easy","8,5,2",30,40,1,3,1,2
+35,"Dive_Normal,Shoot_Extreme,Shoot_Hard","1,10,6",30,40,1,3,1,2
+36,"Shoot_Exterme,Sniper_Easy,Tank_Easy","1,4,11",30,40,1,3,1,2
+37,"Shoot_Extreme,Tank_Easy,Tank_Easy","5,8,1",30,40,1,3,1,2
+38,"Dive_Extreme,Dive_ Hard,Shoot_Hard","11,0,4",30,40,1,3,1,2
+39,"Dive_Extreme,Shoot_Extreme,Sniper_Easy","1,10,7",30,40,1,3,1,2
+40,"Shoot_Extreme,Shoot_Normal,Sniper_Easy","5,9,0",30,40,1,3,1,2
+41,"Dive_Easy,Shoot_Normal,Shoot_Hard","6,9,3",30,40,1,3,1,2
+42,"Dive_Hard,Shoot_Normal,Sniper_Easy","11,0,6",30,40,1,3,1,2
+43,"Dive_Easy,Shoot_Extreme,Tank_Easy","4,2,10",30,40,1,3,1,2
+44,"Dive_Extreme,Dive_ Hard,Sniper_Easy","6,0,9",30,40,1,3,1,2
+45,"Shoot_Exterme,Sniper_Easy,Tank_Easy","7,8,2",30,40,1,3,1,2
+46,"Dive_Extreme,Dive_ Hard,Shoot_Hard","2,8,4",30,40,1,3,1,2
+47,"Dive_Easy,Shoot_Normal,Shoot_Hard","5,9,1",30,40,1,3,1,2
+48,"Dive_Extreme,Shoot_Normal,Tank_Easy","1,7,9",30,40,1,3,1,2
+49,"Dive_Hard,Shoot_Hard,Sniper_Easy","8,2,5",30,40,1,3,1,2
+50,"Dive_Easy,Shoot_Extreme,Tank_Easy","10,6,2",30,40,1,3,1,2
+51,"Dive_Extreme,Shoot_Normal,Tank_Easy","0,7,8",30,40,1,3,1,2
+52,"Dive_Extreme,Shoot_Extreme,Sniper_Easy","0,7,11",30,40,1,3,1,2
+53,"Dive_Extreme,Shoot_Easy,Sniper_Easy","11,6,3",30,40,1,3,1,2
+54,"Dive_Extreme,Shoot_Normal,Tank_Easy","0,7,8",30,40,1,3,1,2
+55,"Dive_Extreme,Shoot_Hard,Sniper_Easy","0,9,6",30,40,1,3,1,2
+56,"Shoot_Extreme,Shoot_Normal,Sniper_Easy","6,1,8",30,40,1,3,1,2
+57,"Shoot_Exterme,Sniper_Easy,Tank_Easy","8,0,5",30,40,1,3,1,2
+58,"Dive_Extreme,Shoot_Normal,Sniper_Easy","10,7,1",30,40,1,3,1,2
+59,"Shoot_Hard,Sniper_Easy,Tank_Easy","7,2,9",30,40,1,3,1,2
+60,"Dive_Easy,Shoot_Hard,Tank_Easy","9,1,4",30,40,1,3,1,2
+61,"Dive_Hard,Shoot_Normal,Sniper_Easy","5,8,0",30,40,1,3,1,2
+62,"Dive_Hard,Shoot_Hard,Sniper_Easy","9,1,5",30,40,1,3,1,2
+63,"Dive_Extreme,Shoot_Easy,Sniper_Easy","4,10,3",30,40,1,3,1,2
+64,"Dive_Extreme,Shoot_Extreme,Sniper_Easy","2,11,5",30,40,1,3,1,2
+65,"Dive_Easy,Shoot_Hard,Tank_Easy","11,7,1",30,40,1,3,1,2
+66,"Dive_Normal,Dive_Hard,Shoot_Normal","2,4,8",30,40,1,3,1,2
+67,"Dive_Extreme,Shoot_Easy,Sniper_Easy","3,10,6",30,40,1,3,1,2
+68,"Dive_Extreme,Shoot_Normal,Tank_Easy","2,8,5",30,40,1,3,1,2
+69,"Dive_Extreme,Dive_ Hard,Shoot_Hard","0,11,7",30,40,1,3,1,2
+70,"Dive_Easy,Shoot_Extreme,Tank_Easy","11,3,7",30,40,1,3,1,2
+71,"Dive_Hard,Shoot_Normal,Sniper_Easy","3,10,6",30,40,1,3,1,2
+72,"Dive_Extreme,Dive_ Hard,Shoot_Hard","7,3,10",30,40,1,3,1,2
+73,"Dive_Extreme,Dive_ Hard,Shoot_Hard","1,10,6",30,40,1,3,1,2
+74,"Shoot_Hard,Sniper_Easy,Tank_Easy","4,9,3",30,40,1,3,1,2
+75,"Dive_Easy,Shoot_Extreme,Tank_Easy","8,5,1",30,40,1,3,1,2
+76,"Dive_Extreme,Shoot_Extreme,Sniper_Easy","5,10,1",30,40,1,3,1,2
+77,"Dive_Extreme,Shoot_Easy,Sniper_Easy","4,9,1",30,40,1,3,1,2
+78,"Dive_Extreme,Dive_ Hard,Shoot_Hard","5,11,1",30,40,1,3,1,2
+79,"Dive_Hard,Shoot_Hard,Sniper_Easy","3,8,5",30,40,1,3,1,2
+80,"Shoot_Exterme,Sniper_Easy,Tank_Easy","5,9,1",30,40,1,3,1,2
+81,"Dive_Easy,Shoot_Normal,Shoot_Hard","11,6,0",30,40,1,3,1,2
+82,"Dive_Extreme,Shoot_Hard,Sniper_Easy","8,7,0",30,40,1,3,1,2
+83,"Dive_Hard,Shoot_Normal,Sniper_Easy","9,2,4",30,40,1,3,1,2
+84,"Dive_Extreme,Shoot_Easy,Sniper_Easy","3,6,8",30,40,1,3,1,2
+85,"Dive_Easy,Shoot_Hard,Tank_Easy","7,10,0",30,40,1,3,1,2
+86,"Dive_Extreme,Dive_ Hard,Sniper_Easy","8,7,1",30,40,1,3,1,2
+87,"Dive_Extreme,Shoot_Normal,Tank_Easy","11,0,5",30,40,1,3,1,2
+88,"Shoot_Hard,Sniper_Easy,Tank_Easy","3,6,9",30,40,1,3,1,2
+89,"Dive_Hard,Shoot_Normal,Sniper_Easy","11,1,5",30,40,1,3,1,2
+90,"Dive_Hard,Shoot_Normal,Sniper_Easy","6,1,9",30,40,1,3,1,2
+91,"Dive_Extreme,Shoot_Hard,Sniper_Easy","2,5,9",30,40,1,3,1,2
+92,"Dive_Extreme,Shoot_Extreme,Sniper_Easy","1,4,9",30,40,1,3,1,2
+93,"Dive_Easy,Shoot_Extreme,Sniper_Easy","8,4,3",30,40,1,3,1,2
+94,"Dive_Normal,Shoot_Extreme,Shoot_Hard","4,2,9",30,40,1,3,1,2
+95,"Dive_Extreme,Dive_ Hard,Sniper_Easy","2,4,10",30,40,1,3,1,2
+96,"Dive_Extreme,Dive_ Hard,Shoot_Hard","1,10,5",30,40,1,3,1,2
+97,"Shoot_Hard,Sniper_Easy,Tank_Easy","0,5,9",30,40,1,3,1,2
+98,"Dive_Extreme,Shoot_Easy,Sniper_Easy","5,9,1",30,40,1,3,1,2
+99,"Dive_Normal,Dive_Hard,Shoot_Normal","1,11,6",30,40,1,3,1,2
+100,"Dive_Normal,Shoot_Extreme,Shoot_Hard","3,9,4",30,40,1,3,1,2
+101,"Shoot_Exterme,Sniper_Easy,Tank_Easy","11,4,2",30,40,1,3,1,2
+102,"Dive_Easy,Shoot_Normal,Shoot_Hard","3,6,8",30,40,1,3,1,2
+103,"Dive_Extreme,Dive_ Hard,Shoot_Hard","6,11,3",30,40,1,3,1,2
+104,"Shoot_Exterme,Sniper_Easy,Tank_Easy","11,4,3",30,40,1,3,1,2
+105,"Dive_Extreme,Sniper_Easy,Tank_Easy","11,5,0",30,40,1,3,1,2
+106,"Dive_Easy,Shoot_Hard,Tank_Easy","6,9,0",30,40,1,3,1,2
+107,"Dive_Easy,Shoot_Hard,Tank_Easy","4,0,11",30,40,1,3,1,2
+108,"Dive_Normal,Dive_Hard,Shoot_Normal","10,0,4",30,40,1,3,1,2
+109,"Dive_Easy,Shoot_Hard,Tank_Easy","10,2,6",30,40,1,3,1,2
+110,"Dive_Easy,Shoot_Normal,Shoot_Hard","8,2,7",30,40,1,3,1,2
+111,"Dive_Easy,Shoot_Normal,Shoot_Hard","2,7,11",30,40,1,3,1,2
+112,"Shoot_Hard,Sniper_Easy,Tank_Easy","2,9,7",30,40,1,3,1,2
+113,"Dive_Extreme,Shoot_Easy,Sniper_Easy","4,3,10",30,40,1,3,1,2
+114,"Dive_Extreme,Shoot_Extreme,Sniper_Easy","3,4,8",30,40,1,3,1,2
+115,"Dive_Extreme,Sniper_Easy,Tank_Easy","9,0,4",30,40,1,3,1,2
+116,"Dive_Extreme,Shoot_Extreme,Sniper_Easy","6,10,2",30,40,1,3,1,2
+117,"Dive_Extreme,Shoot_Extreme,Sniper_Easy","0,9,5",30,40,1,3,1,2
+118,"Dive_Easy,Shoot_Hard,Tank_Easy","9,2,7",30,40,1,3,1,2
+119,"Dive_Normal,Dive_Hard,Shoot_Normal","5,1,8",30,40,1,3,1,2
+120,"Shoot_Exterme,Sniper_Easy,Tank_Easy","1,7,10",30,40,1,3,1,2

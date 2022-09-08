@@ -59,12 +59,14 @@ public class LevelImporterWindow : EditorWindow
             float endHP = float.Parse(row["EndHP"].ToString());
             float startDense = float.Parse(row["StartDense"].ToString());
             float endDense = float.Parse(row["EndDense"].ToString());
-            Debug.Log(endDense);
+            float bonusProb = float.Parse(row["BonusProb"].ToString());
+            float goldBonus = float.Parse(row["GoldBonus"].ToString());
 
             List<EnemyData> enemyDataList = new List<EnemyData>();
+            Debug.Log("Level: " + level);
             foreach(string key in enemyDataString){
                 try {
-                    enemyDataList.Add(enemyDataDict[key]);
+                    enemyDataList.Add(enemyDataDict[key.Replace(" ","")]);
                 }
                 catch (Exception e) {
                     Debug.Log(string.Format("{0} is not found", key));
@@ -84,7 +86,7 @@ public class LevelImporterWindow : EditorWindow
                 }
             }
             RandomLevelDesignData asset = RandomLevelDesignData.CreateInstance(enemyDataList,numWave,baseHP,startHP,endHP,startDense,endDense,addOnDropPoolList,1);
-            AssetDatabase.CreateAsset(asset, string.Format("Assets/Resource/RandomLevelDesignData/{0}.asset",row["Level"].ToString()));
+            AssetDatabase.CreateAsset(asset, string.Format("Assets/Resources/RandomLevelDesignData/{0}.asset",row["Level"].ToString()));
             AssetDatabase.SaveAssets();
 
         }
