@@ -62,9 +62,19 @@ public class DailyOfferManager : MonoBehaviour
         get { return instance; }
     }
     private Data data{
-        get { return DataManager.Instance != null ? DataManager.Instance.dailyOfferManagerData : null;} 
+        get {
+            if(DataManager.Instance != null){
+                if(!isDataUpdated){
+                    DataManager.Instance.dailyOfferManagerData.UpdateList();
+                    isDataUpdated = true;
+                }
+                return DataManager.Instance.dailyOfferManagerData;
+            }
+            return null; 
+            } 
         set { DataManager.Instance.dailyOfferManagerData = value;} 
     }
+    private bool isDataUpdated = false;
 
     void Awake(){
         DontDestroyOnLoad(gameObject);

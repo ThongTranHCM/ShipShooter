@@ -78,7 +78,9 @@ public class DailyDealManager : MonoBehaviour
         }
         public void UpdateList(){
             List<Deal> tmp = GameInformation.Instance.dailyDealList;
+            Debug.Log(dealList.Count);
             for(int i = 0; i < tmp.Count; i++){
+                Debug.Log(dealList.Count);
                 if(dealList.Find( x => x.ID == tmp[i].ID) == null){
                     dealList.Add(tmp[i]);
                 }
@@ -96,12 +98,22 @@ public class DailyDealManager : MonoBehaviour
         get { return instance; }
     }
     private Data data{
-        get { return DataManager.Instance != null ? DataManager.Instance.dailyDealManagerData : null; } 
+        get {
+            if(DataManager.Instance != null){
+                if(!isDataUpdated){
+                    DataManager.Instance.dailyDealManagerData.UpdateList();
+                    isDataUpdated = true;
+                }
+                return DataManager.Instance.dailyDealManagerData;
+            }
+            return null;
+            } 
         set { 
             DataManager.Instance.dailyDealManagerData  = value;
         }
     }
     private Data prevData = null;
+    private bool isDataUpdated = false;
 
     void Awake(){
         DontDestroyOnLoad(gameObject);

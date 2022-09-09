@@ -91,11 +91,21 @@ public class TimeChestManager : MonoBehaviour
     public static TimeChestManager Instance{
         get { return instance; }
     }
-    private TimeChestManager.Data data{
-        get { return DataManager.Instance != null ? DataManager.Instance.timeChestManagerData : null;}
+    private Data data{
+        get {
+            if(DataManager.Instance != null){
+                if(!isDataUpdated){
+                    DataManager.Instance.timeChestManagerData.UpdateList();
+                    isDataUpdated = true;
+                }
+                return DataManager.Instance.timeChestManagerData;
+            }
+            return null; 
+            } 
         set { DataManager.Instance.timeChestManagerData = value;}
     }
     private Data prevData = null;
+    private bool isDataUpdated = false;
 
     void Awake(){
         DontDestroyOnLoad(gameObject);
