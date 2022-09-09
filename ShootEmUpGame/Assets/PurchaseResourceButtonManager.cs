@@ -31,18 +31,19 @@ public class PurchaseResourceButtonManager : ResourceSinkButtonManager
         box = Box;
     }
 
-    public void PurchaseReward(){
+    public bool CheckPurchaseReward(){
         List<(string,int)> tuples = new List<(string, int)>();
         foreach(Reward reward in rewards){
             tuples.Add(reward.ToTuple());
         }
-        Debug.Log(box);
         if(box == ""){
-            RewardResourceManager.Instance.Purchase(costId, costAmount, tuples);
+            return RewardResourceManager.Instance.Purchase(costId, costAmount, tuples);
         } else {
-            Debug.Log("Opening Box");
-            RewardResourceManager.Instance.BoxPurchase(box, costId, costAmount, tuples);
+            return RewardResourceManager.Instance.BoxPurchase(box, costId, costAmount, tuples);
         }
-        
+    }
+
+    public void PurchaseReward(){
+        CheckPurchaseReward();
     }
 }

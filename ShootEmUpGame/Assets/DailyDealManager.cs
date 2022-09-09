@@ -96,7 +96,7 @@ public class DailyDealManager : MonoBehaviour
         get { return instance; }
     }
     private Data data{
-        get { return DataManager.Instance.dailyDealManagerData; } 
+        get { return DataManager.Instance != null ? DataManager.Instance.dailyDealManagerData : null; } 
         set { 
             DataManager.Instance.dailyDealManagerData  = value;
         }
@@ -114,7 +114,7 @@ public class DailyDealManager : MonoBehaviour
 
     public void UpdateCounter(){
         if(data != null && DailyDealContentManager.Instance != null){
-            if(HasFinished()){
+            if(HasFinished() && DailyDealContentManager.Instance.IsInTab()){
                 RestartDeals();
                 UpdateContent();
             }
@@ -145,6 +145,7 @@ public class DailyDealManager : MonoBehaviour
             deal.ResetLevel();
         }
         SortDeal();
+        data.prevStartTime = GetStartTime();
         DataManager.Save();
     }
 
@@ -163,13 +164,12 @@ public class DailyDealManager : MonoBehaviour
         span = TimeSpan.FromSeconds(interval - (curTime - GetStartTime()) - 1);
         return string.Format("Reset in {0:0}:{1:00}:{2:00}", span.Hours, span.Minutes, span.Seconds);
     }
-    private bool HasFinished(){
-        if(data.prevStartTime != GetStartTime()){
-            data.prevStartTime = GetStartTime();
-            DataManager.Save();
-            return true;
+    public bool HasFinished(){
+        if( data != null){
+            return data.prevStartTime != GetStartTime();
+        } else {
+            return false;
         }
-        return false;
     }
     private void SortDeal(){
         for(int i = data.dealList.Count - 1; i >= 0; i--){

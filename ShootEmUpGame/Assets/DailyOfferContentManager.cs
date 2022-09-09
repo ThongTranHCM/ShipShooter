@@ -15,6 +15,8 @@ public class DailyOfferContentManager : MonoBehaviour
     private TextMeshProUGUI countDownText;
     [SerializeField]
     private PurchaseResourceButtonManager purchaseButton;
+    [SerializeField]
+    private TabberController tabberController;
     // Start is called before the first frame update
     void Awake(){
         if(instance == null){
@@ -52,5 +54,9 @@ public class DailyOfferContentManager : MonoBehaviour
 
     public void UpdatePurchaseButton(string ID, int Cost){
         purchaseButton.SetCost(ID, Cost);
+    }
+
+    public bool IsInTab(){
+        return tabberController.currentTab == 0;
     }
 }

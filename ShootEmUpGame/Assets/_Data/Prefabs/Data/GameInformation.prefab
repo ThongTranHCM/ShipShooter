@@ -50,7 +50,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 187e61bf987c08c479f2f6898db99e74, type: 2}
   - {fileID: 11400000, guid: 3de45a3373cdf3248afb3e1775f566e2, type: 2}
   shipProgressData: {fileID: 11400000, guid: c3d930e4053dd4747958f8f732700bf2, type: 2}
-  dailyDealInterval: 86400
+  dailyDealInterval: 10
   dailyOfferInterval: 10
   timeChestInterval: 10
   dailyDealConversionList:

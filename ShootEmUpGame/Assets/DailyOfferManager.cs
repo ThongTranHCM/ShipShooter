@@ -62,7 +62,7 @@ public class DailyOfferManager : MonoBehaviour
         get { return instance; }
     }
     private Data data{
-        get { return DataManager.Instance.dailyOfferManagerData;} 
+        get { return DataManager.Instance != null ? DataManager.Instance.dailyOfferManagerData : null;} 
         set { DataManager.Instance.dailyOfferManagerData = value;} 
     }
 
@@ -78,14 +78,18 @@ public class DailyOfferManager : MonoBehaviour
     public void UpdateContent(){
         if(data != null && DailyOfferContentManager.Instance != null){
             DailyOfferContentManager.Instance.UpdateOfferPanel(data.offerList, data.index);
-            (string, int) cost = data.offerList[data.index].CostTuple();
-            DailyOfferContentManager.Instance.UpdatePurchaseButton(cost.Item1, cost.Item2);
+            if(data.index < data.offerList.Count){
+                (string, int) cost = data.offerList[data.index].CostTuple();
+                DailyOfferContentManager.Instance.UpdatePurchaseButton(cost.Item1, cost.Item2);
+            } else {
+
+            }
         } 
     }
 
     public void UpdateCounter(){
         if(data != null && DailyOfferContentManager.Instance != null){
-            if(HasFinished()){
+            if(HasFinished() && DailyOfferContentManager.Instance.IsInTab()){
                 RestartOffers();
                 UpdateContent();
             }
@@ -104,6 +108,7 @@ public class DailyOfferManager : MonoBehaviour
 
     private void RestartOffers(){
         data.index = 0;
+        data.prevStartTime = GetStartTime();
         DataManager.Save();
     }
 
@@ -145,12 +150,11 @@ public class DailyOfferManager : MonoBehaviour
         return string.Format("Reset in {0:0}:{1:00}:{2:00}", span.Hours, span.Minutes, span.Seconds);
     }
 
-    private bool HasFinished(){
-        if(data.prevStartTime != GetStartTime()){
-            data.prevStartTime = GetStartTime();
-            DataManager.Save();
-            return true;
+    public bool HasFinished(){
+        if( data != null){
+            return data.prevStartTime != GetStartTime();
+        } else {
+            return false;
         }
-        return false;
     }
 }

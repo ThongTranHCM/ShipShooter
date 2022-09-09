@@ -11,6 +11,8 @@ public class DailyDealContentManager : MonoBehaviour
     }
     [SerializeField]
     private TextMeshProUGUI countDownText;
+    [SerializeField]
+    private TabberController tabberController;
 
     void Awake(){
         if(instance == null){
@@ -34,5 +36,8 @@ public class DailyDealContentManager : MonoBehaviour
     }
     public void SetTimeCounter(string Counter){
         countDownText.text = Counter;
+    }
+    public bool IsInTab(){
+        return tabberController.currentTab == 4;
     }
 }

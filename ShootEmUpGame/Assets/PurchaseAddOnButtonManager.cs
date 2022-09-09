@@ -17,12 +17,15 @@ public class PurchaseAddOnButtonManager : ResourceSinkButtonManager
         box = Box;
     }
 
-    public void PurchaseReward(){
+    public bool CheckPurchaseReward(){
         if(box == ""){
-            RewardAddOnManager.Instance.Purchase(costId, costAmount, rewardId);
+            return RewardAddOnManager.Instance.Purchase(costId, costAmount, rewardId);
         } else {
-            RewardAddOnManager.Instance.BoxPurchase(box, costId, costAmount, rewardId);
+            return RewardAddOnManager.Instance.BoxPurchase(box, costId, costAmount, rewardId);
         }
-        
+    }
+
+    public void PurchaseReward(){
+        CheckPurchaseReward();
     }
 }

@@ -12,8 +12,6 @@ public class DailyDealPanelManager : MonoBehaviour
     [SerializeField]
     private ResourceTextManager fragmentText;
     [SerializeField]
-    private ResourceTextManager diamondText;
-    [SerializeField]
     private Button button;
     private DailyDealManager.Deal deal;
 
@@ -23,19 +21,17 @@ public class DailyDealPanelManager : MonoBehaviour
         addOnUIItem.Install(deal.ID, addOnData.GetSprite, (int)addOnData.GetLevel, addOnData.GetFragment, 1000);
         fragmentText.SetResource("fragment");
         fragmentText.SetText(string.Format("+{0}",deal.GetFragment().ToString()));
-        diamondText.SetResource("diamond");
-        diamondText.SetText(deal.GetDiamond().ToString());
-        button.onClick.RemoveAllListeners();
-        button.onClick.AddListener(() => {SoundManager.Instance.PlaySFX("valid_button");});
-        button.onClick.AddListener(() => {GetDeal();});
-        button.onClick.AddListener(() => {DataManager.Save();});
+        List<PurchaseFragmentButtonManager.Reward> rewards = new List<PurchaseFragmentButtonManager.Reward>();
+        rewards.Add(new PurchaseFragmentButtonManager.Reward(deal.ID, deal.GetFragment()));
+        GetComponent<PurchaseFragmentButtonManager>().SetReward(rewards);
+        GetComponent<PurchaseFragmentButtonManager>().SetCost("diamond", deal.GetDiamond());
     }
 
-    private void GetDeal(){
-        RewardFragmentManager.Instance.AddReward(deal.ID, deal.GetFragment());
-        RewardFragmentManager.Instance.GetReward();
-        DailyDealManager.Instance.IncreaseLevel(deal);
-        DataManager.Save();
-        SetDeal(deal);
+    public void PurchaseDeal(){
+        if(GetComponent<PurchaseFragmentButtonManager>().CheckPurchaseReward()){
+            DailyDealManager.Instance.IncreaseLevel(deal);
+            DataManager.Save();
+            SetDeal(deal);
+        }
     }
 }

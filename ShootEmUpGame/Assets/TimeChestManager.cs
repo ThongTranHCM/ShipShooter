@@ -92,7 +92,7 @@ public class TimeChestManager : MonoBehaviour
         get { return instance; }
     }
     private TimeChestManager.Data data{
-        get { return DataManager.Instance.timeChestManagerData;}
+        get { return DataManager.Instance != null ? DataManager.Instance.timeChestManagerData : null;}
         set { DataManager.Instance.timeChestManagerData = value;}
     }
     private Data prevData = null;
@@ -106,16 +106,23 @@ public class TimeChestManager : MonoBehaviour
         }
     }
 
-    void Update(){
-        UpdateMissionActive();
+    void FixedUpdate(){
+        if ( data != null){
+            UpdateMissionActive();
+        }
     }
 
     private bool HasFinished(){
-        int interval = GameInformation.Instance.timeChestInterval;
-        if( GetCurTime() - data.prevStartTime > interval){
-            return true;
+        if( data != null){
+            int interval = GameInformation.Instance.timeChestInterval;
+            if( GetCurTime() - data.prevStartTime > interval){
+                return true;
+            }
+            return false;
+        } else {
+            return false;
         }
-        return false;
+        
     }
 
     private int GetCurTime(){
@@ -126,10 +133,15 @@ public class TimeChestManager : MonoBehaviour
     }
 
     public string GetTimeCountDown(){
-        int curTime = GetCurTime();
-        int left = GameInformation.Instance.timeChestInterval - (curTime - data.prevStartTime);
-        TimeSpan span = TimeSpan.FromSeconds(left);
-        return string.Format("{0:0}:{1:00}:{2:00}", span.Hours, span.Minutes, span.Seconds);
+        if( data != null){
+            int curTime = GetCurTime();
+            int left = GameInformation.Instance.timeChestInterval - (curTime - data.prevStartTime);
+            TimeSpan span = TimeSpan.FromSeconds(left);
+            return string.Format("{0:0}:{1:00}:{2:00}", span.Hours, span.Minutes, span.Seconds);
+        } else {
+            return "0:00:00";
+        }
+        
     }
 
     public void UpdateCounter(){
@@ -204,9 +216,11 @@ public class TimeChestManager : MonoBehaviour
     }
 
     public bool CheckClaimNotification(){
-        foreach(Mission mission in data.missionList){
-            if(mission.IsFinish()){
-                return true;
+        if(data != null){
+            foreach(Mission mission in data.missionList){
+                if(mission.IsFinish()){
+                    return true;
+                }
             }
         }
         return HasFinished();

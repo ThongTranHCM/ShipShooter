@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class TimeChestClaimNotificationManager : MonoBehaviour
+public class TimeChestNotificationManager : MonoBehaviour
 {
     [SerializeField]
     private GameObject claimNotification;
@@ -12,7 +12,8 @@ public class TimeChestClaimNotificationManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI timerText;
     // Update is called once per frame
-    void FixedUpdate()
+
+    void Update()
     {
         if(TimeChestManager.Instance != null ){
             if(TimeChestManager.Instance.CheckClaimNotification()){
@@ -20,6 +21,7 @@ public class TimeChestClaimNotificationManager : MonoBehaviour
                     timerNotification.SetActive(false);
                 }
                 if(!claimNotification.activeSelf){
+                    LeanTween.cancel(claimNotification);
                     LTSeq seq = LeanTween.sequence();
                     seq.append(() => claimNotification.SetActive(true));
                     seq.append(LeanTween.scale(claimNotification, Vector3.zero, 0.0f));
@@ -31,6 +33,7 @@ public class TimeChestClaimNotificationManager : MonoBehaviour
                     claimNotification.SetActive(false);
                 }
                 if(!timerNotification.activeSelf){
+                    LeanTween.cancel(timerNotification);
                     LTSeq seq = LeanTween.sequence();
                     seq.append(() => timerNotification.SetActive(true));
                     seq.append(LeanTween.scale(timerNotification, Vector3.zero, 0.0f));
