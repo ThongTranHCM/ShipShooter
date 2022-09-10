@@ -68,8 +68,8 @@ public class TabShipController : MonoBehaviour
     private void UpdateShipStats(int index)
     {
         _intShipLevel = DataManager.Instance.playerData.GetShipProgress(shipIndex).shipLevel;
-        _intShipCost = 50 + _intShipLevel;
-        _intShipPower = 2000 + _intShipLevel * 50;
+        _intShipCost = (int)GameInformation.Instance.GetShipData(shipIndex).GetUpgradeCostFrom(_intShipLevel - 1);
+        _intShipPower = (int)GameInformation.Instance.GetShipData(shipIndex).GetPower(_intShipLevel - 1);
         //Level
         _txtShipLevel.text = "Level " + _intShipLevel;
         _txtShipPower.text = "Power " + _intShipPower;
