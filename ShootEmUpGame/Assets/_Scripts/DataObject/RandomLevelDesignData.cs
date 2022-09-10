@@ -74,7 +74,7 @@ public class RandomLevelDesignData : LevelDesignData
         curWave = 0;
         curDrop = 0;
     }
-
+#if UNITY_EDITOR
     public static RandomLevelDesignData CreateInstance(List<EnemyData> EnemyDataPool,
                                 int NumWave, 
                                 float BaseHP, 
@@ -88,7 +88,7 @@ public class RandomLevelDesignData : LevelDesignData
         data.Init(EnemyDataPool, NumWave, BaseHP, StartHP, EndHP, StartDense, EndDense, AddOnDropPoolList, DropRate);
         return data;
     }
-    
+#endif
     public override IEnumerator InstallWaves()
     {
         GenerateWaves();

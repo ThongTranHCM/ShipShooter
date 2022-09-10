@@ -12,7 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c64ceb815ebaf284991d969974df65bb, type: 3}
   m_Name: ShipProgressData
   m_EditorClassIdentifier: 
-  shipCost: 0
-  maxLevel: 0
-  shipPowers: 
-  shipUpgradeCosts: 
+  _shipCost: 100
+  _maxLevel: 100
