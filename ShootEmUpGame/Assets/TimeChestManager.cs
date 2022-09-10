@@ -170,7 +170,7 @@ public class TimeChestManager : MonoBehaviour
     private int GetDiamondCost(){
         int timeLeft = GetCurTime() - data.prevStartTime;
         int interval = GameInformation.Instance.timeChestInterval;
-        return  60 * (1 - timeLeft / interval);
+        return  60 * (interval - timeLeft) / interval;
     }
 
     public void UpdateContent(){
@@ -215,6 +215,17 @@ public class TimeChestManager : MonoBehaviour
         RewardResourceManager.Instance.AddReward("diamond", 1000);
         RewardResourceManager.Instance.GetBoxReward("regular_box");
         return;
+    }
+
+    public void PurchaseReward(){
+        List<PurchaseResourceButtonManager.Reward> rewards = new List<PurchaseResourceButtonManager.Reward>();
+        rewards.Add(new PurchaseResourceButtonManager.Reward("gold", 1000));
+        rewards.Add(new PurchaseResourceButtonManager.Reward("diamond", 1000));
+        TimeChestContentManager.Instance.PurchaseManager.SetReward(rewards);
+        if( TimeChestContentManager.Instance.PurchaseManager.CheckPurchaseReward()){
+            data.prevStartTime = GetCurTime();
+            DataManager.Save();
+        }
     }
 
     public void ProgressMission(string ID, int Amount = 1){

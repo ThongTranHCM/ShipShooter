@@ -18,6 +18,9 @@ public class TimeChestContentManager : MonoBehaviour
     private TabberController tabberController;
     [SerializeField]
     private PurchaseResourceButtonManager purchaseResourceButtonManager;
+    public PurchaseResourceButtonManager PurchaseManager{
+        get { return purchaseResourceButtonManager; }
+    }
 
     void Awake(){
         if(instance == null){
@@ -45,9 +48,6 @@ public class TimeChestContentManager : MonoBehaviour
     }
 
     public void UpdatePurchaseButton(int Cost){
-        List<PurchaseResourceButtonManager.Reward> rewards = new List<PurchaseResourceButtonManager.Reward>();
-        rewards.Add(new PurchaseResourceButtonManager.Reward("gold", 10000));
-        purchaseResourceButtonManager.SetReward(rewards);
         purchaseResourceButtonManager.SetCost("diamond", Cost);
         return;
     }
