@@ -15,9 +15,11 @@ public class PlayerManager : MonoBehaviour
     private int _iLives;
     [SerializeField]
     private DOGunData _gunData;
-    IEnumerator DoActionInstall()
+    IEnumerator DoActionInstall(int shipIndex)
     {
         _iLives = GamePlayManager.Instance.Level.PlayerHP;
+        int level = DataManager.Instance.selectedShipLevel;
+        _shipController.Install(shipIndex, level);
         _shipController.gunController.CopyGunData(_gunData);
         _shipController.gunController.Install(true);
         InstallAddOns();
@@ -32,7 +34,7 @@ public class PlayerManager : MonoBehaviour
         }
         GameObject shipObject = Instantiate<GameObject>(GameInformation.Instance.shipData[shipIndex].shipObjectPrefab, transform);
         _shipController = shipObject.GetComponent<IShipController>();
-        return StartCoroutine(DoActionInstall());
+        return StartCoroutine(DoActionInstall(shipIndex));
     }
     public void InstallAddOns()
     {

@@ -18,7 +18,10 @@ public class StoryModePanelController : PanelController
     public void OnButtonPlayClicked()
     {
         DataManager.Instance.selectedLevelIndex = DataManager.Instance.LastLevelWin + 1;
-        DataManager.Instance.LastShipIndex = DataManager.Instance.selectedShipIndex;
+        int shipIndex = DataManager.Instance.selectedShipIndex;
+        DataManager.Instance.LastShipIndex = shipIndex;
+        DataManager.Instance.selectedShipLevel = DataManager.Instance.playerData.GetShipProgress(shipIndex).shipLevel;
+        Debug.LogError("Ship " + shipIndex + " Level " + DataManager.Instance.selectedShipLevel);
         DataManager.Save();
         SceneLoader.LoadLevel(Constants.SCENENAME_GamePlay);
     }

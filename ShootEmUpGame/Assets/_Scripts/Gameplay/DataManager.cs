@@ -292,6 +292,7 @@ public class DataManager
     [System.NonSerialized] public bool dataSubmitScoreStoryMode;
     [System.NonSerialized] public int selectedLevelIndex;
     [System.NonSerialized] public int selectedShipIndex;
+    [System.NonSerialized] public int selectedShipLevel;
     [System.NonSerialized] public int dailyDealStartTime;
     #endregion
 }

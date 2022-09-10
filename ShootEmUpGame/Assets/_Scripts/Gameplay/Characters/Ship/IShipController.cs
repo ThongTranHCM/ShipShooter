@@ -23,8 +23,17 @@ namespace ThongNguyen.PlayerController
         public float damping;
         private LowPassFilter _lowPassDir;
 
-        public static float ShipPower = 10;
+        private float _shipPower;
+        public float ShipPower
+        {
+            get { return _shipPower; }
+        }
 
+        private int _shipLevel;
+        public int ShipLevel
+        {
+            get { return _shipLevel; }
+        }
 
         private bool _isImmortal;
         protected override void Start()
@@ -41,7 +50,11 @@ namespace ThongNguyen.PlayerController
             }
             _lowPassDir = new LowPassFilter(damping, 0);
         }
-
+        public void Install(int index, int level)
+        {
+            _shipLevel = level;
+            _shipPower = GameInformation.Instance.GetShipData(index).GetPower(level - 1);
+        }
         public void InstallHealth(int lives)
         {
             currentHealth = maxHealth = lives;

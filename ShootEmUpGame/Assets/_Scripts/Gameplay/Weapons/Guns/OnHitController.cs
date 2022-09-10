@@ -14,7 +14,7 @@ public class OnHitController : MonoBehaviour
     public DamageTypeRatio damageRatio;
     public float DamageToTrigger
     {
-        get { return damageRatio.triggerDamageRatio/100f * IShipController.ShipPower; }
+        get { return damageRatio.triggerDamageRatio/100f * IShipController.Instance.ShipPower; }
     }
     [SerializeField]
     private GameObject _onHitObject;

@@ -23,7 +23,6 @@ public class GameInformation : MonoBehaviour
 
     public AddOnEquipData addOnEquipData;
     public List<DOShipData> shipData;
-    public DOShipProgressData shipProgressData;
     public int dailyDealInterval = 5;
     public int dailyOfferInterval = 5;
     public int timeChestInterval = 10;
