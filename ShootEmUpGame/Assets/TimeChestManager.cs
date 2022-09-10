@@ -228,6 +228,10 @@ public class TimeChestManager : MonoBehaviour
         }
     }
 
+    public void InstancePurchaseReward(){
+        Instance.PurchaseReward();
+    }
+
     public void ProgressMission(string ID, int Amount = 1){
         foreach(Mission mission in data.missionList){
             if(mission.ID == ID){
