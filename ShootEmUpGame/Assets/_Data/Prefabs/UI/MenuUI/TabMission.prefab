@@ -730,6 +730,8 @@ MonoBehaviour:
   fillBarTimeTextManager: {fileID: 770423576664920206}
   missionPrefab: {fileID: 8769279287666295712, guid: 46b6063940616e14f8d232e196ab42fe,
     type: 3}
+  tabberController: {fileID: 0}
+  purchaseResourceButtonManager: {fileID: 0}
 --- !u!1001 &1097257433747306201
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -160,9 +160,17 @@ public class TimeChestManager : MonoBehaviour
             if(HasFinished() && TimeChestContentManager.Instance.IsInTab()){
                 ClaimReward();
             }
-            TimeChestContentManager.Instance.SetFillBar(GetCurTime(), data.prevStartTime, GameInformation.Instance.timeChestInterval);
-            TimeChestContentManager.Instance.UpdatePurchaseButton();
+            int timeLeft = GetCurTime() - data.prevStartTime;
+            int interval = GameInformation.Instance.timeChestInterval;
+            TimeChestContentManager.Instance.SetFillBar(timeLeft, interval);
+            TimeChestContentManager.Instance.UpdatePurchaseButton(GetDiamondCost());
         }
+    }
+
+    private int GetDiamondCost(){
+        int timeLeft = GetCurTime() - data.prevStartTime;
+        int interval = GameInformation.Instance.timeChestInterval;
+        return  60 * (1 - timeLeft / interval);
     }
 
     public void UpdateContent(){
@@ -174,8 +182,10 @@ public class TimeChestManager : MonoBehaviour
     public void InitContent(){
         if(TimeChestContentManager.Instance != null && data != null){
             UpdateMissionActive();
-            TimeChestContentManager.Instance.SetFillBar(GetCurTime(), data.prevStartTime, GameInformation.Instance.timeChestInterval);
-            TimeChestContentManager.Instance.UpdatePurchaseButton();
+            int timeLeft = GetCurTime() - data.prevStartTime;
+            int interval = GameInformation.Instance.timeChestInterval;
+            TimeChestContentManager.Instance.SetFillBar(timeLeft, interval);
+            TimeChestContentManager.Instance.UpdatePurchaseButton(GetDiamondCost());
             TimeChestContentManager.Instance.UpdateMissionPanel(data.missionList);
         }
     }
@@ -222,7 +232,9 @@ public class TimeChestManager : MonoBehaviour
         TargetMission.Complete();
         UpdateMissionActive();
         DataManager.Save();
-        TimeChestContentManager.Instance.UpdateFillBar(GetCurTime(), data.prevStartTime, GameInformation.Instance.timeChestInterval);
+        int timeLeft = GetCurTime() - data.prevStartTime;
+        int interval = GameInformation.Instance.timeChestInterval;
+        TimeChestContentManager.Instance.UpdateFillBar(timeLeft, interval);
     }
 
     public bool CheckClaimNotification(){

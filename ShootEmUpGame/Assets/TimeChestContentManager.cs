@@ -16,6 +16,8 @@ public class TimeChestContentManager : MonoBehaviour
     private GameObject missionPrefab;
     [SerializeField]
     private TabberController tabberController;
+    [SerializeField]
+    private PurchaseResourceButtonManager purchaseResourceButtonManager;
 
     void Awake(){
         if(instance == null){
@@ -42,12 +44,16 @@ public class TimeChestContentManager : MonoBehaviour
         return;
     }
 
-    public void UpdatePurchaseButton(){
+    public void UpdatePurchaseButton(int Cost){
+        List<PurchaseResourceButtonManager.Reward> rewards = new List<PurchaseResourceButtonManager.Reward>();
+        rewards.Add(new PurchaseResourceButtonManager.Reward("gold", 10000));
+        purchaseResourceButtonManager.SetReward(rewards);
+        purchaseResourceButtonManager.SetCost("diamond", Cost);
         return;
     }
 
-    public void UpdateFillBar(int curTime, int prevStartTime, int interval){
-        fillBarManager.UpdateRawValue(curTime - prevStartTime, interval, 1.0f);
+    public void UpdateFillBar(int timeLeft, int interval){
+        fillBarManager.UpdateRawValue(timeLeft, interval, 1.0f);
         fillBarTimeTextManager.SetValue(interval);
         LTSeq seq = LeanTween.sequence();
         seq.append(() => {
@@ -62,8 +68,8 @@ public class TimeChestContentManager : MonoBehaviour
         
     }
 
-    public void SetFillBar(int curTime, int prevStartTime, int interval){
-        fillBarManager.SetRawValue(curTime - prevStartTime, interval);
+    public void SetFillBar(int timeLeft, int interval){
+        fillBarManager.SetRawValue(timeLeft, interval);
         fillBarTimeTextManager.SetValue(interval);
     }
 
