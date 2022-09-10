@@ -10,6 +10,14 @@ public class CustomEditorShipProgress : Editor
     DOShipProgressData targetData;
     string powerCSV = "LevelDesign - ShipLevelUp";
     string costCSV = "LevelDesign - Ship Unlock Cost";
+    private SerializedProperty powerProperty;
+    private SerializedProperty upgradeCostProperty;
+    //List<int> _buyCostList = serializedObject.FindProperty("m_Obj");
+    public void OnEnable()
+    {
+        powerProperty = serializedObject.FindProperty("_shipPowers");
+        upgradeCostProperty = serializedObject.FindProperty("_shipUpgradeCosts");
+    }
     public override void OnInspectorGUI()
     {
         base.OnInspectorGUI();
@@ -30,15 +38,23 @@ public class CustomEditorShipProgress : Editor
     void LoadPowerAndUpgradeCSV()
     {
         List<Dictionary<string, string>> sheet = CSVReader.Read(powerCSV);
-        List<int> powerList = new List<int>(new int[targetData.MaxLevel]);
-        List<int> costList = new List<int>(new int[targetData.MaxLevel]);
+        powerProperty.ClearArray();
+        upgradeCostProperty.ClearArray();
+        int i = 0;
         foreach (Dictionary<string, string> row in sheet)
         {
             int level = int.Parse(row["Level"].ToString());
             int power = int.Parse(row["Power"].ToString());
             int upgradeCost = int.Parse(row["Gold"].ToString());
-            powerList[level - 1] = power;
-            costList[level - 1] = upgradeCost;
+            powerProperty.InsertArrayElementAtIndex(i);
+            powerProperty.GetArrayElementAtIndex(i).intValue = power;
+            upgradeCostProperty.InsertArrayElementAtIndex(i);
+            upgradeCostProperty.GetArrayElementAtIndex(i).intValue = upgradeCost;
+            i++;
+            if (i == targetData.MaxLevel)
+            {
+                break;
+            }
         }
     }
     void LoadBuyCostCSV()
