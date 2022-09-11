@@ -69,6 +69,7 @@ public class TabShipController : MonoBehaviour
     private void UpdateShipStats(int index)
     {
         _intShipLevel = DataManager.Instance.playerData.GetShipProgress(shipIndex).shipLevel;
+        Debug.LogError("Index " + index);
         int minLevel = Mathf.Max(1, _intShipLevel);
         DOShipData shipData = GameInformation.Instance.GetShipData(shipIndex);
         _intShipCost = (int)shipData.GetUpgradeCostFrom(_intShipLevel);
@@ -88,13 +89,13 @@ public class TabShipController : MonoBehaviour
             _intShipCost = (int)shipData.ShipCost;
             _strCostCurrency = shipData.ShipCostCurrency;
             _purchaseButton.SetCost(_strCostCurrency, _intShipCost);
-            rewards.Add(new PurchaseResourceButtonManager.Reward("ship" + index + "Buy", 1));
+            rewards.Add(new PurchaseResourceButtonManager.Reward("ship" + (index + 1) + "Buy", 1));
             _purchaseButton.SetReward(rewards);
         }
         if (showUpgradeButton)
         {
             _upgradeButton.SetCost(_strCostCurrency, _intShipCost);
-            rewards.Add(new PurchaseResourceButtonManager.Reward("ship" + index + "Upgrade", 1));
+            rewards.Add(new PurchaseResourceButtonManager.Reward("ship" + (index + 1) + "Upgrade", 1));
             _upgradeButton.SetReward(rewards);
         }
     }

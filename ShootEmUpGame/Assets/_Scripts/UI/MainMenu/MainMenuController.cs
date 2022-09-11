@@ -41,8 +41,6 @@ public class MainMenuController : PanelController
 
     [Space(5)]
     [SerializeField]
-    private RawImage _imgAvatar;
-    [SerializeField]
     private RectTransform _tfBtnBuyDiamond;
     [SerializeField]
     private RectTransform _tfBtnBuyCoin;
@@ -79,10 +77,6 @@ public class MainMenuController : PanelController
         instance = null;
     }
 
-    void ShowQuit()
-    {
-        Debug.LogError("ShowQuit");
-    }
 
     void Start()
     {
@@ -95,6 +89,11 @@ public class MainMenuController : PanelController
         onHideLevel = () => { _tfLevel.gameObject.SetActive(false); };
         onShowPage = () => { _tfPage.gameObject.SetActive(true);};
         onHidePage = () => { _tfPage.gameObject.SetActive(false);};
+    }
+
+    void ShowQuit()
+    {
+        Debug.LogError("ShowQuit");
     }
     IEnumerator DoActionOnStart()
     {
@@ -131,8 +130,6 @@ public class MainMenuController : PanelController
 
         yield return null;
         //StartCoroutine(tabBarPanelController.Init());
-        // Update Avatar text ( Player name)
-        RefreshAvatar();
 
         yield return new WaitUntil(() => !storyModePanel.isFirstInit);
         canShowScene = true;
@@ -142,31 +139,28 @@ public class MainMenuController : PanelController
         }
     }
     #endregion
-    public void RefreshAvatar()
+    public static void UpdateCurrencyValue()
     {
-        if (!string.IsNullOrEmpty(DataManager.Instance.playerData.avatarUrl))
+        if (instance != null)
         {
-            //DataManager.Instance.playerData.avatarUrl
-            Texture2D obj = null;
-            if (obj != null)
-                _imgAvatar.texture = obj;
+            instance.UpdateCashValue();
         }
-
+    }
+    public static void UpdateResourcesValue()
+    {
+        if (instance != null)
+        {
+        }
     }
 
-    IEnumerator waitForAvatar = null;
-    IEnumerator WaitForAvatar()
+    public static void UpdateProgressionValue()
     {
-        while (Social.localUser.image == null)
+        if (instance != null)
         {
-            yield return null;
         }
-
-        _imgAvatar.texture = Social.localUser.image;
-        waitForAvatar = null;
     }
 
-    public void UpdateCashValue()
+    private void UpdateCashValue()
     {
         _txtCoin.text = DataManager.Instance.playerData.Coin.ToString();
         _txtDiamond.text = DataManager.Instance.playerData.Diamond.ToString();

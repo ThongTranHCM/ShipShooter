@@ -213,7 +213,9 @@ public class TimeChestManager : MonoBehaviour
         DataManager.Save();
         RewardResourceManager.Instance.AddReward("gold", 1000);
         RewardResourceManager.Instance.AddReward("diamond", 1000);
+        DataManager.isChangeCurrency = true;
         RewardResourceManager.Instance.GetBoxReward("regular_box");
+        DataManager.isChangeResources = true;
         return;
     }
 
@@ -221,6 +223,7 @@ public class TimeChestManager : MonoBehaviour
         List<PurchaseResourceButtonManager.Reward> rewards = new List<PurchaseResourceButtonManager.Reward>();
         rewards.Add(new PurchaseResourceButtonManager.Reward("gold", 1000));
         rewards.Add(new PurchaseResourceButtonManager.Reward("diamond", 1000));
+        DataManager.isChangeCurrency = true;
         TimeChestContentManager.Instance.PurchaseManager.SetReward(rewards);
         if( TimeChestContentManager.Instance.PurchaseManager.CheckPurchaseReward()){
             data.prevStartTime = GetCurTime();

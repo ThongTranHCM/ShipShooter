@@ -103,6 +103,9 @@ public class DataManager
     }
 
     private static volatile bool isSaving = false;
+    public static volatile bool isChangeCurrency = false;
+    public static volatile bool isChangeResources = false;
+    public static volatile bool isChangeProgress = false;
     public static void Save(bool saveInBackground = false, string path = "")
     {
         if (path == "")
@@ -149,6 +152,21 @@ public class DataManager
         {
             Debug.LogError("Saving ");
             isSaving = false;
+            if (isChangeCurrency)
+            {
+                isChangeCurrency = false;
+                MainMenuController.UpdateCurrencyValue();
+            }
+            if (isChangeResources)
+            {
+                isChangeResources = false;
+                MainMenuController.UpdateResourcesValue();
+            }
+            if (isChangeProgress)
+            {
+                isChangeProgress = false;
+                MainMenuController.UpdateProgressionValue();
+            }
         }
     }
     public static string GenerateDataJsonString()

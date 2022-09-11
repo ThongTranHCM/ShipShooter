@@ -122,9 +122,8 @@ public class DailyOfferManager : MonoBehaviour
         DataManager.Save();
     }
 
-    public void PurchaseReward(){
+    private void PurchaseReward(){
         if(data.index < data.offerList.Count){
-            Debug.Log("Claim Reward");
             (string, int) reward = data.offerList[data.index].RewardTuple();
             (string, int) cost = data.offerList[data.index].CostTuple();
             List<(string, int)> rewardList = new List<(string, int)>();
@@ -132,13 +131,16 @@ public class DailyOfferManager : MonoBehaviour
             if(RewardResourceManager.Instance.Purchase(cost.Item1,cost.Item2,rewardList)){
                 data.index += 1;
                 UpdateContent();
+                DataManager.isChangeResources = true;
                 DataManager.Save();
             }
         } else {
             Debug.Log("You have collected all of the reward");
         }
+
     }
 
+    //Button Callback
     public void InstancePurchaseReward(){
         Instance.PurchaseReward();
     }

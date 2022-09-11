@@ -36,6 +36,7 @@ public class RewardFragmentManager : MonoBehaviour
             SoundManager.Instance.PlaySFX("open_box");
             FragmentRewardCanvasManager.Instance.Show(reward.Item1, reward.Item2);
             IncreaseFragment(reward.Item1, reward.Item2);
+            DataManager.isChangeResources = true;
         } else {
             FragmentRewardCanvasManager.Instance.Close();
         }
@@ -114,6 +115,7 @@ public class RewardFragmentManager : MonoBehaviour
                 default:
                     return false;
             }
+            DataManager.isChangeCurrency = true;
             DataManager.Save();
             foreach((string,int) reward in Rewards){
                 AddReward(reward.Item1, reward.Item2);
@@ -132,6 +134,7 @@ public class RewardFragmentManager : MonoBehaviour
 
     private void IncreaseFragment(string Id, int Amount){
         DataManager.Instance.addOnUserData.GetAddOnInfo(addOnEquipData.GetType(Id)).CurrentFragment += Amount;
+        DataManager.isChangeResources = true;
         DataManager.Save();
     }
 }

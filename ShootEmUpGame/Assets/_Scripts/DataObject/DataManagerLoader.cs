@@ -62,15 +62,23 @@ public class DataManagerLoader : MonoBehaviour
         DataManager.ResetToDefault();
         DataManager.Save();
     }
-    [MenuItem("Data/Cheat/+ 1000 Gold")]
-    private static void CheatGold()
+    [MenuItem("Data/Cheat/Currency/+ 1000 Gold")]
+    private static void Cheat1000Gold()
     {
         DataManager.Instance.playerData.Coin += 1000;
+        DataManager.isChangeCurrency = true;
     }
-    [MenuItem("Data/Cheat/+ 100 Diamond")]
-    private static void CheatDiamond()
+    [MenuItem("Data/Cheat/Currency/+ 100 Diamond")]
+    private static void Cheat100Diamond()
     {
         DataManager.Instance.playerData.Diamond += 100;
+        DataManager.isChangeCurrency = true;
+    }
+    [MenuItem("Data/Cheat/Currency/+ 1000 Diamond")]
+    private static void Cheat1000Diamond()
+    {
+        DataManager.Instance.playerData.Diamond += 1000;
+        DataManager.isChangeCurrency = true;
     }
     [MenuItem("Data/Cheat/Add On/Reset")]
     private static void ResetAddOn()

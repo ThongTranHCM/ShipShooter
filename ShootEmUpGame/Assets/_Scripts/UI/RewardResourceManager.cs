@@ -35,11 +35,9 @@ public class RewardResourceManager : MonoBehaviour
     }
 
     public void GetReward(){
-        Debug.LogError("GetReward " + rewardQueue.Count);
         if(rewardQueue.Count > 0){
             (string, int) reward = rewardQueue.Dequeue();
             SoundManager.Instance.PlaySFX("open_box");
-            Debug.LogError("GetReward " + reward.Item1 + "  " + reward.Item2);
             RewardResourceCanvasManager.Instance.Show(reward.Item1, reward.Item2);
             IncreaseResource(reward.Item1, reward.Item2);
         } else {
@@ -71,6 +69,7 @@ public class RewardResourceManager : MonoBehaviour
                 default:
                     return false;
             }
+            DataManager.isChangeCurrency = true;
             DataManager.Save();
             foreach((string,int) reward in Rewards)
             {
@@ -123,6 +122,7 @@ public class RewardResourceManager : MonoBehaviour
                 default:
                     return false;
             }
+            DataManager.isChangeCurrency = true;
             DataManager.Save();
             foreach((string,int) reward in Rewards){
                 AddReward(reward.Item1, reward.Item2);
@@ -174,9 +174,11 @@ public class RewardResourceManager : MonoBehaviour
         switch ( Id ){
             case "gold":
                 DataManager.Instance.playerData.Coin += Amount;
+                DataManager.isChangeCurrency = true;
                 break;
             case "diamond":
                 DataManager.Instance.playerData.Diamond += Amount;
+                DataManager.isChangeCurrency = true;
                 break;
             default:
                 try

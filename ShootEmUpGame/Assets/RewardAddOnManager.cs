@@ -34,6 +34,7 @@ public class RewardAddOnManager : MonoBehaviour
             IAddOnData data = addOnEquipData.GetAddOnData(reward);
             SoundManager.Instance.PlaySFX("open_box");
             UnlockAddOnCanvasManager.Instance.Show(reward);
+            DataManager.isChangeResources = true;
         } else {
             UnlockAddOnCanvasManager.Instance.Close();
         }
@@ -66,6 +67,7 @@ public class RewardAddOnManager : MonoBehaviour
                 default:
                     return false;
             }
+            DataManager.isChangeCurrency = true;
             DataManager.Save();
             foreach(string addOn in AddOns){
                 AddReward(addOn);
@@ -112,6 +114,7 @@ public class RewardAddOnManager : MonoBehaviour
                 default:
                     return false;
             }
+            DataManager.isChangeCurrency = true;
             DataManager.Save();
             foreach(string addOn in AddOns){
                 AddReward(addOn);
