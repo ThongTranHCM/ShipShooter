@@ -43,3 +43,51 @@ MonoBehaviour:
       type: 3}
     SmallIconGameObject: {fileID: 501760267992323622, guid: 3cf182c1f5977044d943dca2e0744e2b,
       type: 3}
+  - id: ship1Buy
+    name: Ship 1 Buy
+    BigIconGameObject: {fileID: 2174193463722475062, guid: d7c77efefff4cde4bac759845685fdd3,
+      type: 3}
+    SmallIconGameObject: {fileID: 2174193463722475062, guid: d7c77efefff4cde4bac759845685fdd3,
+      type: 3}
+  - id: ship1Upgrade
+    name: Ship 1 Upgrade
+    BigIconGameObject: {fileID: 2174193463722475062, guid: d7c77efefff4cde4bac759845685fdd3,
+      type: 3}
+    SmallIconGameObject: {fileID: 2174193463722475062, guid: d7c77efefff4cde4bac759845685fdd3,
+      type: 3}
+  - id: ship2Buy
+    name: Ship 2 Buy
+    BigIconGameObject: {fileID: 8445367155899375498, guid: 8a4c4ca08c0a03a448433ed838005535,
+      type: 3}
+    SmallIconGameObject: {fileID: 8445367155899375498, guid: 8a4c4ca08c0a03a448433ed838005535,
+      type: 3}
+  - id: ship2Upgrade
+    name: Ship 2 Upgrade
+    BigIconGameObject: {fileID: 8445367155899375498, guid: 8a4c4ca08c0a03a448433ed838005535,
+      type: 3}
+    SmallIconGameObject: {fileID: 8445367155899375498, guid: 8a4c4ca08c0a03a448433ed838005535,
+      type: 3}
+  - id: ship3Buy
+    name: Ship 3 Buy
+    BigIconGameObject: {fileID: 5184495565223762865, guid: 623f47d2098e82f46bb6a1305cdcca93,
+      type: 3}
+    SmallIconGameObject: {fileID: 5184495565223762865, guid: 623f47d2098e82f46bb6a1305cdcca93,
+      type: 3}
+  - id: ship3Upgrade
+    name: Ship 3 Upgrade
+    BigIconGameObject: {fileID: 5184495565223762865, guid: 623f47d2098e82f46bb6a1305cdcca93,
+      type: 3}
+    SmallIconGameObject: {fileID: 5184495565223762865, guid: 623f47d2098e82f46bb6a1305cdcca93,
+      type: 3}
+  - id: ship4Buy
+    name: Ship 4 Buy
+    BigIconGameObject: {fileID: 4142999956485568158, guid: c645933586c1c3c4e97945a9344b09fd,
+      type: 3}
+    SmallIconGameObject: {fileID: 4142999956485568158, guid: c645933586c1c3c4e97945a9344b09fd,
+      type: 3}
+  - id: ship4Upgrade
+    name: Ship 4 Upgrade
+    BigIconGameObject: {fileID: 4142999956485568158, guid: c645933586c1c3c4e97945a9344b09fd,
+      type: 3}
+    SmallIconGameObject: {fileID: 4142999956485568158, guid: c645933586c1c3c4e97945a9344b09fd,
+      type: 3}

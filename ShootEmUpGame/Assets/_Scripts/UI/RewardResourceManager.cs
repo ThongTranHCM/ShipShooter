@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using System.Text.RegularExpressions;
 
 public class RewardResourceManager : MonoBehaviour
 {
@@ -15,7 +16,9 @@ public class RewardResourceManager : MonoBehaviour
 
     public void Awake(){
         DontDestroyOnLoad(gameObject);
-        if(instance == null){
+        if(instance == null)
+        {
+            Debug.LogError("Instance  " + gameObject.name);
             instance = this;
         } else {
             DestroyObject(gameObject);
@@ -23,6 +26,7 @@ public class RewardResourceManager : MonoBehaviour
     }
 
     public void AddReward(string id, int amount){
+        Debug.LogError("Instance  " + (instance == this) + " " + id + " " + amount);
         if(instance == this){
             rewardQueue.Enqueue((id, amount));
         } else {
@@ -31,9 +35,11 @@ public class RewardResourceManager : MonoBehaviour
     }
 
     public void GetReward(){
+        Debug.LogError("GetReward " + rewardQueue.Count);
         if(rewardQueue.Count > 0){
             (string, int) reward = rewardQueue.Dequeue();
             SoundManager.Instance.PlaySFX("open_box");
+            Debug.LogError("GetReward " + reward.Item1 + "  " + reward.Item2);
             RewardResourceCanvasManager.Instance.Show(reward.Item1, reward.Item2);
             IncreaseResource(reward.Item1, reward.Item2);
         } else {
@@ -43,6 +49,7 @@ public class RewardResourceManager : MonoBehaviour
 
     public bool Purchase(string RequireResource, int RequireAmount, List<(string, int)> Rewards){
         int check = 0;
+        Debug.LogError("Purchase " + RequireResource + "  " + RequireAmount);
         switch( RequireResource ){
             case "gold":
                 check = DataManager.Instance.playerData.Coin;
@@ -65,7 +72,9 @@ public class RewardResourceManager : MonoBehaviour
                     return false;
             }
             DataManager.Save();
-            foreach((string,int) reward in Rewards){
+            foreach((string,int) reward in Rewards)
+            {
+                Debug.LogError("Reward " + reward.Item1);
                 AddReward(reward.Item1, reward.Item2);
             }
             GetReward();
@@ -160,7 +169,9 @@ public class RewardResourceManager : MonoBehaviour
     }
 
     private void IncreaseResource(string Id, int Amount){
-        switch( Id ){
+        string shipRewardPattern = "tShip([0-9])([A-Z][a-z]*)";
+        Regex shipRegex = new Regex("tShip([0-9])Upgrade");
+        switch ( Id ){
             case "gold":
                 DataManager.Instance.playerData.Coin += Amount;
                 break;
@@ -168,6 +179,16 @@ public class RewardResourceManager : MonoBehaviour
                 DataManager.Instance.playerData.Diamond += Amount;
                 break;
             default:
+                try
+                {
+                    foreach (Match match in Regex.Matches(Id, shipRewardPattern,
+                                                          RegexOptions.None, System.TimeSpan.FromSeconds(1)))
+                        Debug.LogError("Found " + match.Value);
+                }
+                catch (RegexMatchTimeoutException)
+                {
+                    // Do Nothing: Assume that timeout represents no match.
+                }
                 return;
         }
         DataManager.Save();

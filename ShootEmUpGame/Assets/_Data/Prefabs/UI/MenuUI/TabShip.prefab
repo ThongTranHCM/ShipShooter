@@ -831,6 +831,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7501677216220618627, guid: 64baa8ee716f4284391dee7e81bfe934,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64baa8ee716f4284391dee7e81bfe934, type: 3}
 --- !u!1 &8450889298930534338 stripped
@@ -867,9 +872,9 @@ MonoBehaviour:
   costAmount: 100
   costText: {fileID: 7363575225663769593}
   rewards:
-  - id: diamond
-    amount: 100
-  box: premium_box
+  - id: Ship3Buy
+    amount: 0
+  box: 
 --- !u!1001 &2757665261175795337
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1072,6 +1077,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7501677216220618627, guid: 64baa8ee716f4284391dee7e81bfe934,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64baa8ee716f4284391dee7e81bfe934, type: 3}
 --- !u!114 &6281477127020036703 stripped
@@ -1108,9 +1118,9 @@ MonoBehaviour:
   costAmount: 100
   costText: {fileID: 6281477127020036703}
   rewards:
-  - id: diamond
-    amount: 100
-  box: premium_box
+  - id: Ship3Upgrade
+    amount: 1
+  box: 
 --- !u!1001 &4984557533732609577
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1282,7 +1292,7 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 0
+    m_Top: 10
     m_Bottom: 0
   m_ChildAlignment: 0
   m_StartCorner: 0
@@ -1305,6 +1315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _shipUIPrefab: {fileID: 3087138829439165104, guid: 8fd7c38123b62b84399df144bc4798f7,
     type: 3}
+  _shipIndex: 0
   _updateParentSize: 0
   _gridLayout: {fileID: 1423200087138217642}
 --- !u!1001 &5314808621353451043

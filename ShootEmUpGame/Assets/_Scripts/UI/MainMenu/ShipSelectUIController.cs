@@ -13,13 +13,12 @@ public class ShipSelectUIController : MonoBehaviour
     [SerializeField]
     private Image _imgMain;
     [SerializeField]
+    private Image _imgCheck;
+    [SerializeField]
     private Image _imgOverlay;
     [SerializeField]
     private Image _imgLock;
     public System.Action onBtnClick;
-
-    [SerializeField]
-    private Sprite _sprSelected;
     private Sprite _sprShip;
 
     private string _strName;
@@ -35,7 +34,8 @@ public class ShipSelectUIController : MonoBehaviour
 
     public void ShowAsSelected()
     {
-        _imgMain.sprite = _sprSelected;
+        _imgCheck.gameObject.SetActive(true);
+        _imgMain.gameObject.SetActive(false);
         if (_intLevel > 0)
         {
             _imgLock.gameObject.SetActive(false);
@@ -54,6 +54,8 @@ public class ShipSelectUIController : MonoBehaviour
 
     public void ShowAsShip()
     {
+        _imgCheck.gameObject.SetActive(false);
+        _imgMain.gameObject.SetActive(true);
         _imgMain.sprite = _sprShip;
         if (_intLevel > 0)
         {

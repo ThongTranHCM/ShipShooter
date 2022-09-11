@@ -88,13 +88,13 @@ public class TabShipController : MonoBehaviour
             _intShipCost = (int)shipData.ShipCost;
             _strCostCurrency = shipData.ShipCostCurrency;
             _purchaseButton.SetCost(_strCostCurrency, _intShipCost);
-            rewards.Add(new PurchaseResourceButtonManager.Reward("diamond", 3));
+            rewards.Add(new PurchaseResourceButtonManager.Reward("ship" + index + "Buy", 1));
             _purchaseButton.SetReward(rewards);
         }
         if (showUpgradeButton)
         {
             _upgradeButton.SetCost(_strCostCurrency, _intShipCost);
-            rewards.Add(new PurchaseResourceButtonManager.Reward("gold", 3));
+            rewards.Add(new PurchaseResourceButtonManager.Reward("ship" + index + "Upgrade", 1));
             _upgradeButton.SetReward(rewards);
         }
     }
@@ -130,7 +130,6 @@ public class TabShipController : MonoBehaviour
     public void OnShipUpgradeUIClick()
     {
         DataManager.Instance.playerData.GetShipProgress(shipIndex).shipLevel += 1;
-        RewardResourceManager.Instance.Purchase("gold", _intShipCost, new List<(string, int)>());
         OnShipUpgrade();
     }
 
@@ -144,7 +143,6 @@ public class TabShipController : MonoBehaviour
     public void OnShipBuyUIClick()
     {
         DataManager.Instance.playerData.GetShipProgress(shipIndex).shipLevel = Mathf.Max(DataManager.Instance.playerData.GetShipProgress(shipIndex).shipLevel, 1);
-        RewardResourceManager.Instance.Purchase("gold", _intShipCost, new List<(string, int)>());
         OnShipBuy();
     }
     #endregion
