@@ -18,6 +18,7 @@ public class DOShipData : ScriptableObject
     public float ShipCost { get { return _buyCost; } }
     [SerializeField]
     private string _buyCurrency;
+    public string ShipCostCurrency { get { return _buyCurrency; } }
     [SerializeField]
     private int _maxLevel;
     public int MaxLevel { get { return _maxLevel; } }

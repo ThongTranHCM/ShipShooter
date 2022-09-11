@@ -40,6 +40,7 @@ public class TabShipController : MonoBehaviour
     private int _intShipLevel;
     private int _intShipPower;
     private int _intShipCost;
+    private string _strCostCurrency;
 
     private void PlayShipTransitionAnimation()
     {
@@ -68,10 +69,13 @@ public class TabShipController : MonoBehaviour
     private void UpdateShipStats(int index)
     {
         _intShipLevel = DataManager.Instance.playerData.GetShipProgress(shipIndex).shipLevel;
-        _intShipCost = (int)GameInformation.Instance.GetShipData(shipIndex).GetUpgradeCostFrom(_intShipLevel - 1);
-        _intShipPower = (int)GameInformation.Instance.GetShipData(shipIndex).GetPower(_intShipLevel - 1);
+        int minLevel = Mathf.Max(1, _intShipLevel);
+        DOShipData shipData = GameInformation.Instance.GetShipData(shipIndex);
+        _intShipCost = (int)shipData.GetUpgradeCostFrom(_intShipLevel);
+        _intShipPower = (int)shipData.GetPower(minLevel - 1);
+        _strCostCurrency = "gold";
         //Level
-        _txtShipLevel.text = "Level " + _intShipLevel;
+        _txtShipLevel.text = "Level " + minLevel;
         _txtShipPower.text = "Power " + _intShipPower;
         //Button
         List<PurchaseResourceButtonManager.Reward> rewards = new List<PurchaseResourceButtonManager.Reward>();
@@ -81,13 +85,15 @@ public class TabShipController : MonoBehaviour
         _upgradeButton.gameObject.SetActive(showUpgradeButton);
         if (showPurchaseButton)
         {
-            _purchaseButton.SetCost("diamond", _intShipCost);
+            _intShipCost = (int)shipData.ShipCost;
+            _strCostCurrency = shipData.ShipCostCurrency;
+            _purchaseButton.SetCost(_strCostCurrency, _intShipCost);
             rewards.Add(new PurchaseResourceButtonManager.Reward("diamond", 3));
             _purchaseButton.SetReward(rewards);
         }
         if (showUpgradeButton)
         {
-            _upgradeButton.SetCost("gold", _intShipCost);
+            _upgradeButton.SetCost(_strCostCurrency, _intShipCost);
             rewards.Add(new PurchaseResourceButtonManager.Reward("gold", 3));
             _upgradeButton.SetReward(rewards);
         }

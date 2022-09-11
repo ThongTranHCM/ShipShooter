@@ -22,7 +22,7 @@ MonoBehaviour:
     type: 3}
   materialShip: {fileID: 2100000, guid: cb740b72b7f185d4ea039062fc2dc125, type: 2}
   _buyCost: 0
-  _buyCurrency: 
+  _buyCurrency: diamond
   _maxLevel: 100
   _upgradeCosts:
   - 0
