@@ -64,11 +64,12 @@ public class RewardFragmentManager : MonoBehaviour
                     DataManager.Instance.playerData.Coin -= RequireAmount;
                     break;
                 case "diamond":
-                    DataManager.Instance.playerData.Coin -= RequireAmount;
+                    DataManager.Instance.playerData.Diamond -= RequireAmount;
                     break;
                 default:
                     return false;
             }
+            DataManager.isChangeCurrency = true;
             DataManager.Save();
             foreach((string,int) reward in Rewards){
                 AddReward(reward.Item1, reward.Item2);
@@ -76,7 +77,7 @@ public class RewardFragmentManager : MonoBehaviour
             GetReward();
             return true;
         } else {
-            //Get More Resource;
+            BuyMoreResourceManager.Instance.OpenPopUp(RequireResource);
             return false;
         }
     }
@@ -110,7 +111,7 @@ public class RewardFragmentManager : MonoBehaviour
                     DataManager.Instance.playerData.Coin -= RequireAmount;
                     break;
                 case "diamond":
-                    DataManager.Instance.playerData.Coin -= RequireAmount;
+                    DataManager.Instance.playerData.Diamond -= RequireAmount;
                     break;
                 default:
                     return false;
@@ -123,7 +124,7 @@ public class RewardFragmentManager : MonoBehaviour
             GetBoxReward(Box);
             return true;
         } else {
-            //Get More Resource;
+            BuyMoreResourceManager.Instance.OpenPopUp(RequireResource);
             return false;
         }
     }

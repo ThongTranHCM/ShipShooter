@@ -329,6 +329,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 11400000, guid: 7204f14f4c6571044916497c4fb52b60, type: 2}
+        m_TargetAssemblyTypeName: AudioTrackScriptableObject, Assembly-CSharp
+        m_MethodName: CreateTrackSource
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: valid_button
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 4130866832364114083}
         m_TargetAssemblyTypeName: DailyDealPanelManager, Assembly-CSharp
         m_MethodName: PurchaseDeal

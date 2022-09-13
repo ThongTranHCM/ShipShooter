@@ -43552,49 +43552,6 @@ MonoBehaviour:
   - id: diamond
     amount: 1000
   box: regular_box
---- !u!1 &1283152820
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1283152822}
-  - component: {fileID: 1283152821}
-  m_Layer: 0
-  m_Name: TimeChestManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1283152821
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1283152820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca33de56c7da3054796e7663ce4ef1b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1283152822
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1283152820}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.0050044, y: -3.5485, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1289069552 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7770146361556326481, guid: 494d997fbbd0afb419f9573f2af66517,
@@ -66004,6 +65961,11 @@ PrefabInstance:
       propertyPath: tabberController
       value: 
       objectReference: {fileID: 1837222449}
+    - target: {fileID: 4645587236973407218, guid: 127d44f7d42feea449294ee43f5560b0,
+        type: 3}
+      propertyPath: purchaseResourceButtonManager
+      value: 
+      objectReference: {fileID: 1258084062}
     - target: {fileID: 4748957010613200970, guid: 127d44f7d42feea449294ee43f5560b0,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -66028,7 +65990,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1258084062}
+      objectReference: {fileID: 6150662734890041679, guid: 1cfd64077c9c5bd4baacab735686ae77,
+        type: 3}
     - target: {fileID: 4748957010613200970, guid: 127d44f7d42feea449294ee43f5560b0,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
@@ -66058,7 +66021,7 @@ PrefabInstance:
     - target: {fileID: 4748957010613200970, guid: 127d44f7d42feea449294ee43f5560b0,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: PurchaseReward
+      value: InstancePurchaseReward
       objectReference: {fileID: 0}
     - target: {fileID: 4748957010613200970, guid: 127d44f7d42feea449294ee43f5560b0,
         type: 3}
@@ -66073,7 +66036,7 @@ PrefabInstance:
     - target: {fileID: 4748957010613200970, guid: 127d44f7d42feea449294ee43f5560b0,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: PurchaseResourceButtonManager, Assembly-CSharp
+      value: TimeChestManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4748957010613200970, guid: 127d44f7d42feea449294ee43f5560b0,
         type: 3}
@@ -66410,7 +66373,8 @@ PrefabInstance:
       propertyPath: fullColor.a
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7560004674371022227, guid: 127d44f7d42feea449294ee43f5560b0, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 127d44f7d42feea449294ee43f5560b0, type: 3}
 --- !u!114 &1055665569478127158
 MonoBehaviour:
@@ -72366,6 +72330,75 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1001 &6150662733879696122
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6150662734890041676, guid: 1cfd64077c9c5bd4baacab735686ae77,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150662734890041676, guid: 1cfd64077c9c5bd4baacab735686ae77,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.0050044
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150662734890041676, guid: 1cfd64077c9c5bd4baacab735686ae77,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.5485
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150662734890041676, guid: 1cfd64077c9c5bd4baacab735686ae77,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150662734890041676, guid: 1cfd64077c9c5bd4baacab735686ae77,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150662734890041676, guid: 1cfd64077c9c5bd4baacab735686ae77,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150662734890041676, guid: 1cfd64077c9c5bd4baacab735686ae77,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150662734890041676, guid: 1cfd64077c9c5bd4baacab735686ae77,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150662734890041676, guid: 1cfd64077c9c5bd4baacab735686ae77,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150662734890041676, guid: 1cfd64077c9c5bd4baacab735686ae77,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150662734890041676, guid: 1cfd64077c9c5bd4baacab735686ae77,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6150662734890041678, guid: 1cfd64077c9c5bd4baacab735686ae77,
+        type: 3}
+      propertyPath: m_Name
+      value: TimeChestManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1cfd64077c9c5bd4baacab735686ae77, type: 3}
 --- !u!199 &6525890737634341429
 ParticleSystemRenderer:
   serializedVersion: 6
