@@ -139,24 +139,12 @@ public class MainMenuController : PanelController
         }
     }
     #endregion
-    public static void UpdateCurrencyValue()
+    #region UpdateUI
+    public static void UpdateUIBaseOnData()
     {
         if (instance != null)
         {
-            instance.UpdateCashValue();
-        }
-    }
-    public static void UpdateResourcesValue()
-    {
-        if (instance != null)
-        {
-        }
-    }
-
-    public static void UpdateProgressionValue()
-    {
-        if (instance != null)
-        {
+            instance.OnDataChange();
         }
     }
 
@@ -165,6 +153,15 @@ public class MainMenuController : PanelController
         _txtCoin.text = DataManager.Instance.playerData.Coin.ToString();
         _txtDiamond.text = DataManager.Instance.playerData.Diamond.ToString();
     }
+    public override void OnDataChange()
+    {
+        base.OnDataChange();
+        if (DataManager.isChangeCurrency)
+        {
+            UpdateCashValue();
+        }
+    }
+    #endregion
 
     #region ShortCut to screen
 

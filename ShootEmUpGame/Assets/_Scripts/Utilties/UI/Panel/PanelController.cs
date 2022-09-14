@@ -281,6 +281,21 @@ public class PanelController : MonoBehaviour
         panel.presentingPanel = null;
         this.presentedPanel = null;
     }
+
+    public virtual void OnDataChange()
+    {
+        for (int i = 0; i < childPanelControllers.Count; i++)
+        {
+            childPanelControllers[i].OnDataChange();
+        }
+    }
+    public virtual void OnReload()
+    {
+        for (int i = 0; i < childPanelControllers.Count; i++)
+        {
+            childPanelControllers[i].OnReload();
+        }
+    }
     #endregion
 
     #region ANIMATION HELPER

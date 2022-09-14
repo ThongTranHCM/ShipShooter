@@ -152,20 +152,12 @@ public class DataManager
         {
             Debug.LogError("Saving ");
             isSaving = false;
-            if (isChangeCurrency)
+            if (isChangeCurrency || isChangeResources || isChangeProgress)
             {
+                MainMenuController.UpdateUIBaseOnData();
                 isChangeCurrency = false;
-                MainMenuController.UpdateCurrencyValue();
-            }
-            if (isChangeResources)
-            {
                 isChangeResources = false;
-                MainMenuController.UpdateResourcesValue();
-            }
-            if (isChangeProgress)
-            {
                 isChangeProgress = false;
-                MainMenuController.UpdateProgressionValue();
             }
         }
     }
