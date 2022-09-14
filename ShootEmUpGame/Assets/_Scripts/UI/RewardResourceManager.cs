@@ -79,7 +79,7 @@ public class RewardResourceManager : MonoBehaviour
             GetReward();
             return true;
         } else {
-            //Get More Resource;
+            BuyMoreResourceManager.Instance.OpenPopUp(RequireResource);
             return false;
         }
     }
@@ -130,7 +130,7 @@ public class RewardResourceManager : MonoBehaviour
             GetBoxReward(Box);
             return true;
         } else {
-            //Get More Resource;
+            BuyMoreResourceManager.Instance.OpenPopUp(RequireResource);
             return false;
         }
     }
