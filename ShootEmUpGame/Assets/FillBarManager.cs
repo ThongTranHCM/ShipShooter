@@ -43,7 +43,9 @@ public class FillBarManager : MonoBehaviour
         fillImage.color = borderImage.color = baseColor;
         animatedValue = value;
         didInit = true;
-        txtProgress.Install(this);
+        if(txtProgress != null){
+            txtProgress.Install(this);
+        }       
         SetFillBar(value);
     }
 

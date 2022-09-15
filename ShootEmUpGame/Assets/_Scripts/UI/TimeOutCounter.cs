@@ -8,37 +8,30 @@ public class TimeOutCounter : MonoBehaviour
 {
     [SerializeField]
     private TextMeshProUGUI _textMeshProCounter;
-    private LowPassFilter _lowPassDif;
-    private float _value = 9.9f;
-    private float _roundValue;
+    private float _value = 6.9f;
+    private int _roundValue;
+    private bool _end = false;
     // Start is called before the first frame update
     void Start()
     {
-        _roundValue = Mathf.Floor(_value);
-        _lowPassDif = new LowPassFilter(0.1f,0);
+        _roundValue = Mathf.FloorToInt(_value);
+        StartCoroutine(CountDown());
     }
 
-    void UpdateValue(){
-        _value -= Time.unscaledDeltaTime;
-        _value = Mathf.Max(_value,0);
-        float dif = _roundValue - Mathf.Floor(_value);
-        _roundValue -= dif;
-        _textMeshProCounter.text = _roundValue.ToString();
-        _lowPassDif.Input(dif);
-        float lowScale = _lowPassDif.Output();
-        this.transform.localScale = Vector3.one * (1 + 0.5f * lowScale / _lowPassDif.GetAlpha());
-    }
-
-    void EndCounter(){
-        return;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        UpdateValue();
-        if(Mathf.Floor(_value) == 0){
-            EndCounter();
+    IEnumerator CountDown(){
+        while(_roundValue != 0){
+            _value -= Time.unscaledDeltaTime;
+            _value = Mathf.Max(_value,0);
+            int dif = _roundValue - Mathf.FloorToInt(_value);
+            if( dif > 0){
+                LeanTween.scale(_textMeshProCounter.gameObject, Vector3.one, 0.0f);
+                LeanTween.scale(_textMeshProCounter.gameObject, Vector3.one * 1.5f, 0.25f).setEase(LeanTweenType.punch);
+            }
+            _roundValue -= dif;
+            _textMeshProCounter.text = Mathf.Max(_roundValue - 1, 0).ToString();
+            yield return Yielder.Get(Time.unscaledDeltaTime);
         }
+        GamePlayManager.Instance.LoseGame();
+        yield return null;
     }
 }

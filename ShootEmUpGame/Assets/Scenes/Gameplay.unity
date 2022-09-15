@@ -11067,7 +11067,7 @@ PrefabInstance:
     - target: {fileID: 5189077119675521811, guid: 9512f62e3fc75ff4bb11e9b614c98095,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: QuitGame
+      value: LoseGame
       objectReference: {fileID: 0}
     - target: {fileID: 5189077119675521811, guid: 9512f62e3fc75ff4bb11e9b614c98095,
         type: 3}
@@ -28123,6 +28123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67bb68e886118554790da89d35b2d797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _shipController: {fileID: 0}
   addOnEquipData: {fileID: 11400000, guid: 06fe93fcdb52de34cab5227327f3f64e, type: 2}
   _onHitManager: {fileID: 1276046024}
   _gunData: {fileID: 11400000, guid: 6118153bd39ab9e4ea44e6c36e49a8b6, type: 2}

@@ -129,7 +129,7 @@ public class GamePlayManager : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    public void GameOver(){
+    public void ShowGameOver(){
         LTSeq seq = LeanTween.sequence();
         seq.append(3.0f);
         seq.append(() => {
@@ -142,10 +142,7 @@ public class GamePlayManager : MonoBehaviour
         yield return StartCoroutine(_levelDesign.StartGame());
         yield return StartCoroutine(_levelDesign.InstallWaves());
         yield return StartCoroutine(_levelDesign.EndGame());
-        DataManager.Instance.playerData.Coin += GamePlayManager.Instance.Collection.gold;
-        DataManager.Instance.playerData.Diamond += 2;
-        RewardResourceManager.Instance.AddGold(GamePlayManager.Instance.Collection.gold);
-        RewardResourceManager.Instance.AddDiamond(2);
+        
         DataManager.Save();
         SceneLoader.LoadLevel(Constants.SCENENAME_MainMenu);
     }
@@ -159,6 +156,18 @@ public class GamePlayManager : MonoBehaviour
         yield return new WaitForSeconds(3);
         UIManager.PlayLevelEnd();
         yield return new WaitForSeconds(4.5f);
+    }
+
+    public void RewardCollect(){
+        RewardResourceManager.Instance.AddGold(GamePlayManager.Instance.Collection.gold);
+    }
+
+    public void LoseGame(){
+        _levelDesign.LoseGame();
+    }
+
+    public IEnumerator OutOfLife(){
+        yield return new WaitForSeconds(3);
     }
 
     void OnDestroy()

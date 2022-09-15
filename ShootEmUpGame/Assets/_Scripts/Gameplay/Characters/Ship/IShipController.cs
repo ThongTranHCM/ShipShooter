@@ -64,7 +64,7 @@ namespace ThongNguyen.PlayerController
             GamePlayManager.Instance.UIManager.UpdateLives((int)currentHealth);
             if(currentHealth == 0){
                 SoundManager.Instance.PlaySFX("player_gothit");
-                GamePlayManager.Instance.GameOver();
+                GamePlayManager.Instance.ShowGameOver();
             } else {
                 GamePlayManager.Instance.UIManager.PlayGotHit();
                 SoundManager.Instance.PlaySFX("player_gothit");
