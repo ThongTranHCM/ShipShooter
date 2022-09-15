@@ -8,17 +8,6 @@ using ThongNguyen.PlayerController;
 [CreateAssetMenu(fileName = "Data", menuName = "Data/EndlessLevelDesignData", order = 1)]
 public class EndlessLevelDesignData : LevelDesignData
 {
-    [System.Serializable]
-    public class AddOnDropPool{
-        [SerializeField]
-        private List<AddOnEquipData.AddOnType> addOnDropList;
-        public AddOnDropPool(List<AddOnEquipData.AddOnType> AddOnDropList){
-            addOnDropList = AddOnDropList;
-        }
-        public AddOnEquipData.AddOnType GetRandomAddOn(){
-            return addOnDropList[Random.Range(0, addOnDropList.Count)];
-        }
-    }
     [SerializeField]
     private List<EnemyData> enemyDataPool;
     [SerializeField]
@@ -33,10 +22,6 @@ public class EndlessLevelDesignData : LevelDesignData
     private float startDensity = 1;
     [SerializeField]
     private float endDensity = 1;
-    [SerializeField]
-    private List<AddOnDropPool> addOnDropPoolList;
-    [SerializeField]
-    private float dropRateMultiplier = 1;
     [SerializeField]
     private float bonusProb = 1;
     [SerializeField]
@@ -55,8 +40,7 @@ public class EndlessLevelDesignData : LevelDesignData
                                 float StartHP, 
                                 float EndHP, 
                                 float StartDense, 
-                                float EndDense, 
-                                List<AddOnDropPool> AddOnDropPoolList,
+                                float EndDense,
                                 float DropRate){
         enemyDataPool = EnemyDataPool;
         numWaveList = NumWave;
@@ -65,12 +49,9 @@ public class EndlessLevelDesignData : LevelDesignData
         endHealthMultiplier = EndHP;
         startDensity = StartDense;
         endDensity = EndDense;
-        addOnDropPoolList = AddOnDropPoolList;
-        dropRateMultiplier = DropRate;
         generatedWaveList = new List<WaveManager>();
         generatedDensityList = new List<float>();
         remainIndexList = new List<int>();
-        generatedAddOnDropList = new List<AddOnEquipData.AddOnType>();
         curWave = 0;
         curDrop = 0;
     }
@@ -82,26 +63,27 @@ public class EndlessLevelDesignData : LevelDesignData
                                 float EndHP, 
                                 float StartDense, 
                                 float EndDense, 
-                                List<AddOnDropPool> AddOnDropPoolList,
                                 float DropRate){
         EndlessLevelDesignData data = ScriptableObject.CreateInstance<EndlessLevelDesignData>();
-        data.Init(EnemyDataPool, NumWave, BaseHP, StartHP, EndHP, StartDense, EndDense, AddOnDropPoolList, DropRate);
+        data.Init(EnemyDataPool, NumWave, BaseHP, StartHP, EndHP, StartDense, EndDense, DropRate);
         return data;
     }
 #endif
     public override IEnumerator InstallWaves()
     {
         GenerateWaves();
-        GeneratedAddOnDrops();
         Debug.LogError("Install");
         float denseSum = 0;
-        while(curWave < generatedWaveList.Count){
+        while(!IsCompleted()){
             denseSum = 0;
             remainIndexList.RemoveAll(x => generatedWaveList[x].IsCleared());
             foreach(int remainIndex in remainIndexList){
                 denseSum += Mathf.Exp(generatedDensityList[remainIndex]) * generatedWaveList[remainIndex].RemainPercentage();
             }
             if(denseSum + Mathf.Exp(generatedDensityList[curWave]) <= 1){
+                if( curWave >= generatedWaveList.Count){
+                    AddWave(curWave);
+                }
                 generatedWaveList[curWave].SpawnWave(ZOffset, padding);
                 remainIndexList.Add(curWave);
                 denseSum += generatedDensityList[curWave];
@@ -109,18 +91,10 @@ public class EndlessLevelDesignData : LevelDesignData
             }
             yield return Yielder.Get(Time.fixedDeltaTime);
         }
-        while(!IsCompleted()){
-            yield return Yielder.Get(Time.fixedDeltaTime);
-        }
     }
 
     public bool IsCompleted(){
-        foreach(WaveManager wave in generatedWaveList){
-            if(!wave.IsCleared()){
-                return false;
-            }
-        }
-        return true;
+        return false;
     }
 
     public override float GetProgress(){
@@ -146,26 +120,13 @@ public class EndlessLevelDesignData : LevelDesignData
         }
     }
 
-    private void GeneratedAddOnDrops(){
-        curDrop = 0;
-        generatedAddOnDropList = new List<AddOnEquipData.AddOnType>();
-        foreach(AddOnDropPool pool in addOnDropPoolList){
-            generatedAddOnDropList.Add(pool.GetRandomAddOn());
-        }
-        Debug.Log(generatedAddOnDropList.Count);
-    }
-
-    public override GameObject DropOnKill(ThongNguyen.PlayerController.IEnemyController enemy){
-        int index = Mathf.FloorToInt((generatedAddOnDropList.Count + 2) * GetProgress() * dropRateMultiplier);
-        if (index >= 1 && index <= generatedAddOnDropList.Count && curDrop < index) {
-            ItemController item = GamePlayManager.Instance.ItemSpawner.CreateAddOn(generatedAddOnDropList[index - 1], enemy.transform.position);
-            item.onOutCamera += () =>
-            {
-                curDrop -= 1;
-            };
-            curDrop += 1;
-        }
-        return null;
+    private void AddWave(int i){
+        float density = Mathf.Log(1 / endDensity);
+        EnemyData randomEnemyData = enemyDataPool[Random.Range(0, enemyDataPool.Count)];
+        PatternData randomPatternData = randomEnemyData.PatternDataList[Random.Range(0, randomEnemyData.PatternDataList.Count)];
+        WaveManager randomWave = new WaveManager(randomPatternData, randomEnemyData, Mathf.Lerp(startHealthMultiplier, endHealthMultiplier, (float)i / numWaveList), 0);
+        generatedDensityList.Add(density);
+        generatedWaveList.Add(randomWave);
     }
 
     public override List<EnemyData> GetEnemyDataList(){
@@ -186,5 +147,10 @@ public class EndlessLevelDesignData : LevelDesignData
         DataManager.Instance.LastLevelWin++;
         GamePlayManager.Instance.RewardCollect();
         return GamePlayManager.Instance.EndGame();
+    }
+
+    public override void LoseGame(){
+        GamePlayManager.Instance.RewardCollect();
+        GamePlayManager.Instance.QuitGame();
     }
 }
