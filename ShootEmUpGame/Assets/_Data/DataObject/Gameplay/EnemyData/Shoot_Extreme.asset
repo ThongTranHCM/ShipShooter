@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1661a6d8f50d09f4795fe9b02ca78da1, type: 3}
   m_Name: Shoot_Extreme
   m_EditorClassIdentifier: 
-  health: 2
+  health: 3.5
   attack: 1
   prefab: {fileID: 5753268738935335257, guid: 6655bccbbbc19c8479a0cf7254de3168, type: 3}
   gunObject: {fileID: 590637298946094918, guid: 5aecd95a8c4d690438498986b30c7c30,
