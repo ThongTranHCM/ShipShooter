@@ -5,8 +5,8 @@ using UnityEditor;
 using UnityEngine;
 using ThongNguyen.PlayerController;
 
-[CreateAssetMenu(fileName = "Data", menuName = "Data/RandomLevelDesignData", order = 1)]
-public class RandomLevelDesignData : LevelDesignData
+[CreateAssetMenu(fileName = "Data", menuName = "Data/EndlessLevelDesignData", order = 1)]
+public class EndlessLevelDesignData : LevelDesignData
 {
     [System.Serializable]
     public class AddOnDropPool{
@@ -75,7 +75,7 @@ public class RandomLevelDesignData : LevelDesignData
         curDrop = 0;
     }
 #if UNITY_EDITOR
-    public static RandomLevelDesignData CreateInstance(List<EnemyData> EnemyDataPool,
+    public static EndlessLevelDesignData CreateInstance(List<EnemyData> EnemyDataPool,
                                 int NumWave, 
                                 float BaseHP, 
                                 float StartHP, 
@@ -84,7 +84,7 @@ public class RandomLevelDesignData : LevelDesignData
                                 float EndDense, 
                                 List<AddOnDropPool> AddOnDropPoolList,
                                 float DropRate){
-        RandomLevelDesignData data = ScriptableObject.CreateInstance<RandomLevelDesignData>();
+        EndlessLevelDesignData data = ScriptableObject.CreateInstance<EndlessLevelDesignData>();
         data.Init(EnemyDataPool, NumWave, BaseHP, StartHP, EndHP, StartDense, EndDense, AddOnDropPoolList, DropRate);
         return data;
     }
