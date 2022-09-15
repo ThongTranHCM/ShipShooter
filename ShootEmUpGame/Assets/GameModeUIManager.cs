@@ -35,19 +35,6 @@ public class GameModeUIManager : MonoBehaviour
         PlayShipTransitionAnimation();
         return;
     }
-    public void OnNextChallengeButton()
-    {
-        shipIndex = (shipIndex + 1) % shipCount;
-        PlayShipTransitionAnimation();
-        return;
-    }
-
-    public void OnPreviousChallengeButton()
-    {
-        shipIndex = (shipIndex + shipCount - 1) % shipCount;
-        PlayShipTransitionAnimation();
-        return;
-    }
     #endregion
 
     public void Start()

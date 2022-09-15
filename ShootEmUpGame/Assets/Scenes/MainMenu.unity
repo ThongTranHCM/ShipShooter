@@ -18714,20 +18714,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 329368116996381154, guid: 494d997fbbd0afb419f9573f2af66517,
-        type: 3}
-      propertyPath: m_Name
-      value: PreviousChallengeButton
-      objectReference: {fileID: 0}
     - target: {fileID: 381391302435953818, guid: 494d997fbbd0afb419f9573f2af66517,
         type: 3}
       propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 655865612961068775, guid: 494d997fbbd0afb419f9573f2af66517,
-        type: 3}
-      propertyPath: m_Name
-      value: NextChallengeButton
       objectReference: {fileID: 0}
     - target: {fileID: 2816351155237608378, guid: 494d997fbbd0afb419f9573f2af66517,
         type: 3}
@@ -18904,11 +18894,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-    - target: {fileID: 8329186709702844387, guid: 494d997fbbd0afb419f9573f2af66517,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OnNextChallengeButton
-      objectReference: {fileID: 0}
     - target: {fileID: 8870011460946351432, guid: 494d997fbbd0afb419f9573f2af66517,
         type: 3}
       propertyPath: _listImgAddOns.Array.data[0]
@@ -18943,11 +18928,6 @@ PrefabInstance:
         type: 3}
       propertyPath: _listTxtLevelAddOns.Array.size
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9192609018724203457, guid: 494d997fbbd0afb419f9573f2af66517,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OnPreviousChallengeButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 494d997fbbd0afb419f9573f2af66517, type: 3}

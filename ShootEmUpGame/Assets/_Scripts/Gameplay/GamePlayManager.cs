@@ -109,23 +109,22 @@ public class GamePlayManager : MonoBehaviour
         yield return _playerManager.Install(shipIndex);
         switch (selectedMode)
         {
-            case "Normal":
-                {
-                    Debug.LogError("It's Normal");
-                    string file = "RandomLevelDesignData/" + levelIndex;
-                    _levelDesign = Resources.Load<LevelDesignData>(file);
-                }
-                break;
             case "League":
                 {
-                    Debug.LogError("No Normal. League.");
-                    _levelDesign = Level.LeagueLevelsData[levelIndex];
+                    _levelDesign = Level.GetEndlessLevelDataFromRank(levelIndex);
                 }
                 break;
             case "Challenge":
                 {
-                    Debug.LogError("Challenge mode.");
-                    _levelDesign = Level.ChallengeLevelsData[levelIndex];
+                    _levelDesign = Level.GetLevelDataFromChallengeShipAndIndex(shipIndex, levelIndex);
+                }
+                break;
+            case "Normal":
+            default:
+                {
+                    Debug.LogError("It's Normal");
+                    string file = "RandomLevelDesignData/" + levelIndex;
+                    _levelDesign = Resources.Load<LevelDesignData>(file);
                 }
                 break;
         }

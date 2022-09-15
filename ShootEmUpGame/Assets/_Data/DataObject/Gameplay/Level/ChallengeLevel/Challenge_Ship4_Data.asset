@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b1f7860f4a5f0d4586a27ab1eeeefc9, type: 3}
+  m_Name: Challenge_Ship4_Data
+  m_EditorClassIdentifier: 
+  _shipIndex: 3
+  _challengeLevels:
+  - {fileID: 11400000, guid: 0660b0f06b82fe549b412c6e06e041b5, type: 2}
+  - {fileID: 11400000, guid: e8bd56fc74b75644e8153107deead550, type: 2}
+  - {fileID: 11400000, guid: b4f56807c0bc08a4aa93ced0330541ec, type: 2}
+  - {fileID: 11400000, guid: 5f5fb949c275eac469aeffa1fb678d1b, type: 2}

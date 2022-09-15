@@ -19,8 +19,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c18a93b840daa5944bf69c2a7699356b, type: 2}
   - {fileID: 11400000, guid: 2e7dc6471c4afad44af9150201ff85f1, type: 2}
   ChallengeLevelsData:
-  - {fileID: 11400000, guid: e4e37cc7c7ae66b449ca941f0f5588c9, type: 2}
-  - {fileID: 11400000, guid: fd9b3be60b4accf47992c09ec53a8253, type: 2}
-  - {fileID: 11400000, guid: 3f35e1b5923aef8489ba2a6d7e97a4f6, type: 2}
-  - {fileID: 11400000, guid: f6c6bc30d44e81643b49e0c3166cdf4b, type: 2}
-  - {fileID: 11400000, guid: 3e7c76f743615194f97ca08dfaada009, type: 2}
+  - {fileID: 11400000, guid: 731522a4c42911e4ca6c8ec4180fcd70, type: 2}
+  - {fileID: 11400000, guid: bea41355ecb46bf4899cbbee4ad844b6, type: 2}
+  - {fileID: 11400000, guid: 000cd0d8bdcfae849a0dd68d29840fa4, type: 2}
+  - {fileID: 11400000, guid: 769f210471907fe479936833fcd32eeb, type: 2}

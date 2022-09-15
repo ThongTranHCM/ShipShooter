@@ -7,4 +7,14 @@ public class LevelData : ScriptableObject
 {
     public List<EndlessLevelDesignData> LeagueLevelsData;
     public List<ChallengeLevelDesignData> ChallengeLevelsData;
+
+    public EndlessLevelDesignData GetEndlessLevelDataFromRank(int rankIndex)
+    {
+        return LeagueLevelsData[rankIndex];
+    }
+
+    public RandomLevelDesignData GetLevelDataFromChallengeShipAndIndex(int shipId, int challengeIndex)
+    {
+        return ChallengeLevelsData[shipId].getLevelData(challengeIndex);
+    }
 }
