@@ -17,7 +17,7 @@ public class PlayerManager : MonoBehaviour
     private DOGunData _gunData;
     IEnumerator DoActionInstall(int shipIndex)
     {
-        _iLives = GamePlayManager.Instance.Level.PlayerHP;
+        _iLives = 3;
         int level = DataManager.Instance.selectedShipLevel;
         _shipController.Install(shipIndex, level);
         _shipController.gunController.CopyGunData(_gunData);

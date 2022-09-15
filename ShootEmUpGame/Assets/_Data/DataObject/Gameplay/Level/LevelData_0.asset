@@ -12,4 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f79f6cf305d1244c92d757eb6d78ab0, type: 3}
   m_Name: LevelData_0
   m_EditorClassIdentifier: 
-  PlayerHP: 3
+  LeagueLevelsData:
+  - {fileID: 11400000, guid: 2dcbaf593a5664245ab27aa1b8d2627e, type: 2}
+  - {fileID: 11400000, guid: 30fc48e09c3d26141ab7313df59bbfd5, type: 2}
+  - {fileID: 11400000, guid: 6a255c7d75e05e541b22da517c5108c3, type: 2}
+  - {fileID: 11400000, guid: c18a93b840daa5944bf69c2a7699356b, type: 2}
+  - {fileID: 11400000, guid: 2e7dc6471c4afad44af9150201ff85f1, type: 2}
+  ChallengeLevelsData:
+  - {fileID: 11400000, guid: e4e37cc7c7ae66b449ca941f0f5588c9, type: 2}
+  - {fileID: 11400000, guid: fd9b3be60b4accf47992c09ec53a8253, type: 2}
+  - {fileID: 11400000, guid: 3f35e1b5923aef8489ba2a6d7e97a4f6, type: 2}
+  - {fileID: 11400000, guid: f6c6bc30d44e81643b49e0c3166cdf4b, type: 2}
+  - {fileID: 11400000, guid: 3e7c76f743615194f97ca08dfaada009, type: 2}

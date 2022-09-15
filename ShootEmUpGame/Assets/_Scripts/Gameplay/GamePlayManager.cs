@@ -95,18 +95,40 @@ public class GamePlayManager : MonoBehaviour
     {
         int levelIndex = 1;
         int shipIndex = 0;
+        string selectedMode = "";
         if (DataManager.Instance == null)
         {
             Debug.LogError("Should Start From mainMenu. Load Level ?");
         }
         else
         {
+            selectedMode = DataManager.Instance.selectedMode;
             levelIndex = DataManager.Instance.selectedLevelIndex;
             shipIndex = DataManager.Instance.selectedShipIndex;
         }
         yield return _playerManager.Install(shipIndex);
-        string file = "RandomLevelDesignData/" + levelIndex;
-        _levelDesign = Resources.Load<LevelDesignData>(file);
+        switch (selectedMode)
+        {
+            case "Normal":
+                {
+                    Debug.LogError("It's Normal");
+                    string file = "RandomLevelDesignData/" + levelIndex;
+                    _levelDesign = Resources.Load<LevelDesignData>(file);
+                }
+                break;
+            case "League":
+                {
+                    Debug.LogError("No Normal. League.");
+                    _levelDesign = Level.LeagueLevelsData[levelIndex];
+                }
+                break;
+            case "Challenge":
+                {
+                    Debug.LogError("Challenge mode.");
+                    _levelDesign = Level.ChallengeLevelsData[levelIndex];
+                }
+                break;
+        }
         _uiManager.SetStageText(levelIndex);
         _collection.Install();
         yield return new WaitUntil(() => _levelDesign != null);

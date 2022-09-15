@@ -5,5 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "levelData_0", menuName = "Shooter/LevelData")]
 public class LevelData : ScriptableObject
 {
-    public int PlayerHP;
+    public List<EndlessLevelDesignData> LeagueLevelsData;
+    public List<ChallengeLevelDesignData> ChallengeLevelsData;
 }

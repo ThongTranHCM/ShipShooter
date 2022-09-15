@@ -23,7 +23,7 @@ public class UIEquippedAddOns : MonoBehaviour
     {
         List<string> listStrAddOnEquiped = DataManager.Instance.addOnUserData.listAddOnEquiped;
         IAddOnData addOnData = null;
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < _listImgAddOns.Count; i++)
         {
             addOnData = GameInformation.Instance.addOnEquipData.GetAddOnData(listStrAddOnEquiped[i]);
             if (addOnData != null)
