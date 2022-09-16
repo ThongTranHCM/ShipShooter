@@ -5,6 +5,9 @@ public static class Constants
     public const string SCENENAME_GamePlay_Tutorial = "GamePlay";
     public const string SCENENAME_MainMenu = "MainMenu";
 
+    public const string MODE_Story = "Normal";
+    public const string MODE_Endless = "Endless";
+    public const string MODE_Challenge = "Challenge";
 
     public const string tagEnemy = "Enemy";
     public const string tagPlayer = "Player";

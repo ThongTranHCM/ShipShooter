@@ -109,17 +109,17 @@ public class GamePlayManager : MonoBehaviour
         yield return _playerManager.Install(shipIndex);
         switch (selectedMode)
         {
-            case "League":
+            case Constants.MODE_Endless:
                 {
                     _levelDesign = Level.GetEndlessLevelDataFromRank(levelIndex);
                 }
                 break;
-            case "Challenge":
+            case Constants.MODE_Challenge:
                 {
                     _levelDesign = Level.GetLevelDataFromChallengeShipAndIndex(shipIndex, levelIndex);
                 }
                 break;
-            case "Normal":
+            case Constants.MODE_Story:
             default:
                 {
                     Debug.LogError("It's Normal");

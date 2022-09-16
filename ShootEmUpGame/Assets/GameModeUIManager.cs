@@ -19,6 +19,8 @@ public class GameModeUIManager : MonoBehaviour
     private int shipCount;
     [SerializeField]
     private float _defaultScaleX;
+    [SerializeField]
+    private string _mode;
     private LevelDesignData levelDesignData;
     #region ButtonBehavior
 
@@ -43,7 +45,8 @@ public class GameModeUIManager : MonoBehaviour
     }
     public void Install()
     {
-        shipIndex = DataManager.Instance.LastShipIndex;
+        _mode = Constants.MODE_Story;
+        shipIndex = DataManager.Instance.GetLastShipIndex(_mode);
         shipCount = GameInformation.Instance.shipData.Count;
         InstallModel(shipIndex);
     }
