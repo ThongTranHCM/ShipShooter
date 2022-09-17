@@ -11,6 +11,7 @@ public class TabberController : PanelController
 
     public TabberButton[] tabButtons;
     public PanelController[] tabItems;
+    public Image[] tabHighlights;
     public ScrollRect scrollRect;
     public GameObject preventTouchMask;
     public UnityEngine.UI.Extensions.ScrollSnap scrollSnap;
@@ -58,7 +59,9 @@ public class TabberController : PanelController
     {
         base.PanelDidAppear();
         if (_isInited)
+        {
             tabItems[currentTab].PanelDidAppear();
+        }
     }
 
     public override void PanelWillDisappear()
@@ -74,7 +77,9 @@ public class TabberController : PanelController
     {
         base.PanelDidDisappear();
         if (_isInited)
+        {
             tabItems[currentTab].PanelDidDisappear();
+        }
     }
 
     #endregion
@@ -185,11 +190,13 @@ public class TabberController : PanelController
         {
             if (currentTab == i)
             {
+                tabHighlights[i].gameObject.SetActive(true);
                 _tabButtonWidth[i] = _highlightedPreferedTabWidth;
                 tabButtons[i].SetTabState(TabberButton.TabButtonState.Highlighted);
             }
             else
             {
+                tabHighlights[i].gameObject.SetActive(false);
                 _tabButtonWidth[i] = _normalPreferedTabWidth;
                 tabButtons[i].SetTabState(TabberButton.TabButtonState.Normal);
             }
