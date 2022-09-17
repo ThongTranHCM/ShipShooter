@@ -1303,6 +1303,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 936882140703196459}
+  - component: {fileID: 3598231562685725532}
   m_Layer: 5
   m_Name: TabGame
   m_TagString: Untagged
@@ -1331,6 +1332,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3598231562685725532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6988797718976921617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82a7edcda2829a246a447d13b9929141, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7008037713416269739
 GameObject:
   m_ObjectHideFlags: 0
@@ -1696,15 +1709,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9512f62e3fc75ff4bb11e9b614c98095, type: 3}
---- !u!224 &5486842333345380152 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5189077119675521808, guid: 9512f62e3fc75ff4bb11e9b614c98095,
-    type: 3}
-  m_PrefabInstance: {fileID: 299032174474931240}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &5486842333153835734 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5189077119330162430, guid: 9512f62e3fc75ff4bb11e9b614c98095,
+    type: 3}
+  m_PrefabInstance: {fileID: 299032174474931240}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &5486842333345380152 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5189077119675521808, guid: 9512f62e3fc75ff4bb11e9b614c98095,
     type: 3}
   m_PrefabInstance: {fileID: 299032174474931240}
   m_PrefabAsset: {fileID: 0}

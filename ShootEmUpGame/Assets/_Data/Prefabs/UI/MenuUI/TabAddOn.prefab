@@ -1833,6 +1833,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 296984671512523890}
+  - component: {fileID: 2577793459069322005}
   m_Layer: 5
   m_Name: TabAddOn
   m_TagString: Untagged
@@ -1862,6 +1863,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 600, y: 1024}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2577793459069322005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5032827208079642285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bf55dc03988c914999e94ba23b6a162, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5097525527914239523
 GameObject:
   m_ObjectHideFlags: 0
@@ -2708,6 +2721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countDownText: {fileID: 1808441187951208050}
+  tabberController: {fileID: 0}
 --- !u!1 &5806784189365357693
 GameObject:
   m_ObjectHideFlags: 0
