@@ -182,9 +182,6 @@ public class TimeChestManager : MonoBehaviour
     public void InitContent(){
         if(TimeChestContentManager.Instance != null && data != null){
             UpdateMissionActive();
-            int timeLeft = GetCurTime() - data.prevStartTime;
-            int interval = GameInformation.Instance.timeChestInterval;
-            TimeChestContentManager.Instance.SetFillBar(timeLeft, interval);
             TimeChestContentManager.Instance.UpdatePurchaseButton(GetDiamondCost());
             TimeChestContentManager.Instance.UpdateMissionPanel(data.missionList);
         }
