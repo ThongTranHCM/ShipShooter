@@ -22,8 +22,6 @@ public class PurchaseResourceButtonManager : ResourceSinkButtonManager
     private List<Reward> rewards;
     [SerializeField]
     private string box;
-    [SerializeField]
-    private UnityEngine.UI.Image _imgBg;
     
     public void SetReward(List<Reward> Rewards){
         rewards = Rewards;

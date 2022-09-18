@@ -21,6 +21,16 @@ public class GameInformation : MonoBehaviour
         }
     }
 
+    [System.Serializable]
+    public class MaterialStorageData
+    {
+        public Material matActionBtn;
+        public Material matPositiveBtn;
+        public Material matNegativeBtn;
+        public Material matInvalidBtn;
+    }
+    public MaterialStorageData materialData;
+
     public AddOnEquipData addOnEquipData;
     public List<DOShipData> shipData;
     public int dailyDealInterval = 5;

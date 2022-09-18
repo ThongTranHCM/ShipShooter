@@ -69,6 +69,23 @@ public class PlayerData
     }
     private int diamond;
 
+    public bool CheckPurchaseable(string RequireResource, int RequireAmount)
+    {
+        int check = 0;
+        switch (RequireResource)
+        {
+            case "gold":
+                check = Coin;
+                break;
+            case "diamond":
+                check = Diamond;
+                break;
+            default:
+                return false;
+        }
+        return (check >= RequireAmount);
+    }
+
     public string name = string.Empty;
     public string avatarUrl = string.Empty;
     public int level;

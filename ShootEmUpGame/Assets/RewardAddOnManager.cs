@@ -45,18 +45,7 @@ public class RewardAddOnManager : MonoBehaviour
     }
 
     public bool Purchase(string RequireResource, int RequireAmount, List<string> AddOns){
-        int check = 0;
-        switch( RequireResource ){
-            case "gold":
-                check = DataManager.Instance.playerData.Coin;
-                break;
-            case "diamond":
-                check = DataManager.Instance.playerData.Diamond;
-                break;
-            default:
-                return false;
-        }
-        if(check >= RequireAmount){
+        if(DataManager.Instance.playerData.CheckPurchaseable(RequireResource, RequireAmount)){
             switch( RequireResource ){
                 case "gold":
                     DataManager.Instance.playerData.Coin -= RequireAmount;
@@ -92,18 +81,7 @@ public class RewardAddOnManager : MonoBehaviour
     }
 
     public bool BoxPurchase(string Box, string RequireResource, int RequireAmount, List<string> AddOns){
-        int check = 0;
-        switch( RequireResource ){
-            case "gold":
-                check = DataManager.Instance.playerData.Coin;
-                break;
-            case "diamond":
-                check = DataManager.Instance.playerData.Diamond;
-                break;
-            default:
-                return false;
-        }
-        if(check >= RequireAmount){
+        if(DataManager.Instance.playerData.CheckPurchaseable(RequireResource, RequireAmount)){
             switch( RequireResource ){
                 case "gold":
                     DataManager.Instance.playerData.Coin -= RequireAmount;

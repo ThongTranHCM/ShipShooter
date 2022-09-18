@@ -43,13 +43,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d596b5bd2226e194ea7d3040a5ed2a3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  materialData:
+    matActionBtn: {fileID: 2100000, guid: 35671c2cf1ba85a43a65a25b049902b1, type: 2}
+    matPositiveBtn: {fileID: 2100000, guid: d814c12828ffa22498c5a7e4dcc98ab5, type: 2}
+    matNegativeBtn: {fileID: 2100000, guid: 50d203bbb833a9f4dbe9db1b344dcc02, type: 2}
+    matInvalidBtn: {fileID: 2100000, guid: ad149a49812e3b94c9186a3d1dca6bf0, type: 2}
   addOnEquipData: {fileID: 11400000, guid: 06fe93fcdb52de34cab5227327f3f64e, type: 2}
   shipData:
   - {fileID: 11400000, guid: b2908ca3b06bf8849bd142011bd12f7d, type: 2}
   - {fileID: 11400000, guid: 21ea835b769dea14783931512bd019ad, type: 2}
   - {fileID: 11400000, guid: 187e61bf987c08c479f2f6898db99e74, type: 2}
   - {fileID: 11400000, guid: 3de45a3373cdf3248afb3e1775f566e2, type: 2}
-  shipProgressData: {fileID: 11400000, guid: c3d930e4053dd4747958f8f732700bf2, type: 2}
   dailyDealInterval: 10
   dailyOfferInterval: 10
   timeChestInterval: 10
