@@ -35,7 +35,7 @@ MonoBehaviour:
     _isUnlocked: 1
   - _addOnType: 11
     _addOnSpr: {fileID: 21300000, guid: 8f85d8ce213015144a117d359c69fcbd, type: 3}
-    _baseValue: 1
+    _baseValue: 0.5
     _increaseValue: 0.01
     _spawnGun: {fileID: 1304022121234124281, guid: d1479ba53edf2274f9acb2df5680b1e1,
       type: 3}
@@ -45,7 +45,7 @@ MonoBehaviour:
     _isUnlocked: 1
   - _addOnType: 10
     _addOnSpr: {fileID: 21300000, guid: 632776cb97988674c8daa001a86108a1, type: 3}
-    _baseValue: 1
+    _baseValue: 0.5
     _increaseValue: 0.01
     _spawnGun: {fileID: 590637298946094918, guid: 7d6c0748f01cf7a4ba768e7c6739d272,
       type: 3}
@@ -55,7 +55,7 @@ MonoBehaviour:
     _isUnlocked: 1
   - _addOnType: 100
     _addOnSpr: {fileID: 21300000, guid: 6c0ecd4d6b9ba4d47af35d8490747074, type: 3}
-    _baseValue: 1
+    _baseValue: 0.5
     _increaseValue: 0.01
     _spawnGun: {fileID: 5791880357596083961, guid: d5bfa3923a2b8fc408249192e2d5447e,
       type: 3}
@@ -66,7 +66,7 @@ MonoBehaviour:
     _isUnlocked: 1
   - _addOnType: 102
     _addOnSpr: {fileID: 21300000, guid: a8424471eea7eef47838e0346fa5409c, type: 3}
-    _baseValue: 1
+    _baseValue: 0.5
     _increaseValue: 0.01
     _spawnGun: {fileID: 4119045906119738281, guid: c3f7845408977574b8a86526ca94867b,
       type: 3}
@@ -77,7 +77,7 @@ MonoBehaviour:
     _isUnlocked: 1
   - _addOnType: 104
     _addOnSpr: {fileID: 21300000, guid: 75c6c57e72a33de42bcf6efefad9c957, type: 3}
-    _baseValue: 1
+    _baseValue: 0.5
     _increaseValue: 0.01
     _spawnGun: {fileID: 8273222519469458348, guid: ba75abf797287944ab834b8e6f6e9179,
       type: 3}
@@ -88,7 +88,7 @@ MonoBehaviour:
     _isUnlocked: 1
   - _addOnType: 105
     _addOnSpr: {fileID: 21300000, guid: c9c5499f2f571d14381f63343c1fdba7, type: 3}
-    _baseValue: 1
+    _baseValue: 0.5
     _increaseValue: 0.01
     _spawnGun: {fileID: 4260338879569971468, guid: 0c925e58ce9e369479c0a961ba7cd637,
       type: 3}
@@ -99,7 +99,7 @@ MonoBehaviour:
     _isUnlocked: 1
   - _addOnType: 204
     _addOnSpr: {fileID: 21300000, guid: e06eebf644bc5c84cb5d23b9d62ee3cd, type: 3}
-    _baseValue: 1
+    _baseValue: 0.5
     _increaseValue: 0.01
     _spawnGun: {fileID: 0}
     _spawnGunData: {fileID: 0}
@@ -109,7 +109,7 @@ MonoBehaviour:
     _isUnlocked: 1
   - _addOnType: 200
     _addOnSpr: {fileID: 21300000, guid: e06eebf644bc5c84cb5d23b9d62ee3cd, type: 3}
-    _baseValue: 1
+    _baseValue: 0.5
     _increaseValue: 0.01
     _spawnGun: {fileID: 0}
     _spawnGunData: {fileID: 0}
@@ -130,7 +130,7 @@ MonoBehaviour:
     _isUnlocked: 1
   - _addOnType: 202
     _addOnSpr: {fileID: 21300000, guid: 8d3f1901246a92d4e9ba3f2a8b1c1c2c, type: 3}
-    _baseValue: 1
+    _baseValue: 0.5
     _increaseValue: 0.01
     _spawnGun: {fileID: 0}
     _spawnGunData: {fileID: 0}
@@ -140,7 +140,7 @@ MonoBehaviour:
     _isUnlocked: 1
   - _addOnType: 203
     _addOnSpr: {fileID: 21300000, guid: f83e9462d8dbe654b9dc1ea2294dba0d, type: 3}
-    _baseValue: 1
+    _baseValue: 0.5
     _increaseValue: 0.01
     _spawnGun: {fileID: 3381584117447534982, guid: bc4e0ebee479dbd468d276dcd921bba0,
       type: 3}
@@ -151,7 +151,7 @@ MonoBehaviour:
     _isUnlocked: 1
   - _addOnType: 300
     _addOnSpr: {fileID: 21300000, guid: e06eebf644bc5c84cb5d23b9d62ee3cd, type: 3}
-    _baseValue: 1
+    _baseValue: 0.5
     _increaseValue: 0.01
     _spawnGun: {fileID: 0}
     _spawnGunData: {fileID: 0}

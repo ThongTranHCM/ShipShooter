@@ -49,9 +49,9 @@ MonoBehaviour:
   damageRatio:
     damageSources: 000000000100000002000000e8030000
     ratios:
-    - 100
+    - 50
     - 5
-    - 5
+    - 50
     - 0
-    triggerDamageRatio: 1000
-  _gunDurationActive: 2
+    triggerDamageRatio: 3600
+  _gunDurationActive: 6

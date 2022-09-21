@@ -24,7 +24,7 @@ MonoBehaviour:
     rotSpeed: 0
     timeFollowTarget: 0
     _applyEfect:
-      attackPower: 0.05
+      attackPower: 3
       ratioDamage: 0
       criticalRate: 0
       criticalDamage: 0
