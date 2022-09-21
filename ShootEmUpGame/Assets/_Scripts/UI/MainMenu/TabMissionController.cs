@@ -6,16 +6,13 @@ using UnityEngine.UI;
 public class TabMissionController : PanelController
 {
     [SerializeField]
-    private Button _btnTimeChest;
-
-    [SerializeField]
-    private Image _imgBtnTimeChest;
+    private PurchaseResourceButtonManager _btnTimeChest;
     public override void OnDataChange()
     {
         base.OnDataChange();
         if (DataManager.isChangeCurrency)
         {
-            //_btnClaimDailyOffer.set
+            _btnTimeChest.Refresh();
         }
     }
 }

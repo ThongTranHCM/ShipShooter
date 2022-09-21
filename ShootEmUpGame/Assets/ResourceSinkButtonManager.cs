@@ -26,6 +26,11 @@ public abstract class ResourceSinkButtonManager : MonoBehaviour
         costId = Id;
         costAmount = Amount;
         costText.SetValue(Id, Amount.ToString());
+        Refresh();
+    }
+
+    public void Refresh()
+    {
         if (_imgBg != null)
         {
             if (DataManager.Instance.playerData.CheckPurchaseable(costId, costAmount))
@@ -37,5 +42,5 @@ public abstract class ResourceSinkButtonManager : MonoBehaviour
                 _imgBg.material = _matNotEnough;
             }
         }
-    } 
+    }
 }
