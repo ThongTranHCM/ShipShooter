@@ -78,10 +78,10 @@ MonoBehaviour:
   damageRatio:
     damageSources: 000000000100000002000000
     ratios:
-    - 100
+    - 50
     - 0
-    - 100
-    triggerDamageRatio: 400
+    - 50
+    triggerDamageRatio: 200
   _onHitObject: {fileID: 0}
   _effectData:
     attackPower: 0

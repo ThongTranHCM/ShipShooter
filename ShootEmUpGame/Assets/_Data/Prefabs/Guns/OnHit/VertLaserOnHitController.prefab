@@ -46,11 +46,11 @@ MonoBehaviour:
   damageRatio:
     damageSources: 000000000100000002000000e8030000
     ratios:
-    - 100
-    - 5
-    - 5
+    - 50
     - 0
-    triggerDamageRatio: 800
+    - 50
+    - 0
+    triggerDamageRatio: 200
   _onHitObject: {fileID: 2460977731380744422, guid: 6dbdb566eb6d2794d86012acc3ff6368,
     type: 3}
   _effectData:
