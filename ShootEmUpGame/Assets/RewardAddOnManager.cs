@@ -51,7 +51,7 @@ public class RewardAddOnManager : MonoBehaviour
                     DataManager.Instance.playerData.Coin -= RequireAmount;
                     break;
                 case "diamond":
-                    DataManager.Instance.playerData.Coin -= RequireAmount;
+                    DataManager.Instance.playerData.Diamond -= RequireAmount;
                     break;
                 default:
                     return false;
@@ -87,7 +87,7 @@ public class RewardAddOnManager : MonoBehaviour
                     DataManager.Instance.playerData.Coin -= RequireAmount;
                     break;
                 case "diamond":
-                    DataManager.Instance.playerData.Coin -= RequireAmount;
+                    DataManager.Instance.playerData.Diamond -= RequireAmount;
                     break;
                 default:
                     return false;

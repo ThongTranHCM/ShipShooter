@@ -83,6 +83,7 @@ public class PlayerData
             default:
                 return false;
         }
+        Debug.LogError("Check " + check + "  " + RequireAmount);
         return (check >= RequireAmount);
     }
 
