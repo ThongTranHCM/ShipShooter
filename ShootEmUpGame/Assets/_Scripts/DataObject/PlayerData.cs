@@ -2,9 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 
-/**
- * PlayerSetting : Class cấu hình hệ thống nhân vật bao gồm thú cưỡi (MountSetting) và thú cưng (Pet)
- * */
 [System.Serializable]
 public class PlayerData
 {
@@ -83,7 +80,6 @@ public class PlayerData
             default:
                 return false;
         }
-        Debug.LogError("Check " + check + "  " + RequireAmount);
         return (check >= RequireAmount);
     }
 
