@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _itemPrefab: {fileID: 8307320380654617903, guid: bec1bac0e7d285d4c8eecd75bd8e4bf2,
     type: 3}
-  _totalDamageToTrigger: 300
+  _totalDamageToTrigger: 576
   damageRatio:
     damageSources: 000000000100000002000000e8030000
     ratios:
@@ -53,5 +53,5 @@ MonoBehaviour:
     - 0
     - 50
     - 0
-    triggerDamageRatio: 1200
+    triggerDamageRatio: 100
   _gunDurationActive: 0.3
