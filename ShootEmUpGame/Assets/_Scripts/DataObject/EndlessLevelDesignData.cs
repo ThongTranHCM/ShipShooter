@@ -144,7 +144,7 @@ public class EndlessLevelDesignData : LevelDesignData
         if(TimeChestManager.Instance != null){
             TimeChestManager.Instance.ProgressMission("clear_stage",1);
         }
-        DataManager.Instance.LastLevelWin++;
+        //Endless Level. What important is progress rank base on trello https://trello.com/c/5nXoQ2Nv/4-th%C3%AAm-controller-endless
         GamePlayManager.Instance.RewardCollect();
         return GamePlayManager.Instance.EndGame();
     }

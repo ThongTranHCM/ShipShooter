@@ -122,12 +122,12 @@ public class GamePlayManager : MonoBehaviour
             case Constants.MODE_Story:
             default:
                 {
-                    Debug.LogError("It's Normal");
                     string file = "RandomLevelDesignData/" + levelIndex;
                     _levelDesign = Resources.Load<LevelDesignData>(file);
                 }
                 break;
         }
+        Debug.LogError("LevelDesign " + _levelDesign.name);
         _uiManager.SetStageText(levelIndex);
         _collection.Install();
         yield return new WaitUntil(() => _levelDesign != null);

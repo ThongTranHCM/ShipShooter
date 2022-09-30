@@ -29,8 +29,8 @@ public class StoryModePanelController : PanelController
     public void OnButtonChallengePlayClicked()
     {
         DataManager.Instance.selectedMode = Constants.MODE_Challenge;
-        DataManager.Instance.selectedLevelIndex = 1;
         int shipIndex = DataManager.Instance.selectedShipIndex;
+        DataManager.Instance.selectedLevelIndex = DataManager.Instance.GetLastChallengeIndex(shipIndex);
         DataManager.Instance.SetLastShipIndex(shipIndex, Constants.MODE_Challenge);
         DataManager.Instance.selectedShipLevel = DataManager.Instance.playerData.GetShipProgress(shipIndex).shipLevel;
         DataManager.Save();

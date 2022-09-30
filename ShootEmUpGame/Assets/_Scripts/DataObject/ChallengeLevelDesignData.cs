@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Challenge_X", menuName = "Data/ChallengeLevelDesignData", order = 1)]
-public class ChallengeLevelDesignData : ScriptableObject
+public class ChallengeLevelDesignData : LevelDesignData
 {
     [SerializeField]
     private int _shipIndex;
@@ -19,5 +19,16 @@ public class ChallengeLevelDesignData : ScriptableObject
             result = _challengeLevels[index];
         }
         return result;
+    }
+    public override IEnumerator EndGame()
+    {
+        if (TimeChestManager.Instance != null)
+        {
+            TimeChestManager.Instance.ProgressMission("clear_stage", 1);
+        }
+        int lastLevel = DataManager.Instance.GetLastChallengeIndex(_shipIndex);
+        DataManager.Instance.SetLastChallengeLevelWin(_shipIndex, lastLevel + 1);
+        GamePlayManager.Instance.RewardCollect();
+        return GamePlayManager.Instance.EndGame();
     }
 }

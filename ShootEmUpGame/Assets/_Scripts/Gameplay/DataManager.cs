@@ -361,7 +361,7 @@ public class DataManager
         }
         return _lastChallengeLevelIndex[shipIndex];
     }
-    public void SetLastChallenegLevelWin(int shipIndex, int newValue)
+    public void SetLastChallengeLevelWin(int shipIndex, int newValue)
     {
         if (_lastChallengeLevelIndex == null)
         {
