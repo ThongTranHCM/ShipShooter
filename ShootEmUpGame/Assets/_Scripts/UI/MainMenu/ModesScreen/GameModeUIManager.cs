@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class GameModeUIManager : MonoBehaviour
 {
@@ -22,6 +21,18 @@ public class GameModeUIManager : MonoBehaviour
     [SerializeField]
     private string _mode;
     private LevelDesignData levelDesignData;
+    [SerializeField]
+    private TMPro.TextMeshProUGUI _txtLevel;
+    [SerializeField]
+    private TMPro.TextMeshProUGUI _txtPrevLevel;
+    [SerializeField]
+    private TMPro.TextMeshProUGUI _txtNextLevel;
+    [SerializeField]
+    private GameObject _objLevel;
+    [SerializeField]
+    private GameObject _objPrevLevel;
+    [SerializeField]
+    private GameObject _objNextLevel;
     #region ButtonBehavior
 
     public void OnNextShipButton()
@@ -45,10 +56,10 @@ public class GameModeUIManager : MonoBehaviour
     }
     public void Install()
     {
-        _mode = Constants.MODE_Story;
         shipIndex = DataManager.Instance.GetLastShipIndex(_mode);
         shipCount = GameInformation.Instance.shipData.Count;
         InstallModel(shipIndex);
+        InstallLevelInfo();
     }
     private void PlayShipTransitionAnimation()
     {
@@ -57,6 +68,7 @@ public class GameModeUIManager : MonoBehaviour
         LTSeq seq = LeanTween.sequence();
         seq.append(LeanTween.scaleX(displayShipGameObject, 0, shrinkDuration).setEase(LeanTweenType.easeInBack));
         InstallModel(shipIndex);
+        InstallLevelInfo();
         seq.append(LeanTween.scaleX(displayShipGameObject, scale, expandDuration).setEase(LeanTweenType.easeOutElastic));
     }
 
@@ -66,6 +78,48 @@ public class GameModeUIManager : MonoBehaviour
         displayMesh.mesh = shipData.meshShip;
         displayRenderer.material = shipData.materialShip;
         DataManager.Instance.selectedShipIndex = index;
+    }
+
+    private void InstallLevelInfo()
+    {
+        switch (_mode)
+        {
+            case Constants.MODE_Endless:
+                {
+                    _txtLevel.text = "Iron";
+                    break;
+                }
+            case Constants.MODE_Challenge:
+                {
+                    int level = DataManager.Instance.GetLastChallengeIndex(shipIndex);
+                    _txtLevel.text = "Challenge " + shipIndex + "_" + level;
+                    if (level == 0)
+                    {
+                        _objPrevLevel.SetActive(false);
+                    }
+                    else
+                    {
+                        _objPrevLevel.SetActive(true);
+                        _txtPrevLevel.text = "Challenge " + shipIndex + "_" + (level - 1);
+                    }
+                    if (level > 120)
+                    {
+                        _objNextLevel.SetActive(false);
+                    }
+                    else
+                    {
+                        _objNextLevel.SetActive(true);
+                        _txtNextLevel.text = "Challenge " + shipIndex + "_" + (level + 1);
+                    }
+                    break;
+                }
+            case Constants.MODE_Story:
+            default:
+                {
+                    _txtLevel.text = "Level " + (DataManager.Instance.LastLevelWin + 1);
+                    break;
+                }
+        }
     }
 
     protected void DisplayEnemies()
