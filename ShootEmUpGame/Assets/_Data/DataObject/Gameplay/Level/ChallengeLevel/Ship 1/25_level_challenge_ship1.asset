@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad066cd953fc28846b643bb6821e3a4c, type: 3}
+  m_Name: 25_level_challenge_ship1
+  m_EditorClassIdentifier: 
+  ZOffset: 0
+  padding: 0.2
+  enemyDataPool:
+  - {fileID: 11400000, guid: 3f6dd2f215302a544a46ded7c06a511e, type: 2}
+  - {fileID: 11400000, guid: 1e908260587d33b4097e468f53345c00, type: 2}
+  - {fileID: 11400000, guid: 01f9cb4bf2861574cb145040e9e80b14, type: 2}
+  numWaveList: 30
+  baseHealth: 40
+  startHealthMultiplier: 1
+  endHealthMultiplier: 3
+  startDensity: 1
+  endDensity: 2
+  addOnDropPoolList:
+  - addOnDropList: 68000000
+  - addOnDropList: 0c000000
+  - addOnDropList: c9000000
+  dropRateMultiplier: 1
+  bonusProb: 1
+  bonusGold: 1
