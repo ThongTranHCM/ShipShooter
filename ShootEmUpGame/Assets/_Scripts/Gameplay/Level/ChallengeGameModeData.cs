@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Challenge_X", menuName = "Data/ChallengeLevelDesignData", order = 1)]
-public class ChallengeLevelDesignData : LevelDesignData
+[CreateAssetMenu(fileName = "ChallengeModeData", menuName = "Shooter/ModeChallenge")]
+public class ChallengeGameModeData : GameModeData
 {
     [SerializeField]
     private int _shipIndex;
     [SerializeField]
     private RandomLevelDesignData[] _challengeLevels;
 
-    public int ShipIndex { get { return _shipIndex; } }
+
     public RandomLevelDesignData getLevelData(int index)
     {
         RandomLevelDesignData result = null;
@@ -20,7 +20,20 @@ public class ChallengeLevelDesignData : LevelDesignData
         }
         return result;
     }
-    public override IEnumerator EndGame()
+
+    public override LevelDesignData GetLevelData()
+    {
+        int levelIndex = DataManager.Instance.selectedLevelIndex;
+        LevelDesignData levelData = getLevelData(levelIndex);
+        return levelData;
+    }
+
+    public override IEnumerator OnLoseGame()
+    {
+        return GamePlayManager.Instance.EndGame();
+    }
+
+    public override IEnumerator OnWinGame()
     {
         if (TimeChestManager.Instance != null)
         {
@@ -30,5 +43,10 @@ public class ChallengeLevelDesignData : LevelDesignData
         DataManager.Instance.SetLastChallengeLevelWin(_shipIndex, lastLevel + 1);
         GamePlayManager.Instance.RewardCollect();
         return GamePlayManager.Instance.EndGame();
+    }
+
+    public override IEnumerator StartGame()
+    {
+        throw new System.NotImplementedException();
     }
 }

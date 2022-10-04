@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3f79f6cf305d1244c92d757eb6d78ab0, type: 3}
-  m_Name: LevelData_0
+  m_Name: LevelData
   m_EditorClassIdentifier: 
   EndlessLevelsData:
   - {fileID: 11400000, guid: 2dcbaf593a5664245ab27aa1b8d2627e, type: 2}
@@ -19,7 +19,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c18a93b840daa5944bf69c2a7699356b, type: 2}
   - {fileID: 11400000, guid: 2e7dc6471c4afad44af9150201ff85f1, type: 2}
   ChallengeLevelsData:
-  - {fileID: 11400000, guid: 731522a4c42911e4ca6c8ec4180fcd70, type: 2}
-  - {fileID: 11400000, guid: bea41355ecb46bf4899cbbee4ad844b6, type: 2}
-  - {fileID: 11400000, guid: 000cd0d8bdcfae849a0dd68d29840fa4, type: 2}
-  - {fileID: 11400000, guid: 769f210471907fe479936833fcd32eeb, type: 2}
+  - {fileID: 11400000, guid: 4d0be3e1168564a4a9e0a9b2942341b1, type: 2}
+  - {fileID: 11400000, guid: 5bceadc66f0be9041ba33356e7018c1f, type: 2}
+  - {fileID: 11400000, guid: ef107f498c83d5c4fa826d2026e7ec13, type: 2}
+  - {fileID: 11400000, guid: 2b00cb38d2d6dee458e48c4e852cc31b, type: 2}
+  _endlessGameMode: {fileID: 11400000, guid: 8071f1c31f9662d4da7cd1c6b4f863fb, type: 2}
+  _storyGameMode: {fileID: 11400000, guid: 9c609b4ce29883746b442341b994b293, type: 2}

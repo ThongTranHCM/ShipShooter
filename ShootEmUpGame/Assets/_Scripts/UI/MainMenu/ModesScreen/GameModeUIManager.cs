@@ -92,7 +92,7 @@ public class GameModeUIManager : MonoBehaviour
             case Constants.MODE_Challenge:
                 {
                     int level = DataManager.Instance.GetLastChallengeIndex(shipIndex);
-                    _txtLevel.text = "Challenge " + shipIndex + "_" + level;
+                    _txtLevel.text = "Challenge " + (shipIndex + 1) + "_" + (level + 1);
                     if (level == 0)
                     {
                         _objPrevLevel.SetActive(false);
@@ -100,7 +100,7 @@ public class GameModeUIManager : MonoBehaviour
                     else
                     {
                         _objPrevLevel.SetActive(true);
-                        _txtPrevLevel.text = "Challenge " + shipIndex + "_" + (level - 1);
+                        _txtPrevLevel.text = "Challenge " + (shipIndex + 1) + "_" + (level);
                     }
                     if (level > 120)
                     {
@@ -109,7 +109,7 @@ public class GameModeUIManager : MonoBehaviour
                     else
                     {
                         _objNextLevel.SetActive(true);
-                        _txtNextLevel.text = "Challenge " + shipIndex + "_" + (level + 1);
+                        _txtNextLevel.text = "Challenge " + (shipIndex + 1) + "_" + (level + 2);
                     }
                     break;
                 }

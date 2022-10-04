@@ -140,15 +140,6 @@ public class EndlessLevelDesignData : LevelDesignData
         return GamePlayManager.Instance.StartGame();
     }
 
-    public override IEnumerator EndGame(){
-        if(TimeChestManager.Instance != null){
-            TimeChestManager.Instance.ProgressMission("clear_stage",1);
-        }
-        //Endless Level. What important is progress rank base on trello https://trello.com/c/5nXoQ2Nv/4-th%C3%AAm-controller-endless
-        GamePlayManager.Instance.RewardCollect();
-        return GamePlayManager.Instance.EndGame();
-    }
-
     public override void LoseGame(){
         GamePlayManager.Instance.RewardCollect();
         GamePlayManager.Instance.QuitGame();

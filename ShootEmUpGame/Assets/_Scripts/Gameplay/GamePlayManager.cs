@@ -57,6 +57,8 @@ public class GamePlayManager : MonoBehaviour
     }
     [SerializeField]
     private LevelDesignData _levelDesign;
+    [SerializeField]
+    private GameModeData _modeLevelDesign;
 
     [SerializeField]
     private LevelData _levelData;
@@ -111,22 +113,22 @@ public class GamePlayManager : MonoBehaviour
         {
             case Constants.MODE_Endless:
                 {
-                    _levelDesign = Level.GetEndlessLevelDataFromRank(levelIndex);
+                    _modeLevelDesign = Level.GetEndlessGameModeData();
                 }
                 break;
             case Constants.MODE_Challenge:
                 {
-                    _levelDesign = Level.GetLevelDataFromChallengeShipAndIndex(shipIndex, levelIndex);
+                    _modeLevelDesign = Level.GetChallengeModeDataFromShip(shipIndex);
                 }
                 break;
             case Constants.MODE_Story:
             default:
                 {
-                    string file = "RandomLevelDesignData/" + levelIndex;
-                    _levelDesign = Resources.Load<LevelDesignData>(file);
+                    _modeLevelDesign = Level.GetStoryModeData();
                 }
                 break;
         }
+        _levelDesign = _modeLevelDesign.GetLevelData();
         Debug.LogError("LevelDesign " + _levelDesign.name);
         _uiManager.SetStageText(levelIndex);
         _collection.Install();
@@ -162,7 +164,8 @@ public class GamePlayManager : MonoBehaviour
     private IEnumerator GameFlow(){
         yield return StartCoroutine(_levelDesign.StartGame());
         yield return StartCoroutine(_levelDesign.InstallWaves());
-        yield return StartCoroutine(_levelDesign.EndGame());
+        Debug.LogError("End Game");
+        yield return StartCoroutine(_modeLevelDesign.OnWinGame());
         
         DataManager.Save();
         SceneLoader.LoadLevel(Constants.SCENENAME_MainMenu);
@@ -184,7 +187,7 @@ public class GamePlayManager : MonoBehaviour
     }
 
     public void LoseGame(){
-        _levelDesign.LoseGame();
+        _modeLevelDesign.OnLoseGame();
     }
 
     public IEnumerator OutOfLife(){

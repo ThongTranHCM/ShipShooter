@@ -19,10 +19,6 @@ public class LevelDesignData : ScriptableObject
         yield return null;
     }
 
-    public virtual IEnumerator EndGame(){
-        yield return null;
-    }
-
     public virtual void LoseGame(){
         GamePlayManager.Instance.QuitGame();
     }

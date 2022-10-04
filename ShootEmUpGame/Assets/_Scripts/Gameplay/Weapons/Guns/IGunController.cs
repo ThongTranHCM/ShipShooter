@@ -196,7 +196,7 @@ public class IGunController : MonoBehaviour
             if (_needResetTime)
             {
                 _needResetTime = false;
-                Debug.LogError("Reset " + gameObject.name + Time.time);
+                //Debug.LogError("Reset " + gameObject.name + Time.time);
                 for (int i = 0; i < bulletParticleSystems.Length; i++)
                 {
                     bulletParticleSystems[i].myParticleSystem.time = 0f;

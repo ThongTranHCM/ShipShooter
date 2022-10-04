@@ -351,6 +351,7 @@ public class DataManager
     }
     public int GetLastChallengeIndex(int shipIndex)
     {
+        int result = 0;
         if (_lastChallengeLevelIndex == null)
         {
             _lastChallengeLevelIndex = new List<int>();
@@ -359,7 +360,9 @@ public class DataManager
         {
             _lastChallengeLevelIndex.Add(0);
         }
-        return _lastChallengeLevelIndex[shipIndex];
+        result = _lastChallengeLevelIndex[shipIndex];
+        Debug.LogError("Get " + shipIndex + "  " + result);
+        return result;
     }
     public void SetLastChallengeLevelWin(int shipIndex, int newValue)
     {
@@ -371,6 +374,7 @@ public class DataManager
         {
             _lastChallengeLevelIndex.Add(0);
         }
+        Debug.LogError("Set   " + shipIndex + "  " + newValue);
         _lastChallengeLevelIndex[shipIndex] = newValue;
     }
     #endregion

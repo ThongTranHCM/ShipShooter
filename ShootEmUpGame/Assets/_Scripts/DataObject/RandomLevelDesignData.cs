@@ -178,13 +178,4 @@ public class RandomLevelDesignData : LevelDesignData
         }
         return GamePlayManager.Instance.StartGame();
     }
-
-    public override IEnumerator EndGame(){
-        if(TimeChestManager.Instance != null){
-            TimeChestManager.Instance.ProgressMission("clear_stage",1);
-        }
-        DataManager.Instance.LastLevelWin++;
-        GamePlayManager.Instance.RewardCollect();
-        return GamePlayManager.Instance.EndGame();
-    }
 }
