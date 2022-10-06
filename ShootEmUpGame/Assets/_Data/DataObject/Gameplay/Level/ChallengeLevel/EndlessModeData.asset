@@ -18,3 +18,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6a255c7d75e05e541b22da517c5108c3, type: 2}
   - {fileID: 11400000, guid: c18a93b840daa5944bf69c2a7699356b, type: 2}
   - {fileID: 11400000, guid: 2e7dc6471c4afad44af9150201ff85f1, type: 2}
+  EndlessScoreThreshold: ffffffffd007000088130000204e000050c30000
+  EndlessRewards:
+  - id: gold
+    amount: 20
+  - id: gold
+    amount: 50
+  - id: gold
+    amount: 200
+  - id: gold
+    amount: 500
+  - id: gold
+    amount: 10000

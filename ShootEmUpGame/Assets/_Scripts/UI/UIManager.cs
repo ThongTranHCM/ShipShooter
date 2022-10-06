@@ -66,9 +66,9 @@ public class UIManager : MonoBehaviour
     {
         _goldValue.UpdateProgress(baseValue, destValue);
     }
-    public void SetStageText(int stageValue)
+    public void SetStageText(string stageValue)
     {
-        _txtStage.text = "Stage " + stageValue;
+        _txtStage.text = stageValue;
     }
 
     public void Awake()

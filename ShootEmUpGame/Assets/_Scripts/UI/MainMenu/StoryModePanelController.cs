@@ -9,7 +9,7 @@ public class StoryModePanelController : PanelController
     public void OnButtonPlayClicked()
     {
         DataManager.Instance.selectedMode = Constants.MODE_Story;
-        DataManager.Instance.selectedLevelIndex = DataManager.Instance.LastLevelWin + 1;
+        DataManager.Instance.selectedLevelIndex = DataManager.Instance.LastLevelWin;
         int shipIndex = DataManager.Instance.selectedShipIndex;
         DataManager.Instance.SetLastShipIndex(shipIndex, Constants.MODE_Story);
         DataManager.Instance.selectedShipLevel = DataManager.Instance.playerData.GetShipProgress(shipIndex).shipLevel;

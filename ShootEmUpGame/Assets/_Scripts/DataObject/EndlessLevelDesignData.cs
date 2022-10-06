@@ -132,16 +132,4 @@ public class EndlessLevelDesignData : LevelDesignData
     public override List<EnemyData> GetEnemyDataList(){
         return enemyDataPool;
     }
-
-    public override IEnumerator StartGame(){
-        if(TimeChestManager.Instance != null){
-            TimeChestManager.Instance.ProgressMission("play_game",1);
-        }
-        return GamePlayManager.Instance.StartGame();
-    }
-
-    public override void LoseGame(){
-        GamePlayManager.Instance.RewardCollect();
-        GamePlayManager.Instance.QuitGame();
-    }
 }

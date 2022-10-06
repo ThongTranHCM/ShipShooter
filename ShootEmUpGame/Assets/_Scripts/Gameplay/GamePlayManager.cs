@@ -98,6 +98,7 @@ public class GamePlayManager : MonoBehaviour
         int levelIndex = 1;
         int shipIndex = 0;
         string selectedMode = "";
+        string stageText = "Stage";
         if (DataManager.Instance == null)
         {
             Debug.LogError("Should Start From mainMenu. Load Level ?");
@@ -114,23 +115,26 @@ public class GamePlayManager : MonoBehaviour
             case Constants.MODE_Endless:
                 {
                     _modeLevelDesign = Level.GetEndlessGameModeData();
+                    stageText = "Stage Endless";
                 }
                 break;
             case Constants.MODE_Challenge:
                 {
                     _modeLevelDesign = Level.GetChallengeModeDataFromShip(shipIndex);
+                    stageText = "Challenge " + (shipIndex + 1) + " " + (levelIndex + 1);
                 }
                 break;
             case Constants.MODE_Story:
             default:
                 {
                     _modeLevelDesign = Level.GetStoryModeData();
+                    stageText = "Stage " + (levelIndex + 1);
                 }
                 break;
         }
         _levelDesign = _modeLevelDesign.GetLevelData();
         Debug.LogError("LevelDesign " + _levelDesign.name);
-        _uiManager.SetStageText(levelIndex);
+        _uiManager.SetStageText(stageText);
         _collection.Install();
         yield return new WaitUntil(() => _levelDesign != null);
         StartCoroutine(GameFlow());
@@ -162,7 +166,7 @@ public class GamePlayManager : MonoBehaviour
     }
 
     private IEnumerator GameFlow(){
-        yield return StartCoroutine(_levelDesign.StartGame());
+        yield return StartCoroutine(_modeLevelDesign.StartGame());
         yield return StartCoroutine(_levelDesign.InstallWaves());
         Debug.LogError("End Game");
         yield return StartCoroutine(_modeLevelDesign.OnWinGame());

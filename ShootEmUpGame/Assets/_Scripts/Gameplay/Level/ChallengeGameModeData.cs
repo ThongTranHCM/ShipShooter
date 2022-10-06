@@ -30,7 +30,9 @@ public class ChallengeGameModeData : GameModeData
 
     public override IEnumerator OnLoseGame()
     {
-        return GamePlayManager.Instance.EndGame();
+        //GamePlayManager.Instance.RewardCollect();
+        yield return null;
+        GamePlayManager.Instance.QuitGame();
     }
 
     public override IEnumerator OnWinGame()
@@ -47,6 +49,10 @@ public class ChallengeGameModeData : GameModeData
 
     public override IEnumerator StartGame()
     {
-        throw new System.NotImplementedException();
+        if (TimeChestManager.Instance != null)
+        {
+            TimeChestManager.Instance.ProgressMission("play_game", 1);
+        }
+        return GamePlayManager.Instance.StartGame();
     }
 }
