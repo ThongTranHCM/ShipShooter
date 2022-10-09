@@ -42,9 +42,14 @@ public class EndlessGameModeData : GameModeData
 
     public override IEnumerator OnLoseGame()
     {
-        GamePlayManager.Instance.RewardCollect();
-        Debug.LogError("Lose");
         yield return null;
+        if (TimeChestManager.Instance != null)
+        {
+            TimeChestManager.Instance.ProgressMission("clear_stage", 1);
+        }
+        UpdateEndlessRank();
+        //Endless Level. What important is progress rank base on trello https://trello.com/c/5nXoQ2Nv/4-th%C3%AAm-controller-endless
+        GamePlayManager.Instance.RewardCollect();
         GamePlayManager.Instance.QuitGame();
     }
 
@@ -55,7 +60,6 @@ public class EndlessGameModeData : GameModeData
         {
             TimeChestManager.Instance.ProgressMission("clear_stage", 1);
         }
-        Debug.LogError("Win");
         UpdateEndlessRank();
         //Endless Level. What important is progress rank base on trello https://trello.com/c/5nXoQ2Nv/4-th%C3%AAm-controller-endless
         GamePlayManager.Instance.RewardCollect();
