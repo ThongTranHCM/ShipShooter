@@ -18,10 +18,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 95c2d0453bd1b1c478a035641256f031, type: 2}
   - {fileID: 11400000, guid: 3f6dd2f215302a544a46ded7c06a511e, type: 2}
   - {fileID: 11400000, guid: 8a81f48186f52d8439d72cb2fa5dd286, type: 2}
-  numWaveList: 20
-  baseHealth: 30
+  numWaveList: 40
+  baseHealth: 50
   startHealthMultiplier: 1
-  endHealthMultiplier: 3
+  endHealthMultiplier: 3.5
   startDensity: 1
   endDensity: 2
   bonusProb: 1
