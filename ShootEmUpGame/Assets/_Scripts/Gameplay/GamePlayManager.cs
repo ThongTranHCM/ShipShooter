@@ -191,7 +191,7 @@ public class GamePlayManager : MonoBehaviour
     }
 
     public void LoseGame(){
-        _modeLevelDesign.OnLoseGame();
+        StartCoroutine(_modeLevelDesign.OnLoseGame());
     }
 
     public IEnumerator OutOfLife(){
