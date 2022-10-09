@@ -28,6 +28,8 @@ public class GameModeUIManager : MonoBehaviour
     [SerializeField]
     private TMPro.TextMeshProUGUI _txtNextLevel;
     [SerializeField]
+    private TMPro.TextMeshProUGUI _txtScore;
+    [SerializeField]
     private GameObject _objLevel;
     [SerializeField]
     private GameObject _objPrevLevel;
@@ -86,7 +88,27 @@ public class GameModeUIManager : MonoBehaviour
         {
             case Constants.MODE_Endless:
                 {
-                    _txtLevel.text = "Iron";
+                    int rank = DataManager.Instance.EndlessRank;
+                    switch (rank)
+                    {
+                        case -1:
+                        case 0:
+                            _txtLevel.text = "Bronze";
+                            break;
+                        case 1:
+                            _txtLevel.text = "Silver";
+                            break;
+                        case 2:
+                            _txtLevel.text = "Gold";
+                            break;
+                        case 3:
+                            _txtLevel.text = "Platinum";
+                            break;
+                        case 4:
+                            _txtLevel.text = "Diamond";
+                            break;
+                    }
+                    _txtScore.text = " " + DataManager.Instance.GetEndlessHighscore();
                     break;
                 }
             case Constants.MODE_Challenge:

@@ -387,6 +387,10 @@ public class DataManager
         }
         return false;
     }
+    public float GetEndlessHighscore()
+    {
+        return _endlessHighScore;
+    }
     public int EndlessRank
     {
         get { return  _endlessRank; }
