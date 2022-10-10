@@ -30,6 +30,8 @@ public class GameModeUIManager : MonoBehaviour
     [SerializeField]
     private TMPro.TextMeshProUGUI _txtScore;
     [SerializeField]
+    private FillBarManager _fillBar;
+    [SerializeField]
     private GameObject _objLevel;
     [SerializeField]
     private GameObject _objPrevLevel;
@@ -89,6 +91,7 @@ public class GameModeUIManager : MonoBehaviour
             case Constants.MODE_Endless:
                 {
                     int rank = DataManager.Instance.EndlessRank;
+                    float highScore = DataManager.Instance.GetEndlessHighscore();
                     switch (rank)
                     {
                         case -1:
@@ -108,7 +111,8 @@ public class GameModeUIManager : MonoBehaviour
                             _txtLevel.text = "Diamond";
                             break;
                     }
-                    _txtScore.text = " " + DataManager.Instance.GetEndlessHighscore();
+                    //_txtScore.text = " " + highScore;
+                    _fillBar.SetRawValue(highScore, 2000);
                     break;
                 }
             case Constants.MODE_Challenge:

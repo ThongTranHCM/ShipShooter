@@ -21,6 +21,8 @@ public class FillBarManager : MonoBehaviour
     private GameObject border;
     [SerializeField]
     private FillBarTextManager txtProgress;
+    [SerializeField]
+    private TextMeshProUGUI _txtUI;
     private RectTransform fillRectTransform = null;
     private RectTransform borderRectTransform = null;
     private Image fillImage = null;
@@ -49,10 +51,12 @@ public class FillBarManager : MonoBehaviour
         SetFillBar(value);
     }
 
-    private void SetFillBar(float x){
-        if(didInit){
+    private void SetFillBar(float x)
+    {
+        if (didInit){
             float offset = borderRectTransform.rect.width * Mathf.Clamp(x, 0, 1);
-            fillRectTransform.sizeDelta = new Vector2(offset, fillRectTransform.sizeDelta.y);
+            //fillRectTransform.sizeDelta = new Vector2(offset, fillRectTransform.sizeDelta.y);
+            fillRectTransform.anchorMax = new Vector2(x, fillRectTransform.anchorMax.y);
             fillImage.color = borderImage.color = (x < 1) ? baseColor : fullColor;
         } else {
             Init();
@@ -64,11 +68,20 @@ public class FillBarManager : MonoBehaviour
     {
         value = Value;
         animatedValue = value;
+        if (_txtUI != null)
+        {
+            _txtUI.text = Value.ToString();
+        }
         SetFillBar(value);
     }
     public void SetRawValue(float current, float max)
     {
         value = current / max;
+        value = Mathf.Clamp(value, 0, 1);
+        if (_txtUI != null)
+        {
+            _txtUI.text = current.ToString();
+        }
         animatedValue = value;
         SetFillBar(value);
     }
