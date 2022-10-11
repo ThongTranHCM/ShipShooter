@@ -81,4 +81,41 @@ public class AddOnUserData
         }
         return result;
     }
+
+    public bool Upgrade(AddOnEquipData.AddOnType addOnType)
+    {
+        Debug.LogError("Upgrade");
+        AddOnInfo result = null;
+        for (int i = 0; i < listAddOnInfo.Count; i++)
+        {
+            if (listAddOnInfo[i].GetAddOnType.Equals(addOnType))
+            {
+                result = listAddOnInfo[i];
+                break;
+            }
+        }
+        if (result == null)
+        {
+            result = new AddOnInfo(addOnType);
+            listAddOnInfo.Add(result);
+        }
+        int cost = 0;
+        if (result.CurrentLevel < 1)
+        {
+            cost = GameInformation.Instance.addOnEquipData.GetUnlockCost();
+        }
+        else
+        {
+            cost = GameInformation.Instance.addOnEquipData.GetUpgradeCost(result.CurrentLevel);
+        }
+        Debug.LogError("Fragment " + result.CurrentFragment + "  " + cost);
+        if (result.CurrentFragment > cost)
+        {
+            result.CurrentFragment -= cost;
+            result.CurrentLevel++;
+            DataManager.Save();
+            return true;
+        }
+        return false;
+    }
 }

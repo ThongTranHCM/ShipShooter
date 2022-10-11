@@ -15,6 +15,8 @@ public class AddOnGroupLayout : MonoBehaviour
     private bool _show0Level0Fragment;
     [SerializeField]
     private bool _allowEquip;
+    [SerializeField]
+    private bool _allowUpgrade;
     private List<AddOnUIItem> _listAddOnUI;
 
     [SerializeField]
@@ -113,10 +115,17 @@ public class AddOnGroupLayout : MonoBehaviour
                 break;
             }
         }
-        if (i < listAddOn.Count && _allowEquip)
+        if (i < listAddOn.Count)
         {
-            listAddOn[i] = addOnData.GetAddOnType.ToString();
-            _uiEquipAddOn.InstallEquippedAddOns();
+            if (_allowUpgrade)
+            {
+                DataManager.Instance.addOnUserData.Upgrade(addOnData.GetAddOnType);
+            }
+            if (_allowEquip)
+            {
+                listAddOn[i] = addOnData.GetAddOnType.ToString();
+                _uiEquipAddOn.InstallEquippedAddOns();
+            }
         }
     }
 

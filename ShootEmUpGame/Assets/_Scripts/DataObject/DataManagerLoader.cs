@@ -23,13 +23,13 @@ public class DataManagerLoader : MonoBehaviour
         }
     }
 
-    public void DoIncreaseAddOnLevelsBy10()
+    public void DoIncreaseAddOnLevelsBy1()
     {
         List<AddOnUserData.AddOnInfo> addOnInfos = DataManager.Instance.addOnUserData.GetListAddOnInfo();
         for (int i = 0; i < addOnInfos.Count; i++)
         {
             addOnInfos[i].CurrentFragment = Mathf.Min(addOnInfos[i].CurrentFragment + 10, 100);
-            addOnInfos[i].CurrentLevel = Mathf.Min(addOnInfos[i].CurrentLevel + 10, 100);
+            addOnInfos[i].CurrentLevel = Mathf.Min(addOnInfos[i].CurrentLevel + 1, 100);
         }
     }
     public void DoIncrease3AddOnsRandomBy5Level()
@@ -90,14 +90,14 @@ public class DataManagerLoader : MonoBehaviour
             addOnInfos[i].CurrentLevel = 0;
         }
     }
-    [MenuItem("Data/Cheat/Add On/Increase Level 10")]
+    [MenuItem("Data/Cheat/Add On/Increase Level 1")]
     private static void IncreaseAddOnLevelsBy10()
     {
         List<AddOnUserData.AddOnInfo> addOnInfos = DataManager.Instance.addOnUserData.GetListAddOnInfo();
         for (int i = 0; i < addOnInfos.Count; i++)
         {
             addOnInfos[i].CurrentFragment = Mathf.Min(addOnInfos[i].CurrentFragment + 10, 100);
-            addOnInfos[i].CurrentLevel = Mathf.Min(addOnInfos[i].CurrentLevel + 10, 100);
+            addOnInfos[i].CurrentLevel = Mathf.Min(addOnInfos[i].CurrentLevel + 1, 100);
         }
     }
     [MenuItem("Data/Cheat/Add On/Increase 3 Random By 5 Levels")]

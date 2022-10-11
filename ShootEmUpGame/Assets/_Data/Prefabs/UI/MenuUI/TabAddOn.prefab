@@ -2218,6 +2218,7 @@ MonoBehaviour:
   _show0Fragment: 1
   _show0Level0Fragment: 0
   _allowEquip: 0
+  _allowUpgrade: 1
   _updateParentSize: 1
   _gridLayout: {fileID: 7887226380988249166}
 --- !u!114 &572766959717483178
