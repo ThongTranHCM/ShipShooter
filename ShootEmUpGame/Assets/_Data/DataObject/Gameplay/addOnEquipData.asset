@@ -158,3 +158,10 @@ MonoBehaviour:
     _onHitController: {fileID: 0}
     _powerUpController: {fileID: 0}
     _isUnlocked: 0
+  _maxLevel: 32
+  _upgradeFragmentCosts: 000000000000000000000000
+  _levelPowers:
+  - 0
+  - 0
+  - 0
+  _unlockFragmentCost: 0

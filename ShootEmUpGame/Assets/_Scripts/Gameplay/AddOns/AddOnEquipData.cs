@@ -32,6 +32,15 @@ public class AddOnEquipData : ScriptableObject
 
 
     public List<IAddOnData> addOnDatas;
+    [SerializeField]
+    private int _maxLevel;
+    public int MaxLevel { get { return _maxLevel; } }
+    [SerializeField]
+    private List<int> _upgradeFragmentCosts;
+    [SerializeField]
+    private List<float> _levelPowers;
+    [SerializeField]
+    private int _unlockFragmentCost;
 
     public List<IAddOnData> getEquipAddOn()
     {
@@ -93,5 +102,15 @@ public class AddOnEquipData : ScriptableObject
     }
     public AddOnType GetType(string addOnStr){
         return (AddOnType)Enum.Parse(typeof(AddOnType), addOnStr);
+    }
+
+    public int GetUpgradeCost(int level)
+    {
+        return _upgradeFragmentCosts[level];
+    }
+
+    public int GetUnlockCost()
+    {
+        return _unlockFragmentCost;
     }
 }

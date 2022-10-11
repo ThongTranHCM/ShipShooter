@@ -34,6 +34,7 @@ public class AddOnGroupLayout : MonoBehaviour
         List<AddOnEquipData.AddOnType> listQualifiedType = new List<AddOnEquipData.AddOnType>();
         string addOnName = "";
         AddOnUserData.AddOnInfo addOnInfo = null;
+        int cost = 0;
 
         for (int i = 0; i < listAddOnData.Count; i++)
         {
@@ -65,7 +66,15 @@ public class AddOnGroupLayout : MonoBehaviour
                 index++;
             }
             int tmp = i;
-            _addOnUiItem.Install(addOnName, listAddOnData[i].GetSprite, addOnInfo.CurrentLevel, addOnInfo.CurrentFragment, 100);
+            if (addOnInfo.CurrentLevel < 1)
+            {
+                cost = GameInformation.Instance.addOnEquipData.GetUnlockCost();
+            }
+            else
+            {
+                cost = GameInformation.Instance.addOnEquipData.GetUpgradeCost(addOnInfo.CurrentLevel);
+            }
+            _addOnUiItem.Install(addOnName, listAddOnData[i].GetSprite, addOnInfo.CurrentLevel, addOnInfo.CurrentFragment, cost);
             _addOnUiItem.onBtnClick = () => OnAddOnItemClick(tmp);
         }
     }

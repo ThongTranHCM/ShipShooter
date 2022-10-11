@@ -18,6 +18,7 @@ public class AddOnUIItem : MonoBehaviour
     public System.Action onBtnClick;
     public void Install(string addOnText, Sprite sprAddOn, int level, int curFragment, int capFragment)
     {
+        Debug.LogError("Frag " + curFragment + "/" + capFragment);
         _txtAddOnLevel.text = "" + level;
         _fillBarFragment.SetRawValue(curFragment, capFragment);
         ((FillBarFragmentTextManager)_fillBarFragment.GetFillBarTextManager()).SetValue(capFragment);

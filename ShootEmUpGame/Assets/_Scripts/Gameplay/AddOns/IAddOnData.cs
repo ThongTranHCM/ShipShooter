@@ -32,7 +32,7 @@ public class IAddOnData
     private bool _isUnlocked;
     public bool IsUnlocked { get { return _isUnlocked; } }
 
-    public float GetLevel { get { return DataManager.Instance.addOnUserData.GetAddOnInfo(_addOnType).CurrentLevel; } }
+    public int GetLevel { get { return DataManager.Instance.addOnUserData.GetAddOnInfo(_addOnType).CurrentLevel; } }
     public float GetValue { get { return _baseValue + _increaseValue * GetLevel; } }
     public int GetFragment { get { return DataManager.Instance.addOnUserData.GetAddOnInfo(_addOnType).CurrentFragment; }}
     public bool HasGun { get { return _spawnGun != null; } }
