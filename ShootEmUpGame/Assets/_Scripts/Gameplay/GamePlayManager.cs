@@ -134,6 +134,7 @@ public class GamePlayManager : MonoBehaviour
         }
         _levelDesign = _modeLevelDesign.GetLevelData();
         Debug.LogError("LevelDesign " + _levelDesign.name);
+        Debug.LogError("Nguyen " + Constants.GetListOfficialAddOns());
         _uiManager.SetStageText(stageText);
         _collection.Install();
         yield return new WaitUntil(() => _levelDesign != null);

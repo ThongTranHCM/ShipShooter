@@ -22,6 +22,7 @@ public static class Constants
     public const string poolOnHitEffect = "OnHitEffect";
 
     static Vector2 sizeOfCamera = Vector2.zero;
+    static System.Collections.Generic.List<string> listAddOnTypes;
 
     public static T GetAssest<T>(string _path) where T : Object
     {
@@ -73,5 +74,20 @@ public static class Constants
         Vector3 posCam = GamePlayManager.Instance.MainCamera.transform.position;
         Vector3 sizeGamePlay = SizeOfCamera();
         return new Vector2(posCam.x + sizeGamePlay.x / 2, posCam.y + sizeGamePlay.y / 2);
+    }
+
+    public static System.Collections.Generic.List<string> GetListOfficialAddOns()
+    {
+        if (listAddOnTypes == null)
+        {
+            Debug.LogError("Null");
+            listAddOnTypes = new System.Collections.Generic.List<string>();
+            var values = System.Enum.GetValues(typeof(AddOnEquipData.AddOnType));
+            for (int i = 0; i < values.Length; i++)
+            {
+                listAddOnTypes.Add(values.GetValue(i).ToString());
+            }
+        }
+        return listAddOnTypes;
     }
 }

@@ -10,7 +10,7 @@ public class DailyDealManager : MonoBehaviour
     public class Deal{
         [SerializeField]
         string id;
-        public string ID { get { return id;}}
+        public string ID { get { return id;}} // This is AddOnType
         private int level;
         private int Level{
             get { return level; }

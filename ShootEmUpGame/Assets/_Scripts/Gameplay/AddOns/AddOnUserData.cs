@@ -108,11 +108,12 @@ public class AddOnUserData
         {
             cost = GameInformation.Instance.addOnEquipData.GetUpgradeCost(result.CurrentLevel);
         }
-        Debug.LogError("Fragment " + result.CurrentFragment + "  " + cost);
-        if (result.CurrentFragment > cost)
+        if (result.CurrentFragment >= cost)
         {
             result.CurrentFragment -= cost;
             result.CurrentLevel++;
+            DataManager.isChangeProgress = true;
+            DataManager.isChangeResources = true;
             DataManager.Save();
             return true;
         }

@@ -120,6 +120,7 @@ public class AddOnGroupLayout : MonoBehaviour
             if (_allowUpgrade)
             {
                 DataManager.Instance.addOnUserData.Upgrade(addOnData.GetAddOnType);
+                FragmentRewardCanvasManager.Instance.Show(addOnData.GetAddOnType.ToString(), 0);
             }
             if (_allowEquip)
             {
