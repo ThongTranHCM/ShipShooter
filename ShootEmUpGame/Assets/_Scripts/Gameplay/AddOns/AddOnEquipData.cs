@@ -73,6 +73,21 @@ public class AddOnEquipData : ScriptableObject
         return addOnList;
     }
 
+    public List<string> GetUnlockableAddOnList()
+    {
+        List<string> result = new List<string>();
+        string stringA = "vav";
+        for (int i = 0; i < addOnDatas.Count; i++)
+        {
+            if (addOnDatas[i].IsUnlocked)
+            {
+                stringA = addOnDatas[i].ToString();
+                result.Add(stringA);
+            }
+        }
+        return result;
+    }
+
     public IAddOnData GetAddOnData(AddOnType addOnType)
     {
         IAddOnData result = null;

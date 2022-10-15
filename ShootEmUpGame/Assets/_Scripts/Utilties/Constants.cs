@@ -81,12 +81,7 @@ public static class Constants
         if (listAddOnTypes == null)
         {
             Debug.LogError("Null");
-            listAddOnTypes = new System.Collections.Generic.List<string>();
-            var values = System.Enum.GetValues(typeof(AddOnEquipData.AddOnType));
-            for (int i = 0; i < values.Length; i++)
-            {
-                listAddOnTypes.Add(values.GetValue(i).ToString());
-            }
+            listAddOnTypes = GameInformation.Instance.addOnEquipData.GetUnlockableAddOnList();
         }
         return listAddOnTypes;
     }
