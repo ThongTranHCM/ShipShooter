@@ -41,6 +41,10 @@ public class RandomLevelDesignData : LevelDesignData
     private float bonusProb = 1;
     [SerializeField]
     private float bonusGold = 1;
+    [SerializeField]
+    private int _coinCountOnChestKill = 3;
+    [SerializeField]
+    private int _coinGoldValue = 5;
 
     private List<AddOnEquipData.AddOnType> generatedAddOnDropList;
     private List<WaveManager> generatedWaveList;
@@ -163,6 +167,10 @@ public class RandomLevelDesignData : LevelDesignData
                 curDrop -= 1;
             };
             curDrop += 1;
+        }
+        if (enemy.SpawnCoinAtDie)
+        {
+            GamePlayManager.Instance.Collection.SpawnCoinsAt(_coinCountOnChestKill, enemy.transform.position);
         }
         return null;
     }

@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8173658280731143569, guid: 0ce66201eb948ac4d9e473f1fd341801,
+        type: 3}
+      propertyPath: _spawnCoinAtDie
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8173658280731143596, guid: 0ce66201eb948ac4d9e473f1fd341801,
         type: 3}
       propertyPath: m_RootOrder

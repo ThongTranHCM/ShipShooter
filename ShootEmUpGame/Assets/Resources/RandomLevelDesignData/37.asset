@@ -29,3 +29,7 @@ MonoBehaviour:
   - addOnDropList: cc000000
   - addOnDropList: 0c000000
   dropRateMultiplier: 1
+  bonusProb: 1
+  bonusGold: 1
+  _coinCountOnChestKill: 3
+  _coinGoldValue: 5

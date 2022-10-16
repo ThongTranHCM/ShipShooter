@@ -106,7 +106,7 @@ MonoBehaviour:
   _enemyCollider: {fileID: 0}
   _effDiePrefab: {fileID: 6708172086162727380, guid: a907ecd50a1adde40ba9482bdb5708ad,
     type: 3}
-  _numOfCoinAtDie: 0
+  _spawnCoinAtDie: 0
   myBodyPartRenderers:
   - {fileID: 903283965087490236}
   isRotateTowardShip: 0

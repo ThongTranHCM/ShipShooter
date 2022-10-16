@@ -72,6 +72,11 @@ PrefabInstance:
       propertyPath: _numOfCoinAtDie
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2693650720471980280, guid: 38ae061097f6fed49af2c7baad74efbd,
+        type: 3}
+      propertyPath: _spawnCoinAtDie
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3034070838701676497, guid: 38ae061097f6fed49af2c7baad74efbd,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

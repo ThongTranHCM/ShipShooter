@@ -29,7 +29,8 @@ namespace ThongNguyen.PlayerController
         [SerializeField]
         private OnHitEffect _effDiePrefab;
         [SerializeField]
-        private int _numOfCoinAtDie;
+        private bool _spawnCoinAtDie;
+        public bool SpawnCoinAtDie { get { return _spawnCoinAtDie; } }
         protected IEnumerator actionFreeze, actionSlow;
         protected float timeFreeze, timeSlow;
         protected float totalPercentSlowSpeed;
@@ -434,10 +435,7 @@ namespace ThongNguyen.PlayerController
                 OnHitEffect onHitEffect = effectTf.GetComponent<OnHitEffect>();
                 onHitEffect.Install(this);
             }
-            if (_numOfCoinAtDie > 0)
-            {
-                GamePlayManager.Instance.Collection.SpawnCoinsAt(_numOfCoinAtDie, transform.position);
-            }
+            //_spawnCoinAtDie Spawn Coin in LevelDesignData DropOnKill
             ChangeBrightness(Color.black,0);
             OnRemove();
         }

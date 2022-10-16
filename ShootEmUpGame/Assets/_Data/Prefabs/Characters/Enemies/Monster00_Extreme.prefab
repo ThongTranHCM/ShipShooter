@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2d44942cd793e26439a695b6a2c2e89c, type: 2}
+    - target: {fileID: 5649883123193492431, guid: 05d1a305c91c2884db20534ac8cc9554,
+        type: 3}
+      propertyPath: _spawnCoinAtDie
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5649883123193492464, guid: 05d1a305c91c2884db20534ac8cc9554,
         type: 3}
       propertyPath: m_Name
