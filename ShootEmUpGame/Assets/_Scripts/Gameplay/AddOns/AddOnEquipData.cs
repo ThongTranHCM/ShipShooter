@@ -76,12 +76,12 @@ public class AddOnEquipData : ScriptableObject
     public List<string> GetUnlockableAddOnList()
     {
         List<string> result = new List<string>();
-        string stringA = "vav";
+        string stringA = "";
         for (int i = 0; i < addOnDatas.Count; i++)
         {
             if (addOnDatas[i].IsUnlocked)
             {
-                stringA = addOnDatas[i].ToString();
+                stringA = addOnDatas[i].GetAddOnType.ToString();
                 result.Add(stringA);
             }
         }
