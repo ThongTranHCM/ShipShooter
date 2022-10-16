@@ -80,7 +80,6 @@ public static class Constants
     {
         if (listAddOnTypes == null)
         {
-            Debug.LogError("Null");
             listAddOnTypes = GameInformation.Instance.addOnEquipData.GetUnlockableAddOnList();
         }
         return listAddOnTypes;

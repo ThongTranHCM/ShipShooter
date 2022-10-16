@@ -80,7 +80,6 @@ public class DailyDealManager : MonoBehaviour
             List<Deal> tmp = GameInformation.Instance.dailyDealList;
             Debug.Log(dealList.Count);
             for(int i = 0; i < tmp.Count; i++){
-                Debug.Log(dealList.Count);
                 if(dealList.Find( x => x.ID == tmp[i].ID) == null){
                     dealList.Add(tmp[i]);
                 }

@@ -93,7 +93,6 @@ public class RandomLevelDesignData : LevelDesignData
     {
         GenerateWaves();
         GeneratedAddOnDrops();
-        Debug.LogError("Install");
         float denseSum = 0;
         while(curWave < generatedWaveList.Count){
             denseSum = 0;

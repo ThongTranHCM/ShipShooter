@@ -28,6 +28,8 @@ namespace ThongNguyen.PlayerController
         //----Effects
         [SerializeField]
         private OnHitEffect _effDiePrefab;
+        [SerializeField]
+        private int _numOfCoinAtDie;
         protected IEnumerator actionFreeze, actionSlow;
         protected float timeFreeze, timeSlow;
         protected float totalPercentSlowSpeed;
@@ -431,6 +433,10 @@ namespace ThongNguyen.PlayerController
                 Transform effectTf = PoolManager.Pools[Constants.poolOnHitEffect].Spawn(_effDiePrefab.transform, transform.position, Quaternion.identity).transform;
                 OnHitEffect onHitEffect = effectTf.GetComponent<OnHitEffect>();
                 onHitEffect.Install(this);
+            }
+            if (_numOfCoinAtDie > 0)
+            {
+                GamePlayManager.Instance.Collection.SpawnCoinsAt(_numOfCoinAtDie, transform.position);
             }
             ChangeBrightness(Color.black,0);
             OnRemove();

@@ -72,7 +72,6 @@ public class EndlessLevelDesignData : LevelDesignData
     public override IEnumerator InstallWaves()
     {
         GenerateWaves();
-        Debug.LogError("Install");
         float denseSum = 0;
         while(!IsCompleted()){
             denseSum = 0;

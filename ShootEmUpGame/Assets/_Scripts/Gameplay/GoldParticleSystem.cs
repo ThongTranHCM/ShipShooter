@@ -24,6 +24,10 @@ public class GoldParticleSystem : IParticleSystem
         EmitHomingParticle(particleCollider);
         DestroyParticle(particleCollider);
     }
+    public void EmitXCoin(int numCoin)
+    {
+        myParticleSystem.Emit(numCoin);
+    }
     public void EmitHomingParticle(ParticleCollider particleCollider)
     {
         var emitParams = new ParticleSystem.EmitParams();

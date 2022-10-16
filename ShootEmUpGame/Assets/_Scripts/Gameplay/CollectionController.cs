@@ -77,4 +77,10 @@ public class CollectionController : MonoBehaviour
 		_gold += _goldIncrement;
 		_goldIncrement = 0;
 	}
+
+	public void SpawnCoinsAt(int numCoin, Vector2 position)
+    {
+		_goldParticle.transform.position = position;
+		_goldParticle.EmitXCoin(numCoin);
+	}
 }
