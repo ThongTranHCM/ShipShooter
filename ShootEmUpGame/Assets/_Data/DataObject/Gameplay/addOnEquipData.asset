@@ -74,6 +74,17 @@ MonoBehaviour:
     _onHitController: {fileID: 0}
     _powerUpController: {fileID: 94120046315102710, guid: 7beeca05c64c4b64dace7439c7a9600b,
       type: 3}
+    _isUnlocked: 0
+  - _addOnType: 106
+    _addOnSpr: {fileID: 21300000, guid: e06eebf644bc5c84cb5d23b9d62ee3cd, type: 3}
+    _baseValue: 0.5
+    _increaseValue: 0.01
+    _spawnGun: {fileID: 4119045906119738281, guid: c3f7845408977574b8a86526ca94867b,
+      type: 3}
+    _spawnGunData: {fileID: 11400000, guid: ed7ef987209dc994490caf59de0ad4ea, type: 2}
+    _onHitController: {fileID: 0}
+    _powerUpController: {fileID: 6967500732749733409, guid: b9ff3b2c0f0431746935975ee61837c8,
+      type: 3}
     _isUnlocked: 1
   - _addOnType: 104
     _addOnSpr: {fileID: 21300000, guid: 75c6c57e72a33de42bcf6efefad9c957, type: 3}

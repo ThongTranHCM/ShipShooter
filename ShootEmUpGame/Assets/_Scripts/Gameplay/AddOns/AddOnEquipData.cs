@@ -19,6 +19,7 @@ public class AddOnEquipData : ScriptableObject
         PowerUpBlackHole,     //Kill enemy has a chance to drop Black Hole.
         PowerUpMegaShot,      //Kill enemy has a chance to drop MegaShot. Collect MegaShot to attack MegaShot SkyChamp style.
         PowerUpXCross,        //Kill enemy has a chance to drop XCross. Shoot 2 big penetrating bullets.
+        PowerUpVertLaser,     //Kill enemy has a chance to drop Vert Laser. Shoot Vertical Laser at random locations 
         OnHitExplosion = 200, //Damaging enemy has a chance to create an Explosion, dealing damage to all enemy in a small area.
         OnHitScatter,         //Damaging enemy has a chance to create N Homing Missiles from the main ship.
         OnHitBlizzard,        //Damaging enemy has a chance to create a Blizzard. Enemies inside the Blizzard will be slowed by X%, take damage per second.

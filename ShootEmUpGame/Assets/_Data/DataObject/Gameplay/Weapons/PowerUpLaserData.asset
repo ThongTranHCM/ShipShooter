@@ -10,25 +10,25 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86c78a494fe158c44a9cbcd39ef9394d, type: 3}
-  m_Name: TestGunData
+  m_Name: PowerUpLaserData
   m_EditorClassIdentifier: 
-  attackSpeed: 6
+  attackSpeed: 3
   numWavePerShot: 0
   numOfBulletPerWave: 0
   timeDelayForEachWave: 0
   bulletData:
-    speed: 15
+    speed: 0
     timeToMove: 2
-    canPenetrated: 0
+    canPenetrated: 1
     _targetLocked: {fileID: 0}
-    rotSpeed: 3
-    timeFollowTarget: 3
+    rotSpeed: 0
+    timeFollowTarget: 0
     _applyEfect:
-      attackPower: 0
-      ratioDamage: 100
+      attackPower: 5
+      ratioDamage: 30
       criticalRate: 0
       criticalDamage: 0
-      damageSource: 0
+      damageSource: 2
       freezeChance: 0
       timeFreeze: 0
       slowChance: 0
