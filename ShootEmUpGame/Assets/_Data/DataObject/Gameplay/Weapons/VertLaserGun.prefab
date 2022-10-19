@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4119045906119738281
+--- !u!1 &8886731710162742474
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2573056848137731565}
-  - component: {fileID: 2103363804130340727}
+  - component: {fileID: 7046053792019305102}
+  - component: {fileID: 6867267301090131988}
   m_Layer: 20
-  m_Name: FlashBombGun
+  m_Name: VertLaserGun
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2573056848137731565
+--- !u!4 &7046053792019305102
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4119045906119738281}
+  m_GameObject: {fileID: 8886731710162742474}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -31,13 +31,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2103363804130340727
+--- !u!114 &6867267301090131988
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4119045906119738281}
+  m_GameObject: {fileID: 8886731710162742474}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 89850f0c2cdefab42bd6d6e53fd49c7e, type: 3}
@@ -46,19 +46,19 @@ MonoBehaviour:
   bulletParticleSystems: []
   bulletControllers: []
   shootTransforms:
-  - {fileID: 2573056848137731565}
-  isRandomPositionX: 0
-  isRandomPositionY: 1
-  isFixedPositionX: 1
-  isFixedPositionY: 0
-  fixedX: 43
-  fixedY: 43
+  - {fileID: 7046053792019305102}
+  isRandomPositionX: 1
+  isRandomPositionY: 0
+  isFixedPositionX: 0
+  isFixedPositionY: 1
+  fixedX: 0
+  fixedY: 0
   stopGunAtInstall: 1
   sizeX: 1
   sizeY: 1
   _isOrientate: 0
   _isOrientateOncePerWave: 0
   _isOrientateOncePerShot: 0
-  _bulletPrefab: {fileID: 3838677212333051533, guid: 93b4bb0a0931c024080cbb529f1e8281,
+  _bulletPrefab: {fileID: 7033971083900750458, guid: 7b470f015e66bff45a808103bc328d3e,
     type: 3}
   _resetOnPlay: 1

@@ -49,6 +49,7 @@ public class BombAreaController : BulletController
     {
         float size = _lowPassFire.Output() / _lowPassFire.GetAlpha();
         size = Mathf.Clamp(size, 0.6f, 1);
+        Debug.LogError("Bomb " + gameObject.name);
         Color color = _areaSprite.color;
         color.a = size * 0.25f;
         _areaSprite.color = color;

@@ -12,7 +12,9 @@ public class IGunController : MonoBehaviour
     public BulletParticleSystem[] bulletParticleSystems;
     public BulletController[] bulletControllers;
     public Transform[] shootTransforms;
-    public bool isRandomPosition;
+    public bool isRandomPositionX, isRandomPositionY;
+    public bool isFixedPositionX, isFixedPositionY;
+    public float fixedX, fixedY;
     public bool stopGunAtInstall;
     public float sizeX, sizeY;
     protected DOGunData gunData;
@@ -302,15 +304,44 @@ public class IGunController : MonoBehaviour
             {
                 positionSpawn = transform.position;
                 positionDestination = transform.position + bulletDeltaPosition;
-                if (isRandomPosition)
+                if (isFixedPositionX || isRandomPositionX || isFixedPositionY || isRandomPositionY)
                 {
-                    positionSpawn = new Vector3(Random.Range(topLeftPos.x, botRightPos.x), Random.Range(topLeftPos.y, botRightPos.y), 0);
+                    positionSpawn = GetBulletPosition(topLeftPos, botRightPos);
                     positionDestination = positionSpawn;
                 }
                 BulletController bullet = CreateBullet(positionSpawn, positionDestination, shootTransforms[i].rotation);
                 bullet.SetUpFollow(null, transform.eulerAngles.z);
             }
         }
+    }
+
+    public Vector3 GetBulletPosition(Vector3 topLeftPos, Vector3 botRightPos)
+    {
+        Vector3 positionSpawn = transform.position;
+
+        if (isFixedPositionX)
+        {
+            positionSpawn.x = fixedX;
+        }
+        else
+        {
+            if (isRandomPositionX)
+            {
+                positionSpawn.x = Random.Range(topLeftPos.x, botRightPos.x);
+            }
+        }
+        if (isFixedPositionY)
+        {
+            positionSpawn.y = fixedY;
+        }
+        else
+        {
+            if (isRandomPositionY)
+            {
+                positionSpawn.y = Random.Range(topLeftPos.y, botRightPos.y);
+            }
+        }
+        return positionSpawn;
     }
 
     protected virtual BulletController CreateBullet(Vector3 position, Vector3 destination, Quaternion rotation)
@@ -330,9 +361,9 @@ public class IGunController : MonoBehaviour
 
         Vector3 topLeftPos = Constants.GetTopLeftScreen() + new Vector2(sizeX, sizeY);
         Vector3 botRightPos = Constants.GetBottomRightScreen() - new Vector2(sizeX, sizeY);
-        if (isRandomPosition)
+        if (isFixedPositionX || isRandomPositionX || isFixedPositionY || isRandomPositionY)
         {
-            position = new Vector3(Random.Range(topLeftPos.x, botRightPos.x), Random.Range(topLeftPos.y, botRightPos.y), 0);
+            position = GetBulletPosition(topLeftPos, botRightPos);
             destination = position;
         }
         string poolNameOfBullet = Constants.poolNameBulletsOfPlayer;
