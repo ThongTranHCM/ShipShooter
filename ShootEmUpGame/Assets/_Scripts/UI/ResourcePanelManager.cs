@@ -50,7 +50,6 @@ public class ResourcePanelManager : MonoBehaviour
         foreach(Transform child in bigIcon.transform){
             Object.Destroy(child.gameObject);
         }
-        Debug.LogError("ID" +ID);
         Instantiate(type.BigIconGameObject, bigIcon.transform.position, Quaternion.identity, bigIcon.transform);
     }
 }

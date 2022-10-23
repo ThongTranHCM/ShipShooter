@@ -11,7 +11,7 @@ public class RewardResourceCanvasManager : MonoBehaviour
     [SerializeField]
     private GameObject content;
     [SerializeField]
-    private GameObject resourcePanel;
+    private ResourcePanelManager resourcePanel;
     
     // Start is called before the first frame update
     public RewardResourceCanvasManager()
@@ -23,7 +23,7 @@ public class RewardResourceCanvasManager : MonoBehaviour
 
     public void Show(string Type, int Amount){
         gameObject.SetActive(true);
-        resourcePanel.GetComponent<ResourcePanelManager>().SetReward(Type, Amount);
+        resourcePanel.SetReward(Type, Amount);
         LeanTween.cancel(content);
         content.transform.localScale = new Vector3(1.0f, 0.75f);
         LeanTween.scale(content,new Vector3(1.0f,1.0f),0.75f).setEase(LeanTweenType.easeOutElastic);  

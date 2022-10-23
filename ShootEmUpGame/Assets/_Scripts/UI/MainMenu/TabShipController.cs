@@ -22,9 +22,9 @@ public class TabShipController : PanelController
     [SerializeField]
     private TextMeshProUGUI _txtShipPower;
     [SerializeField]
-    private PurchaseResourceButtonManager _purchaseButton;
+    private PurchaseShipResourceButtonManager _purchaseButton;
     [SerializeField]
-    private PurchaseResourceButtonManager _upgradeButton;
+    private PurchaseShipResourceButtonManager _upgradeButton;
 
     [Header("Ship Group")]
     [SerializeField]
@@ -69,7 +69,6 @@ public class TabShipController : PanelController
     private void UpdateShipStats(int index)
     {
         _intShipLevel = DataManager.Instance.playerData.GetShipProgress(shipIndex).shipLevel;
-        Debug.LogError("Index " + index);
         int minLevel = Mathf.Max(1, _intShipLevel);
         DOShipData shipData = GameInformation.Instance.GetShipData(shipIndex);
         _intShipCost = (int)shipData.GetUpgradeCostFrom(_intShipLevel);
@@ -79,7 +78,6 @@ public class TabShipController : PanelController
         _txtShipLevel.text = "Level " + minLevel;
         _txtShipPower.text = "Power " + _intShipPower;
         //Button
-        List<PurchaseResourceButtonManager.Reward> rewards = new List<PurchaseResourceButtonManager.Reward>();
         bool showPurchaseButton = (_intShipLevel <= 0);
         bool showUpgradeButton = (_intShipLevel > 0);
         _purchaseButton.gameObject.SetActive(showPurchaseButton);
@@ -89,14 +87,12 @@ public class TabShipController : PanelController
             _intShipCost = (int)shipData.ShipCost;
             _strCostCurrency = shipData.ShipCostCurrency;
             _purchaseButton.SetCost(_strCostCurrency, _intShipCost);
-            rewards.Add(new PurchaseResourceButtonManager.Reward("ship" + (index + 1) + "Buy", 1));
-            _purchaseButton.SetReward(rewards);
+            _purchaseButton.SetReward("ship" + (index + 1) + "Buy", 1);
         }
         if (showUpgradeButton)
         {
             _upgradeButton.SetCost(_strCostCurrency, _intShipCost);
-            rewards.Add(new PurchaseResourceButtonManager.Reward("ship" + (index + 1) + "Upgrade", 1));
-            _upgradeButton.SetReward(rewards);
+            _upgradeButton.SetReward("ship" + (index + 1) + "Upgrade", 1);
         }
     }
 
@@ -122,29 +118,19 @@ public class TabShipController : PanelController
         PlayShipTransitionAnimation();
     }
 
-    private void OnShipUpgrade()
-    {
-        UpdateShipStats(shipIndex);
-        _layoutShip.Install();
-    }
-
     public void OnShipUpgradeUIClick()
     {
-        DataManager.Instance.playerData.GetShipProgress(shipIndex).shipLevel += 1;
-        OnShipUpgrade();
-    }
-
-    private void OnShipBuy()
-    {
+        //DataManager.Instance.playerData.GetShipProgress(shipIndex).shipLevel += 1;
         UpdateShipStats(shipIndex);
-        _layoutShip.UpdateInfo();
-        _layoutShip.SelectShip(shipIndex);
+        _layoutShip.Install();
     }
 
     public void OnShipBuyUIClick()
     {
         DataManager.Instance.playerData.GetShipProgress(shipIndex).shipLevel = Mathf.Max(DataManager.Instance.playerData.GetShipProgress(shipIndex).shipLevel, 1);
-        OnShipBuy();
+        UpdateShipStats(shipIndex);
+        _layoutShip.UpdateInfo();
+        _layoutShip.SelectShip(shipIndex);
     }
     #endregion
 }

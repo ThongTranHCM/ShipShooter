@@ -624,8 +624,8 @@ MonoBehaviour:
   _txtShipName: {fileID: 4414892330638463350}
   _txtShipLevel: {fileID: 4414892330850353701}
   _txtShipPower: {fileID: 4414892331424308852}
-  _purchaseButton: {fileID: 2324407339230462550}
-  _upgradeButton: {fileID: 4363912634457605299}
+  _purchaseButton: {fileID: 4637163452470689494}
+  _upgradeButton: {fileID: 7550481163412067257}
   _layoutShip: {fileID: 2097085133309272703}
   _defaultScaleX: 25
 --- !u!1001 &1682612864643917615
@@ -779,7 +779,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 2324407339230462550}
+      objectReference: {fileID: 4637163452470689494}
     - target: {fileID: 7070159343637245185, guid: 64baa8ee716f4284391dee7e81bfe934,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
@@ -808,7 +808,7 @@ PrefabInstance:
     - target: {fileID: 7070159343637245185, guid: 64baa8ee716f4284391dee7e81bfe934,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: PurchaseResourceButtonManager, Assembly-CSharp
+      value: PurchaseShipResourceButtonManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7070159343637245185, guid: 64baa8ee716f4284391dee7e81bfe934,
         type: 3}
@@ -872,7 +872,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2324407339230462550
+--- !u!114 &4637163452470689494
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -881,7 +881,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8450889298930534338}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b5b0c01531015d46824de41b036975c, type: 3}
+  m_Script: {fileID: 11500000, guid: 456ac9a73f67c97499b3b5cd225e60a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   costId: diamond
@@ -890,10 +890,8 @@ MonoBehaviour:
   _imgBg: {fileID: 8450889299241617967}
   _matPurchaseable: {fileID: 2100000, guid: d814c12828ffa22498c5a7e4dcc98ab5, type: 2}
   _matNotEnough: {fileID: 2100000, guid: ad149a49812e3b94c9186a3d1dca6bf0, type: 2}
-  rewards:
-  - id: Ship3Buy
-    amount: 0
-  box: 
+  _amount: 0
+  _shipId: Ship3Buy
 --- !u!1001 &2757665261175795337
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1040,7 +1038,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 4363912634457605299}
+      objectReference: {fileID: 7550481163412067257}
     - target: {fileID: 7070159343637245185, guid: 64baa8ee716f4284391dee7e81bfe934,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
@@ -1069,7 +1067,7 @@ PrefabInstance:
     - target: {fileID: 7070159343637245185, guid: 64baa8ee716f4284391dee7e81bfe934,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: PurchaseResourceButtonManager, Assembly-CSharp
+      value: PurchaseShipResourceButtonManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 7070159343637245185, guid: 64baa8ee716f4284391dee7e81bfe934,
         type: 3}
@@ -1133,7 +1131,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2757665261175795337}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4363912634457605299
+--- !u!114 &7550481163412067257
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1142,7 +1140,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4925655442575363684}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b5b0c01531015d46824de41b036975c, type: 3}
+  m_Script: {fileID: 11500000, guid: 456ac9a73f67c97499b3b5cd225e60a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   costId: gold
@@ -1151,10 +1149,8 @@ MonoBehaviour:
   _imgBg: {fileID: 4925655442282595209}
   _matPurchaseable: {fileID: 2100000, guid: d814c12828ffa22498c5a7e4dcc98ab5, type: 2}
   _matNotEnough: {fileID: 2100000, guid: ad149a49812e3b94c9186a3d1dca6bf0, type: 2}
-  rewards:
-  - id: Ship3Upgrade
-    amount: 1
-  box: 
+  _amount: 1
+  _shipId: Ship3Upgrade
 --- !u!1001 &4984557533732609577
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -36,7 +36,6 @@ public class PurchaseFragmentButtonManager : ResourceSinkButtonManager
         foreach(Reward reward in rewards){
             tuples.Add(reward.ToTuple());
         }
-        Debug.LogError("CheckReward");
         if(box == ""){
             return RewardFragmentManager.Instance.Purchase(costId, costAmount, tuples);
         } else {

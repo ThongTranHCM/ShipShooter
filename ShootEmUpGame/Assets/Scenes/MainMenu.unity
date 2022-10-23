@@ -716,8 +716,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -18044,8 +18044,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -26030,10 +26030,10 @@ RectTransform:
   m_Father: {fileID: 1678504035}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.3, y: 0}
-  m_AnchorMax: {x: 0.7, y: 0}
+  m_AnchorMin: {x: -0.5, y: 0}
+  m_AnchorMax: {x: 1.5, y: 0}
   m_AnchoredPosition: {x: 0, y: -90}
-  m_SizeDelta: {x: 240, y: 30}
+  m_SizeDelta: {x: 0, y: 30}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &692860668
 MonoBehaviour:
@@ -32208,8 +32208,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -43775,7 +43775,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &959066714
 RectTransform:
   m_ObjectHideFlags: 0
@@ -43809,7 +43809,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 1117232423}
-  resourcePanel: {fileID: 1678504034}
+  panelDescription: {fileID: 1963466450}
+  txtShipName: {fileID: 1566914369}
+  panelLevel: {fileID: 2108710754}
+  txtLevelPrev: {fileID: 833707793}
+  txtLevelPost: {fileID: 1094241178}
+  panelPower: {fileID: 692860666}
+  txtPowerPrev: {fileID: 1615247850}
+  txtPowerPost: {fileID: 367198537}
 --- !u!114 &959066716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44634,8 +44641,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -68102,8 +68109,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -75632,8 +75639,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -75779,8 +75786,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -89462,10 +89469,10 @@ RectTransform:
   m_Father: {fileID: 1678504035}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.3, y: 0}
-  m_AnchorMax: {x: 0.7, y: 0}
+  m_AnchorMin: {x: -0.5, y: 0}
+  m_AnchorMax: {x: 1.5, y: 0}
   m_AnchoredPosition: {x: 0, y: -40}
-  m_SizeDelta: {x: 240, y: 30}
+  m_SizeDelta: {x: 0, y: 30}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &2108710756
 MonoBehaviour:
@@ -90798,7 +90805,7 @@ PrefabInstance:
     - target: {fileID: 3466503782255313085, guid: 127d44f7d42feea449294ee43f5560b0,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 3.0999756
+      value: 3.0998535
       objectReference: {fileID: 0}
     - target: {fileID: 3774101376185110175, guid: 127d44f7d42feea449294ee43f5560b0,
         type: 3}
@@ -103539,7 +103546,7 @@ PrefabInstance:
     - target: {fileID: 307286061803074445, guid: 398fedc185d163645ae3e2c797e6316f,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -56.880005
+      value: -56.879883
       objectReference: {fileID: 0}
     - target: {fileID: 307286061803074445, guid: 398fedc185d163645ae3e2c797e6316f,
         type: 3}
@@ -103654,7 +103661,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 448181225}
-  resourcePanel: {fileID: 1244738129034573855}
+  resourcePanel: {fileID: 991143712396275052}
 --- !u!222 &8928084926486024925
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -26,7 +26,6 @@ public class RewardResourceManager : MonoBehaviour
     }
 
     public void AddReward(string id, int amount){
-        Debug.LogError("Instance  " + (instance == this) + " " + id + " " + amount);
         if(instance == this){
             rewardQueue.Enqueue((id, amount));
         } else {
@@ -146,8 +145,6 @@ public class RewardResourceManager : MonoBehaviour
     }
 
     private void IncreaseResource(string Id, int Amount){
-        string shipRewardPattern = "tShip([0-9])([A-Z][a-z]*)";
-        Regex shipRegex = new Regex("tShip([0-9])Upgrade");
         switch ( Id ){
             case "gold":
                 DataManager.Instance.playerData.Coin += Amount;
@@ -158,16 +155,7 @@ public class RewardResourceManager : MonoBehaviour
                 DataManager.isChangeCurrency = true;
                 break;
             default:
-                try
-                {
-                    foreach (Match match in Regex.Matches(Id, shipRewardPattern,
-                                                          RegexOptions.None, System.TimeSpan.FromSeconds(1)))
-                        Debug.LogError("Found " + match.Value);
-                }
-                catch (RegexMatchTimeoutException)
-                {
-                    // Do Nothing: Assume that timeout represents no match.
-                }
+                //Do Nothing
                 return;
         }
         DataManager.Save();
