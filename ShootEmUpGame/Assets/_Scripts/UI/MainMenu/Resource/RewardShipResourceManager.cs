@@ -12,14 +12,13 @@ public class RewardShipResourceManager : MonoBehaviour
         get { return instance; }
     }
 
-    private Queue<(string, int)> rewardQueue = new Queue<(string, int)>();
+    private Queue<(int, bool)> rewardQueue = new Queue<(int, bool)>();
 
     public void Awake()
     {
         DontDestroyOnLoad(gameObject);
         if (instance == null)
         {
-            Debug.LogError("Instance  " + gameObject.name);
             instance = this;
         }
         else
@@ -28,15 +27,15 @@ public class RewardShipResourceManager : MonoBehaviour
         }
     }
 
-    public void AddReward(string id, int amount)
+    public void AddReward(int shipId, bool isUnlock)
     {
         if (instance == this)
         {
-            rewardQueue.Enqueue((id, amount));
+            rewardQueue.Enqueue((shipId, isUnlock));
         }
         else
         {
-            instance.AddReward(id, amount);
+            instance.AddReward(shipId, isUnlock);
         }
     }
 
@@ -68,11 +67,20 @@ public class RewardShipResourceManager : MonoBehaviour
     {
         if (rewardQueue.Count > 0)
         {
-            (string, int) reward = rewardQueue.Dequeue();
+            (int, bool) reward = rewardQueue.Dequeue();
+            int index = reward.Item1;
+            DOShipData shipData = GameInformation.Instance.shipData[index];
+            if (reward.Item2) //Unlock
+            {
+                ShipResourceCanvasManager.Instance.SetContentUnlockShip(shipData.shipName);
+            }
+            else
+            {
+                int level = DataManager.Instance.playerData.GetShipProgress(index).shipLevel;
+                ShipResourceCanvasManager.Instance.SetContentShowUpdateShip(level, (int) shipData.GetPower(level), level + 1, (int)shipData.GetPower(level + 1));
+            }
             SoundManager.Instance.PlaySFX("open_box");
-            ShipResourceCanvasManager.Instance.SetContentUnlockShip("ba");
-            ShipResourceCanvasManager.Instance.SetContentUnlockShip("ba");
-            ShipResourceCanvasManager.Instance.Show(reward.Item1, reward.Item2);
+            ShipResourceCanvasManager.Instance.Show();
             IncreaseResource(reward.Item1, reward.Item2);
         }
         else
@@ -81,7 +89,7 @@ public class RewardShipResourceManager : MonoBehaviour
         }
     }
 
-    public bool Purchase(string RequireResource, int RequireAmount, List<(string, int)> Rewards)
+    public bool Purchase(string RequireResource, int RequireAmount, List<(int, bool)> Rewards)
     {
         if (DataManager.Instance.playerData.CheckPurchaseable(RequireResource, RequireAmount))
         {
@@ -98,9 +106,8 @@ public class RewardShipResourceManager : MonoBehaviour
             }
             DataManager.isChangeCurrency = true;
             DataManager.Save();
-            foreach ((string, int) reward in Rewards)
+            foreach ((int, bool) reward in Rewards)
             {
-                Debug.LogError("Reward " + reward.Item1);
                 AddReward(reward.Item1, reward.Item2);
             }
             GetReward();
@@ -118,23 +125,16 @@ public class RewardShipResourceManager : MonoBehaviour
         instance.GetReward();
     }
 
-
-    private void IncreaseResource(string Id, int Amount)
+    private void IncreaseResource(int shipId, bool isUnlock)
     {
-        string shipRewardPattern = "tShip([0-9])([A-Z][a-z]*)";
-        Regex shipUpgradeRegex = new Regex("tShip([0-9])Upgrade");
-        Regex shipBuyRegex = new Regex("tShip([0-9])Upgrade");
-        try
+        PlayerData.ShipProgressData shipProgress = DataManager.Instance.playerData.GetShipProgress(shipId);
+        if (isUnlock && shipProgress.shipLevel < 1)
         {
-            foreach (Match match in Regex.Matches(Id, shipRewardPattern,
-                                                  RegexOptions.None, System.TimeSpan.FromSeconds(1)))
-                Debug.LogError("Found " + match.Value);
-
-            DataManager.Save();
+            shipProgress.shipLevel = Mathf.Max(shipProgress.shipLevel, 1);
         }
-        catch (RegexMatchTimeoutException)
+        else
         {
-            // Do Nothing: Assume that timeout represents no match.
+            shipProgress.shipLevel += 1;
         }
     }
 }

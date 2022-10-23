@@ -43775,7 +43775,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &959066714
 RectTransform:
   m_ObjectHideFlags: 0
@@ -43891,9 +43891,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6078679100143432691, guid: d440c472ae03d6545b1a15a40ed4e8a3,
+      - m_Target: {fileID: 8797313478803742977, guid: d440c472ae03d6545b1a15a40ed4e8a3,
           type: 3}
-        m_TargetAssemblyTypeName: RewardResourceManager, Assembly-CSharp
+        m_TargetAssemblyTypeName: RewardShipResourceManager, Assembly-CSharp
         m_MethodName: InstanceGetReward
         m_Mode: 1
         m_Arguments:
@@ -44889,7 +44889,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: 100}
+  m_AnchoredPosition: {x: 0, y: 99.99988}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1125837222

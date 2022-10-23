@@ -18,7 +18,6 @@ public class RewardResourceManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         if(instance == null)
         {
-            Debug.LogError("Instance  " + gameObject.name);
             instance = this;
         } else {
             DestroyObject(gameObject);

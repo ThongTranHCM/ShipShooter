@@ -87,12 +87,12 @@ public class TabShipController : PanelController
             _intShipCost = (int)shipData.ShipCost;
             _strCostCurrency = shipData.ShipCostCurrency;
             _purchaseButton.SetCost(_strCostCurrency, _intShipCost);
-            _purchaseButton.SetReward("ship" + (index + 1) + "Buy", 1);
+            _purchaseButton.SetReward(index, true);
         }
         if (showUpgradeButton)
         {
             _upgradeButton.SetCost(_strCostCurrency, _intShipCost);
-            _upgradeButton.SetReward("ship" + (index + 1) + "Upgrade", 1);
+            _upgradeButton.SetReward(index, false);
         }
     }
 
@@ -120,14 +120,12 @@ public class TabShipController : PanelController
 
     public void OnShipUpgradeUIClick()
     {
-        //DataManager.Instance.playerData.GetShipProgress(shipIndex).shipLevel += 1;
         UpdateShipStats(shipIndex);
         _layoutShip.Install();
     }
 
     public void OnShipBuyUIClick()
     {
-        DataManager.Instance.playerData.GetShipProgress(shipIndex).shipLevel = Mathf.Max(DataManager.Instance.playerData.GetShipProgress(shipIndex).shipLevel, 1);
         UpdateShipStats(shipIndex);
         _layoutShip.UpdateInfo();
         _layoutShip.SelectShip(shipIndex);

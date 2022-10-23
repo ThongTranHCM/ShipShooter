@@ -39,18 +39,17 @@ public class ShipResourceCanvasManager : MonoBehaviour
         }
     }
 
-    public void Show(string Type, int Amount)
+    public void Show()
     {
         gameObject.SetActive(true);
-        Debug.LogError("Show " + Type);
-        //resourcePanel.GetComponent<ResourcePanelManager>().SetReward(Type, Amount);
-        //LeanTween.cancel(content);
-        //content.transform.localScale = new Vector3(1.0f, 0.75f);
-        //LeanTween.scale(content, new Vector3(1.0f, 1.0f), 0.75f).setEase(LeanTweenType.easeOutElastic);
+        LeanTween.cancel(content);
+        content.transform.localScale = new Vector3(1.0f, 0.75f);
+        LeanTween.scale(content, new Vector3(1.0f, 1.0f), 0.75f).setEase(LeanTweenType.easeOutElastic);
     }
 
     public void SetContentUnlockShip(string name)
     {
+        Debug.LogError("Unlock");
         panelDescription.SetActive(true);
         panelLevel.SetActive(false);
         panelPower.SetActive(false);
@@ -60,6 +59,7 @@ public class ShipResourceCanvasManager : MonoBehaviour
 
     public void SetContentShowUpdateShip(int levelPrev, int powerPrev, int levelPost, int powerPost)
     {
+        Debug.LogError("Update");
         panelDescription.SetActive(false);
         panelLevel.SetActive(true);
         panelPower.SetActive(true);
