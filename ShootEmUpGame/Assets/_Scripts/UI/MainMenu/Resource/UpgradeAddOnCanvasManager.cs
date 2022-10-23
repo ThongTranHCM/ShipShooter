@@ -18,9 +18,19 @@ public class UpgradeAddOnCanvasManager : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI addOnName;
     [SerializeField]
-    private TextMeshProUGUI description;
-    [SerializeField]
     private AddOnEquipData addOnEquipData;
+    [SerializeField]
+    private GameObject panelLevel;
+    [SerializeField]
+    private TextMeshProUGUI txtLevelPrev;
+    [SerializeField]
+    private TextMeshProUGUI txtLevelPost;
+    [SerializeField]
+    private GameObject panelPower;
+    [SerializeField]
+    private TextMeshProUGUI txtPowerPrev;
+    [SerializeField]
+    private TextMeshProUGUI txtPowerPost;
 
     // Start is called before the first frame update
     public UpgradeAddOnCanvasManager()
@@ -29,6 +39,16 @@ public class UpgradeAddOnCanvasManager : MonoBehaviour
         {
             instance = this;
         }
+    }
+
+    public void SetContentShowUpdateAddOn(int levelPrev, int powerPrev, int levelPost, int powerPost)
+    {
+        panelLevel.SetActive(true);
+        panelPower.SetActive(true);
+        txtLevelPrev.text = levelPrev.ToString();
+        txtLevelPost.text = levelPost.ToString();
+        txtPowerPrev.text = powerPrev.ToString();
+        txtPowerPost.text = powerPost.ToString();
     }
 
     public void Show(string Type, int Amount)

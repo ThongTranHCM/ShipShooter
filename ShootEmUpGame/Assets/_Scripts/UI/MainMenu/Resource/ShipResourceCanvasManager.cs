@@ -49,17 +49,14 @@ public class ShipResourceCanvasManager : MonoBehaviour
 
     public void SetContentUnlockShip(string name)
     {
-        Debug.LogError("Unlock");
         panelDescription.SetActive(true);
         panelLevel.SetActive(false);
         panelPower.SetActive(false);
         txtShipName.text = name;
-        // DataManager.Instance.playerData.GetShipProgress(shipIndex).shipLevel += 1;
     }
 
     public void SetContentShowUpdateShip(int levelPrev, int powerPrev, int levelPost, int powerPost)
     {
-        Debug.LogError("Update");
         panelDescription.SetActive(false);
         panelLevel.SetActive(true);
         panelPower.SetActive(true);
