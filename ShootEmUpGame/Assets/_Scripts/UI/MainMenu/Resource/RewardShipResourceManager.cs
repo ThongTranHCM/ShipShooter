@@ -43,7 +43,7 @@ public class RewardShipResourceManager : MonoBehaviour
     {
         if (instance == this)
         {
-            //AddReward("gold", amount);
+            AddReward(shipId, false);
         }
         else
         {
@@ -55,7 +55,7 @@ public class RewardShipResourceManager : MonoBehaviour
     {
         if (instance == this)
         {
-            //AddReward("diamond", amount);
+            AddReward(shipId, true);
         }
         else
         {

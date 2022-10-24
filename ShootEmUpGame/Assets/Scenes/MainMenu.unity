@@ -44486,7 +44486,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: -40}
+  m_SizeDelta: {x: -40, y: -40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1014341097
 MonoBehaviour:
@@ -56995,7 +56995,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1308587128
 RectTransform:
   m_ObjectHideFlags: 0
@@ -97860,8 +97860,14 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 1808441187951208050, guid: 26fc74154055ce6448d9fc3e09116dc1,
         type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 5070683535707357394, guid: eae59ded211112a4bbd69b3a591066e4,
+        type: 2}
+    - target: {fileID: 1808441187951208050, guid: 26fc74154055ce6448d9fc3e09116dc1,
+        type: 3}
       propertyPath: m_hasFontAssetChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1852076732995606096, guid: 26fc74154055ce6448d9fc3e09116dc1,
         type: 3}
@@ -98036,7 +98042,7 @@ PrefabInstance:
     - target: {fileID: 3361559075611331829, guid: 26fc74154055ce6448d9fc3e09116dc1,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1410
+      value: 1360
       objectReference: {fileID: 0}
     - target: {fileID: 3372946484140538756, guid: 26fc74154055ce6448d9fc3e09116dc1,
         type: 3}
@@ -98337,11 +98343,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SizeDelta.x
       value: -24.36
-      objectReference: {fileID: 0}
-    - target: {fileID: 5939836742151206664, guid: 26fc74154055ce6448d9fc3e09116dc1,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6078405494494911213, guid: 26fc74154055ce6448d9fc3e09116dc1,
         type: 3}
