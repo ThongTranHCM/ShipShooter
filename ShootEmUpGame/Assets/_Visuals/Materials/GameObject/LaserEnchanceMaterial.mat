@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Tank_Material
+  m_Name: LaserEnchanceMaterial
   m_Shader: {fileID: 4800000, guid: 23c4f67eaed20db4489dd457c96653ca, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -44,11 +44,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LitTex:
-        m_Texture: {fileID: 2800000, guid: 2604b97bed3cbd64ea35cfa7d13cd7f3, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1641b9d12b218f447968e16ac7573165, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 2e009e32d0bf47148ae5d84b1ed3edd5, type: 3}
+        m_Texture: {fileID: 2800000, guid: 73e08c08936c123428d4bd7397fd4dd2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -68,7 +68,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _UnlitTex:
-        m_Texture: {fileID: 2800000, guid: 8922bdf879cda9f44b15584fcbd92581, type: 3}
+        m_Texture: {fileID: 2800000, guid: c0e578994b3c0e74a92ad69e50d6953f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:

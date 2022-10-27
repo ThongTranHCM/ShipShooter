@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Tank_Material
+  m_Name: SplitGunMaterial
   m_Shader: {fileID: 4800000, guid: 23c4f67eaed20db4489dd457c96653ca, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -44,11 +44,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LitTex:
-        m_Texture: {fileID: 2800000, guid: 2604b97bed3cbd64ea35cfa7d13cd7f3, type: 3}
+        m_Texture: {fileID: 2800000, guid: 792987090f1b10a4eac29a3976fbb90d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 2e009e32d0bf47148ae5d84b1ed3edd5, type: 3}
+        m_Texture: {fileID: 2800000, guid: 520cade846fb41a44b6f809d105ff427, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -68,7 +68,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _UnlitTex:
-        m_Texture: {fileID: 2800000, guid: 8922bdf879cda9f44b15584fcbd92581, type: 3}
+        m_Texture: {fileID: 2800000, guid: 271e73736208a2e4fb84e37ae79e43f2, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:

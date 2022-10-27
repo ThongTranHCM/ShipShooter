@@ -1344,6 +1344,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82a7edcda2829a246a447d13b9929141, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  childPanelControllers: []
+  presentedPanel: {fileID: 0}
+  presentingPanel: {fileID: 0}
+  isVisible: 0
 --- !u!1 &7008037713416269739
 GameObject:
   m_ObjectHideFlags: 0
@@ -2706,7 +2710,7 @@ PrefabInstance:
     - target: {fileID: 1017505089172938080, guid: 9512f62e3fc75ff4bb11e9b614c98095,
         type: 3}
       propertyPath: m_EffectDistance.x
-      value: -5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5189077119077815608, guid: 9512f62e3fc75ff4bb11e9b614c98095,
         type: 3}

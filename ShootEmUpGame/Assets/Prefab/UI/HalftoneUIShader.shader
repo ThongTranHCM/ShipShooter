@@ -114,7 +114,7 @@ Shader "UI/HalftoneUIShader"
                 IN.screenPosition.xy *= normalize(_ScreenParams.xy) * _Pivot.w  / (IN.screenPosition.w);
                 pattern -= 1 - tex2D(_Halftone, IN.screenPosition.xy);
                 pattern = saturate(pattern);
-                pattern = sqrt(pattern);
+                //pattern = sqrt(pattern);
                 fixed4 color;
                 color = lerp( _Shade, _Lit, pattern);
                 color *= IN.color;
