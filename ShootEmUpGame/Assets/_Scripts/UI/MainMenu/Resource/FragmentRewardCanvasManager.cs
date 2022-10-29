@@ -39,6 +39,7 @@ public class FragmentRewardCanvasManager : MonoBehaviour
         int oldFragment = addOnData.GetFragment;
         int newFragment = oldFragment + Amount;
         int cost;
+
         if (addOnData.GetLevel < 1)
         {
             cost = GameInformation.Instance.addOnEquipData.GetUnlockCost();
@@ -48,7 +49,7 @@ public class FragmentRewardCanvasManager : MonoBehaviour
             cost = GameInformation.Instance.addOnEquipData.GetUpgradeCost(addOnData.GetLevel);
         }
         addOnItem.Install(Id, addOnData.GetSprite, (int)addOnData.GetLevel, addOnData.GetFragment, cost);
-        addOnItem.UpdateFragment(newFragment, 1000, 1.0f, 0.1f);
+        addOnItem.UpdateFragment(newFragment, cost, 1.0f, 0.1f);
     }
 
     public void Close(){

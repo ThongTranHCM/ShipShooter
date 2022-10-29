@@ -55,8 +55,8 @@ public class FillBarManager : MonoBehaviour
     {
         if (didInit){
             float offset = borderRectTransform.rect.width * Mathf.Clamp(x, 0, 1);
-            //fillRectTransform.sizeDelta = new Vector2(offset, fillRectTransform.sizeDelta.y);
-            fillRectTransform.anchorMax = new Vector2(x, fillRectTransform.anchorMax.y);
+            fillRectTransform.sizeDelta = new Vector2(offset, fillRectTransform.sizeDelta.y);
+            //fillRectTransform.anchorMax = new Vector2(x, fillRectTransform.anchorMax.y);
             fillImage.color = borderImage.color = (x < 1) ? baseColor : fullColor;
         } else {
             Init();
@@ -68,20 +68,20 @@ public class FillBarManager : MonoBehaviour
     {
         value = Value;
         animatedValue = value;
-        if (_txtUI != null)
-        {
-            _txtUI.text = Value.ToString();
-        }
+        //if (_txtUI != null)
+        //{
+        //    _txtUI.text = Value.ToString();
+        //}
         SetFillBar(value);
     }
     public void SetRawValue(float current, float max)
     {
         value = current / max;
-        value = Mathf.Clamp(value, 0, 1);
-        if (_txtUI != null)
-        {
-            _txtUI.text = current.ToString();
-        }
+        //value = Mathf.Clamp(value, 0, 1);
+        //if (_txtUI != null)
+        //{
+        //    _txtUI.text = current.ToString();
+        //}
         animatedValue = value;
         SetFillBar(value);
     }
