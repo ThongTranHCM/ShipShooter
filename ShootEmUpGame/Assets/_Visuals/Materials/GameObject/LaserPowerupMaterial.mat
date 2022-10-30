@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: BlizzardEnchanceMaterial
+  m_Name: LaserPowerupMaterial
   m_Shader: {fileID: 4800000, guid: 23c4f67eaed20db4489dd457c96653ca, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -44,11 +44,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _LitTex:
-        m_Texture: {fileID: 2800000, guid: 07e43b025bfd08348936ce52647c2fea, type: 3}
+        m_Texture: {fileID: 2800000, guid: 53b06544badd75a41856bf1b37de85f4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 8ce6dfcc2473dd74e8aec280be9d8ef7, type: 3}
+        m_Texture: {fileID: 2800000, guid: 373e4340ff843d148980a2867247177b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -68,7 +68,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _UnlitTex:
-        m_Texture: {fileID: 2800000, guid: 0a7bc72e50890a04189409324cbff313, type: 3}
+        m_Texture: {fileID: 2800000, guid: 21fc7f90e9111624bb6635b5a92934c5, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
