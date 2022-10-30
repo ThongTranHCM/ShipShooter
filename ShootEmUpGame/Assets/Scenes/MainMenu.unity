@@ -44159,6 +44159,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   content: {fileID: 1117232423}
   panelDescription: {fileID: 1963466450}
+  imgShipIcon: {fileID: 706387736}
   txtShipName: {fileID: 1566914369}
   panelLevel: {fileID: 2108710754}
   txtLevelPrev: {fileID: 833707793}

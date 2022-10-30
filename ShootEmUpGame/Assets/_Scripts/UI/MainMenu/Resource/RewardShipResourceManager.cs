@@ -72,12 +72,12 @@ public class RewardShipResourceManager : MonoBehaviour
             DOShipData shipData = GameInformation.Instance.shipData[index];
             if (reward.Item2) //Unlock
             {
-                ShipResourceCanvasManager.Instance.SetContentUnlockShip(shipData.shipName);
+                ShipResourceCanvasManager.Instance.SetContentUnlockShip(shipData.spritePresentShip, shipData.shipName);
             }
             else
             {
                 int level = DataManager.Instance.playerData.GetShipProgress(index).shipLevel;
-                ShipResourceCanvasManager.Instance.SetContentShowUpdateShip(level, (int) shipData.GetPower(level), level + 1, (int)shipData.GetPower(level + 1));
+                ShipResourceCanvasManager.Instance.SetContentShowUpdateShip(shipData.spritePresentShip, level, (int) shipData.GetPower(level), level + 1, (int)shipData.GetPower(level + 1));
             }
             SoundManager.Instance.PlaySFX("open_box");
             ShipResourceCanvasManager.Instance.Show();

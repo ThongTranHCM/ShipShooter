@@ -16,6 +16,8 @@ public class ShipResourceCanvasManager : MonoBehaviour
     [SerializeField]
     private GameObject panelDescription;
     [SerializeField]
+    private Image imgShipIcon;
+    [SerializeField]
     private TextMeshProUGUI txtShipName;
     [SerializeField]
     private GameObject panelLevel;
@@ -47,17 +49,19 @@ public class ShipResourceCanvasManager : MonoBehaviour
         LeanTween.scale(content, new Vector3(1.0f, 1.0f), 0.75f).setEase(LeanTweenType.easeOutElastic);
     }
 
-    public void SetContentUnlockShip(string name)
+    public void SetContentUnlockShip(Sprite spr, string name)
     {
         panelDescription.SetActive(true);
+        imgShipIcon.sprite = spr;
         panelLevel.SetActive(false);
         panelPower.SetActive(false);
         txtShipName.text = name;
     }
 
-    public void SetContentShowUpdateShip(int levelPrev, int powerPrev, int levelPost, int powerPost)
+    public void SetContentShowUpdateShip(Sprite spr, int levelPrev, int powerPrev, int levelPost, int powerPost)
     {
         panelDescription.SetActive(false);
+        imgShipIcon.sprite = spr;
         panelLevel.SetActive(true);
         panelPower.SetActive(true);
         txtLevelPrev.text = levelPrev.ToString();
