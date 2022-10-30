@@ -7,6 +7,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4075633028440679785, guid: cd2f400b02b6af84192cc0727941e1f0,
+        type: 3}
+      propertyPath: m_EffectColor.b
+      value: 0.18039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 4075633028440679785, guid: cd2f400b02b6af84192cc0727941e1f0,
+        type: 3}
+      propertyPath: m_EffectColor.g
+      value: 0.2509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 4075633028440679785, guid: cd2f400b02b6af84192cc0727941e1f0,
+        type: 3}
+      propertyPath: m_EffectColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5189077119077815608, guid: cd2f400b02b6af84192cc0727941e1f0,
         type: 3}
       propertyPath: m_SizeDelta.y
@@ -144,9 +159,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd2f400b02b6af84192cc0727941e1f0, type: 3}
---- !u!224 &7070159343637245186 stripped
+--- !u!224 &2978414701162623245 stripped
 RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5189077119675521808, guid: cd2f400b02b6af84192cc0727941e1f0,
+  m_CorrespondingSourceObject: {fileID: 236573331177637663, guid: cd2f400b02b6af84192cc0727941e1f0,
     type: 3}
   m_PrefabInstance: {fileID: 3034597473708799506}
   m_PrefabAsset: {fileID: 0}
@@ -155,7 +170,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 7070159343637245186}
+    m_TransformParent: {fileID: 2978414701162623245}
     m_Modifications:
     - target: {fileID: 613985290915857211, guid: d98289d2635e34f448ecb9c6d415e1a7,
         type: 3}

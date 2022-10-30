@@ -1014,7 +1014,7 @@ PrefabInstance:
     - target: {fileID: 7070159343277957356, guid: 64baa8ee716f4284391dee7e81bfe934,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: -40
+      value: -34
       objectReference: {fileID: 0}
     - target: {fileID: 7070159343277957356, guid: 64baa8ee716f4284391dee7e81bfe934,
         type: 3}
@@ -1139,7 +1139,7 @@ MonoBehaviour:
   costAmount: 100
   costText: {fileID: 5949418457858533789}
   _imgBg: {fileID: 4748957010613200971}
-  _matPurchaseable: {fileID: 2100000, guid: d814c12828ffa22498c5a7e4dcc98ab5, type: 2}
+  _matPurchaseable: {fileID: 0}
   _matNotEnough: {fileID: 2100000, guid: ad149a49812e3b94c9186a3d1dca6bf0, type: 2}
   rewards:
   - id: gold

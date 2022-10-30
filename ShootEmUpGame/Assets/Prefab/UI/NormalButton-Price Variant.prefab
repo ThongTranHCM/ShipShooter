@@ -7,6 +7,76 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1338273834536244091, guid: 64baa8ee716f4284391dee7e81bfe934,
+        type: 3}
+      propertyPath: m_EffectColor.b
+      value: 0.41568628
+      objectReference: {fileID: 0}
+    - target: {fileID: 1338273834536244091, guid: 64baa8ee716f4284391dee7e81bfe934,
+        type: 3}
+      propertyPath: m_EffectColor.g
+      value: 0.07450981
+      objectReference: {fileID: 0}
+    - target: {fileID: 1338273834536244091, guid: 64baa8ee716f4284391dee7e81bfe934,
+        type: 3}
+      propertyPath: m_EffectColor.r
+      value: 0.13333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 2829161315058553242, guid: 64baa8ee716f4284391dee7e81bfe934,
+        type: 3}
+      propertyPath: m_EffectColor.b
+      value: 0.4156863
+      objectReference: {fileID: 0}
+    - target: {fileID: 2829161315058553242, guid: 64baa8ee716f4284391dee7e81bfe934,
+        type: 3}
+      propertyPath: m_EffectColor.g
+      value: 0.07450981
+      objectReference: {fileID: 0}
+    - target: {fileID: 2829161315058553242, guid: 64baa8ee716f4284391dee7e81bfe934,
+        type: 3}
+      propertyPath: m_EffectColor.r
+      value: 0.13333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128716140875442025, guid: 64baa8ee716f4284391dee7e81bfe934,
+        type: 3}
+      propertyPath: m_EffectColor.b
+      value: 0.41568628
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128716140875442025, guid: 64baa8ee716f4284391dee7e81bfe934,
+        type: 3}
+      propertyPath: m_EffectColor.g
+      value: 0.07450981
+      objectReference: {fileID: 0}
+    - target: {fileID: 3128716140875442025, guid: 64baa8ee716f4284391dee7e81bfe934,
+        type: 3}
+      propertyPath: m_EffectColor.r
+      value: 0.13333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 3380075387612435423, guid: 64baa8ee716f4284391dee7e81bfe934,
+        type: 3}
+      propertyPath: m_EffectColor.b
+      value: 0.74509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 3380075387612435423, guid: 64baa8ee716f4284391dee7e81bfe934,
+        type: 3}
+      propertyPath: m_EffectColor.g
+      value: 0.4784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 3380075387612435423, guid: 64baa8ee716f4284391dee7e81bfe934,
+        type: 3}
+      propertyPath: m_EffectColor.r
+      value: 0.10980393
+      objectReference: {fileID: 0}
+    - target: {fileID: 7070159343018599210, guid: 64baa8ee716f4284391dee7e81bfe934,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7070159343018599210, guid: 64baa8ee716f4284391dee7e81bfe934,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7070159343277957356, guid: 64baa8ee716f4284391dee7e81bfe934,
         type: 3}
       propertyPath: m_Pivot.x
@@ -119,8 +189,58 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7070159343637245184, guid: 64baa8ee716f4284391dee7e81bfe934,
         type: 3}
+      propertyPath: m_Color.b
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 7070159343637245184, guid: 64baa8ee716f4284391dee7e81bfe934,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.2509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 7070159343637245184, guid: 64baa8ee716f4284391dee7e81bfe934,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.18039216
+      objectReference: {fileID: 0}
+    - target: {fileID: 7070159343637245184, guid: 64baa8ee716f4284391dee7e81bfe934,
+        type: 3}
       propertyPath: m_Material
       value: 
-      objectReference: {fileID: 2100000, guid: ca9e0355b92e07f4ca7d6d1587ffa4d7, type: 2}
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415742956524318524, guid: 64baa8ee716f4284391dee7e81bfe934,
+        type: 3}
+      propertyPath: m_EffectColor.b
+      value: 0.4156863
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415742956524318524, guid: 64baa8ee716f4284391dee7e81bfe934,
+        type: 3}
+      propertyPath: m_EffectColor.g
+      value: 0.07450981
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415742956524318524, guid: 64baa8ee716f4284391dee7e81bfe934,
+        type: 3}
+      propertyPath: m_EffectColor.r
+      value: 0.13333334
+      objectReference: {fileID: 0}
+    - target: {fileID: 7501677216220618627, guid: 64baa8ee716f4284391dee7e81bfe934,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9029191290166622312, guid: 64baa8ee716f4284391dee7e81bfe934,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.6784314
+      objectReference: {fileID: 0}
+    - target: {fileID: 9029191290166622312, guid: 64baa8ee716f4284391dee7e81bfe934,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.2509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 9029191290166622312, guid: 64baa8ee716f4284391dee7e81bfe934,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.18039216
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64baa8ee716f4284391dee7e81bfe934, type: 3}
