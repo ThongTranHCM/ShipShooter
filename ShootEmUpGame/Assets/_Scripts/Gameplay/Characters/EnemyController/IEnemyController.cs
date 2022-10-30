@@ -404,24 +404,27 @@ namespace ThongNguyen.PlayerController
         {
             float lastHp = currentHealth;
             float currentHp = currentHealth;
-            currentHp -= damage;
-            if (currentHp <= 0)
+            if (damage > 0)
             {
-                currentHp = 0;
-                if (lastHp > 0)
+                currentHp -= damage;
+                if (currentHp <= 0)
                 {
-                    OnDie();
-                    if (effectData != null
-                        && effectData.callbackKillEnemy != null)
+                    currentHp = 0;
+                    if (lastHp > 0)
                     {
-                        effectData.callbackKillEnemy(this);
+                        OnDie();
+                        if (effectData != null
+                            && effectData.callbackKillEnemy != null)
+                        {
+                            effectData.callbackKillEnemy(this);
+                        }
+                        GamePlayManager.Instance.OnEnemyGetKilled(this);
                     }
-                    GamePlayManager.Instance.OnEnemyGetKilled(this);
                 }
+                GamePlayManager.Instance.OnEnemyGetDamage(this, damage, effectData.damageSource);
+                CurrentHp = currentHp;
+                gotHit = 1;
             }
-            GamePlayManager.Instance.OnEnemyGetDamage(this, damage, effectData.damageSource);
-            CurrentHp = currentHp;
-            gotHit = 1;
         }
 
         public override void OnDie()

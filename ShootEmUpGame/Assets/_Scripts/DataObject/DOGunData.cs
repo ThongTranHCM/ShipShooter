@@ -149,7 +149,7 @@ public class ApplyEffectData
         {
             totalDamage = 1f;
         }
-        totalDamage += ratioDamage * IShipController.Instance.ShipPower;
+        totalDamage += ratioDamage / 100 * IShipController.Instance.ShipPower;
         return totalDamage;
     }
 }
