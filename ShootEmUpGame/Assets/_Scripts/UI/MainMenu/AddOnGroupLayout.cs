@@ -16,7 +16,7 @@ public class AddOnGroupLayout : MonoBehaviour
     [SerializeField]
     private bool _allowEquip;
     [SerializeField]
-    private bool _allowUpgrade;
+    private bool _allowShowInfo;
     private List<AddOnUIItem> _listAddOnUI;
 
     [SerializeField]
@@ -117,11 +117,10 @@ public class AddOnGroupLayout : MonoBehaviour
         }
         if (i < listAddOn.Count)
         {
-            if (_allowUpgrade)
+            if (_allowShowInfo)
             {
-                DataManager.Instance.addOnUserData.Upgrade(addOnData.GetAddOnType);
-                Debug.LogError("Allow Upgrade");
-                FragmentRewardCanvasManager.Instance.Show(addOnData.GetAddOnType.ToString(), 0);
+                AddOnInfoCanvasManager.Instance.SetContentShow(addOnData);
+                AddOnInfoCanvasManager.Instance.Show();
             }
             if (_allowEquip)
             {
