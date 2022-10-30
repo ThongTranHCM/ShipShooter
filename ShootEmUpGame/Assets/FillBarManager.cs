@@ -38,17 +38,21 @@ public class FillBarManager : MonoBehaviour
 
     public void Init()
     {
-        fillRectTransform = fill.GetComponent<RectTransform>();
-        borderRectTransform = border.GetComponent<RectTransform>();
-        fillImage = fill.GetComponent<Image>();
-        borderImage = border.GetComponent<Image>();
-        fillImage.color = borderImage.color = baseColor;
-        animatedValue = value;
-        didInit = true;
-        if(txtProgress != null){
-            txtProgress.Install(this);
-        }       
-        SetFillBar(value);
+        if (!didInit)
+        {
+            fillRectTransform = fill.GetComponent<RectTransform>();
+            borderRectTransform = border.GetComponent<RectTransform>();
+            fillImage = fill.GetComponent<Image>();
+            borderImage = border.GetComponent<Image>();
+            fillImage.color = borderImage.color = baseColor;
+            animatedValue = value;
+            didInit = true;
+            if (txtProgress != null)
+            {
+                txtProgress.Install(this);
+            }
+            SetFillBar(value);
+        }
     }
 
     private void SetFillBar(float x)

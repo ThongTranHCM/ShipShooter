@@ -24,6 +24,8 @@ public class AddOnInfoCanvasManager : MonoBehaviour
     private TextMeshProUGUI _txtAddOnDesc;
     [SerializeField]
     private TextMeshProUGUI _txtAddOnBonus;
+    [SerializeField]
+    private FillBarManager _fillBarFragment;
 
     // Start is called before the first frame update
     public AddOnInfoCanvasManager()
@@ -42,10 +44,28 @@ public class AddOnInfoCanvasManager : MonoBehaviour
         _txtAddOnDesc.text = desc;
         _txtAddOnBonus.text = levelBonus;
     }
+
+    public void SetFillbar(int currentFragment, int maxValue)
+    {
+        _fillBarFragment.Init();
+        ((FillBarFragmentTextManager)_fillBarFragment.GetFillBarTextManager()).SetValue(maxValue);
+        _fillBarFragment.SetRawValue(currentFragment, maxValue);
+    }
     public void SetContentShow(IAddOnData addOnData)
     {
         _addOnData = addOnData;
-        SetContentShow(addOnData.GetSprite, addOnData.GetAddOnType.ToString(), addOnData.GetLevel, "This is Desc", "This is Bonus");
+        int level = addOnData.GetLevel;
+        SetContentShow(addOnData.GetSprite, addOnData.GetAddOnType.ToString(), level, "This is Desc", "This is Bonus");
+        int cost = 0;
+        if (level < 1)
+        {
+            cost = GameInformation.Instance.addOnEquipData.GetUnlockCost();
+        }
+        else
+        {
+            cost = GameInformation.Instance.addOnEquipData.GetUpgradeCost(level);
+        }
+        SetFillbar(addOnData.GetFragment, cost);
     }
 
     public void Show()
