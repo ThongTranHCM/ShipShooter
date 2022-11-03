@@ -43,12 +43,12 @@ public class AddOnEquipData : ScriptableObject
     [SerializeField]
     private int _unlockFragmentCost;
 
-    public List<IAddOnData> getEquipAddOn()
+    public List<IAddOnData> getEquipAddOn(string mode)
     {
         List<IAddOnData> addOnList = new List<IAddOnData>();
         if (DataManager.Instance != null)
         {
-            List<string> listAddOns = DataManager.Instance.addOnUserData.GetListAddOnEquiped();
+            List<string> listAddOns = DataManager.Instance.addOnUserData.GetListAddOnEquiped(mode);
             IAddOnData addOnData = null;
             addOnData = GetAddOnData(listAddOns[0]);
             if (addOnData != null)

@@ -46,21 +46,71 @@ public class AddOnUserData
     }
     private List<AddOnInfo> listAddOnInfo;
     public List<AddOnInfo> GetListAddOnInfo() { return listAddOnInfo; }
-    public List<string> listAddOnEquiped;
+    private List<string> _listAddOnEquiped;
+    private List<string> _listAddOnChallengeEquiped;
+    private List<string> _listAddOnEndlessEquiped;
 
     public void InitData()
     {
-        listAddOnEquiped = new List<string>();
-        listAddOnEquiped.Add("None");
-        listAddOnEquiped.Add("None");
-        listAddOnEquiped.Add("None");
-        listAddOnEquiped.Add("None");
+        _listAddOnEquiped = new List<string>();
+        _listAddOnEquiped.Add("None");
+        _listAddOnEquiped.Add("None");
+        _listAddOnEquiped.Add("None");
+        _listAddOnEquiped.Add("None");
+        _listAddOnChallengeEquiped = new List<string>();
+        _listAddOnChallengeEquiped.Add("None");
+        _listAddOnChallengeEquiped.Add("None");
+        _listAddOnChallengeEquiped.Add("None");
+        _listAddOnChallengeEquiped.Add("None");
+        _listAddOnEndlessEquiped = new List<string>();
+        _listAddOnEndlessEquiped.Add("None");
+        _listAddOnEndlessEquiped.Add("None");
+        _listAddOnEndlessEquiped.Add("None");
+        _listAddOnEndlessEquiped.Add("None");
         listAddOnInfo = new List<AddOnInfo>();
     }
 
-    public List<string> GetListAddOnEquiped()
+    public List<string> GetListAddOnEquiped(string mode)
     {
-        return listAddOnEquiped;
+        List<string> listAddOn;
+        switch (mode)
+        {
+            case Constants.MODE_Challenge:
+                if (_listAddOnChallengeEquiped == null)
+                {
+                    _listAddOnChallengeEquiped = new List<string>();
+                    _listAddOnChallengeEquiped.Add("None");
+                    _listAddOnChallengeEquiped.Add("None");
+                    _listAddOnChallengeEquiped.Add("None");
+                    _listAddOnChallengeEquiped.Add("None");
+                }
+                listAddOn = _listAddOnChallengeEquiped;
+                break;
+            case Constants.MODE_Endless:
+                if (_listAddOnEndlessEquiped == null)
+                {
+                    _listAddOnEndlessEquiped = new List<string>();
+                    _listAddOnEndlessEquiped.Add("None");
+                    _listAddOnEndlessEquiped.Add("None");
+                    _listAddOnEndlessEquiped.Add("None");
+                    _listAddOnEndlessEquiped.Add("None");
+                }
+                listAddOn = _listAddOnEndlessEquiped;
+                break;
+            case Constants.MODE_Story:
+            default:
+                if (_listAddOnEquiped == null)
+                {
+                    _listAddOnEquiped = new List<string>();
+                    _listAddOnEquiped.Add("None");
+                    _listAddOnEquiped.Add("None");
+                    _listAddOnEquiped.Add("None");
+                    _listAddOnEquiped.Add("None");
+                }
+                listAddOn = _listAddOnEquiped;
+                break;
+        }
+        return listAddOn;
     }
 
     public AddOnInfo GetAddOnInfo(AddOnEquipData.AddOnType addOnType)

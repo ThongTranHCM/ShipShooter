@@ -23910,11 +23910,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1562950278}
     m_Modifications:
-    - target: {fileID: 381391302435953818, guid: 494d997fbbd0afb419f9573f2af66517,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1590101684614381178, guid: 494d997fbbd0afb419f9573f2af66517,
         type: 3}
       propertyPath: _mode
@@ -24003,7 +23998,7 @@ PrefabInstance:
     - target: {fileID: 3929587833581436975, guid: 494d997fbbd0afb419f9573f2af66517,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 330
+      value: 435
       objectReference: {fileID: 0}
     - target: {fileID: 5303571350174021075, guid: 494d997fbbd0afb419f9573f2af66517,
         type: 3}
@@ -24255,16 +24250,6 @@ PrefabInstance:
       propertyPath: _listImgAddOns.Array.data[3]
       value: 
       objectReference: {fileID: 1513502505}
-    - target: {fileID: 9077289321807933437, guid: 494d997fbbd0afb419f9573f2af66517,
-        type: 3}
-      propertyPath: _listImgAddOns.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9077289321807933437, guid: 494d997fbbd0afb419f9573f2af66517,
-        type: 3}
-      propertyPath: _listTxtLevelAddOns.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 494d997fbbd0afb419f9573f2af66517, type: 3}
 --- !u!1001 &443158979
@@ -24277,7 +24262,7 @@ PrefabInstance:
     - target: {fileID: 20129620002917871, guid: 494d997fbbd0afb419f9573f2af66517,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 381391302435953818, guid: 494d997fbbd0afb419f9573f2af66517,
         type: 3}
@@ -24324,6 +24309,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3929587833581436975, guid: 494d997fbbd0afb419f9573f2af66517,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 330
+      objectReference: {fileID: 0}
     - target: {fileID: 5303571350174021075, guid: 494d997fbbd0afb419f9573f2af66517,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -24337,7 +24327,7 @@ PrefabInstance:
     - target: {fileID: 7301371042649052267, guid: 494d997fbbd0afb419f9573f2af66517,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7770146361075765941, guid: 494d997fbbd0afb419f9573f2af66517,
         type: 3}
@@ -24547,17 +24537,17 @@ PrefabInstance:
     - target: {fileID: 9059295967781036415, guid: 494d997fbbd0afb419f9573f2af66517,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9077289321807933437, guid: 494d997fbbd0afb419f9573f2af66517,
         type: 3}
       propertyPath: _listImgAddOns.Array.size
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9077289321807933437, guid: 494d997fbbd0afb419f9573f2af66517,
         type: 3}
       propertyPath: _listTxtLevelAddOns.Array.size
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 494d997fbbd0afb419f9573f2af66517, type: 3}
@@ -101136,6 +101126,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1562950278}
     m_Modifications:
+    - target: {fileID: 20129620002917871, guid: 494d997fbbd0afb419f9573f2af66517,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 381391302435953818, guid: 494d997fbbd0afb419f9573f2af66517,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1590101684614381178, guid: 494d997fbbd0afb419f9573f2af66517,
         type: 3}
       propertyPath: _mode
@@ -101215,6 +101215,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3929587833581436975, guid: 494d997fbbd0afb419f9573f2af66517,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 4560234404345697887, guid: 494d997fbbd0afb419f9573f2af66517,
         type: 3}
@@ -101506,6 +101511,21 @@ PrefabInstance:
       propertyPath: _listImgAddOns.Array.data[3]
       value: 
       objectReference: {fileID: 2134099819}
+    - target: {fileID: 9059295967781036415, guid: 494d997fbbd0afb419f9573f2af66517,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077289321807933437, guid: 494d997fbbd0afb419f9573f2af66517,
+        type: 3}
+      propertyPath: _listImgAddOns.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9077289321807933437, guid: 494d997fbbd0afb419f9573f2af66517,
+        type: 3}
+      propertyPath: _listTxtLevelAddOns.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 494d997fbbd0afb419f9573f2af66517, type: 3}
 --- !u!1 &7821051641477321711

@@ -21,7 +21,8 @@ public class UIEquippedAddOns : MonoBehaviour
 
     public void InstallEquippedAddOns()
     {
-        List<string> listStrAddOnEquiped = DataManager.Instance.addOnUserData.listAddOnEquiped;
+        Debug.LogError("Installed Equi Add On" + _listImgAddOns.Count);
+        List<string> listStrAddOnEquiped = DataManager.Instance.addOnUserData.GetListAddOnEquiped(Constants.MODE_Story);
         IAddOnData addOnData = null;
         for (int i = 0; i < _listImgAddOns.Count; i++)
         {
@@ -40,7 +41,7 @@ public class UIEquippedAddOns : MonoBehaviour
     
     public void OnEquipedClick(int index)
     {
-        List<string> listStrAddOnEquiped = DataManager.Instance.addOnUserData.listAddOnEquiped;
+        List<string> listStrAddOnEquiped = DataManager.Instance.addOnUserData.GetListAddOnEquiped(Constants.MODE_Story);
         listStrAddOnEquiped[index] = "None";
         InstallEquippedAddOns();
     }

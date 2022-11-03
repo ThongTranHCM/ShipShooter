@@ -17,6 +17,8 @@ public class AddOnGroupLayout : MonoBehaviour
     private bool _allowEquip;
     [SerializeField]
     private bool _allowShowInfo;
+    [SerializeField]
+    private string _gameMode;
     private List<AddOnUIItem> _listAddOnUI;
 
     [SerializeField]
@@ -106,7 +108,7 @@ public class AddOnGroupLayout : MonoBehaviour
     public void OnAddOnItemClick(int id)
     {
         IAddOnData addOnData = GameInformation.Instance.addOnEquipData.addOnDatas[id];
-        List<string> listAddOn = DataManager.Instance.addOnUserData.listAddOnEquiped;
+        List<string> listAddOn = DataManager.Instance.addOnUserData.GetListAddOnEquiped(_gameMode);
         int i = 0;
         for (; i < listAddOn.Count; i++)
         {
