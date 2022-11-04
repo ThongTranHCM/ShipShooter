@@ -7,22 +7,25 @@ public class UIEquippedAddOns : MonoBehaviour
 {
     public List<Image> _listImgAddOns;
     public List<TMPro.TextMeshProUGUI> _listTxtLevelAddOns;
+    [SerializeField]
+    private string _gameMode;
+    [SerializeField]
+    private AddOnGroupLayout _groupLayout;
 
     public void Install(int index, Sprite spr)
     {
         if (index < 0 || index >= _listImgAddOns.Count) return;
         _listImgAddOns[index].sprite = spr;
     }
-
-    public void Start()
+    public void Install(string gameMode)
     {
+        _gameMode = gameMode;
         InstallEquippedAddOns();
     }
 
     public void InstallEquippedAddOns()
     {
-        Debug.LogError("Installed Equi Add On" + _listImgAddOns.Count);
-        List<string> listStrAddOnEquiped = DataManager.Instance.addOnUserData.GetListAddOnEquiped(Constants.MODE_Story);
+        List<string> listStrAddOnEquiped = DataManager.Instance.addOnUserData.GetListAddOnEquiped(_gameMode);
         IAddOnData addOnData = null;
         for (int i = 0; i < _listImgAddOns.Count; i++)
         {
@@ -37,11 +40,12 @@ public class UIEquippedAddOns : MonoBehaviour
                 _listImgAddOns[i].sprite = null;
             }
         }
+        _groupLayout.InstallMode(_gameMode);
     }
     
     public void OnEquipedClick(int index)
     {
-        List<string> listStrAddOnEquiped = DataManager.Instance.addOnUserData.GetListAddOnEquiped(Constants.MODE_Story);
+        List<string> listStrAddOnEquiped = DataManager.Instance.addOnUserData.GetListAddOnEquiped(_gameMode);
         listStrAddOnEquiped[index] = "None";
         InstallEquippedAddOns();
     }

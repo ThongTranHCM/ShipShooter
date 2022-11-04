@@ -20,6 +20,8 @@ public class GameModeUIManager : MonoBehaviour
     private float _defaultScaleX;
     [SerializeField]
     private string _mode;
+    [SerializeField]
+    private UIEquippedAddOns _equipAddOnLayout;
     private LevelDesignData levelDesignData;
     [SerializeField]
     private TMPro.TextMeshProUGUI _txtLevel;
@@ -64,6 +66,7 @@ public class GameModeUIManager : MonoBehaviour
         shipCount = GameInformation.Instance.shipData.Count;
         InstallModel(shipIndex);
         InstallLevelInfo();
+        _equipAddOnLayout.Install(_mode);
     }
     private void PlayShipTransitionAnimation()
     {
