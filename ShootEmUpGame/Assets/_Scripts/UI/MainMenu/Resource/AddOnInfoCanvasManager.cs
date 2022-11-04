@@ -26,6 +26,10 @@ public class AddOnInfoCanvasManager : MonoBehaviour
     private TextMeshProUGUI _txtAddOnBonus;
     [SerializeField]
     private FillBarManager _fillBarFragment;
+    [SerializeField]
+    private Image _imgBtnPositive;
+    [SerializeField]
+    private TextMeshProUGUI _txtBtnPositive;
 
     // Start is called before the first frame update
     public AddOnInfoCanvasManager()
@@ -49,7 +53,7 @@ public class AddOnInfoCanvasManager : MonoBehaviour
     {
         _fillBarFragment.Init();
         ((FillBarFragmentTextManager)_fillBarFragment.GetFillBarTextManager()).SetValue(maxValue);
-        _fillBarFragment.SetRawValue(currentFragment, maxValue);
+        _fillBarFragment.SetRawValue(12, 18);
     }
     public void SetContentShow(IAddOnData addOnData)
     {
@@ -60,12 +64,22 @@ public class AddOnInfoCanvasManager : MonoBehaviour
         if (level < 1)
         {
             cost = GameInformation.Instance.addOnEquipData.GetUnlockCost();
+            _txtBtnPositive.text = "Unlock";
         }
         else
         {
             cost = GameInformation.Instance.addOnEquipData.GetUpgradeCost(level);
+            _txtBtnPositive.text = "Upgrade";
         }
         SetFillbar(addOnData.GetFragment, cost);
+        if (addOnData.GetFragment < cost)
+        {
+            _imgBtnPositive.color = GameInformation.Instance.materialData.colInvalidBtn;
+        }
+        else
+        {
+            _imgBtnPositive.color = GameInformation.Instance.materialData.colPositiveBtn;
+        }
     }
 
     public void Show()
@@ -85,15 +99,18 @@ public class AddOnInfoCanvasManager : MonoBehaviour
     public void OnClickPositiveBtn()
     {
         AddOnInfoCanvasManager.Instance.Close();
-        DataManager.Instance.addOnUserData.Upgrade(_addOnData.GetAddOnType);
-        Debug.LogError("Allow Upgrade");
+        if (_addOnData.GetLevel < 1)
+        {
+            DataManager.Instance.addOnUserData.Upgrade(_addOnData.GetAddOnType);
+        }
+        else
+        {
+            DataManager.Instance.addOnUserData.Unlock(_addOnData.GetAddOnType);
+        }
         FragmentRewardCanvasManager.Instance.Show(_addOnData.GetAddOnType.ToString(), 0);
     }
-    public void OnClickNegativeBtn()
+    public void OnClickCloseBtn()
     {
         AddOnInfoCanvasManager.Instance.Close();
-        DataManager.Instance.addOnUserData.Upgrade(_addOnData.GetAddOnType);
-        Debug.LogError("Allow Upgrade");
-        FragmentRewardCanvasManager.Instance.Show(_addOnData.GetAddOnType.ToString(), 0);
     }
 }

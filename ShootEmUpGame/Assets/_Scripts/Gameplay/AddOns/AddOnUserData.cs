@@ -157,15 +157,52 @@ public class AddOnUserData
         else
         {
             cost = GameInformation.Instance.addOnEquipData.GetUpgradeCost(result.CurrentLevel);
+            if (result.CurrentFragment >= cost)
+            {
+                result.CurrentFragment -= cost;
+                result.CurrentLevel++;
+                DataManager.isChangeProgress = true;
+                DataManager.isChangeResources = true;
+                DataManager.Save();
+                return true;
+            }
         }
-        if (result.CurrentFragment >= cost)
+        return false;
+    }
+    public bool Unlock(AddOnEquipData.AddOnType addOnType)
+    {
+        Debug.LogError("Unlock");
+        AddOnInfo result = null;
+        for (int i = 0; i < listAddOnInfo.Count; i++)
         {
-            result.CurrentFragment -= cost;
-            result.CurrentLevel++;
-            DataManager.isChangeProgress = true;
-            DataManager.isChangeResources = true;
-            DataManager.Save();
-            return true;
+            if (listAddOnInfo[i].GetAddOnType.Equals(addOnType))
+            {
+                result = listAddOnInfo[i];
+                break;
+            }
+        }
+        if (result == null)
+        {
+            result = new AddOnInfo(addOnType);
+            listAddOnInfo.Add(result);
+        }
+        int cost = 0;
+        if (result.CurrentLevel < 1)
+        {
+            cost = GameInformation.Instance.addOnEquipData.GetUnlockCost();
+            if (result.CurrentFragment >= cost)
+            {
+                result.CurrentFragment -= cost;
+                result.CurrentLevel = 1;
+                DataManager.isChangeProgress = true;
+                DataManager.isChangeResources = true;
+                DataManager.Save();
+                return true;
+            }
+        }
+        else
+        {
+            cost = GameInformation.Instance.addOnEquipData.GetUpgradeCost(result.CurrentLevel);
         }
         return false;
     }
