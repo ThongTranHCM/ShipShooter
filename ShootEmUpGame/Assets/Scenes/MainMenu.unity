@@ -7469,7 +7469,7 @@ MonoBehaviour:
   _txtAddOnDesc: {fileID: 736466544}
   _txtAddOnBonus: {fileID: 2041256310}
   _fillBarFragment: {fileID: 662650443}
-  _imgBtnPositive: {fileID: 737035628}
+  _imgBtnPositive: {fileID: 496369989}
   _txtBtnPositive: {fileID: 262253238}
 --- !u!114 &218627314
 MonoBehaviour:
@@ -24813,6 +24813,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 477029620}
   m_CullTransparentMesh: 1
+--- !u!114 &496369989 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6292425815625518714, guid: cd2f400b02b6af84192cc0727941e1f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1209180583}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &506489313
 GameObject:
   m_ObjectHideFlags: 0
@@ -27529,18 +27541,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72cb592939b298e4db6dccf5e15e056a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &737035628 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5189077119675521810, guid: cd2f400b02b6af84192cc0727941e1f0,
-    type: 3}
-  m_PrefabInstance: {fileID: 1209180583}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &741186863
