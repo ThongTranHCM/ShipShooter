@@ -284,9 +284,12 @@ public class PanelController : MonoBehaviour
 
     public virtual void OnDataChange()
     {
-        for (int i = 0; i < childPanelControllers.Count; i++)
+        if (gameObject.activeInHierarchy)
         {
-            childPanelControllers[i].OnDataChange();
+            for (int i = 0; i < childPanelControllers.Count; i++)
+            {
+                childPanelControllers[i].OnDataChange();
+            }
         }
     }
     public virtual void OnReload()

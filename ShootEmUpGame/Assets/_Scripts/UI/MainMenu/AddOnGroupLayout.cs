@@ -37,6 +37,11 @@ public class AddOnGroupLayout : MonoBehaviour
         _gameMode = gameMode;
     }
 
+    public void Reinstall()
+    {
+        Install(_show0Level, _show0Fragment, _show0Level0Fragment);
+    }
+
     public void Install(bool show0Level, bool show0Fragment, bool show0Level0Fragment)
     {
         List<IAddOnData> listAddOnData = GameInformation.Instance.addOnEquipData.addOnDatas;

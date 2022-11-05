@@ -53,7 +53,7 @@ public class AddOnInfoCanvasManager : MonoBehaviour
     {
         _fillBarFragment.Init();
         ((FillBarFragmentTextManager)_fillBarFragment.GetFillBarTextManager()).SetValue(maxValue);
-        _fillBarFragment.SetRawValue(12, 18);
+        _fillBarFragment.SetRawValue(currentFragment, maxValue);
     }
     public void SetContentShow(IAddOnData addOnData)
     {
@@ -101,13 +101,16 @@ public class AddOnInfoCanvasManager : MonoBehaviour
         AddOnInfoCanvasManager.Instance.Close();
         if (_addOnData.GetLevel < 1)
         {
-            DataManager.Instance.addOnUserData.Upgrade(_addOnData.GetAddOnType);
+            DataManager.Instance.addOnUserData.Unlock(_addOnData.GetAddOnType);
         }
         else
         {
-            DataManager.Instance.addOnUserData.Unlock(_addOnData.GetAddOnType);
+            DataManager.Instance.addOnUserData.Upgrade(_addOnData.GetAddOnType);
         }
         FragmentRewardCanvasManager.Instance.Show(_addOnData.GetAddOnType.ToString(), 0);
+        DataManager.isChangeProgress = true;
+        DataManager.isChangeResources = true;
+        DataManager.Save();
     }
     public void OnClickCloseBtn()
     {

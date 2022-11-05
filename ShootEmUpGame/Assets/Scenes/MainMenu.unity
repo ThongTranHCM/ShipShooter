@@ -24813,6 +24813,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 477029620}
   m_CullTransparentMesh: 1
+--- !u!114 &488899526 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2381142465579419011, guid: 26fc74154055ce6448d9fc3e09116dc1,
+    type: 3}
+  m_PrefabInstance: {fileID: 4644857663054333685}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdea7feb3962770468ee12c5964bf8ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &496369989 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6292425815625518714, guid: cd2f400b02b6af84192cc0727941e1f0,
@@ -26559,13 +26571,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7823083633269788747, guid: 149a54af34ca299408d3f40c01cc7382,
         type: 3}
+      propertyPath: fullColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7823083633269788747, guid: 149a54af34ca299408d3f40c01cc7382,
+        type: 3}
+      propertyPath: fullColor.b
+      value: 0.4392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 7823083633269788747, guid: 149a54af34ca299408d3f40c01cc7382,
+        type: 3}
+      propertyPath: fullColor.g
+      value: 0.7137255
+      objectReference: {fileID: 0}
+    - target: {fileID: 7823083633269788747, guid: 149a54af34ca299408d3f40c01cc7382,
+        type: 3}
+      propertyPath: fullColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7823083633269788747, guid: 149a54af34ca299408d3f40c01cc7382,
+        type: 3}
       propertyPath: txtProgress
       value: 
       objectReference: {fileID: 1102630458}
     - target: {fileID: 8505725635281791593, guid: 149a54af34ca299408d3f40c01cc7382,
         type: 3}
       propertyPath: m_Name
-      value: ProgressBar (1)
+      value: ProgressBar
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 149a54af34ca299408d3f40c01cc7382, type: 3}
@@ -58489,7 +58521,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0de8878d51709c64c84c377181da1f58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  childPanelControllers: []
+  childPanelControllers:
+  - {fileID: 1617773659}
+  - {fileID: 1225302150}
+  - {fileID: 1801037646}
+  - {fileID: 1830242681}
+  - {fileID: 1388010451}
   presentedPanel: {fileID: 0}
   presentingPanel: {fileID: 0}
   isVisible: 0
@@ -92279,6 +92316,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2106105121}
   m_CullTransparentMesh: 1
+--- !u!114 &2107857778 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 37190209791174384, guid: 26fc74154055ce6448d9fc3e09116dc1,
+    type: 3}
+  m_PrefabInstance: {fileID: 4644857663054333685}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a2ec460c92e14c4aa43f9efd7d4c26d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2108710754
 GameObject:
   m_ObjectHideFlags: 0
@@ -100075,6 +100124,16 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: -24.36
       objectReference: {fileID: 0}
+    - target: {fileID: 2577793459069322005, guid: 26fc74154055ce6448d9fc3e09116dc1,
+        type: 3}
+      propertyPath: _addOnGroupLayout
+      value: 
+      objectReference: {fileID: 488899526}
+    - target: {fileID: 2577793459069322005, guid: 26fc74154055ce6448d9fc3e09116dc1,
+        type: 3}
+      propertyPath: _dailyDealContent
+      value: 
+      objectReference: {fileID: 2107857778}
     - target: {fileID: 2602651832941227023, guid: 26fc74154055ce6448d9fc3e09116dc1,
         type: 3}
       propertyPath: m_SizeDelta.x
