@@ -46,21 +46,71 @@ public class AddOnUserData
     }
     private List<AddOnInfo> listAddOnInfo;
     public List<AddOnInfo> GetListAddOnInfo() { return listAddOnInfo; }
-    public List<string> listAddOnEquiped;
+    private List<string> _listAddOnEquiped;
+    private List<string> _listAddOnChallengeEquiped;
+    private List<string> _listAddOnEndlessEquiped;
 
     public void InitData()
     {
-        listAddOnEquiped = new List<string>();
-        listAddOnEquiped.Add("None");
-        listAddOnEquiped.Add("None");
-        listAddOnEquiped.Add("None");
-        listAddOnEquiped.Add("None");
+        _listAddOnEquiped = new List<string>();
+        _listAddOnEquiped.Add("None");
+        _listAddOnEquiped.Add("None");
+        _listAddOnEquiped.Add("None");
+        _listAddOnEquiped.Add("None");
+        _listAddOnChallengeEquiped = new List<string>();
+        _listAddOnChallengeEquiped.Add("None");
+        _listAddOnChallengeEquiped.Add("None");
+        _listAddOnChallengeEquiped.Add("None");
+        _listAddOnChallengeEquiped.Add("None");
+        _listAddOnEndlessEquiped = new List<string>();
+        _listAddOnEndlessEquiped.Add("None");
+        _listAddOnEndlessEquiped.Add("None");
+        _listAddOnEndlessEquiped.Add("None");
+        _listAddOnEndlessEquiped.Add("None");
         listAddOnInfo = new List<AddOnInfo>();
     }
 
-    public List<string> GetListAddOnEquiped()
+    public List<string> GetListAddOnEquiped(string mode)
     {
-        return listAddOnEquiped;
+        List<string> listAddOn;
+        switch (mode)
+        {
+            case Constants.MODE_Challenge:
+                if (_listAddOnChallengeEquiped == null)
+                {
+                    _listAddOnChallengeEquiped = new List<string>();
+                    _listAddOnChallengeEquiped.Add("None");
+                    _listAddOnChallengeEquiped.Add("None");
+                    _listAddOnChallengeEquiped.Add("None");
+                    _listAddOnChallengeEquiped.Add("None");
+                }
+                listAddOn = _listAddOnChallengeEquiped;
+                break;
+            case Constants.MODE_Endless:
+                if (_listAddOnEndlessEquiped == null)
+                {
+                    _listAddOnEndlessEquiped = new List<string>();
+                    _listAddOnEndlessEquiped.Add("None");
+                    _listAddOnEndlessEquiped.Add("None");
+                    _listAddOnEndlessEquiped.Add("None");
+                    _listAddOnEndlessEquiped.Add("None");
+                }
+                listAddOn = _listAddOnEndlessEquiped;
+                break;
+            case Constants.MODE_Story:
+            default:
+                if (_listAddOnEquiped == null)
+                {
+                    _listAddOnEquiped = new List<string>();
+                    _listAddOnEquiped.Add("None");
+                    _listAddOnEquiped.Add("None");
+                    _listAddOnEquiped.Add("None");
+                    _listAddOnEquiped.Add("None");
+                }
+                listAddOn = _listAddOnEquiped;
+                break;
+        }
+        return listAddOn;
     }
 
     public AddOnInfo GetAddOnInfo(AddOnEquipData.AddOnType addOnType)
@@ -107,15 +157,52 @@ public class AddOnUserData
         else
         {
             cost = GameInformation.Instance.addOnEquipData.GetUpgradeCost(result.CurrentLevel);
+            if (result.CurrentFragment >= cost)
+            {
+                result.CurrentFragment -= cost;
+                result.CurrentLevel++;
+                DataManager.isChangeProgress = true;
+                DataManager.isChangeResources = true;
+                DataManager.Save();
+                return true;
+            }
         }
-        if (result.CurrentFragment >= cost)
+        return false;
+    }
+    public bool Unlock(AddOnEquipData.AddOnType addOnType)
+    {
+        Debug.LogError("Unlock");
+        AddOnInfo result = null;
+        for (int i = 0; i < listAddOnInfo.Count; i++)
         {
-            result.CurrentFragment -= cost;
-            result.CurrentLevel++;
-            DataManager.isChangeProgress = true;
-            DataManager.isChangeResources = true;
-            DataManager.Save();
-            return true;
+            if (listAddOnInfo[i].GetAddOnType.Equals(addOnType))
+            {
+                result = listAddOnInfo[i];
+                break;
+            }
+        }
+        if (result == null)
+        {
+            result = new AddOnInfo(addOnType);
+            listAddOnInfo.Add(result);
+        }
+        int cost = 0;
+        if (result.CurrentLevel < 1)
+        {
+            cost = GameInformation.Instance.addOnEquipData.GetUnlockCost();
+            if (result.CurrentFragment >= cost)
+            {
+                result.CurrentFragment -= cost;
+                result.CurrentLevel = 1;
+                DataManager.isChangeProgress = true;
+                DataManager.isChangeResources = true;
+                DataManager.Save();
+                return true;
+            }
+        }
+        else
+        {
+            cost = GameInformation.Instance.addOnEquipData.GetUpgradeCost(result.CurrentLevel);
         }
         return false;
     }

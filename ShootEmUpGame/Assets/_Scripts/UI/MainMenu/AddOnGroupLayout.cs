@@ -17,6 +17,8 @@ public class AddOnGroupLayout : MonoBehaviour
     private bool _allowEquip;
     [SerializeField]
     private bool _allowShowInfo;
+    [SerializeField]
+    private string _gameMode;
     private List<AddOnUIItem> _listAddOnUI;
 
     [SerializeField]
@@ -27,6 +29,16 @@ public class AddOnGroupLayout : MonoBehaviour
     public void OnEnable()
     {
         if (_listAddOnUI == null) _listAddOnUI = new List<AddOnUIItem>();
+        Install(_show0Level, _show0Fragment, _show0Level0Fragment);
+    }
+
+    public void InstallMode(string gameMode)
+    {
+        _gameMode = gameMode;
+    }
+
+    public void Reinstall()
+    {
         Install(_show0Level, _show0Fragment, _show0Level0Fragment);
     }
 
@@ -106,25 +118,30 @@ public class AddOnGroupLayout : MonoBehaviour
     public void OnAddOnItemClick(int id)
     {
         IAddOnData addOnData = GameInformation.Instance.addOnEquipData.addOnDatas[id];
-        List<string> listAddOn = DataManager.Instance.addOnUserData.listAddOnEquiped;
-        int i = 0;
-        for (; i < listAddOn.Count; i++)
+        List<string> listAddOn = DataManager.Instance.addOnUserData.GetListAddOnEquiped(_gameMode);
+        int emptySlot = -1;
+        bool isEquipped = false;
+        for (int i = 0; i < listAddOn.Count; i++)
         {
-            if (listAddOn[i] == "None")
+            if (listAddOn[i] == addOnData.GetAddOnType.ToString())
             {
-                break;
+                isEquipped = true;
+            }
+            if (listAddOn[i] == "None" && emptySlot < 0)
+            {
+                emptySlot = i;
             }
         }
-        if (i < listAddOn.Count)
+        if (_allowShowInfo)
         {
-            if (_allowShowInfo)
+            AddOnInfoCanvasManager.Instance.SetContentShow(addOnData);
+            AddOnInfoCanvasManager.Instance.Show();
+        }
+        if (emptySlot >= 0)
+        {
+            if (_allowEquip && !isEquipped)
             {
-                AddOnInfoCanvasManager.Instance.SetContentShow(addOnData);
-                AddOnInfoCanvasManager.Instance.Show();
-            }
-            if (_allowEquip)
-            {
-                listAddOn[i] = addOnData.GetAddOnType.ToString();
+                listAddOn[emptySlot] = addOnData.GetAddOnType.ToString();
                 _uiEquipAddOn.InstallEquippedAddOns();
             }
         }

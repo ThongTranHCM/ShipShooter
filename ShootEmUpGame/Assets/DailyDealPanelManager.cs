@@ -39,6 +39,8 @@ public class DailyDealPanelManager : MonoBehaviour
     public void PurchaseDeal(){
         if(GetComponent<PurchaseFragmentButtonManager>().CheckPurchaseReward()){
             DailyDealManager.Instance.IncreaseLevel(deal);
+            DataManager.isChangeCurrency = true;
+            DataManager.isChangeProgress = true;
             DataManager.Save();
             SetDeal(deal);
         }

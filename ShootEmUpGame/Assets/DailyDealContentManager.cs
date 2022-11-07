@@ -34,6 +34,10 @@ public class DailyDealContentManager : MonoBehaviour
             i += 1;
         }
     }
+    public void UpdateContent()
+    {
+        DailyDealManager.Instance.UpdateContent();
+    }
     public void SetTimeCounter(string Counter){
         countDownText.text = Counter;
     }

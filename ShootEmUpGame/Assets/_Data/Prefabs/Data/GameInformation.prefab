@@ -48,6 +48,10 @@ MonoBehaviour:
     matPositiveBtn: {fileID: 2100000, guid: d814c12828ffa22498c5a7e4dcc98ab5, type: 2}
     matNegativeBtn: {fileID: 2100000, guid: 50d203bbb833a9f4dbe9db1b344dcc02, type: 2}
     matInvalidBtn: {fileID: 2100000, guid: ad149a49812e3b94c9186a3d1dca6bf0, type: 2}
+    colActionBtn: {r: 0.18039216, g: 0.2509804, b: 0.6784314, a: 1}
+    colPositiveBtn: {r: 0.15294118, g: 0.7176471, b: 0.34117648, a: 1}
+    colNegativeBtn: {r: 0.9150943, g: 0, b: 0, a: 1}
+    colInvalidBtn: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   addOnEquipData: {fileID: 11400000, guid: 06fe93fcdb52de34cab5227327f3f64e, type: 2}
   shipData:
   - {fileID: 11400000, guid: b2908ca3b06bf8849bd142011bd12f7d, type: 2}

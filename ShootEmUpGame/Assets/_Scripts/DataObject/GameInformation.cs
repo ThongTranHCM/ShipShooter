@@ -28,6 +28,10 @@ public class GameInformation : MonoBehaviour
         public Material matPositiveBtn;
         public Material matNegativeBtn;
         public Material matInvalidBtn;
+        public Color colActionBtn;
+        public Color colPositiveBtn;
+        public Color colNegativeBtn;
+        public Color colInvalidBtn;
     }
     public MaterialStorageData materialData;
 

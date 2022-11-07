@@ -363,7 +363,6 @@ public class DataManager
             _lastChallengeLevelIndex.Add(0);
         }
         result = _lastChallengeLevelIndex[shipIndex];
-        Debug.LogError("Get " + shipIndex + "  " + result);
         return result;
     }
     public void SetLastChallengeLevelWin(int shipIndex, int newValue)

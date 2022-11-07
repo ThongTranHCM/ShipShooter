@@ -38,7 +38,7 @@ public class DOShipData : ScriptableObject
     {
         if (level < 0 || level > _maxLevel)
         {
-            return -1;
+            return level = 0;
         }
         return _shipPowers[level];
     }

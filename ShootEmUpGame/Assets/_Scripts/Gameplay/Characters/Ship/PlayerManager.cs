@@ -38,7 +38,7 @@ public class PlayerManager : MonoBehaviour
     }
     public void InstallAddOns()
     {
-        List<IAddOnData> addOns = addOnEquipData.getEquipAddOn();
+        List<IAddOnData> addOns = addOnEquipData.getEquipAddOn(DataManager.Instance.selectedMode);
         for (int i = 0; i < addOns.Count; i++)
         {
             InstallAddOn(addOns[i]);
