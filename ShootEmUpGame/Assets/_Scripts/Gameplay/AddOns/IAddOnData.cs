@@ -33,7 +33,8 @@ public class IAddOnData
     public bool IsUnlocked { get { return _isUnlocked; } }
 
     public int GetLevel { get { return DataManager.Instance.addOnUserData.GetAddOnInfo(_addOnType).CurrentLevel; } }
-    public float GetValue { get { return _baseValue + _increaseValue * GetLevel; } }
+    //public float GetValue { get { return _baseValue + _increaseValue * GetLevel; } }
+    public float GetValue { get { return GameInformation.Instance.addOnEquipData.GetPower(GetLevel); } }
     public int GetFragment { get { return DataManager.Instance.addOnUserData.GetAddOnInfo(_addOnType).CurrentFragment; }}
     public bool HasGun { get { return _spawnGun != null; } }
     public bool HasOnHit { get { return _onHitController != null; } }

@@ -87,6 +87,10 @@ MonoBehaviour:
   - id: GunEnergyOrb
   - id: GunLaser
   - id: GunSplit
+  - id: PowerUpHoming
+  - id: PowerUpVertLaser
+  - id: PowerUpMegaShot
+  - id: PowerUpXCross
   dailyOfferList:
   - id: 30_diamond
     rewardId: diamond

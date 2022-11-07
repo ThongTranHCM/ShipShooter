@@ -99,15 +99,21 @@ public class AddOnInfoCanvasManager : MonoBehaviour
     public void OnClickPositiveBtn()
     {
         AddOnInfoCanvasManager.Instance.Close();
-        if (_addOnData.GetLevel < 1)
+        int level = _addOnData.GetLevel;
+        string addOnString = _addOnData.GetAddOnType.ToString();
+        if (level < 1)
         {
             DataManager.Instance.addOnUserData.Unlock(_addOnData.GetAddOnType);
+            UnlockAddOnCanvasManager.Instance.Show(addOnString);
         }
         else
         {
             DataManager.Instance.addOnUserData.Upgrade(_addOnData.GetAddOnType);
+            UpgradeAddOnCanvasManager.Instance.SetContentShowUpdateAddOn(
+                level, GameInformation.Instance.addOnEquipData.GetPower(level),
+                level + 1, GameInformation.Instance.addOnEquipData.GetPower(level + 1));
+            UpgradeAddOnCanvasManager.Instance.Show();
         }
-        FragmentRewardCanvasManager.Instance.Show(_addOnData.GetAddOnType.ToString(), 0);
         DataManager.isChangeProgress = true;
         DataManager.isChangeResources = true;
         DataManager.Save();

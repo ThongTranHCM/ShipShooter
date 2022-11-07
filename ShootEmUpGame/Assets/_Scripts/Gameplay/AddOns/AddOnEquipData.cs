@@ -129,4 +129,9 @@ public class AddOnEquipData : ScriptableObject
     {
         return _unlockFragmentCost;
     }
+
+    public float GetPower(int level)
+    {
+        return _levelPowers[level];
+    }
 }

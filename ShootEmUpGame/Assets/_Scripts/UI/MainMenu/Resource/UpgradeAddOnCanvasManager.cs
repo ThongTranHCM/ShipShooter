@@ -41,7 +41,7 @@ public class UpgradeAddOnCanvasManager : MonoBehaviour
         }
     }
 
-    public void SetContentShowUpdateAddOn(int levelPrev, int powerPrev, int levelPost, int powerPost)
+    public void SetContentShowUpdateAddOn(int levelPrev, float powerPrev, int levelPost, float powerPost)
     {
         panelLevel.SetActive(true);
         panelPower.SetActive(true);
@@ -51,7 +51,14 @@ public class UpgradeAddOnCanvasManager : MonoBehaviour
         txtPowerPost.text = powerPost.ToString();
     }
 
-    public void Show(string Type, int Amount)
+    public void SetAddOn(string Id)
+    {
+        IAddOnData addOnData = addOnEquipData.GetAddOnData(Id);
+        icon.sprite = addOnData.GetSprite;
+        //name.text = Id;
+    }
+
+    public void Show()
     {
         gameObject.SetActive(true);
         //resourcePanel.GetComponent<ResourcePanelManager>().SetReward(Type, Amount);
