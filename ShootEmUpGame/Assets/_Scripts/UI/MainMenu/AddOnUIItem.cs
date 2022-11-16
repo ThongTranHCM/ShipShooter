@@ -16,7 +16,7 @@ public class AddOnUIItem : MonoBehaviour
     [SerializeField]
     private Button _btnClick;
     public System.Action onBtnClick;
-    public void Install(string addOnText, Sprite sprAddOn, int level, int curFragment, int capFragment)
+    public void Install(Sprite sprAddOn, int level, int curFragment, int capFragment)
     {
         _txtAddOnLevel.text = "" + level;
         _fillBarFragment.SetRawValue(curFragment, capFragment);

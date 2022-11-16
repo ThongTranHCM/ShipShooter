@@ -46,13 +46,11 @@ public class AddOnGroupLayout : MonoBehaviour
     {
         List<IAddOnData> listAddOnData = GameInformation.Instance.addOnEquipData.addOnDatas;
         List<AddOnEquipData.AddOnType> listQualifiedType = new List<AddOnEquipData.AddOnType>();
-        string addOnName = "";
         AddOnUserData.AddOnInfo addOnInfo = null;
         int cost = 0;
 
         for (int i = 0; i < listAddOnData.Count; i++)
         {
-            addOnName = listAddOnData[i].GetAddOnType.ToString();
             addOnInfo = DataManager.Instance.addOnUserData.GetAddOnInfo(listAddOnData[i].GetAddOnType);
             if (!listAddOnData[i].IsUnlocked
                 || (addOnInfo.CurrentLevel == 0 && !show0Level)
@@ -66,19 +64,8 @@ public class AddOnGroupLayout : MonoBehaviour
         UpdateListUISize(listQualifiedType.Count);
         for (int i = 0; i < listQualifiedType.Count; i++)
         {
-            addOnName = listQualifiedType[i].ToString();
             addOnInfo = DataManager.Instance.addOnUserData.GetAddOnInfo(listQualifiedType[i]);
             AddOnUIItem _addOnUiItem = _listAddOnUI[i];
-            int index = 0;
-            while (index < addOnName.Length)
-            {
-                if ('A' <= addOnName[index] && addOnName[index] <= 'Z')
-                {
-                    addOnName = addOnName.Substring(0, index) + " " + addOnName.Substring(index, addOnName.Length - index);
-                    index += 2;
-                }
-                index++;
-            }
             int tmp = i;
             if (addOnInfo.CurrentLevel < 1)
             {
@@ -88,7 +75,8 @@ public class AddOnGroupLayout : MonoBehaviour
             {
                 cost = GameInformation.Instance.addOnEquipData.GetUpgradeCost(addOnInfo.CurrentLevel);
             }
-            _addOnUiItem.Install(addOnName, listAddOnData[i].GetSprite, addOnInfo.CurrentLevel, addOnInfo.CurrentFragment, cost);
+            _addOnUiItem.Install(GameInformation.Instance.addOnEquipData.GetAddOnData(listQualifiedType[i]).GetSprite,
+                addOnInfo.CurrentLevel, addOnInfo.CurrentFragment, cost);
             _addOnUiItem.onBtnClick = () => OnAddOnItemClick(tmp);
         }
     }
@@ -106,6 +94,7 @@ public class AddOnGroupLayout : MonoBehaviour
         {
             currentListSize++;
             GameObject addOnItem = Instantiate<GameObject>(_prefab, transform);
+            addOnItem.name = "AddOn_" + currentListSize;
             AddOnUIItem addOnUiItem = addOnItem.GetComponent<AddOnUIItem>();
             _listAddOnUI.Add(addOnUiItem);
         }

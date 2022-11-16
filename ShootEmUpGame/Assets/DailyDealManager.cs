@@ -12,7 +12,7 @@ public class DailyDealManager : MonoBehaviour
         string id;
         public string ID { get { return id;}} // This is AddOnType
         private int level;
-        private int Level{
+        public int Level{
             get { return level; }
         }
         private List<int> history = new List<int>();
@@ -148,7 +148,7 @@ public class DailyDealManager : MonoBehaviour
 
     private void RestartDeals(){
         int i = 0;
-        foreach(Transform child in gameObject.transform){
+        foreach (Transform child in gameObject.transform){
             data.dealList[i].UpdateHistory();
             i += 1;
         }

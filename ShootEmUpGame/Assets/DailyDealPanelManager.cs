@@ -27,7 +27,7 @@ public class DailyDealPanelManager : MonoBehaviour
         {
             cost = GameInformation.Instance.addOnEquipData.GetUpgradeCost(addOnData.GetLevel);
         }
-        addOnUIItem.Install(deal.ID, addOnData.GetSprite, (int)addOnData.GetLevel, addOnData.GetFragment, cost);
+        addOnUIItem.Install(addOnData.GetSprite, (int)addOnData.GetLevel, addOnData.GetFragment, cost);
         fragmentText.SetResource("fragment");
         fragmentText.SetText(string.Format("+{0}",deal.GetFragment().ToString()));
         List<PurchaseFragmentButtonManager.Reward> rewards = new List<PurchaseFragmentButtonManager.Reward>();
