@@ -25,7 +25,8 @@ public class TimeChestNotificationManager : MonoBehaviour
                     LTSeq seq = LeanTween.sequence();
                     seq.append(() => claimNotification.SetActive(true));
                     seq.append(LeanTween.scale(claimNotification, Vector3.zero, 0.0f));
-                    seq.append(LeanTween.scale(claimNotification, Vector3.one, 0.25f).setEase(LeanTweenType.easeOutBack));
+                    seq.append(LeanTween.scale(claimNotification, 1.125f * Vector3.right + 0.888f * Vector3.up, 0.25f).setEase(LeanTweenType.easeOutBack));
+                    seq.append(LeanTween.scale(claimNotification, 1.125f * Vector3.up + 0.888f * Vector3.right, 0.25f).setEase(LeanTweenType.easeInOutSine).setLoopPingPong());
                 }
             }
              else {
