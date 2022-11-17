@@ -13,9 +13,9 @@ public abstract class ResourceSinkButtonManager : MonoBehaviour
     [SerializeField]
     private UnityEngine.UI.Image _imgBg;
     [SerializeField]
-    private Material _matPurchaseable;
+    private GameObject _validButton;
     [SerializeField]
-    private Material _matNotEnough;
+    private GameObject _invalidButton;
     protected bool lastSufficentCheck = false;
 
     void Awake(){
@@ -35,11 +35,13 @@ public abstract class ResourceSinkButtonManager : MonoBehaviour
         {
             if (DataManager.Instance.playerData.CheckPurchaseable(costId, costAmount))
             {
-                _imgBg.material = _matPurchaseable;
+                _validButton.SetActive(true);
+                _invalidButton.SetActive(false);;
             }
             else
             {
-                _imgBg.material = _matNotEnough;
+                _validButton.SetActive(false);
+                _invalidButton.SetActive(true);
             }
         }
     }
