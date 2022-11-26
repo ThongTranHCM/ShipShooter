@@ -41,21 +41,15 @@ public class UpgradeAddOnCanvasManager : MonoBehaviour
         }
     }
 
-    public void SetContentShowUpdateAddOn(int levelPrev, float powerPrev, int levelPost, float powerPost)
+    public void SetContentShowUpdateAddOn(Sprite sprite, int levelPrev, float powerPrev, int levelPost, float powerPost)
     {
         panelLevel.SetActive(true);
         panelPower.SetActive(true);
+        icon.sprite = sprite;
         txtLevelPrev.text = levelPrev.ToString();
         txtLevelPost.text = levelPost.ToString();
         txtPowerPrev.text = powerPrev.ToString();
         txtPowerPost.text = powerPost.ToString();
-    }
-
-    public void SetAddOn(string Id)
-    {
-        IAddOnData addOnData = addOnEquipData.GetAddOnData(Id);
-        icon.sprite = addOnData.GetSprite;
-        //name.text = Id;
     }
 
     public void Show()

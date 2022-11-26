@@ -100,6 +100,34 @@ public class DataManagerLoader : MonoBehaviour
             addOnInfos[i].CurrentLevel = Mathf.Min(addOnInfos[i].CurrentLevel + 1, 100);
         }
     }
+    [MenuItem("Data/Cheat/Add On/Add 10 to a random Empty")]
+    private static void Increase10FragmentToRandomEmpty()
+    {
+        List<AddOnUserData.AddOnInfo> addOnInfos = DataManager.Instance.addOnUserData.GetListAddOnInfo();
+        int count = 0;
+        int random = 0;
+        for (int i = 0; i < addOnInfos.Count; i++)
+        {
+            if (addOnInfos[i].CurrentFragment == 0 && addOnInfos[i].CurrentLevel == 0)
+                count++;
+        }
+        if (count == 0) return;
+        random = Random.Range(0, count);
+        for (int i = 0; i < addOnInfos.Count; i++)
+        {
+            if (addOnInfos[i].CurrentFragment == 0 && addOnInfos[i].CurrentLevel == 0)
+            {
+                random--;
+                if (random == 0)
+                {
+                    addOnInfos[i].CurrentFragment = 10;
+                    DataManager.isChangeResources = true;
+                    DataManager.Save();
+                    return;
+                }
+            }
+        }
+    }
     [MenuItem("Data/Cheat/Add On/Increase 3 Random By 5 Levels")]
     private static void Increase3AddOnsRandomBy5Level()
     {

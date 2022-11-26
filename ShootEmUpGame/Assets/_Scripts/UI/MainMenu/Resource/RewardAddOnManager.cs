@@ -37,6 +37,7 @@ public class RewardAddOnManager : MonoBehaviour
             DataManager.isChangeResources = true;
         } else {
             UnlockAddOnCanvasManager.Instance.Close();
+            UpgradeAddOnCanvasManager.Instance.Close();
         }
     }
 

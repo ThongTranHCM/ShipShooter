@@ -109,7 +109,7 @@ public class AddOnInfoCanvasManager : MonoBehaviour
         else
         {
             DataManager.Instance.addOnUserData.Upgrade(_addOnData.GetAddOnType);
-            UpgradeAddOnCanvasManager.Instance.SetContentShowUpdateAddOn(
+            UpgradeAddOnCanvasManager.Instance.SetContentShowUpdateAddOn(_addOnData.GetSprite,
                 level, GameInformation.Instance.addOnEquipData.GetPower(level),
                 level + 1, GameInformation.Instance.addOnEquipData.GetPower(level + 1));
             UpgradeAddOnCanvasManager.Instance.Show();
